@@ -15,6 +15,9 @@ QUERIES = {
       WHERE commodity='Paddy' AND metric='production' AND period='2024-25'""",
     "coverage": """SELECT source_group,implementation_status,COUNT(*) AS files
       FROM source_document GROUP BY source_group,implementation_status ORDER BY source_group""",
+    "text-evidence": """SELECT d.file_name,t.page,t.fact_type,t.agent_id,t.run_id,t.evidence
+      FROM text_fact t JOIN source_document d USING(doc_id)
+      ORDER BY d.file_name,t.page,t.fact_id LIMIT 12""",
 }
 
 

@@ -6,7 +6,7 @@
 2. **Source map (1 minute):** show `data/manifest.csv`; every supplied file has a reader, pending status or explicit skip.
 3. **Hindi example (1 minute):** show `Qlyksa dk uke` from the Basic Statistics PDF and the decoded `फसलों का नाम`. Explain that this is fixed font decoding, not model translation.
 4. **Show the table agent (2 minutes):** after the full preflight, run `python phase2/query_db.py paddy-provenance`. Point from the printed 2024–25 Paddy production value to its exact PDF page/table/row and extraction run.
-5. **Run the text agent (1 minute):** choose an island-wise PDF and show one exact numbered line linked to its page.
+5. **Run the text agent (1 minute):** run `python phase2/query_db.py text-evidence` and show an exact line from an island-wise PDF with its page, agent and run ID.
 6. **Run checks (1 minute):** run `python phase2/evaluate.py`; open `evaluation/latest_evaluation.json` and explain the four direct values plus Hindi checks.
 7. **Limitations (1 minute):** screenshot OCR and chart digitisation are pending; maps are skipped; AgentEvals/LangSmith and LLM fine-tuning were not run here.
 

@@ -41,3 +41,11 @@ ORDER BY source_group;
 ```
 
 This checks the manifest’s planned status. The actual run outcomes are in `evaluation/latest_evaluation.json`, where partial, pending and skipped counts are separated.
+
+## 4. Show a text-agent extraction
+
+```powershell
+python phase2/query_db.py text-evidence
+```
+
+The output shows exact numbered lines saved from the island-wise statistics PDFs, with source page, text agent and run ID.
