@@ -38,6 +38,7 @@ The pipeline recreates `phase2/db/agriculture_phase2.sqlite`, processes the mani
 - `phase2/evaluate.py` — held-out value checks and per-agent/workflow summary.
 - `phase2/hosted_eval.py` — optional AgentEvals trajectory evaluation logged to LangSmith.
 - `phase2/docs/` — report, source map, schema, demo and viva notes.
+- `phase2/docs/Phase2_Interim_Report.pdf` — printable interim report summarizing results and remaining work.
 - `phase2/logs/` — execution traces and evaluation output.
 - `phase2/docs/challenge_and_literature.md` — short, evidence-based explanation of the Hindi font challenge and tool choices.
 
