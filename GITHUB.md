@@ -2,7 +2,7 @@
 
 This folder is a self-contained Phase 2 package. It includes the Phase 1 corpus as supplied, the SQLite database, reproducible extraction and evaluation code, checked logs, and presentation notes. In the course GitHub repository, the package can reuse the existing `Phase 1` folder through `phase2/source_paths.py`.
 
-Repository: `yababa-s/agriculture-assignment`, the repository referenced in the project brief. The review branch is `phase2-rebuild`; it keeps `main` unchanged.
+Repository: `yababa-s/agriculture-assignment`, the repository referenced in the project brief. The prepared local branch is `phase2-rebuild`. The connected GitHub integration rejected remote branch creation with HTTP 403, so no remote branch or pull request is claimed.
 
 If reproducing the branch from this local checkout:
 
