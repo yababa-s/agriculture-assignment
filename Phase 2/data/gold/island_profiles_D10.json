@@ -1,0 +1,2315 @@
+{
+  "document_id": "D10",
+  "task": "island_profile_extraction",
+  "review": "Reference items produced by the rule extractor and then checked line by line against the page text of every island (2026-10-16). Ambiguous facts that span two text columns (e.g. Smith Island 'Manure ... Selling Unit-1', Shaheed Dweep 'Inland-32' fish) are deliberately excluded.",
+  "n_islands": 31,
+  "n_items": 294,
+  "blocks": [
+    {
+      "document_id": "D10",
+      "page": 3,
+      "island": "ISL_NARCONDAM",
+      "input": "नारकण्डम द्वीप Narcondam Island\nArea (sq. km.)\n6.81\nPopulation (2011 Census):16 (Male – 16 Female - 0)\nArea under forest (sq.km)\n6.81\nHouseholds:1",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 6.81,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 6.81"
+        },
+        {
+          "metric": "forest_area",
+          "value": 6.81,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 6.81"
+        },
+        {
+          "metric": "population",
+          "value": 16.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census):16"
+        },
+        {
+          "metric": "households",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households:1"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 3,
+      "island": "ISL_EAST",
+      "input": "ईस्ट द्वीप East Island\nArea (sq. km.)\n6.11\nPopulation (2011 Census): 16 (Male -15 Female - 1)\nArea under forest (sq.km)\n6.11\nHouseholds: 5",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 6.11,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 6.11"
+        },
+        {
+          "metric": "forest_area",
+          "value": 6.11,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 6.11"
+        },
+        {
+          "metric": "population",
+          "value": 16.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 16"
+        },
+        {
+          "metric": "households",
+          "value": 5.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 5"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 3,
+      "island": "ISL_STEWART",
+      "input": "स्टूवर्ट द्वीप Stewart Island\nArea (sq. km.)\n7.23\nPopulation (2011 Census): 2 (Male – 2 , Female – 0)\nArea under forest (sq.km)\n7.23\nHouseholds: 1",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 7.23,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 7.23"
+        },
+        {
+          "metric": "forest_area",
+          "value": 7.23,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 7.23"
+        },
+        {
+          "metric": "population",
+          "value": 2.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 2"
+        },
+        {
+          "metric": "households",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 1"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 3,
+      "island": "ISL_CURLEW",
+      "input": "कर्ल्यू द्वीप Curlew Island\nArea (sq. km.)\n0.03\nPopulation (2011 Census):2 ( Male – 2 Female – 0)\nArea under forest (sq.km)\n0.03\nHouseholds: 1",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 0.03,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 0.03"
+        },
+        {
+          "metric": "forest_area",
+          "value": 0.03,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 0.03"
+        },
+        {
+          "metric": "population",
+          "value": 2.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census):2"
+        },
+        {
+          "metric": "households",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 1"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 3,
+      "island": "ISL_LANDFALL",
+      "input": "लैण्डफॅाल द्वीप Landfall Island\nArea (sq. km.)\n29.48\nPopulation (2011 Census): 6 (Male -6 Female - 0)\nArea under forest (sq.km)\n29.48",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 29.48,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 29.48"
+        },
+        {
+          "metric": "forest_area",
+          "value": 29.48,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 29.48"
+        },
+        {
+          "metric": "population",
+          "value": 6.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 6"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 3,
+      "island": "ISL_SMITH",
+      "input": "स्मिथ द्वीप Smith Island\nArea (sq. km.)\n21.06\nPopulation (2011 Census): 600 (Male-328 Female -272)\nArea under forest (sq.km)\n15.79\nPopulation (0 – 6 years): 64\nAgriculture: Area under Cultivation (sq. km.) 0.32\nAgriculture Depot-1 Farmers-6 Godown-1 Manure\nConnections: Household Electrified(Domestic)-75\nSelling Unit-1 Fertilizer : Nitrogenous(MT)- 0\nCommercial-9 Street Light-1\n।भ्-टैरू Livestock-117 Poultry-1737(20th Livestock Census)",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 21.06,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 21.06"
+        },
+        {
+          "metric": "forest_area",
+          "value": 15.79,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 15.79"
+        },
+        {
+          "metric": "population",
+          "value": 600.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 600"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 0.32,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) 0.32"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 6.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-6"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Depot-1"
+        },
+        {
+          "metric": "godown_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-1"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.0,
+          "unit": "mt",
+          "qualifier": "nitrogenous",
+          "evidence": "Nitrogenous(MT)- 0"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 117.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock-117"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 1737.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry-1737"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 4,
+      "island": "ISL_NORTHANDAMAN",
+      "input": "उत्तर अण्डमान द्वीप North Andaman Island\nArea (sq. km.)\n1375.99\nPopulation(2011 Census): 42541 (Male -22230 Female – 20311)\nArea under forest (sq.km)\n1247.51\nPopulation ( 0 -6 years): 5110\nLiterate – 30787 Households -10533\nAgriculture: Area under Cultivation (sq. km.)- 70.01\nFish Landed(MT): Freshwater-650\nFarmers-6192 Agricultural Depot-13 Agriculture Farm-4\nCheck dam-37 Godown- 15 Main store-2\nDistribution: Seedling (in No.)-4958\nVermin Bed-36 Organic Farm-4 Manure Selling Unit-15\nFertilizer(MT): Organic Farming/vermin compost- 10.29\nNitrogenous-0.22 Phospatic-0.54 Potassic-6.96\nLivestock-21177 No. Poultry-272475 No. (20th Livestock Census)\nDisease Investigation Laboratory-1 Poultry Hatchery -1\nConnections: Domestic-12803 Commercial-1912\nStreet Light-66 Agriculture-236 Industrial-42\nConnections: Landline-43 Broadband-16 FTTH-4351",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 1375.99,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 1375.99"
+        },
+        {
+          "metric": "forest_area",
+          "value": 1247.51,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 1247.51"
+        },
+        {
+          "metric": "population",
+          "value": 42541.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population(2011 Census): 42541"
+        },
+        {
+          "metric": "households",
+          "value": 10533.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households -10533"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 70.01,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.)- 70.01"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 6192.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-6192"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 13.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot-13"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Farm-4"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-4"
+        },
+        {
+          "metric": "check_dam_count",
+          "value": 37.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Check dam-37"
+        },
+        {
+          "metric": "godown_count",
+          "value": 15.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown- 15"
+        },
+        {
+          "metric": "vermi_bed_count",
+          "value": 36.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Vermin Bed-36"
+        },
+        {
+          "metric": "manure_unit_count",
+          "value": 15.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Manure Selling Unit-15"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 4958.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedling (in No.)-4958"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 10.29,
+          "unit": "mt",
+          "qualifier": "organic_vermicompost",
+          "evidence": "vermin compost- 10.29"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.22,
+          "unit": "mt",
+          "qualifier": "nitrogenous",
+          "evidence": "Nitrogenous-0.22"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.54,
+          "unit": "mt",
+          "qualifier": "phosphatic",
+          "evidence": "Phospatic-0.54"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 6.96,
+          "unit": "mt",
+          "qualifier": "potassic",
+          "evidence": "Potassic-6.96"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 21177.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock-21177"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 272475.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry-272475"
+        },
+        {
+          "metric": "fish_landed",
+          "value": 650.0,
+          "unit": "mt",
+          "qualifier": "freshwater",
+          "evidence": "Fish Landed(MT): Freshwater-650"
+        },
+        {
+          "metric": "agri_power_connections",
+          "value": 236.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Street Light-66 Agriculture-236"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 4,
+      "island": "ISL_AVES",
+      "input": "एवीस द्वीप Aves Island\nArea (sq. km.)\n0.20\nPopulation (2011 Census): 2 (Male – 2 Female – 0)\nArea under forest (sq.km)\n0\nLiterate- 1 Households -1",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 0.2,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 0.20"
+        },
+        {
+          "metric": "forest_area",
+          "value": 0.0,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 0"
+        },
+        {
+          "metric": "population",
+          "value": 2.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 2"
+        },
+        {
+          "metric": "households",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households -1"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 4,
+      "island": "ISL_INTERVIEW",
+      "input": "इण्टरव्यू द्वीप Interview Island\nArea (sq. km.)\n133\nPopulation (2011 Census): 15 (Male- 15, Female - 0)\nArea under forest (sq.km)\n133\nLiterate-15, Households - 4\nAnimal Husbandry & Veterinary Service: Poultry-15",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 133.0,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 133"
+        },
+        {
+          "metric": "forest_area",
+          "value": 133.0,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 133"
+        },
+        {
+          "metric": "population",
+          "value": 15.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 15"
+        },
+        {
+          "metric": "households",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households - 4"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 15.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry-15"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 5,
+      "island": "ISL_MIDDLEANDAMAN",
+      "input": "मध्य अण्डमान द्वीप Middle Andaman Island\nArea (sq. km.)\n1535.50\nPopulation (2011 Census): 55637 (Male-28768 Female -26869)\nArea under forest (sq.km)\n1348.37\nPopulation (0- 6 years ): 6048\nLiterate – 42298 Households - 13823\nAgriculture: Area under Cultivation (sq. km.) – 48.9957\nFarmers-8730 Agricultural Depot-15 Agricultural Farm-8\nManure selling unit-11 Main store-2 Godown-6\nDistribution: Seedling(in Nos)-5360\nNon organic Farm-8 Vermi Bed-4\nFertilizer(MT): Nitrogenous-6.6 Bio Pesticides(Powder)-\nLivestock-26229 Poultry-201256(20th Livestock Census)\nDisease Investigation Laboratory-1 Poultry Hatchery -3\nConnections: Domestic-17305 Commercial-3169\nStreet Light-100 Agriculture-09 Industrial-43\nConnections: Landline-180 Broadband-54 FTTH-5515",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 1535.5,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 1535.50"
+        },
+        {
+          "metric": "forest_area",
+          "value": 1348.37,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 1348.37"
+        },
+        {
+          "metric": "population",
+          "value": 55637.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 55637"
+        },
+        {
+          "metric": "households",
+          "value": 13823.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households - 13823"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 48.9957,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 48.9957"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 8730.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-8730"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 15.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot-15"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 8.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Farm-8"
+        },
+        {
+          "metric": "non_organic_farm_count",
+          "value": 8.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Non organic Farm-8"
+        },
+        {
+          "metric": "godown_count",
+          "value": 6.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-6"
+        },
+        {
+          "metric": "vermi_bed_count",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Vermi Bed-4"
+        },
+        {
+          "metric": "manure_unit_count",
+          "value": 11.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Manure selling unit-11"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 5360.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedling(in Nos)-5360"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 6.6,
+          "unit": "mt",
+          "qualifier": "nitrogenous",
+          "evidence": "Nitrogenous-6.6"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 26229.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock-26229"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 201256.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry-201256"
+        },
+        {
+          "metric": "agri_power_connections",
+          "value": 9.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Street Light-100 Agriculture-09"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 5,
+      "island": "ISL_STRAIT",
+      "input": "स्टेªट द्वीप Strait Island\nArea (sq km)\n6.01\nPopulation (2011 Census): 39 (Male- 26 Female -13)\nArea under forest (sq.km)\n6.01\nHouseholds: 14\nAHVS: Poultry -132 Livestock - 70",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 6.01,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq km) 6.01"
+        },
+        {
+          "metric": "forest_area",
+          "value": 6.01,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 6.01"
+        },
+        {
+          "metric": "population",
+          "value": 39.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 39"
+        },
+        {
+          "metric": "households",
+          "value": 14.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 14"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 70.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock - 70"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 132.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry -132"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 6,
+      "island": "ISL_LONG",
+      "input": "ला Wax }hi Long Island\nArea (sq. km.)\n17.90\nPopulation (2011 Census): 1032 (Male- 529 Female – 503)\nArea under forest (sq.km)\n13.88\nPopulation ( 0 – 6 years): 9 Households: 325\nAgriculture: Area under Cultivation (sq. km.) –0.1818\nFarmers-9 Agricultural Farm- 1 Organic Farm-1\nPoultry- 5021 Livestock- 1136 (20th Livestock Census)\nConnections: Domestic-319 Commercial-76 Industrial-1\nStreet Light-2 Power House-1 DG Set-4",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 17.9,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 17.90"
+        },
+        {
+          "metric": "forest_area",
+          "value": 13.88,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 13.88"
+        },
+        {
+          "metric": "population",
+          "value": 1032.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 1032"
+        },
+        {
+          "metric": "households",
+          "value": 325.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 325"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 0.1818,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) –0.1818"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 9.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-9"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Farm- 1"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-1"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 1136.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 1136"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 5021.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 5021"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 6,
+      "island": "ISL_NORTHPASSAGE",
+      "input": "नार्थ पैसेज द्वीप North Passage Island\nArea (sq. km)\n21.96\nPopulation (2011 Census): 3 (Male- 3 Female -0)\nArea under forest (sq.km)\n21.96\nHouseholds: 2",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 21.96,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km) 21.96"
+        },
+        {
+          "metric": "forest_area",
+          "value": 21.96,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 21.96"
+        },
+        {
+          "metric": "population",
+          "value": 3.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 3"
+        },
+        {
+          "metric": "households",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 2"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 6,
+      "island": "ISL_BARATANG",
+      "input": "बाराटांग द्वीप Baratang Island\nArea (sq. km.)\n297.60\nPopulation (2011 Census): 5686 (Male- 2919 Female -2767)\nArea under forest (sq.km)\n283.20\nLiterate -4287 Households -1328 Gram Panchayat - 02\nAgriculture: Area under Cultivation (sq. km.) –6.43164\nFarmers-979 Agricultural Depot-2 Agricultural Farm -1\nOrganic Farm-1 Check Dam-0\nDistribution: Seedling(in No)- 0\nPoultry- 12208 Livestock- 2221(20th Livestock Census)",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 297.6,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 297.60"
+        },
+        {
+          "metric": "forest_area",
+          "value": 283.2,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 283.20"
+        },
+        {
+          "metric": "population",
+          "value": 5686.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 5686"
+        },
+        {
+          "metric": "households",
+          "value": 1328.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households -1328"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 6.43164,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) –6.43164"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 979.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-979"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot-2"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Farm -1"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-1"
+        },
+        {
+          "metric": "check_dam_count",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Check Dam-0"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedling(in No)- 0"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 2221.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 2221"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 12208.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 12208"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 7,
+      "island": "ISL_FLATBAY",
+      "input": "फ्लैट बे द्वीप Flat Bay Island\nArea (sq km)\n0.14\nPopulation (2011 Census): 5 (Male –5 Female – 0)\nArea under forest (sq.km)\n0\nHouseholds: 2\nAgriculture: Area under Cultivation (Hect.)- 9.90 Non Organic Farm-1",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 0.14,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq km) 0.14"
+        },
+        {
+          "metric": "forest_area",
+          "value": 0.0,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 0"
+        },
+        {
+          "metric": "population",
+          "value": 5.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 5"
+        },
+        {
+          "metric": "households",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 2"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 9.9,
+          "unit": "ha",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (Hect.)- 9.90"
+        },
+        {
+          "metric": "non_organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Non Organic Farm-1"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 7,
+      "island": "ISL_SWARAJ",
+      "input": "स्वराज द्वीप Swaraj Dweep\nArea (sq. km.)\n113.93\nPopulation (2011 Census): 6315 (Male- 3495 Female -2820)\nArea under forest (sq.km)\n95.60\nPopulation (0 – 6 years): 678\nInhabited - 5 Households -1641\nAgriculture: Area under Cultivation (sq. km.) – 5.58\nFarmers-516 Agriculture Depot-1 Agriculture Farm-1\nManure selling unit-1 Non –Organic farm-1 Main Store-1\nPoultry-42494 Livestock-1466\nPoultry Hatchery -1 Mobile Dispensary-1\nHousehold Electrified-2102 Connections: Domestic-2102\nCommercial-604 Agriculture-2 Street Light-13\nConnections: Landline-64 Broadband-22 FTTH-1166",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 113.93,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 113.93"
+        },
+        {
+          "metric": "forest_area",
+          "value": 95.6,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 95.60"
+        },
+        {
+          "metric": "population",
+          "value": 6315.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 6315"
+        },
+        {
+          "metric": "households",
+          "value": 1641.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households -1641"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 5.58,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 5.58"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 516.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-516"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Depot-1"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Farm-1"
+        },
+        {
+          "metric": "non_organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Non –Organic farm-1"
+        },
+        {
+          "metric": "manure_unit_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Manure selling unit-1"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 1466.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock-1466"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 42494.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry-42494"
+        },
+        {
+          "metric": "agri_power_connections",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Commercial-604 Agriculture-2"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 7,
+      "island": "ISL_RUTLAND",
+      "input": "रटलैण्ड द्वीप Rutland Island\nArea (sq. km.)\n137.17\nPopulation (2011 Census): 347 (Male-207 Female -140)\nArea under forest sq.km)\n136.17\nPopulation (0 – 6 years): 30\nLiterate : 221 Households – 119\nPoultry-1504 Livestock -195\nArea under Cultivation (sq. km.) – 0.1167\nAgriculture: Area under Cultivation (sq. km.) – 0.1167",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 137.17,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 137.17"
+        },
+        {
+          "metric": "forest_area",
+          "value": 136.17,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest sq.km) 136.17"
+        },
+        {
+          "metric": "population",
+          "value": 347.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 347"
+        },
+        {
+          "metric": "households",
+          "value": 119.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 119"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 0.1167,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 0.1167"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 195.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock -195"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 1504.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry-1504"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 8,
+      "island": "ISL_NORTHSENTINEL",
+      "input": "नार्थ सेन्टिनल द्वीप North Sentinel Island\nArea (sq. km)\n59.67\nArea under forest (sq.km)\n59.67",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 59.67,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km) 59.67"
+        },
+        {
+          "metric": "forest_area",
+          "value": 59.67,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 59.67"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 8,
+      "island": "ISL_SOUTHANDAMAN",
+      "input": "दक्षिण अण्डमान द्वीप South Andaman Island\nArea (sq. km.)\n1348.20\nPopulation (2011 Census): 209597 (Male- 111975 Female -97622)\nArea under forest (sq.km)\n1047.44\nPopulation (0- 6 years): 21498\nHouseholds – 51464 Literate – 168923\nAgriculture: Area under Cultivation (sq. km.) – 26.0509\nFarmers-2936 Agricultural Depot.-9 Agriculture Farm-3\nManure selling unit-13 Godown-3 Main store -13\nFertilizers(MT)- Phospatic-6.9 Potassic- 7.6\nSeedling distribution(Nos)- 9895\nOrganic Farming/vermi compost-.008 MT\nOrganic Farm-1 Non Organic Farm-4\nPoultry- 514718 Livestock- 38157\nPoultry Hatchery -2 Mobile Dispensary-5\nConnections: Domestic-82826 Commercial-13427\nIndustrial- 264 Street Light-438 Agriculture-260\nFish landed(MT): Fresh water-646 Marine-31828.66\nConnections:Landline-3366 Broadband-739",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 1348.2,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 1348.20"
+        },
+        {
+          "metric": "forest_area",
+          "value": 1047.44,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 1047.44"
+        },
+        {
+          "metric": "population",
+          "value": 209597.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 209597"
+        },
+        {
+          "metric": "households",
+          "value": 51464.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 51464"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 26.0509,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 26.0509"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 2936.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-2936"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 9.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot.-9"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 3.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Farm-3"
+        },
+        {
+          "metric": "non_organic_farm_count",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Non Organic Farm-4"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-1"
+        },
+        {
+          "metric": "godown_count",
+          "value": 3.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-3"
+        },
+        {
+          "metric": "manure_unit_count",
+          "value": 13.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Manure selling unit-13"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 9895.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedling distribution(Nos)- 9895"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.008,
+          "unit": "mt",
+          "qualifier": "organic_vermicompost",
+          "evidence": "vermi compost-.008"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 6.9,
+          "unit": "mt",
+          "qualifier": "phosphatic",
+          "evidence": "Phospatic-6.9"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 7.6,
+          "unit": "mt",
+          "qualifier": "potassic",
+          "evidence": "Potassic- 7.6"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 38157.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 38157"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 514718.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 514718"
+        },
+        {
+          "metric": "fish_landed",
+          "value": 646.0,
+          "unit": "mt",
+          "qualifier": "freshwater",
+          "evidence": "Fish landed(MT): Fresh water-646"
+        },
+        {
+          "metric": "fish_landed",
+          "value": 31828.66,
+          "unit": "mt",
+          "qualifier": "marine",
+          "evidence": "Fish landed(MT): Fresh water-646 Marine-31828.66"
+        },
+        {
+          "metric": "agri_power_connections",
+          "value": 260.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Street Light-438 Agriculture-260"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 9,
+      "island": "ISL_SHAHEED",
+      "input": "शहीद द्वीप Shaheed Dweep\nArea (sq. km.) 18.90\nPopulation (2011 Census): 3040 (Male- 1625 Female -1415)\nArea under forest (sq.km) 6.47\nST Population: 3 (Male -3 Female -0)\nPopulation (0 – 6 years): 359\nLiterate –231 Households -735 Gram Panchayat -1\nAgriculture: Area under Cultivation (sq. km.) – 2.1798\nFish Landed (MT):Marine- 858 Inland-32\nFarmers-516 Agricultural Depot-1\nAgriculture Farm -1 Non Organic Farm-1\nSeedling distribution(Nos)-38\nFertilizers-Phospatic-1.05 MT Potassic-1.85 MT\nOrganic Farming/vermin compost- 0.15 MT\nManure selling unit-1 Main Store-1 Godown-1\nPoultry- 21803 Livestock- 774 Mobile Dispensary-1\nConnections: Domestic-1046 Commercial-219\nAgriculture-83 Industrial-3\nConnections: Landline-77 Broadband-66 FTTH-203",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 18.9,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 18.90"
+        },
+        {
+          "metric": "forest_area",
+          "value": 6.47,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 6.47"
+        },
+        {
+          "metric": "population",
+          "value": 3040.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 3040"
+        },
+        {
+          "metric": "households",
+          "value": 735.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households -735"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 2.1798,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 2.1798"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 516.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-516"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot-1"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Farm -1"
+        },
+        {
+          "metric": "non_organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Non Organic Farm-1"
+        },
+        {
+          "metric": "godown_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-1"
+        },
+        {
+          "metric": "manure_unit_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Manure selling unit-1"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 38.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedling distribution(Nos)-38"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.15,
+          "unit": "mt",
+          "qualifier": "organic_vermicompost",
+          "evidence": "vermin compost- 0.15"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 1.05,
+          "unit": "mt",
+          "qualifier": "phosphatic",
+          "evidence": "Phospatic-1.05"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 1.85,
+          "unit": "mt",
+          "qualifier": "potassic",
+          "evidence": "Potassic-1.85"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 774.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 774"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 21803.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 21803"
+        },
+        {
+          "metric": "fish_landed",
+          "value": 858.0,
+          "unit": "mt",
+          "qualifier": "marine",
+          "evidence": "Fish Landed (MT):Marine- 858"
+        },
+        {
+          "metric": "agri_power_connections",
+          "value": 83.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture-83 Industrial"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 10,
+      "island": "ISL_LITTLEANDAMAN",
+      "input": "लिटिल अण्डमान द्वीप Little Andaman Island\nArea (sq. km.)\n734.39\nPopulation (2011 Census): 18823 (Male-9964 Female-8859)\nArea under forest (sq.km)\n700.05\nLiterates -13916 Households -5093\nAgriculture: Area under Cultivation (sq. km.) – 11.73\nFarmers-1451 Agricultural Depot-4 Agricultural Farm-2\nGodown-4 Seedling distributed(Nos)-893 Vermi Bed-2\nOrganic Farm-2 Main Store-1\nFertilizers(MT): Nitrogenous- 54.67 Phospatic -13.71\nPotassic- 16.89 Organic Farming/Vermi compost- 0.278\nPoultry- 127933 No Livestock- 12642 No.\nPoultry Hatchery -1\nHousehold Electrified-6115 Connections: Domestic-6115\nCommercial-815 Agriculture-40 Industrial-20 Street Light-42\nActive Fishermen-287 Fish landed(MT): Marine –429.621\nConnections: Landline-24 Broadband-09 FTTH-1149",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 734.39,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 734.39"
+        },
+        {
+          "metric": "forest_area",
+          "value": 700.05,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 700.05"
+        },
+        {
+          "metric": "population",
+          "value": 18823.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 18823"
+        },
+        {
+          "metric": "households",
+          "value": 5093.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households -5093"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 11.73,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 11.73"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 1451.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-1451"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot-4"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Farm-2"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-2"
+        },
+        {
+          "metric": "godown_count",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-4"
+        },
+        {
+          "metric": "vermi_bed_count",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Vermi Bed-2"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 893.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedling distributed(Nos)-893"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.278,
+          "unit": "mt",
+          "qualifier": "organic_vermicompost",
+          "evidence": "Vermi compost- 0.278"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 54.67,
+          "unit": "mt",
+          "qualifier": "nitrogenous",
+          "evidence": "Nitrogenous- 54.67"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 13.71,
+          "unit": "mt",
+          "qualifier": "phosphatic",
+          "evidence": "Phospatic -13.71"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 16.89,
+          "unit": "mt",
+          "qualifier": "potassic",
+          "evidence": "Potassic- 16.89"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 12642.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 12642"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 127933.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 127933"
+        },
+        {
+          "metric": "fish_landed",
+          "value": 429.621,
+          "unit": "mt",
+          "qualifier": "marine",
+          "evidence": "Fish landed(MT): Marine –429.621"
+        },
+        {
+          "metric": "agri_power_connections",
+          "value": 40.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Commercial-815 Agriculture-40"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 11,
+      "island": "ISL_CARNICOBAR",
+      "input": "कार निकोबार द्वीप Car Nicobar Island\nArea (sq. km.)\n126.91\nPopulation (2011 Census):17841 (Male- 9735 Female -8106)\nArea under forest (sq.km)\n126.91\nPopulation(0- 6 years):1929\nInhabited -16 Households-4250\nAgriculture: Area under Cultivation (sq. km.) – 90.27\nFarmers-2595 Agricultural Depot-1 Agricultural Farm-1\nSeedlings distributed (in Nos) -644 Seeds (kg) -5.35\nOrganic Farming/vermin compost-0.25 MT Organic Farm-1\nPoultry-40137 No Livestock-28229 No\nPoultry Hatchery -1\nStreet Light-6\nActive Fishermen-289 Fish landed(MT): Marine-58\nConnections: Landline-67 Broadband-7 FTTH-1334",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 126.91,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 126.91"
+        },
+        {
+          "metric": "forest_area",
+          "value": 126.91,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 126.91"
+        },
+        {
+          "metric": "population",
+          "value": 17841.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census):17841"
+        },
+        {
+          "metric": "households",
+          "value": 4250.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households-4250"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 90.27,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 90.27"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 2595.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-2595"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot-1"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Farm-1"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-1"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 644.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedlings distributed (in Nos) -644"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.25,
+          "unit": "mt",
+          "qualifier": "organic_vermicompost",
+          "evidence": "vermin compost-0.25"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 28229.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock-28229"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 40137.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry-40137"
+        },
+        {
+          "metric": "fish_landed",
+          "value": 58.0,
+          "unit": "mt",
+          "qualifier": "marine",
+          "evidence": "Fish landed(MT): Marine-58"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 12,
+      "island": "ISL_CHOWRA",
+      "input": "चैरा द्वीप Chowra Island\nArea (sq. km.)\n8.28\nPopulation (2011 Census): 1270 (Male- 656 Female – 614)\nArea under forest (sq.km)\n8.28\nPopulation (0 – 6 years): 190\nLiterates - 526 Households – 367 Tribal council-1\nAgriculture: Area under Cultivation (sq. km.) – 6.78\nFarmers-191\nCommercial-17 Street Light-7\nPoultry- 2863 No Livestock- 2399 No",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 8.28,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 8.28"
+        },
+        {
+          "metric": "forest_area",
+          "value": 8.28,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 8.28"
+        },
+        {
+          "metric": "population",
+          "value": 1270.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 1270"
+        },
+        {
+          "metric": "households",
+          "value": 367.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 367"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 6.78,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 6.78"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 191.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-191"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 2399.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 2399"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 2863.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 2863"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 12,
+      "island": "ISL_TERESSA",
+      "input": "तेरेसा द्वीप Teressa Island\nArea (sq. km.)\n101.26\nPopulation (2011 Census): 1934 (Male- 1059 Female – 875)\nArea under forest (sq.km)\n101.26\nPopulation (0-6 years): 280\nHouseholds – 551 Tribal council-1\nAgriculture: Area under Cultivation (sq. km.) – 16.75\nFarmers-133 Vermi Bed-1 Godown-1 Check dam-1\nPoultry- 7097 No Livestock- 3712 No\nConnection: Domestic-489 Commercial-65 Street Light-9",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 101.26,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 101.26"
+        },
+        {
+          "metric": "forest_area",
+          "value": 101.26,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 101.26"
+        },
+        {
+          "metric": "population",
+          "value": 1934.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 1934"
+        },
+        {
+          "metric": "households",
+          "value": 551.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 551"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 16.75,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 16.75"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 133.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-133"
+        },
+        {
+          "metric": "check_dam_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Check dam-1"
+        },
+        {
+          "metric": "godown_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-1"
+        },
+        {
+          "metric": "vermi_bed_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Vermi Bed-1"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 3712.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 3712"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 7097.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 7097"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 13,
+      "island": "ISL_KATCHAL",
+      "input": "कछाल द्वीप Katchal Island\nArea (sq. km.)\n174.30\nPopulation (2011 Census): 2685 (Male- 1538 Female – 1147)\nArea under forest (sq.km)\n174.30\nPopulation (0 – 6 years): 365\nLiterate:1810 Households – 715 Tribal council-1\nAgriculture: Area under Cultivation (sq. km.) – 17.25\nFarmers-154 Agriculture Farm-1 Agricultural Depot-0\nCheck dam-0 Organic Farm-1 Vermi Bed-1 Godown-1\nPoultry- 5955 No Livestock- 1581 No\nCommercial-98 Industries-3 Street Light-4",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 174.3,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 174.30"
+        },
+        {
+          "metric": "forest_area",
+          "value": 174.3,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 174.30"
+        },
+        {
+          "metric": "population",
+          "value": 2685.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 2685"
+        },
+        {
+          "metric": "households",
+          "value": 715.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 715"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 17.25,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 17.25"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 154.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-154"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agricultural Depot-0"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Farm-1"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-1"
+        },
+        {
+          "metric": "check_dam_count",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Check dam-0"
+        },
+        {
+          "metric": "godown_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-1"
+        },
+        {
+          "metric": "vermi_bed_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Vermi Bed-1"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 1581.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 1581"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 5955.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 5955"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 13,
+      "island": "ISL_NANCOWRY",
+      "input": "ननकौड़ी द्वीप Nancowry Island\nArea (sq. km.)\nPopulation (2011 Census): 1019 (Male- 530 Female – 489)\nArea under forest (sq.km)\n66.82\nPopulation (0 – 6 years): 187\nLiterates – 69 Households – 238 Tribal Council-1\nAgriculture: Area under Cultivation (sq. km.) – 6.53\nFarmers-0 Organic Farm-0\nPoultry- 2267 No Livestock-1179 No\nConnection: Domestic-179 Commercial-24 Street Light-2",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 66.82,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 66.82"
+        },
+        {
+          "metric": "forest_area",
+          "value": 66.82,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 66.82"
+        },
+        {
+          "metric": "population",
+          "value": 1019.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 1019"
+        },
+        {
+          "metric": "households",
+          "value": 238.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 238"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 6.53,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 6.53"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-0"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-0"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 1179.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock-1179"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 2267.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 2267"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 14,
+      "island": "ISL_KAMORTA",
+      "input": "काम¨र्टा द्वीप Kamorta Island\nArea (sq. km)\n188.03\nPopulation (2011 Census): 3688 (Male- 2146 Female-1542)\nArea under forest (sq.km)\n188.03\nPopulation (0 – 6 years): 502\nLiterate - 2638 Households- 915 Tribal Council-1\nAgriculture: Area under Cultivation (sq. km.) – 7.33\nFarmers-143 Agriculture Farm-1 Agriculture Depot-0\nOrganic Farm-1 Vermi Bed-1 Main store-1 Godown-1\nCheck dam-0 Distribution: Seedlings(in Nos)- 700\nPoultry- 12031 No Livestock- 691 No\nArtificial Insemination Centre-1 Poultry Hatcheries -1\nConnections: Landline-24 Broadband-2 FTTH-456",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 188.03,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km) 188.03"
+        },
+        {
+          "metric": "forest_area",
+          "value": 188.03,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 188.03"
+        },
+        {
+          "metric": "population",
+          "value": 3688.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 3688"
+        },
+        {
+          "metric": "households",
+          "value": 915.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households- 915"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 7.33,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 7.33"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 143.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmers-143"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Depot-0"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Farm-1"
+        },
+        {
+          "metric": "organic_farm_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Organic Farm-1"
+        },
+        {
+          "metric": "check_dam_count",
+          "value": 0.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Check dam-0"
+        },
+        {
+          "metric": "godown_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Godown-1"
+        },
+        {
+          "metric": "vermi_bed_count",
+          "value": 1.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Vermi Bed-1"
+        },
+        {
+          "metric": "seedling_distributed",
+          "value": 700.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Seedlings(in Nos)- 700"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 691.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 691"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 12031.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 12031"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 14,
+      "island": "ISL_PILOMILLOW",
+      "input": "पुलोमिलो द्वीप Pilomillow Island\nArea (sq. km)\n1.29\nPopulation (2011 Census): 20 (Male- 15 Female -5)\nArea under forest (sq.km)\n1.29\nPopulation (0 – 6 years): 3\nLiterates -6 Households – 5",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 1.29,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km) 1.29"
+        },
+        {
+          "metric": "forest_area",
+          "value": 1.29,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 1.29"
+        },
+        {
+          "metric": "population",
+          "value": 20.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 20"
+        },
+        {
+          "metric": "households",
+          "value": 5.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 5"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 14,
+      "island": "ISL_LITTLENICOBAR",
+      "input": "लिटिल निक¨बार द्वीप Little Nicobar Island\nArea (sq. km)\n159\nPopulation (2011 Census): 301( Male- 161 Female -140)\nArea under forest (sq.km)\n159\nLiterate – 99 Households – 63",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 159.0,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km) 159"
+        },
+        {
+          "metric": "forest_area",
+          "value": 159.0,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 159"
+        },
+        {
+          "metric": "population",
+          "value": 301.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 301"
+        },
+        {
+          "metric": "households",
+          "value": 63.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households – 63"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 14,
+      "island": "ISL_TILLANGCHONG",
+      "input": "Tilongchang Island\nArea (sq. km)\n16.83\nPopulation (2011 Census): 38 ( Male- 38 Female -0)\nArea under forest (sq.km)\n16.83\nHouseholds: 4",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 16.83,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km) 16.83"
+        },
+        {
+          "metric": "forest_area",
+          "value": 16.83,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 16.83"
+        },
+        {
+          "metric": "population",
+          "value": 38.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 38"
+        },
+        {
+          "metric": "households",
+          "value": 4.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households: 4"
+        }
+      ]
+    },
+    {
+      "document_id": "D10",
+      "page": 15,
+      "island": "ISL_GREATNICOBAR",
+      "input": "ग्रेट निकोबार द्वीप Great Nicobar Island\nArea (sq. km.)\n1044.54\nPopulation (2011 Census): 8046( Male- 4849 Female -3197)\nArea under forest (sq.km)\n960.4\nLiterate-5796 Households –2180 Tribal Council-1\nAgriculture: Area under Cultivation (sq. km.) – 4.73\nFarmer-403 Agriculture Farm-2 Agriculture Depot-2\nFertilizers (MT): Phospatic-8.4 Potassic-0.6\nOrganic Farming/vermin compost-0\nNon Organic\nPoultry- 12100 No. Livestock- 3412 No.\nPoultry Hatcheries-1 Mobile Dispensary-1\nConnections: Landline-75 Broadband-27 FTTH-734",
+      "items": [
+        {
+          "metric": "geographical_area",
+          "value": 1044.54,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area (sq. km.) 1044.54"
+        },
+        {
+          "metric": "forest_area",
+          "value": 960.4,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under forest (sq.km) 960.4"
+        },
+        {
+          "metric": "population",
+          "value": 8046.0,
+          "unit": "persons",
+          "qualifier": null,
+          "evidence": "Population (2011 Census): 8046"
+        },
+        {
+          "metric": "households",
+          "value": 2180.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Households –2180"
+        },
+        {
+          "metric": "area_under_cultivation",
+          "value": 4.73,
+          "unit": "sq_km",
+          "qualifier": null,
+          "evidence": "Area under Cultivation (sq. km.) – 4.73"
+        },
+        {
+          "metric": "farmers_count",
+          "value": 403.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Farmer-403"
+        },
+        {
+          "metric": "agri_depot_count",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Depot-2"
+        },
+        {
+          "metric": "agri_farm_count",
+          "value": 2.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Agriculture Farm-2"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.0,
+          "unit": "mt",
+          "qualifier": "organic_vermicompost",
+          "evidence": "vermin compost-0"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 8.4,
+          "unit": "mt",
+          "qualifier": "phosphatic",
+          "evidence": "Phospatic-8.4"
+        },
+        {
+          "metric": "fertilizer_consumption",
+          "value": 0.6,
+          "unit": "mt",
+          "qualifier": "potassic",
+          "evidence": "Potassic-0.6"
+        },
+        {
+          "metric": "livestock_count",
+          "value": 3412.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Livestock- 3412"
+        },
+        {
+          "metric": "poultry_count",
+          "value": 12100.0,
+          "unit": "count",
+          "qualifier": null,
+          "evidence": "Poultry- 12100"
+        }
+      ]
+    }
+  ]
+}

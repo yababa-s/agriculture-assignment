@@ -1,0 +1,39 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+W1016 02:50:39.514000 442 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]Loading weights: 100%|██████████| 770/770 [00:00<00:00, 13519.14it/s]
+Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+docling    C1_raster_grid       tables=1   score=4/6
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]Loading weights: 100%|██████████| 770/770 [00:00<00:00, 16211.86it/s]
+Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+docling    C2_rotated_headers   tables=1   score=9/9
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]Loading weights: 100%|██████████| 770/770 [00:00<00:00, 16311.18it/s]
+Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+docling    C3_kruti_dev         tables=2   score=0/8
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]Loading weights: 100%|██████████| 770/770 [00:00<00:00, 23055.99it/s]
+[32m[INFO] 2026-10-16 02:51:33,663 [RapidOCR] base.py:23: Using engine_name: torch[0m
+[32m[INFO] 2026-10-16 02:51:33,666 [RapidOCR] device_config.py:57: Using CPU device[0m
+[32m[INFO] 2026-10-16 02:51:33,666 [RapidOCR] download_file.py:68: Initiating download: https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/torch/PP-OCRv6/det/PP-OCRv6_det_small.pth[0m
+[32m[INFO] 2026-10-16 02:51:38,386 [RapidOCR] download_file.py:82: Download size: 9.77MB[0m
+[32m[INFO] 2026-10-16 02:51:45,478 [RapidOCR] download_file.py:95: Successfully saved to: /private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/rapidocr/models/PP-OCRv6_det_small.pth[0m
+[32m[INFO] 2026-10-16 02:51:45,479 [RapidOCR] main.py:50: Using /private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/rapidocr/models/PP-OCRv6_det_small.pth[0m
+/private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/torch/nn/modules/conv.py:560: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at /Users/runner/work/pytorch/pytorch/aten/src/ATen/native/Convolution.cpp:1105.)
+  return F.conv2d(
+[32m[INFO] 2026-10-16 02:51:46,332 [RapidOCR] base.py:23: Using engine_name: torch[0m
+[32m[INFO] 2026-10-16 02:51:46,333 [RapidOCR] device_config.py:57: Using CPU device[0m
+[32m[INFO] 2026-10-16 02:51:46,333 [RapidOCR] download_file.py:68: Initiating download: https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/torch/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_mobile.pth[0m
+[32m[INFO] 2026-10-16 02:51:49,043 [RapidOCR] download_file.py:82: Download size: 0.56MB[0m
+[32m[INFO] 2026-10-16 02:51:50,133 [RapidOCR] download_file.py:95: Successfully saved to: /private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/rapidocr/models/ch_ppocr_mobile_v2.0_cls_mobile.pth[0m
+[32m[INFO] 2026-10-16 02:51:50,134 [RapidOCR] main.py:50: Using /private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/rapidocr/models/ch_ppocr_mobile_v2.0_cls_mobile.pth[0m
+[32m[INFO] 2026-10-16 02:51:50,238 [RapidOCR] base.py:23: Using engine_name: torch[0m
+[32m[INFO] 2026-10-16 02:51:50,239 [RapidOCR] device_config.py:57: Using CPU device[0m
+[32m[INFO] 2026-10-16 02:51:50,239 [RapidOCR] download_file.py:68: Initiating download: https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/torch/PP-OCRv6/rec/PP-OCRv6_rec_small.pth[0m
+[32m[INFO] 2026-10-16 02:51:52,567 [RapidOCR] download_file.py:82: Download size: 20.34MB[0m
+[32m[INFO] 2026-10-16 02:51:57,225 [RapidOCR] download_file.py:95: Successfully saved to: /private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/rapidocr/models/PP-OCRv6_rec_small.pth[0m
+[32m[INFO] 2026-10-16 02:51:57,226 [RapidOCR] main.py:50: Using /private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/rapidocr/models/PP-OCRv6_rec_small.pth[0m
+[32m[INFO] 2026-10-16 02:51:57,445 [RapidOCR] download_file.py:68: Initiating download: https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/paddle/PP-OCRv6/rec/PP-OCRv6_rec_small/ppocrv6_dict.txt[0m
+[32m[INFO] 2026-10-16 02:51:59,343 [RapidOCR] download_file.py:82: Download size: 0.07MB[0m
+[32m[INFO] 2026-10-16 02:52:00,231 [RapidOCR] download_file.py:95: Successfully saved to: /private/tmp/claude-501/-Users-suyashtripathi-Desktop/9c3f6868-c11a-4f3e-ac9b-079910d0b98a/scratchpad/docling_venv/lib/python3.13/site-packages/rapidocr/models/ppocrv6_dict.txt[0m
+Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+Usage of TableItem.export_to_dataframe() without `doc` argument is deprecated.
+docling    C4_screenshot        tables=2   score=4/4

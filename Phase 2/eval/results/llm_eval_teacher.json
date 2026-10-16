@@ -1,0 +1,123 @@
+{
+  "label": "teacher",
+  "model": "rule teacher (regex)",
+  "started": "2026-10-16 02:59:44",
+  "island_perturbed": {
+    "n_islands": 31,
+    "n_gold_items": 294,
+    "n_pred_items": 128,
+    "json_valid_rate": 1.0,
+    "catalogue_adherence": 1.0,
+    "groundedness_rate": 0.992,
+    "raw": {
+      "precision": 1.0,
+      "recall": 0.435,
+      "f1": 0.607
+    },
+    "after_groundedness_gate": {
+      "precision": 1.0,
+      "recall": 0.432,
+      "f1": 0.603
+    },
+    "per_metric_recall": {
+      "agri_depot_count": 0.0,
+      "agri_farm_count": 0.0,
+      "agri_power_connections": 0.0,
+      "area_under_cultivation": 1.0,
+      "check_dam_count": 0.0,
+      "farmers_count": 0.0,
+      "fertilizer_consumption": 0.1,
+      "fish_landed": 0.0,
+      "forest_area": 1.0,
+      "geographical_area": 0.97,
+      "godown_count": 0.0,
+      "households": 0.32,
+      "livestock_count": 0.0,
+      "manure_unit_count": 0.0,
+      "non_organic_farm_count": 0.0,
+      "organic_farm_count": 0.0,
+      "population": 1.0,
+      "poultry_count": 0.0,
+      "seedling_distributed": 1.0,
+      "vermi_bed_count": 0.0
+    },
+    "latency_s_median": 0.0,
+    "examples": [
+      {
+        "island": "ISL_NARCONDAM",
+        "missed": [],
+        "spurious": []
+      },
+      {
+        "island": "ISL_EAST",
+        "missed": [],
+        "spurious": []
+      },
+      {
+        "island": "ISL_STEWART",
+        "missed": [],
+        "spurious": []
+      }
+    ]
+  },
+  "island_extraction": {
+    "n_islands": 31,
+    "n_gold_items": 294,
+    "n_pred_items": 293,
+    "json_valid_rate": 1.0,
+    "catalogue_adherence": 1.0,
+    "groundedness_rate": 0.997,
+    "raw": {
+      "precision": 1.0,
+      "recall": 0.997,
+      "f1": 0.998
+    },
+    "after_groundedness_gate": {
+      "precision": 1.0,
+      "recall": 0.993,
+      "f1": 0.997
+    },
+    "per_metric_recall": {
+      "agri_depot_count": 1.0,
+      "agri_farm_count": 1.0,
+      "agri_power_connections": 1.0,
+      "area_under_cultivation": 1.0,
+      "check_dam_count": 1.0,
+      "farmers_count": 1.0,
+      "fertilizer_consumption": 1.0,
+      "fish_landed": 1.0,
+      "forest_area": 1.0,
+      "geographical_area": 0.97,
+      "godown_count": 1.0,
+      "households": 1.0,
+      "livestock_count": 1.0,
+      "manure_unit_count": 1.0,
+      "non_organic_farm_count": 1.0,
+      "organic_farm_count": 1.0,
+      "population": 1.0,
+      "poultry_count": 1.0,
+      "seedling_distributed": 1.0,
+      "vermi_bed_count": 1.0
+    },
+    "latency_s_median": 0.0,
+    "examples": [
+      {
+        "island": "ISL_NARCONDAM",
+        "missed": [],
+        "spurious": []
+      },
+      {
+        "island": "ISL_EAST",
+        "missed": [],
+        "spurious": []
+      },
+      {
+        "island": "ISL_STEWART",
+        "missed": [],
+        "spurious": []
+      }
+    ]
+  },
+  "elapsed_s": 0.0,
+  "llm_calls": 0
+}

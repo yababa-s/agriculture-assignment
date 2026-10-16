@@ -1,0 +1,26 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2218.95it/s]
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2350.48it/s]
+
+batch B20261016_035234  20 documents  1445.0s  model=mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/TEAMID_AN_qlora_v1)
+doc  agent                   route  status        try   extr   load   rej  llm
+D01  matrix_table_agent      rule   loaded          1   1159   1159     0    0
+D02  matrix_table_agent      rule   loaded          1   2352   2352     0    0
+D03  bilingual_table_agent   rule   partial         1    950    835     0  115
+D04  bilingual_table_agent   rule   partial         1    954    954     0  103
+D05  bilingual_table_agent   rule   partial         1    976    964     0   99
+D06  bilingual_table_agent   rule   partial         1    954    954     0   95
+D07  matrix_table_agent      rule   partial         1    648    648     0    4
+D08  island_profile_agent    rule   loaded          1    302    302     0   31
+D09  island_profile_agent    rule   loaded          1    306    306     0   31
+D10  island_profile_agent    rule   loaded          1    295    295     0   31
+D11  price_table_agent       rule   loaded          1   7728   7728     0    0
+D12  price_table_agent       rule   loaded          1   7728   7728     0    0
+D13  price_table_agent       rule   loaded          1   7728   7728     0    0
+D14  narrative_agent         rule   loaded          1      0      0     0   15
+D15  narrative_agent         rule   loaded          1     42     42     0    7
+D16  image_table_agent       rule   loaded          1    144    144     0    0
+D17  lulc_agent              rule   loaded          1     28     28     0    0
+D18  lulc_agent              rule   partial         1      0      0     0    0
+D19  skip                    rule   skipped         1      0      0     0    0
+D20  skip                    rule   skipped         1      0      0     0    0
+summary -> /Users/suyashtripathi/Desktop/AgriAgent_AN/logs/batch_B20261016_035234.json

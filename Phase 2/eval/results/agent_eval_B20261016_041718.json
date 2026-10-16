@@ -1,0 +1,755 @@
+{
+  "batch_id": "B20261016_041718",
+  "workflow": {
+    "documents": 20,
+    "routing_accuracy": 1.0,
+    "task_completion_mean": 0.85,
+    "observations_loaded": 32167,
+    "rejected": 0,
+    "groundedness_overall": 1.0,
+    "value_check_accuracy": 1.0,
+    "automation": {
+      "inputs_completed_without_manual_intervention": 20,
+      "inputs_attempted": 20,
+      "automation_rate": 1.0,
+      "manual_interventions_in_run": 0,
+      "retries": 0,
+      "llm_calls": 531,
+      "model_outputs_rejected_by_gates": 157,
+      "duplicate_rows_skipped": 127,
+      "needs_review_or_failed": []
+    }
+  },
+  "per_agent": {
+    "matrix_table_agent": {
+      "documents": 3.0,
+      "task_completion": 0.833,
+      "n_loaded": 4159.0,
+      "n_rejected": 0.0,
+      "llm_calls": 4.0,
+      "model_outputs_rejected": 0.0,
+      "tool_calls": 7.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": 1.0,
+      "task_adherence": 1.0
+    },
+    "bilingual_table_agent": {
+      "documents": 4.0,
+      "task_completion": 0.5,
+      "n_loaded": 3707.0,
+      "n_rejected": 0.0,
+      "llm_calls": 412.0,
+      "model_outputs_rejected": 0.0,
+      "tool_calls": 221.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": 1.0,
+      "task_adherence": 1.0
+    },
+    "island_profile_agent": {
+      "documents": 3.0,
+      "task_completion": 1.0,
+      "n_loaded": 903.0,
+      "n_rejected": 0.0,
+      "llm_calls": 93.0,
+      "model_outputs_rejected": 119.0,
+      "tool_calls": 186.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": 1.0,
+      "task_adherence": 1.0
+    },
+    "price_table_agent": {
+      "documents": 3.0,
+      "task_completion": 1.0,
+      "n_loaded": 23184.0,
+      "n_rejected": 0.0,
+      "llm_calls": 0.0,
+      "model_outputs_rejected": 0.0,
+      "tool_calls": 3.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": 1.0,
+      "task_adherence": 1.0
+    },
+    "narrative_agent": {
+      "documents": 2.0,
+      "task_completion": 1.0,
+      "n_loaded": 42.0,
+      "n_rejected": 0.0,
+      "llm_calls": 22.0,
+      "model_outputs_rejected": 38.0,
+      "tool_calls": 31.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": 1.0,
+      "task_adherence": 1.0
+    },
+    "image_table_agent": {
+      "documents": 1.0,
+      "task_completion": 1.0,
+      "n_loaded": 144.0,
+      "n_rejected": 0.0,
+      "llm_calls": 0.0,
+      "model_outputs_rejected": 0.0,
+      "tool_calls": 1.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": 1.0,
+      "task_adherence": 1.0
+    },
+    "lulc_agent": {
+      "documents": 2.0,
+      "task_completion": 0.75,
+      "n_loaded": 28.0,
+      "n_rejected": 0.0,
+      "llm_calls": 0.0,
+      "model_outputs_rejected": 0.0,
+      "tool_calls": 1.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": 0.5,
+      "task_adherence": 1.0
+    },
+    "skip": {
+      "documents": 2.0,
+      "task_completion": 1.0,
+      "n_loaded": 0.0,
+      "n_rejected": 0.0,
+      "llm_calls": 0.0,
+      "model_outputs_rejected": 0.0,
+      "tool_calls": 0.0,
+      "routing_accuracy": 1.0,
+      "trajectory_match_rate": null,
+      "task_adherence": null
+    }
+  },
+  "per_document": [
+    {
+      "document_id": "D01",
+      "file": "42-Zone-Wise Area and Production of Crops During 2023-24.pdf",
+      "agent": "matrix_table_agent",
+      "group": "G1",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 1,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 1,
+      "n_extracted": 1159,
+      "n_loaded": 1159,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D02",
+      "file": "47-Area and Production 2025-26.pdf",
+      "agent": "matrix_table_agent",
+      "group": "G1",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 1,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 1,
+      "n_extracted": 2352,
+      "n_loaded": 2352,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D03",
+      "file": "Year 2021-22.pdf",
+      "agent": "bilingual_table_agent",
+      "group": "G2",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "partial",
+      "task_completion": 0.5,
+      "trajectory_superset_match": true,
+      "tool_calls": 62,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 13,
+      "n_extracted": 950,
+      "n_loaded": 835,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 115,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        }
+      ],
+      "duplicates_skipped": 115
+    },
+    {
+      "document_id": "D04",
+      "file": "Year 2022-23.pdf",
+      "agent": "bilingual_table_agent",
+      "group": "G2",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "partial",
+      "task_completion": 0.5,
+      "trajectory_superset_match": true,
+      "tool_calls": 55,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 8,
+      "n_extracted": 954,
+      "n_loaded": 954,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 103,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        }
+      ],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D05",
+      "file": "Year 2023-24.pdf",
+      "agent": "bilingual_table_agent",
+      "group": "G2",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "partial",
+      "task_completion": 0.5,
+      "trajectory_superset_match": true,
+      "tool_calls": 53,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 8,
+      "n_extracted": 976,
+      "n_loaded": 964,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 99,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        }
+      ],
+      "duplicates_skipped": 12
+    },
+    {
+      "document_id": "D06",
+      "file": "Year 2024-25.pdf",
+      "agent": "bilingual_table_agent",
+      "group": "G2",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "partial",
+      "task_completion": 0.5,
+      "trajectory_superset_match": true,
+      "tool_calls": 51,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 6,
+      "n_extracted": 954,
+      "n_loaded": 954,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 95,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        }
+      ],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D07",
+      "file": "37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf",
+      "agent": "matrix_table_agent",
+      "group": "G1",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "partial",
+      "task_completion": 0.5,
+      "trajectory_superset_match": true,
+      "tool_calls": 5,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 5,
+      "n_extracted": 648,
+      "n_loaded": 648,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 4,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "retry_with_feedback"
+        },
+        {
+          "error": "llm_map_columns",
+          "handled_by": "skip_columns"
+        }
+      ],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D08",
+      "file": "IslandwiseStatistical2022-23.pdf",
+      "agent": "island_profile_agent",
+      "group": "G4",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 62,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 62,
+      "n_extracted": 302,
+      "n_loaded": 302,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 31,
+      "attempts": 1,
+      "model_outputs_rejected": 40,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D09",
+      "file": "IslandwiseStatistical2023-24.pdf",
+      "agent": "island_profile_agent",
+      "group": "G4",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 62,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 62,
+      "n_extracted": 306,
+      "n_loaded": 306,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 31,
+      "attempts": 1,
+      "model_outputs_rejected": 38,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D10",
+      "file": "IslandwiseStatistical2024-25.pdf",
+      "agent": "island_profile_agent",
+      "group": "G4",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 62,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 62,
+      "n_extracted": 295,
+      "n_loaded": 295,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 31,
+      "attempts": 1,
+      "model_outputs_rejected": 41,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D11",
+      "file": "Fooditems2023.pdf",
+      "agent": "price_table_agent",
+      "group": "G3",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 1,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 1,
+      "n_extracted": 7728,
+      "n_loaded": 7728,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "year_row_mismatch",
+          "handled_by": "trust_title_and_column_count; records flagged warning"
+        },
+        {
+          "error": "year_row_mismatch",
+          "handled_by": "trust_title_and_column_count; records flagged warning"
+        }
+      ],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D12",
+      "file": "Fooditems2024.pdf",
+      "agent": "price_table_agent",
+      "group": "G3",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 1,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 1,
+      "n_extracted": 7728,
+      "n_loaded": 7728,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D13",
+      "file": "Fooditems2025.pdf",
+      "agent": "price_table_agent",
+      "group": "G3",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 1,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 1,
+      "n_extracted": 7728,
+      "n_loaded": 7728,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D14",
+      "file": "food processing for sustainable growth.pdf",
+      "agent": "narrative_agent",
+      "group": "G5",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 16,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 16,
+      "n_extracted": 0,
+      "n_loaded": 0,
+      "n_rejected": 0,
+      "task_adherence": null,
+      "llm_calls": 15,
+      "attempts": 1,
+      "model_outputs_rejected": 37,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D15",
+      "file": "subsidies 2024-25.pdf",
+      "agent": "narrative_agent",
+      "group": "G5",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 15,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 15,
+      "n_extracted": 42,
+      "n_loaded": 42,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 7,
+      "attempts": 1,
+      "model_outputs_rejected": 1,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "llm_extract_facts",
+          "handled_by": "skip_page"
+        }
+      ],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D16",
+      "file": "agri census 2015-16.png",
+      "agent": "image_table_agent",
+      "group": "G6",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 1,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 1,
+      "n_extracted": 144,
+      "n_loaded": 144,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [
+        {
+          "error": "ocr_missing_cell",
+          "handled_by": "derive_from_row_total"
+        },
+        {
+          "error": "ocr_missing_cell",
+          "handled_by": "derive_from_row_total"
+        }
+      ],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D17",
+      "file": "Andaman Nicobar LULC 2015-16 data.pdf",
+      "agent": "lulc_agent",
+      "group": "G7",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "loaded",
+      "task_completion": 1.0,
+      "trajectory_superset_match": true,
+      "tool_calls": 1,
+      "tool_input_accuracy": 1.0,
+      "tool_results_ok": 1,
+      "n_extracted": 28,
+      "n_loaded": 28,
+      "n_rejected": 0,
+      "task_adherence": 1.0,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D18",
+      "file": "India LULC atlas 2024.pdf",
+      "agent": "lulc_agent",
+      "group": "G7",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "partial",
+      "task_completion": 0.5,
+      "trajectory_superset_match": false,
+      "tool_calls": 0,
+      "tool_input_accuracy": null,
+      "tool_results_ok": 0,
+      "n_extracted": 0,
+      "n_loaded": 0,
+      "n_rejected": 0,
+      "task_adherence": null,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D19",
+      "file": "Map of India LULC 2024-25.pdf",
+      "agent": "skip",
+      "group": "?",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "skipped",
+      "task_completion": 1.0,
+      "trajectory_superset_match": null,
+      "tool_calls": 0,
+      "tool_input_accuracy": null,
+      "tool_results_ok": 0,
+      "n_extracted": 0,
+      "n_loaded": 0,
+      "n_rejected": 0,
+      "task_adherence": null,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    },
+    {
+      "document_id": "D20",
+      "file": "Andaman Nicobar LULC 2015-16 map.jpg",
+      "agent": "skip",
+      "group": "?",
+      "routed_by": "rule",
+      "routing_correct": true,
+      "status": "skipped",
+      "task_completion": 1.0,
+      "trajectory_superset_match": null,
+      "tool_calls": 0,
+      "tool_input_accuracy": null,
+      "tool_results_ok": 0,
+      "n_extracted": 0,
+      "n_loaded": 0,
+      "n_rejected": 0,
+      "task_adherence": null,
+      "llm_calls": 0,
+      "attempts": 1,
+      "model_outputs_rejected": 0,
+      "manual_interventions": 0,
+      "errors_handled": [],
+      "duplicates_skipped": 0
+    }
+  ],
+  "groundedness_by_agent": {
+    "lulc_agent": {
+      "checked": 28,
+      "found": 28,
+      "rate": 1.0
+    },
+    "bilingual_table_agent": {
+      "checked": 3640,
+      "found": 3640,
+      "rate": 1.0
+    },
+    "narrative_agent": {
+      "checked": 42,
+      "found": 42,
+      "rate": 1.0
+    },
+    "island_profile_agent": {
+      "checked": 903,
+      "found": 903,
+      "rate": 1.0
+    },
+    "matrix_table_agent": {
+      "checked": 3290,
+      "found": 3290,
+      "rate": 1.0
+    },
+    "price_table_agent": {
+      "checked": 21872,
+      "found": 21872,
+      "rate": 1.0
+    }
+  },
+  "value_checks": {
+    "n": 48,
+    "correct": 48,
+    "accuracy": 1.0,
+    "failures": []
+  },
+  "evaluators_skipped": {
+    "Intent Resolution": "no user intent in Phase 2 (batch extraction); evaluated in Phase 3 query agent",
+    "Relevance / Coherence / Fluency / Response Completeness": "agents emit structured records, not prose answers",
+    "Content safety (violence, self-harm, hate, sexual), Protected material": "inputs are public statistics; no generated user-facing text",
+    "Code vulnerability / Ungrounded attributes": "no generated code; no person-level attributes are extracted (no PII by design)"
+  }
+}

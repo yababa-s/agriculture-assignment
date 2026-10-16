@@ -1,0 +1,29 @@
+{
+  "train": {
+    "island": [
+      "D08",
+      "D09"
+    ],
+    "tables": [
+      "D01",
+      "D03",
+      "D04",
+      "D05"
+    ]
+  },
+  "eval": {
+    "island": [
+      "D10"
+    ],
+    "tables": [
+      "D02",
+      "D06"
+    ]
+  },
+  "unseen_demo": [
+    "D06",
+    "D10",
+    "D13"
+  ],
+  "note": "Document-level split. Eval/unseen documents contribute no training examples."
+}

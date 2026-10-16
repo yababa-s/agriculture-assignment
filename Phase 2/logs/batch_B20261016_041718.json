@@ -1,0 +1,94 @@
+{
+  "batch_id": "B20261016_041718",
+  "documents": [
+    {
+      "document_id": "D08",
+      "file": "IslandwiseStatistical2022-23.pdf",
+      "run_id": "be38b91c20d7",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 302,
+      "loaded": 302,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 302,
+        "accepted": 302,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D09",
+      "file": "IslandwiseStatistical2023-24.pdf",
+      "run_id": "20ee8c3a2fcf",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 306,
+      "loaded": 306,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 306,
+        "accepted": 306,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D10",
+      "file": "IslandwiseStatistical2024-25.pdf",
+      "run_id": "1ba23995df60",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 295,
+      "loaded": 295,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 295,
+        "accepted": 295,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 1078.3,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/TEAMID_AN_qlora_v1)"
+}
