@@ -1,0 +1,3 @@
+# Optional hosted evaluation; requires LangSmith credentials and network access.
+agentevals
+langsmith

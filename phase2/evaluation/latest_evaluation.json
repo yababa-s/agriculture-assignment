@@ -1,0 +1,1101 @@
+{
+  "generated_at": "2026-10-16T13:42:26+00:00",
+  "workflow": {
+    "run_id": "e4452bbad0f9",
+    "sources_in_manifest": 17,
+    "sources_in_database": 17,
+    "manifest_paths_valid": true,
+    "table_cells_saved": 45708,
+    "route_selection_correct": 17,
+    "route_selection_cases": 17,
+    "trajectory_match_correct": 17,
+    "trajectory_cases": 17,
+    "tool_inputs_correct": 14,
+    "tool_input_cases": 14,
+    "grounded_observations": 84,
+    "groundedness_cases": 84,
+    "structured_observations": 84,
+    "gold_values_correct": 4,
+    "gold_value_checks": 4,
+    "decoder_examples_correct": 5,
+    "decoder_examples": 5,
+    "manual_interventions": 0,
+    "fully_handled_without_manual_intervention": 14,
+    "inputs_attempted": 17,
+    "automation_completion_ratio": "14/17",
+    "status_counts": {
+      "loaded": 12,
+      "partial": 2,
+      "pending": 1,
+      "skipped": 2,
+      "failed": 0
+    },
+    "full_automation_claim": false
+  },
+  "per_source_group": {
+    "G1_AREA_PRODUCTION": {
+      "attempted": 2,
+      "loaded": 2,
+      "partial": 0,
+      "pending": 0,
+      "skipped": 0,
+      "failed": 0
+    },
+    "G2_BASIC_STATS": {
+      "attempted": 3,
+      "loaded": 3,
+      "partial": 0,
+      "pending": 0,
+      "skipped": 0,
+      "failed": 0
+    },
+    "G3_ISLAND_PROFILES": {
+      "attempted": 2,
+      "loaded": 2,
+      "partial": 0,
+      "pending": 0,
+      "skipped": 0,
+      "failed": 0
+    },
+    "G4_NARRATIVE": {
+      "attempted": 2,
+      "loaded": 2,
+      "partial": 0,
+      "pending": 0,
+      "skipped": 0,
+      "failed": 0
+    },
+    "G5_PRICES": {
+      "attempted": 3,
+      "loaded": 2,
+      "partial": 1,
+      "pending": 0,
+      "skipped": 0,
+      "failed": 0
+    },
+    "G6_CENSUS_IMAGE": {
+      "attempted": 1,
+      "loaded": 0,
+      "partial": 0,
+      "pending": 1,
+      "skipped": 0,
+      "failed": 0
+    },
+    "G7_LULC": {
+      "attempted": 2,
+      "loaded": 1,
+      "partial": 1,
+      "pending": 0,
+      "skipped": 0,
+      "failed": 0
+    },
+    "G8_RASTER_MAPS": {
+      "attempted": 2,
+      "loaded": 0,
+      "partial": 0,
+      "pending": 0,
+      "skipped": 2,
+      "failed": 0
+    }
+  },
+  "per_agent": {
+    "pdf_table_agent": {
+      "tool_calls": 10,
+      "valid_inputs": 10,
+      "matching_trajectories": 10,
+      "documents": 10
+    },
+    "pdf_text_agent": {
+      "tool_calls": 4,
+      "valid_inputs": 4,
+      "matching_trajectories": 4,
+      "documents": 4
+    },
+    "pending_image_ocr": {
+      "tool_calls": 0,
+      "valid_inputs": 0,
+      "matching_trajectories": 1,
+      "documents": 1
+    },
+    "skip_agent": {
+      "tool_calls": 0,
+      "valid_inputs": 0,
+      "matching_trajectories": 2,
+      "documents": 2
+    }
+  },
+  "routing_checks": [
+    {
+      "doc_id": "P1-01",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-02",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-03",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-04",
+      "expected": "pdf_text_agent",
+      "found": "pdf_text_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-05",
+      "expected": "pdf_text_agent",
+      "found": "pdf_text_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-06",
+      "expected": "pending_image_ocr",
+      "found": "pending_image_ocr",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-07",
+      "expected": "pdf_text_agent",
+      "found": "pdf_text_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-08",
+      "expected": "pdf_text_agent",
+      "found": "pdf_text_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-09",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-10",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-11",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-12",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-13",
+      "expected": "skip_agent",
+      "found": "skip_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-14",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-15",
+      "expected": "skip_agent",
+      "found": "skip_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-16",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    },
+    {
+      "doc_id": "P1-17",
+      "expected": "pdf_table_agent",
+      "found": "pdf_table_agent",
+      "correct": true
+    }
+  ],
+  "trajectory_checks": [
+    {
+      "doc_id": "P1-01",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-02",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-03",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-04",
+      "expected_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-05",
+      "expected_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-06",
+      "expected_tools": [],
+      "found_tools": [],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-07",
+      "expected_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-08",
+      "expected_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_text"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-09",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-10",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-11",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-12",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-13",
+      "expected_tools": [],
+      "found_tools": [],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-14",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-15",
+      "expected_tools": [],
+      "found_tools": [],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-16",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    },
+    {
+      "doc_id": "P1-17",
+      "expected_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "found_tools": [
+        "pdfplumber_extract_tables"
+      ],
+      "correct": true
+    }
+  ],
+  "tool_input_checks": [
+    {
+      "doc_id": "P1-01",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-02",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-03",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-04",
+      "tool": "pdfplumber_extract_text",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-05",
+      "tool": "pdfplumber_extract_text",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-07",
+      "tool": "pdfplumber_extract_text",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-08",
+      "tool": "pdfplumber_extract_text",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-09",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-10",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-11",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-12",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-14",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-16",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    },
+    {
+      "doc_id": "P1-17",
+      "tool": "pdfplumber_extract_tables",
+      "valid": true
+    }
+  ],
+  "groundedness_checks": [
+    {
+      "doc_id": "P1-02",
+      "raw_value": "17903.8",
+      "table_cell": "17903.8",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "17912.55",
+      "table_cell": "17912.55",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "17896.6",
+      "table_cell": "17896.6",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "131.729",
+      "table_cell": "131.729",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "153.09",
+      "table_cell": "153.09",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "129.768",
+      "table_cell": "129.768",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "4124.9",
+      "table_cell": "4124.9",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "4180",
+      "table_cell": "4180",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "4744.47",
+      "table_cell": "4744.47",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "14086.176",
+      "table_cell": "14086.176",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "15870.18",
+      "table_cell": "15870.18",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "15409.68",
+      "table_cell": "15409.68",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "5479.2",
+      "table_cell": "5479.2",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "4989.73",
+      "table_cell": "4989.73",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "4557.1",
+      "table_cell": "4557.1",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "16403.944",
+      "table_cell": "16403.944",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "15785.08",
+      "table_cell": "15785.08",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "14361.175",
+      "table_cell": "14361.175",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "575.26",
+      "table_cell": "575.26",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "539.35",
+      "table_cell": "539.35",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "779.5",
+      "table_cell": "779.5",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "175.81",
+      "table_cell": "175.81",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "195.46",
+      "table_cell": "195.46",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "286.526",
+      "table_cell": "286.526",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "5221.32",
+      "table_cell": "5221.32",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "5407.25",
+      "table_cell": "5407.25",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "5329.55",
+      "table_cell": "5329.55",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "34604.01",
+      "table_cell": "34604.01",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "33242.54",
+      "table_cell": "33242.54",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "33347.55",
+      "table_cell": "33347.55",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "3406.985",
+      "table_cell": "3406.985",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "3495.23",
+      "table_cell": "3495.23",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "3540.92",
+      "table_cell": "3540.92",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "27940.056",
+      "table_cell": "27940.056",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "26156.08",
+      "table_cell": "26156.08",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "24951.25",
+      "table_cell": "24951.25",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "403.4",
+      "table_cell": "403.4",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "808.1",
+      "table_cell": "808.1",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "730.22",
+      "table_cell": "730.22",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "5028.89",
+      "table_cell": "5028.89",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "5796.90",
+      "table_cell": "5796.90",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-02",
+      "raw_value": "4864.74",
+      "table_cell": "4864.74",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "17912.55",
+      "table_cell": "17912.55",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "17896.6",
+      "table_cell": "17896.6",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "17902",
+      "table_cell": "17902",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "153.09",
+      "table_cell": "153.09",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "129.768",
+      "table_cell": "129.768",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "112.1167",
+      "table_cell": "112.1167",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "4180",
+      "table_cell": "4180",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "4744.47",
+      "table_cell": "4744.47",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "4757.4",
+      "table_cell": "4757.4",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "15870.18",
+      "table_cell": "15870.18",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "15409.68",
+      "table_cell": "15409.68",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "13964.38",
+      "table_cell": "13964.38",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "4989.73",
+      "table_cell": "4989.73",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "4557.1",
+      "table_cell": "4557.1",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "4365.2",
+      "table_cell": "4365.2",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "15785.08",
+      "table_cell": "15785.08",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "14361.175",
+      "table_cell": "14361.175",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "13490.2",
+      "table_cell": "13490.2",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "539.35",
+      "table_cell": "539.35",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "779.5",
+      "table_cell": "779.5",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "774.37",
+      "table_cell": "774.37",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "195.46",
+      "table_cell": "195.46",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "286.526",
+      "table_cell": "286.526",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "268.85",
+      "table_cell": "268.85",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "5407.25",
+      "table_cell": "5407.25",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "5329.55",
+      "table_cell": "5329.55",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "5088.94",
+      "table_cell": "5088.94",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "33242.54",
+      "table_cell": "33242.54",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "33347.55",
+      "table_cell": "33347.55",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "27309.615",
+      "table_cell": "27309.615",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "3495.23",
+      "table_cell": "3495.23",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "3540.92",
+      "table_cell": "3540.92",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "3456",
+      "table_cell": "3456",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "26156.08",
+      "table_cell": "26156.08",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "24951.25",
+      "table_cell": "24951.25",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "20589",
+      "table_cell": "20589",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "808.1",
+      "table_cell": "808.1",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "730.22",
+      "table_cell": "730.22",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "726.3",
+      "table_cell": "726.3",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "5796.90",
+      "table_cell": "5796.90",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "4864.74",
+      "table_cell": "4864.74",
+      "grounded": true
+    },
+    {
+      "doc_id": "P1-03",
+      "raw_value": "3994.4",
+      "table_cell": "3994.4",
+      "grounded": true
+    }
+  ],
+  "checked_values": [
+    {
+      "file": "basic statistics report 2024-25.pdf",
+      "metric": "area_cultivated",
+      "commodity": "Paddy",
+      "period": "2024-25",
+      "expected": 4365.2,
+      "found": 4365.2,
+      "unit": "hectare",
+      "correct": true,
+      "source": {
+        "value": 4365.2,
+        "unit": "hectare",
+        "value_raw": "4365.2",
+        "page": 1,
+        "table_no": 1,
+        "row_no": 4,
+        "col_no": 3,
+        "doc_id": "P1-03"
+      }
+    },
+    {
+      "file": "basic statistics report 2024-25.pdf",
+      "metric": "production",
+      "commodity": "Paddy",
+      "period": "2024-25",
+      "expected": 13490.2,
+      "found": 13490.2,
+      "unit": "MT",
+      "correct": true,
+      "source": {
+        "value": 13490.2,
+        "unit": "MT",
+        "value_raw": "13490.2",
+        "page": 1,
+        "table_no": 1,
+        "row_no": 4,
+        "col_no": 6,
+        "doc_id": "P1-03"
+      }
+    },
+    {
+      "file": "basic statistics report 2024-25.pdf",
+      "metric": "area_cultivated",
+      "commodity": "Coconut",
+      "period": "2024-25",
+      "expected": 17902.0,
+      "found": 17902.0,
+      "unit": "hectare",
+      "correct": true,
+      "source": {
+        "value": 17902.0,
+        "unit": "hectare",
+        "value_raw": "17902",
+        "page": 1,
+        "table_no": 1,
+        "row_no": 2,
+        "col_no": 3,
+        "doc_id": "P1-03"
+      }
+    },
+    {
+      "file": "basic statistics report 2024-25.pdf",
+      "metric": "production",
+      "commodity": "Coconut",
+      "period": "2024-25",
+      "expected": 112.1167,
+      "found": 112.1167,
+      "unit": "million nuts",
+      "correct": true,
+      "source": {
+        "value": 112.1167,
+        "unit": "million nuts",
+        "value_raw": "112.1167",
+        "page": 1,
+        "table_no": 1,
+        "row_no": 2,
+        "col_no": 6,
+        "doc_id": "P1-03"
+      }
+    }
+  ],
+  "decoder_checks": [
+    {
+      "legacy": "Qlyksa dk uke",
+      "expected": "फसलों का नाम",
+      "found": "फसलों का नाम",
+      "source_split": "D03 source example",
+      "correct": true
+    },
+    {
+      "legacy": "Ukkfj;y",
+      "expected": "नारियल",
+      "found": "नारियल",
+      "source_split": "D03 source example",
+      "correct": true
+    },
+    {
+      "legacy": "/kku",
+      "expected": "धान",
+      "found": "धान",
+      "source_split": "D03 source example",
+      "correct": true
+    },
+    {
+      "legacy": "frygu",
+      "expected": "तिलहन",
+      "found": "तिलहन",
+      "source_split": "D04 held-out source example",
+      "correct": true
+    },
+    {
+      "legacy": "nf{k.k v.Meku",
+      "expected": "दक्षिण अण्डमान",
+      "found": "दक्षिण अण्डमान",
+      "source_split": "D04 held-out source example",
+      "correct": true
+    }
+  ],
+  "pending_sources": [
+    "agri census 2015-16.png",
+    "India LULC atlas 2024.pdf"
+  ],
+  "skipped_sources": [
+    "Andaman Nicobar LULC 2015-16 map.jpg",
+    "Map of India LULC 2024-25.pdf"
+  ],
+  "limitations": [
+    "Only the supplied Phase 1 corpus was used.",
+    "No model fine-tuning was run.",
+    "The local evaluator checks trajectories against fixed tool sequences; AgentEvals and hosted LangSmith still require installation/configuration."
+  ]
+}
