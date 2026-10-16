@@ -1,0 +1,196 @@
+{
+  "run_id": "e7ca721ee48c",
+  "status": "complete_with_pending",
+  "attempted": 17,
+  "completed_without_intervention": 16,
+  "manual_interventions": 0,
+  "trace": "phase2\\logs\\trace_e7ca721ee48c.jsonl",
+  "documents": [
+    {
+      "doc_id": "P1-01",
+      "file": "37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G2_BASIC_STATS",
+      "status": "loaded",
+      "pages": 2,
+      "tables": 2,
+      "cells": 710,
+      "observations": 0
+    },
+    {
+      "doc_id": "P1-02",
+      "file": "basic statistics report 2023-24.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G2_BASIC_STATS",
+      "status": "loaded",
+      "pages": 6,
+      "tables": 13,
+      "cells": 1272,
+      "observations": 42
+    },
+    {
+      "doc_id": "P1-03",
+      "file": "basic statistics report 2024-25.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G2_BASIC_STATS",
+      "status": "loaded",
+      "pages": 6,
+      "tables": 13,
+      "cells": 1266,
+      "observations": 42
+    },
+    {
+      "doc_id": "P1-04",
+      "file": "IslandwiseStatistical2023-24.pdf",
+      "agent": "pdf_text_agent",
+      "group": "G3_ISLAND_PROFILES",
+      "status": "loaded",
+      "pages": 15,
+      "evidence_lines": 236
+    },
+    {
+      "doc_id": "P1-05",
+      "file": "IslandwiseStatistical2024-25.pdf",
+      "agent": "pdf_text_agent",
+      "group": "G3_ISLAND_PROFILES",
+      "status": "loaded",
+      "pages": 15,
+      "evidence_lines": 235
+    },
+    {
+      "doc_id": "P1-06",
+      "file": "agri census 2015-16.png",
+      "agent": "image_ocr_agent",
+      "group": "G6_CENSUS_IMAGE",
+      "status": "loaded",
+      "ocr_facts": 17,
+      "checked_total_values": 8,
+      "observations": 8
+    },
+    {
+      "doc_id": "P1-07",
+      "file": "food processing for sustainable growth.pdf",
+      "agent": "pdf_text_agent",
+      "group": "G4_NARRATIVE",
+      "status": "loaded",
+      "pages": 16,
+      "evidence_lines": 44
+    },
+    {
+      "doc_id": "P1-08",
+      "file": "subsidies 2024-25.pdf",
+      "agent": "pdf_text_agent",
+      "group": "G4_NARRATIVE",
+      "status": "loaded",
+      "pages": 22,
+      "evidence_lines": 89
+    },
+    {
+      "doc_id": "P1-09",
+      "file": "Fooditems2023.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G5_PRICES",
+      "status": "loaded",
+      "pages": 24,
+      "tables": 24,
+      "cells": 19053,
+      "observations": 6350
+    },
+    {
+      "doc_id": "P1-10",
+      "file": "Fooditems2024.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G5_PRICES",
+      "status": "loaded",
+      "pages": 24,
+      "tables": 24,
+      "cells": 19056,
+      "observations": 6141
+    },
+    {
+      "doc_id": "P1-11",
+      "file": "Fooditems2025.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G5_PRICES",
+      "status": "loaded",
+      "pages": 24,
+      "tables": 0,
+      "cells": 0,
+      "observations": 6852
+    },
+    {
+      "doc_id": "P1-12",
+      "file": "Andaman Nicobar LULC 2015-16 data.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G7_LULC",
+      "status": "loaded",
+      "pages": 2,
+      "tables": 2,
+      "cells": 239,
+      "observations": 28
+    },
+    {
+      "doc_id": "P1-13",
+      "file": "Andaman Nicobar LULC 2015-16 map.jpg",
+      "agent": "map_legend_ocr_agent",
+      "group": "G8_RASTER_MAPS",
+      "status": "loaded",
+      "ocr_facts": 82,
+      "spatial_features_digitized": 0,
+      "note": "Legend and map labels were read; raster pixels were not converted to GIS geometry."
+    },
+    {
+      "doc_id": "P1-14",
+      "file": "India LULC atlas 2024.pdf",
+      "agent": "lulc_chart_agent",
+      "group": "G7_LULC",
+      "status": "partial",
+      "ocr_facts": 71,
+      "visual_estimates": 5,
+      "pdf_page": 102,
+      "status_note": "partial: chart is visual and has no exact labels"
+    },
+    {
+      "doc_id": "P1-15",
+      "file": "Map of India LULC 2024-25.pdf",
+      "agent": "map_legend_ocr_agent",
+      "group": "G8_RASTER_MAPS",
+      "status": "loaded",
+      "ocr_facts": 53,
+      "spatial_features_digitized": 0,
+      "note": "Legend and map labels were read; raster pixels were not converted to GIS geometry."
+    },
+    {
+      "doc_id": "P1-16",
+      "file": "42-Zone-Wise Area and Production of Crops During 2023-24.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G1_AREA_PRODUCTION",
+      "status": "loaded",
+      "pages": 3,
+      "tables": 3,
+      "cells": 1369,
+      "observations": 1026
+    },
+    {
+      "doc_id": "P1-17",
+      "file": "47-Area and Production 2025-26.pdf",
+      "agent": "pdf_table_agent",
+      "group": "G1_AREA_PRODUCTION",
+      "status": "loaded",
+      "pages": 3,
+      "tables": 3,
+      "cells": 2174,
+      "observations": 664
+    }
+  ],
+  "status_counts": {
+    "loaded": 16,
+    "partial": 1,
+    "pending": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "observations": 21158,
+  "table_cells": 45139,
+  "text_facts": 911
+}

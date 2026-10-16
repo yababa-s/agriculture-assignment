@@ -1,7 +1,9 @@
-# Execution logs
+# Run logs
 
-`run_83db8555923d.json` and `trace_83db8555923d.jsonl` are from the final full-corpus run used to create the included database and evaluation report.
+The reported run is `9e1171369c9e`. Its readable summary is `run_9e1171369c9e.json`, and its source-by-source trace is `trace_9e1171369c9e.jsonl`. These match the included SQLite database and `evaluation/latest_evaluation.json`.
 
-The earlier `001349c7dbd9`, `60b53629a605`, `66b42e5a2247` and `e4452bbad0f9` files are development runs retained for transparency; use `83db8555923d` for the final reported results. The first development run exposed an observation-parser bug and should not be used as the submission result. Trace paths are source-relative so the logs do not expose the workstation folder.
+The run attempted all 17 Phase 1 sources: 16 loaded, one atlas chart was partial, and none were pending, skipped or failed. The pipeline recorded no manual corrections. Source selection and downloading happened before the run. The chart remains partial because its bars do not have printed values.
 
-The JSON is the readable summary. The JSONL trace records the route/status and tool result for each document. The final run reports 17 attempted files: 12 loaded, 2 partial, 1 pending, 2 deliberate skips, 0 failed. It used no manual corrections. The two partials and pending item are listed in the evaluation output; they are not counted as successful extraction.
+Older run files are retained as development history and are not the basis of the reported metrics. Use the `9e1171369c9e` files for the presentation. Trace paths are relative to this project so workstation-specific folders are not included.
+
+The LangSmith screenshot and a short text record of the dashboard result are also included. That hosted experiment checks tool trajectories, not extraction accuracy.

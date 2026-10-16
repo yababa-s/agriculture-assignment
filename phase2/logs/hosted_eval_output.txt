@@ -1,0 +1,8 @@
+LANGSMITH DASHBOARD RESULT (user-provided screenshot)
+Captured: 2026-10-16
+Dataset: agriculture-phase2-9e1171369c9e
+Experiment label shown: phase2-agent-trajectories-485b... (truncated by dashboard)
+Progress: 17 / 17 runs
+trajectory_strict_match average: 1.00
+Meaning: expected tool trajectories matched recorded trajectories; this is not extraction accuracy.
+Screenshot evidence: langsmith_experiment_9e1171369c9e.png

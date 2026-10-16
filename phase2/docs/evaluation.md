@@ -1,51 +1,51 @@
-# Evaluation in plain language
+# Evaluation results in plain language
 
-The checked examples use only the supplied Basic Statistics PDFs. The 2023–24 file supplies the decoder development examples; the 2024–25 file is held out for the four numeric checks and two Hindi decoder checks. No test example is used as a training example.
+## Latest local run
 
-## Checks included
+Run ID: `9e1171369c9e` (16 October 2026). The program processed the 17 supplied Phase 1 files in order.
 
-1. **Coverage:** every manifest path exists and every file receives a route/status.
-2. **Direct value check:** four page-1 values (Paddy area and production, Coconut area and production) are compared against the PDF.
-3. **Hindi decoder check:** five Kruti Dev strings from the Basic Statistics PDFs are compared with checked Unicode labels.
-4. **Trace checks:** each run records route, selected tool, counts, status, error if any, and database run ID. The local evaluation compares expected and actual routes/tool sequences, validates tool paths, and checks each normalized value against the matching raw source cell.
-5. **Source/group summary:** counts are reported separately by reader and source group.
+| Measure | Result | Meaning |
+|---|---:|---|
+| Sources listed and found | 17/17 | All supplied files have a manifest entry and a route. |
+| Final source statuses | 16 loaded, 1 partial, 0 pending, 0 skipped, 0 failed | The atlas chart is partial because the bars have no printed values. |
+| Inputs loaded without manual intervention | 16/17 = 94.1% | This is the run's count, not a claim that all content was extracted. |
+| Route checks | 17/17 | Every file reached its planned reader. |
+| Tool sequence checks | 17/17 | Recorded tool calls matched the local fixed route plan. |
+| Tool input checks | 17/17 | Each call used the expected source file path. |
+| Structured observations | 21,158 | Includes table values, prices, census totals and five approximate chart readings. |
+| Source value checks | 21,153/21,153 | Table/text/OCR values matched saved source text or cells; the five visual chart estimates are counted separately. |
+| Checked Basic Statistics values | 4/4 | Four selected crop values matched the source. |
+| Hindi label examples | 5/5 | Five selected Kruti Dev labels matched checked Hindi text. |
+| Python checks | 5 passed | The bundled unit tests completed successfully. |
+| SQLite integrity | `ok` | The delivered database passed SQLite's integrity check. |
 
-`evaluate.py` writes the actual counts and individual checked values to `evaluation/latest_evaluation.json`. Do not replace these with illustrative numbers in a presentation.
+The full per-file and per-source-group results are in `evaluation/latest_evaluation.json`. The run trace is in `logs/trace_9e1171369c9e.jsonl`.
 
-## Verified run in this package
+## Evaluators selected for this workflow
 
-On 16 October 2026, the bundled corpus was processed on Windows with pdfplumber and SQLite:
+The local checks cover source/agent selection (17/17), expected tool sequence (17/17), tool input path (17/17), task status, source grounding (21,153 observations), four checked numeric values, and five Hindi decoder examples. The report JSON also breaks tool-input and trajectory checks down by reader: image OCR 1/1, chart 1/1, map OCR 2/2, PDF tables 9/9, and PDF text 4/4. Source-group counts show all groups loaded except land use/land cover, where one of two sources is partial because of the chart.
 
-| Measure | Observed result |
-|---|---:|
-| Manifest entries and files found | 17/17 |
-| Statuses | 12 loaded, 2 partial, 1 pending, 2 deliberate skips, 0 failed |
-| Inputs fully handled without manual intervention (loaded or deliberate skip) | 14/17 = 82.4% |
-| Manual interventions | 0 |
-| Table cells preserved | 45,708 |
-| Normalized Basic Statistics observations | 84 |
-| Exact numeric checks | 4/4 |
-| Hindi decoder checks | 5/5 |
-| Unit tests | 4 passed |
-| Routing / tool trajectory / input arguments | 17/17 routes, 17/17 trajectories, 14/14 tool inputs valid |
-| Source groundedness | 84/84 normalized observations match their stored source cells |
-| SQLite integrity / foreign-key check | `ok` / no violations |
+The checked values and tool traces have different purposes. The 21,153 source matches check stored table/text/OCR evidence, while the four numeric and five Hindi examples use explicit checked references. Neither is a human review of every extracted number. The five chart estimates are excluded from exact-value checks.
 
-Per source group and per reader counts are in the JSON results. “Loaded” means the reader completed its defined work; for the table reader, much of the corpus is preserved as raw cells rather than normalized crop facts. A partial, pending or skipped document is not counted as successfully extracted.
+We did not run answer helpfulness, response relevance or safety evaluators: this pipeline does not produce conversational LLM answers. Latency and token counts were not selected because they do not measure extraction quality here. The workflow records failures but has no automatic retry mechanism; source selection and downloading happen before execution. It recorded zero manual corrections and zero retries.
 
-## What is not claimed
+## What the AgentEvals/LangSmith score means
 
-- No large language model was used, trained or fine-tuned. Hindi is a legacy-font decoding task here, so a fixed decoder is used. The methodology’s base-versus-adapter comparison is not applicable to this version; if the instructor requires that comparison as a gate, it remains work to do.
-- AgentEvals and LangSmith were not installed/configured in the local runtime, so no hosted result is claimed. `phase2/hosted_eval.py` is an optional adapter that evaluates the saved tool trajectories with AgentEvals and sends run results to LangSmith when the packages and API key are available. The JSONL files are local traces, not LangSmith runs.
-- The four numeric checks and five Hindi checks are a small held-out sample, not a validation of every source value.
-- A high checked-value score on four examples does not mean all extracted rows are correct.
+The user-provided LangSmith dashboard screenshot confirms a fresh experiment for dataset `agriculture-phase2-9e1171369c9e`: **17/17 runs** completed with **1.00 average strict trajectory match**. The experiment row is shortened in the screenshot (`phase2-agent-trajectories-485b...`). This means its recorded tool sequence matched the expected sequence. It is not an extraction accuracy score. The screenshot is saved at `logs/langsmith_experiment_9e1171369c9e.png`.
 
-## Acceptance criteria for this package
+## How source checks work
 
-| Check | Acceptance |
-|---|---|
-| Manifest coverage | All 17 bundled source files exist and have exactly one route/status. |
-| Basic Statistics numeric checks | 4/4 exact matches against the cited source table. |
-| Hindi label decoder | 5/5 held-out/development examples match the checked labels. |
-| Provenance | Every normalized observation has document, page, table, row, column, agent and run. |
-| Automation | Report inputs loaded or deliberately skipped without intervention ÷ attempted; partial, pending and failed are shown separately. |
+- PDF table records are checked against their matching saved table cell.
+- Text and OCR values are checked against source text or the OCR reading for the source cell.
+- The four Basic Statistics examples compare saved values with checked references from the source PDF.
+- The chart's five estimates are kept separate because they are read from bar heights, not printed numbers.
+
+These checks do not prove every figure is correct. In particular, chart readings need human care, and a `loaded` status means the assigned reader finished its stated job, not that the entire source was normalized.
+
+## What remains limited
+
+- The atlas chart values are approximate pixel readings. Use the A&N-specific Phase 1 LULC data table for exact 2015-16 land-cover values.
+- The two map files yield labels and legends, not GIS boundaries or area calculations.
+- Some source tables are retained as raw cells; only selected data groups are normalized.
+- The project does not train or fine-tune an LLM. The Hindi labels use a fixed Kruti Dev decoder.
+- Source selection, downloading and reference-gold preparation happen before the automatic run.

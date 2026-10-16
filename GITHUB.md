@@ -1,14 +1,15 @@
-# GitHub handoff
+# Putting this package on GitHub
 
-This folder is a self-contained Phase 2 package. It includes the Phase 1 corpus as supplied, the SQLite database, reproducible extraction and evaluation code, checked logs, and presentation notes. In the course GitHub repository, the package can reuse the existing `Phase 1` folder through `phase2/source_paths.py`.
+The ZIP is a clean source package and does not include `.git` history or credentials.
 
-Repository: `yababa-s/agriculture-assignment`, the repository referenced in the project brief. The prepared local branch is `phase2-rebuild`. The connected GitHub integration rejected remote branch creation with HTTP 403, so no remote branch or pull request is claimed.
+## If the folder you are replacing is only an extracted download
 
-If reproducing the branch from this local checkout:
+You can replace that extracted `Phase2_Submission` folder with this package. To push it later, first clone your course repository from GitHub, then copy the contents of this `Phase2_Submission` folder into the matching folder inside that clone. Keep the clone's hidden `.git` folder and its existing `Phase 1` folder.
 
-```powershell
-git remote add origin https://github.com/yababa-s/agriculture-assignment.git
-git push -u origin phase2-rebuild
-```
+## If the folder you are replacing is already your GitHub checkout
 
-The commit should contain only this `Phase2_Submission` folder's contents. Review the branch in GitHub and open a pull request if the course repository should retain its existing structure.
+Do not delete the repository's hidden `.git` folder. Replace only the old Phase 2 files with these package files, leaving `.git` and the original `Phase 1` folder in place. Then review, commit and push the changes from that checkout.
+
+The submitted code uses the bundled Phase 1 corpus when run from this standalone package. If you move the Phase 2 files into a course repository, `phase2/source_paths.py` can also use the repository's existing `Phase 1` folder.
+
+No remote push or pull request has been made by this package process. The GitHub repository referenced in the project brief is `yababa-s/agriculture-assignment`.

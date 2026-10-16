@@ -8,8 +8,8 @@ The database is SQLite, so it is one local file and needs no database server. Th
 - `extraction_run`: one row for a pipeline run, with start/end, attempted/completed counts and manual interventions.
 - `page_text`: the text read from each page.
 - `table_cell`: every non-empty table cell, preserving the page, table, row, column and original text.
-- `observation`: selected numeric facts from the Basic Statistics whole-island crop table, including crop, metric, year, unit and source location.
-- `text_fact`: exact evidence lines from profile/narrative pages.
+- `observation`: selected numeric facts from crop, price, LULC, census and chart sources, including metric, value, unit, place/time and source position.
+- `text_fact`: exact evidence lines from profile/narrative pages, plus lines captured by image/map OCR.
 - `agent_trace`: decisions, tool results and errors.
 - `v_provenance`: a simple view joining each observation to its file, publisher, source type, page, cell, agent and run.
 
@@ -19,6 +19,8 @@ The database is SQLite, so it is one local file and needs no database server. Th
 - Original strings are preserved in `value_raw` and `evidence`.
 - A duplicate table cell or observation is ignored using a stable uniqueness key.
 - The report records only values that parse as numbers. It does not silently convert measurement units.
+- Census OCR values use page 1 and total-row cell positions. Chart observations are labelled `visual estimate` and must not be treated as exact printed figures.
+- Map OCR is stored as page text/evidence. It does not make map geometry or pixel-derived area records.
 - Table-cell capture and normalized observations are different things: the first preserves source structure; the second has a known metric/crop/year mapping.
 
 ## Example

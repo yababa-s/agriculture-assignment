@@ -1,39 +1,24 @@
-# Which source goes to which reader
+# Phase 1 files and their readers
 
-All source documents in this submission come from the uploaded Phase 1 folder. The manifest contains 17 data files. A PDF with tables goes to the table reader; a PDF mainly made of prose goes to the text reader. The screenshot OCR reader and chart reader are clearly marked pending. The raster maps are deliberately skipped.
+All 17 entries below refer to files already supplied in Phase 1. The manifest is the source of truth for their filenames, paths, formats, languages and checksums.
 
-| Phase 1 source group | Files in the supplied corpus | Reader | What it does | Status |
-|---|---|---|---|---|
-| Area and production | `total area and prod/*` (2 PDFs) | `pdf_table_agent` | Saves PDF pages and table cells with source location. | Implemented; table-cell structure is preserved. |
-| Basic Statistics | `basic stats/*` (3 PDFs) | `pdf_table_agent` | Saves table cells; reads the whole-island crop/year table in the two Basic Statistics PDFs into area/production observations. | Implemented for the main crop table; other tables remain raw cells. |
-| Island-wise statistics | `island wise stats/*` (2 PDFs) | `pdf_text_agent` | Saves page text and exact numbered evidence lines. | Implemented as source-grounded text capture; no generated claims. |
-| Food processing and subsidies | `misc data/food processing…pdf`, `misc data/subsidies…pdf` | `pdf_text_agent` | Saves page text and exact numbered evidence lines. | Implemented; does not calculate subsidy line items. |
-| Monthly market prices | `price analysis/*` (3 PDFs) | `pdf_table_agent` | Saves table grids and raw cells. | Implemented; no price normalization yet. |
-| LULC statistics | `sat bhuvan data(lulc)/Andaman Nicobar…data.pdf` | `pdf_table_agent` | Saves LULC table cells. | Implemented as table capture. |
-| LULC atlas | `India LULC atlas 2024.pdf` | `pdf_table_agent` | Captures readable table cells and page text. | Partial; chart values need digitisation. |
-| Census screenshot | `misc data/agri census 2015-16.png` | `pending_image_ocr` | No OCR is run by this submission. | Pending; OCR dependency was unavailable here. |
-| Raster maps | LULC map PDF and JPG | `skip_agent` | Records a deliberate skip. | Out of scope for raster interpretation. |
+| Sources | Reader | What it reads | Current status |
+|---|---|---|---|
+| P1-01 to P1-03: Basic Statistics PDFs | `pdf_table_agent` | PDF text and table cells; selected bilingual crop statistics become structured records. | Loaded; only selected tables are normalized. |
+| P1-04 to P1-05: island-wise statistics | `pdf_text_agent` | Page text and numbered evidence lines. | Loaded; narrative evidence, not a complete numeric database. |
+| P1-06: agriculture census screenshot | `image_ocr_agent` | Tesseract reads screenshot text and eight total-row cells for holdings and operated area. | Loaded; checked values have source page and cell positions. |
+| P1-07 to P1-08: food processing and subsidies | `pdf_text_agent` | Page text and exact numbered evidence lines. | Loaded; no subsidy calculation is performed. |
+| P1-09 to P1-11: monthly food prices | `pdf_table_agent` | PDF page text; fixed rules convert printed rows into commodity, month, value and unit records. | Loaded; 2025 borderless table is read from text because table-grid detection finds no cells. |
+| P1-12: A&N LULC data table | `pdf_table_agent` | Printed land-cover area table. | Loaded; structured values retain location, year, unit and page/table coordinates. |
+| P1-13: A&N LULC map image | `map_legend_ocr_agent` | Tesseract reads title, map labels, legend and source notes. | Loaded for text and legend; no GIS polygons or pixel-area calculation. |
+| P1-14: India LULC atlas | `lulc_chart_agent` | Renders atlas PDF page 102 (printed page 81), OCRs labels, and estimates colored bar heights for Andaman & Nicobar. | Partial; chart contains no printed values. Estimates are approximate; use P1-12 for exact figures. |
+| P1-15: India LULC map PDF | `map_legend_ocr_agent` | Renders page and reads visible title/labels/legend. | Loaded for text and legend; national map is not digitized into GIS geometry. |
+| P1-16 to P1-17: area and production PDFs | `pdf_table_agent` | Table cells and normalized crop, location, area, production and yield records. | Loaded. |
 
-## Agent cards
+## How routing works
 
-### `pdf_table_agent`
+Python checks the manifest and uses fixed rules based on a source's ID/group and file format. The program does not ask an LLM to select a reader. Each reader writes tool calls and results to a JSONL trace. A failed reader would get a failed status; the atlas chart remains partial because its bars do not have printed numbers.
 
-- **Input:** a PDF from the source groups listed above.
-- **Decision:** the manifest group selects the reader by a fixed rule.
-- **Tool:** pdfplumber extracts the text layer and table cells.
-- **Output:** `page_text` and `table_cell`; for the two Basic Statistics crop tables, `observation` rows include metric, crop, period, value, unit and page/table/row/column evidence.
-- **Model:** none. The repeated table format and bilingual font labels are handled with explicit rules and a small decoder.
-- **Limit:** cells from price and area/production PDFs are preserved but not yet converted into complete normalized crop records.
+## What “loaded” means
 
-### `pdf_text_agent`
-
-- **Input:** island profiles, food processing report and subsidy memorandum PDFs.
-- **Decision:** a fixed source-group rule selects the text reader.
-- **Tool:** pdfplumber extracts page text; a fixed keyword check retains exact lines containing agriculture terms and numbers.
-- **Output:** page text plus `text_fact` evidence lines with document/page/run/agent.
-- **Model:** none. It does not infer facts beyond the printed line.
-- **Limit:** evidence lines are searchable captures, not a fully normalized knowledge base.
-
-### Pending and skipped handlers
-
-The image OCR and chart-digitisation handlers are not implemented. Their inputs remain in the manifest with explicit pending statuses. The two raster maps are mapped to an explicit skip decision. Therefore “nothing is unmapped” means every supplied file has an owner/status; it does not mean every file has been extracted.
+Loaded means the assigned reader completed the job described above. It does not mean the entire PDF has been normalized into one clean database table. The map readers capture words and legend labels, not map geometry. The chart reader produces estimates and flags them as estimates. The corpus still has no complete GIS knowledge base.

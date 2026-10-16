@@ -21,15 +21,16 @@ GROUP_TOOL = {
     "G3_ISLAND_PROFILES": "pdfplumber_extract_text",
     "G4_NARRATIVE": "pdfplumber_extract_text",
     "G5_PRICES": "pdfplumber_extract_tables",
-    "G6_CENSUS_IMAGE": None,
+    "G6_CENSUS_IMAGE": "Tesseract OCR",
     "G7_LULC": "pdfplumber_extract_tables",
-    "G8_RASTER_MAPS": None,
+    "G8_RASTER_MAPS": "Tesseract OCR",
 }
 
 
-def trajectory(group: str) -> list[dict]:
+def trajectory(group: str, doc_id: str) -> list[dict]:
     messages = [{"role": "user", "content": f"Process the {group} source group."}]
-    tool = GROUP_TOOL[group]
+    tool = ("pdfplumber render + Tesseract OCR" if doc_id == "P1-14" else
+            "Tesseract OCR" if doc_id == "P1-06" else GROUP_TOOL[group])
     if tool:
         messages.append({"role": "assistant", "content": "", "tool_calls": [{
             "function": {"name": tool, "arguments": json.dumps({"source_group": group})}
@@ -57,7 +58,7 @@ def main() -> int:
     for item in report["routing_checks"]:
         doc = next(d for d in summary["documents"] if d["doc_id"] == item["doc_id"])
         group = doc["group"]
-        expected = trajectory(group)
+        expected = trajectory(group, item["doc_id"])
         actual = [{"role": "user", "content": f"Process the {group} source group."}]
         calls = [event["detail"].get("tool") for event in trace_by_doc.get(item["doc_id"], [])
                  if event["event"] == "tool_call"]
