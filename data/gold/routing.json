@@ -1,0 +1,102 @@
+[
+  {
+    "document_id": "D01",
+    "file": "42-Zone-Wise Area and Production of Crops During 2023-24.pdf",
+    "expected_agent": "matrix_table_agent"
+  },
+  {
+    "document_id": "D02",
+    "file": "47-Area and Production 2025-26.pdf",
+    "expected_agent": "matrix_table_agent"
+  },
+  {
+    "document_id": "D03",
+    "file": "Year 2021-22.pdf",
+    "expected_agent": "bilingual_table_agent"
+  },
+  {
+    "document_id": "D04",
+    "file": "Year 2022-23.pdf",
+    "expected_agent": "bilingual_table_agent"
+  },
+  {
+    "document_id": "D05",
+    "file": "Year 2023-24.pdf",
+    "expected_agent": "bilingual_table_agent"
+  },
+  {
+    "document_id": "D06",
+    "file": "Year 2024-25.pdf",
+    "expected_agent": "bilingual_table_agent"
+  },
+  {
+    "document_id": "D07",
+    "file": "37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf",
+    "expected_agent": "matrix_table_agent"
+  },
+  {
+    "document_id": "D08",
+    "file": "IslandwiseStatistical2022-23.pdf",
+    "expected_agent": "island_profile_agent"
+  },
+  {
+    "document_id": "D09",
+    "file": "IslandwiseStatistical2023-24.pdf",
+    "expected_agent": "island_profile_agent"
+  },
+  {
+    "document_id": "D10",
+    "file": "IslandwiseStatistical2024-25.pdf",
+    "expected_agent": "island_profile_agent"
+  },
+  {
+    "document_id": "D11",
+    "file": "Fooditems2023.pdf",
+    "expected_agent": "price_table_agent"
+  },
+  {
+    "document_id": "D12",
+    "file": "Fooditems2024.pdf",
+    "expected_agent": "price_table_agent"
+  },
+  {
+    "document_id": "D13",
+    "file": "Fooditems2025.pdf",
+    "expected_agent": "price_table_agent"
+  },
+  {
+    "document_id": "D14",
+    "file": "food processing for sustainable growth.pdf",
+    "expected_agent": "narrative_agent"
+  },
+  {
+    "document_id": "D15",
+    "file": "subsidies 2024-25.pdf",
+    "expected_agent": "narrative_agent"
+  },
+  {
+    "document_id": "D16",
+    "file": "agri census 2015-16.png",
+    "expected_agent": "image_table_agent"
+  },
+  {
+    "document_id": "D17",
+    "file": "Andaman Nicobar LULC 2015-16 data.pdf",
+    "expected_agent": "lulc_agent"
+  },
+  {
+    "document_id": "D18",
+    "file": "India LULC atlas 2024.pdf",
+    "expected_agent": "lulc_agent"
+  },
+  {
+    "document_id": "D19",
+    "file": "Map of India LULC 2024-25.pdf",
+    "expected_agent": "skip"
+  },
+  {
+    "document_id": "D20",
+    "file": "Andaman Nicobar LULC 2015-16 map.jpg",
+    "expected_agent": "skip"
+  }
+]

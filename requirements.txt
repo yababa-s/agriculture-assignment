@@ -1,0 +1,14 @@
+# Core
+mlx-lm>=0.32          # local LLM inference + LoRA/QLoRA training on Apple Silicon
+langgraph>=1.2        # orchestration (supervisor/router state graph)
+langchain-core>=1.0
+langsmith>=0.14       # tracing + evaluation runs (needs LANGSMITH_API_KEY)
+agentevals>=0.0.9     # trajectory evaluators
+# Document processing
+pdfplumber>=0.11      # table geometry extraction
+pymupdf>=1.28         # text layer, page rendering
+ocrmac>=1.0           # macOS Vision OCR for images (fallback: none -> marked pending)
+rapidfuzz>=3.14       # fuzzy entity resolution
+pandas>=2.2
+pydantic>=2.10
+pytest>=8

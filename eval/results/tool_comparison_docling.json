@@ -1,0 +1,62 @@
+{
+  "C1_raster_grid": {
+    "tables_found": 1,
+    "correct": 4,
+    "of": 6,
+    "detail": {
+      "Ladies finger": true,
+      "Onion": false,
+      "Grape": false,
+      "Drumstick": true,
+      "Mutton": true,
+      "Garlic": true
+    },
+    "seconds": 87.7
+  },
+  "C2_rotated_headers": {
+    "tables_found": 1,
+    "correct": 9,
+    "of": 9,
+    "detail": {
+      "Transferred to PRI": true,
+      "In Department": true,
+      "Loan-cum-": true,
+      "Private procurement": true,
+      "Distribute on subsidy": true,
+      "RGRP distribute": true,
+      "Kisan Credit Card": true,
+      "Pond": true,
+      "Farmers": true
+    },
+    "seconds": 9.8
+  },
+  "C3_kruti_dev": {
+    "tables_found": 2,
+    "correct": 0,
+    "of": 8,
+    "detail": {
+      "धान": false,
+      "नारियल": false,
+      "सुपारी": false,
+      "मसाला": false,
+      "फल": false,
+      "दलहन": false,
+      "तिलहन": false,
+      "सब्जियाँ": false
+    },
+    "devanagari_chars": 0,
+    "seconds": 5.2
+  },
+  "C4_screenshot": {
+    "tables_found": 2,
+    "correct": 4,
+    "of": 4,
+    "detail": {
+      "Below 0.5": true,
+      "1.0 - 2.0": true,
+      "4.0 - 5.0": true,
+      "Total": true
+    },
+    "seconds": 39.4
+  }
+}

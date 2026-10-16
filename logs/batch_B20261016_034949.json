@@ -1,0 +1,585 @@
+{
+  "batch_id": "B20261016_034949",
+  "documents": [
+    {
+      "document_id": "D01",
+      "file": "42-Zone-Wise Area and Production of Crops During 2023-24.pdf",
+      "run_id": "ca2b09b6cc02",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 1159,
+      "loaded": 1159,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 1159,
+        "accepted": 1159,
+        "rejected": 0,
+        "warnings": 9,
+        "cross_checks": {
+          "yield_checked": 55,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D02",
+      "file": "47-Area and Production 2025-26.pdf",
+      "run_id": "28a22ed232ae",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 2352,
+      "loaded": 2352,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 2352,
+        "accepted": 2352,
+        "rejected": 0,
+        "warnings": 18,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 603,
+          "sum_mismatch": 7
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D03",
+      "file": "Year 2021-22.pdf",
+      "run_id": "9276a7030775",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 7,
+      "notes": [
+        "TypeError: llm_map.<locals>.<lambda>() got an unexpected keyword argument 'table'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D04",
+      "file": "Year 2022-23.pdf",
+      "run_id": "a8ca3302d4c3",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 27,
+      "notes": [
+        "TypeError: llm_map.<locals>.<lambda>() got an unexpected keyword argument 'table'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D05",
+      "file": "Year 2023-24.pdf",
+      "run_id": "191241167ae3",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 25,
+      "notes": [
+        "TypeError: llm_map.<locals>.<lambda>() got an unexpected keyword argument 'table'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D06",
+      "file": "Year 2024-25.pdf",
+      "run_id": "bc51f3885b05",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 23,
+      "notes": [
+        "TypeError: llm_map.<locals>.<lambda>() got an unexpected keyword argument 'table'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D07",
+      "file": "37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf",
+      "run_id": "348280d5ed3d",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [
+        "TypeError: llm_map.<locals>.<lambda>() got an unexpected keyword argument 'table'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D08",
+      "file": "IslandwiseStatistical2022-23.pdf",
+      "run_id": "41ae511db064",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [
+        "TypeError: IslandProfileAgent._llm_extract.<locals>.<lambda>() got an unexpected keyword argument 'island'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D09",
+      "file": "IslandwiseStatistical2023-24.pdf",
+      "run_id": "b14012e2972e",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [
+        "TypeError: IslandProfileAgent._llm_extract.<locals>.<lambda>() got an unexpected keyword argument 'island'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D10",
+      "file": "IslandwiseStatistical2024-25.pdf",
+      "run_id": "11882ffbc079",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [
+        "TypeError: IslandProfileAgent._llm_extract.<locals>.<lambda>() got an unexpected keyword argument 'island'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D11",
+      "file": "Fooditems2023.pdf",
+      "run_id": "3eec6aad1e52",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 7728,
+      "loaded": 7728,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 7728,
+        "accepted": 7728,
+        "rejected": 0,
+        "warnings": 574,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D12",
+      "file": "Fooditems2024.pdf",
+      "run_id": "2076650dace1",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 7728,
+      "loaded": 7728,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 7728,
+        "accepted": 7728,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D13",
+      "file": "Fooditems2025.pdf",
+      "run_id": "0a133c4af187",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 7728,
+      "loaded": 7728,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 7728,
+        "accepted": 7728,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D14",
+      "file": "food processing for sustainable growth.pdf",
+      "run_id": "4f9c07b8c9c7",
+      "agent": "narrative_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [
+        "TypeError: NarrativeAgent._facts.<locals>.<lambda>() got an unexpected keyword argument 'page'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D15",
+      "file": "subsidies 2024-25.pdf",
+      "run_id": "a42c0fac4267",
+      "agent": "narrative_agent",
+      "routed_by": "rule",
+      "status": "failed",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [
+        "TypeError: NarrativeAgent._facts.<locals>.<lambda>() got an unexpected keyword argument 'page'"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D16",
+      "file": "agri census 2015-16.png",
+      "run_id": "46cfa06ed50c",
+      "agent": "image_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 144,
+      "loaded": 144,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 144,
+        "accepted": 144,
+        "rejected": 0,
+        "warnings": 2,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D17",
+      "file": "Andaman Nicobar LULC 2015-16 data.pdf",
+      "run_id": "65975522cf7f",
+      "agent": "lulc_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 28,
+      "loaded": 28,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 28,
+        "accepted": 28,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D18",
+      "file": "India LULC atlas 2024.pdf",
+      "run_id": "bd4d44363936",
+      "agent": "lulc_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [
+        "Atlas charts carry no printed values: pending chart digitisation"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D19",
+      "file": "Map of India LULC 2024-25.pdf",
+      "run_id": "7df3a5dc59b6",
+      "agent": "skip",
+      "routed_by": "rule",
+      "status": "skipped",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [
+        "routed to skip"
+      ],
+      "validation": {}
+    },
+    {
+      "document_id": "D20",
+      "file": "Andaman Nicobar LULC 2015-16 map.jpg",
+      "run_id": "64fbf3097f50",
+      "agent": "skip",
+      "routed_by": "rule",
+      "status": "skipped",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [
+        "routed to skip"
+      ],
+      "validation": {}
+    }
+  ],
+  "elapsed_s": 69.2,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/TEAMID_AN_qlora_v1)"
+}

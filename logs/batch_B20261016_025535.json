@@ -1,0 +1,94 @@
+{
+  "batch_id": "B20261016_025535",
+  "documents": [
+    {
+      "document_id": "U01",
+      "file": "unseen_food_prices_2025.pdf",
+      "run_id": "029d86ea1182",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 574,
+      "loaded": 574,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 574,
+        "accepted": 574,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "U02",
+      "file": "unseen_hindi_floriculture_2024-25.pdf",
+      "run_id": "86bce20abfe8",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 216,
+      "loaded": 216,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 216,
+        "accepted": 216,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 48,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "U03",
+      "file": "unseen_island_profiles_2024-25.pdf",
+      "run_id": "6d717b46d9d7",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 49,
+      "loaded": 49,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 49,
+        "accepted": 49,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 1.8,
+  "model": "none (rules only)"
+}

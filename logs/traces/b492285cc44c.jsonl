@@ -1,0 +1,2 @@
+{"i": 0, "t": 0.0, "agent": "router_agent", "kind": "decision", "name": "intake", "by": "rule", "payload": {"document": "D19", "file": "Map of India LULC 2024-25.pdf", "queue_left": 1}}
+{"i": 1, "t": 0.001, "agent": "router_agent", "kind": "decision", "name": "route", "by": "rule", "payload": {"agent": "skip", "reason": "manifest source group G8_RASTER_MAPS"}}

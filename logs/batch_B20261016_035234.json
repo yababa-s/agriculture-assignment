@@ -1,0 +1,580 @@
+{
+  "batch_id": "B20261016_035234",
+  "documents": [
+    {
+      "document_id": "D01",
+      "file": "42-Zone-Wise Area and Production of Crops During 2023-24.pdf",
+      "run_id": "1f0e55d6115a",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 1159,
+      "loaded": 1159,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 1159,
+        "accepted": 1159,
+        "rejected": 0,
+        "warnings": 9,
+        "cross_checks": {
+          "yield_checked": 55,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D02",
+      "file": "47-Area and Production 2025-26.pdf",
+      "run_id": "f2f174073993",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 2352,
+      "loaded": 2352,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 2352,
+        "accepted": 2352,
+        "rejected": 0,
+        "warnings": 18,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 603,
+          "sum_mismatch": 7
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D03",
+      "file": "Year 2021-22.pdf",
+      "run_id": "08ee61f2b49a",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 950,
+      "loaded": 835,
+      "rejected": 0,
+      "llm_calls": 115,
+      "notes": [
+        "p4_t1: 3 columns unmapped (col 1: metric 'distribute' is not an allowed id)",
+        "p6_t1: 0 columns unmapped (unknown col in {'col': 5, 'location': 'AN', 'metric': 'fertilizer_consumption', )"
+      ],
+      "validation": {
+        "input": 950,
+        "accepted": 950,
+        "rejected": 0,
+        "warnings": 12,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 74,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 115,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D04",
+      "file": "Year 2022-23.pdf",
+      "run_id": "2b655ea99a24",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 954,
+      "loaded": 954,
+      "rejected": 0,
+      "llm_calls": 103,
+      "notes": [
+        "p4_t1: 3 columns unmapped (col 1: metric 'distribute' is not an allowed id)",
+        "p6_t1: 0 columns unmapped (unknown col in {'col': 5, 'location': 'AN', 'metric': 'fertilizer_consumption', )"
+      ],
+      "validation": {
+        "input": 954,
+        "accepted": 954,
+        "rejected": 0,
+        "warnings": 8,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 122,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D05",
+      "file": "Year 2023-24.pdf",
+      "run_id": "4315904c1d26",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 976,
+      "loaded": 964,
+      "rejected": 0,
+      "llm_calls": 99,
+      "notes": [
+        "p4_t1: 0 columns unmapped (unknown col in {'col': 2, 'location': 'AN', 'metric': 'holdings_area', 'period':)",
+        "p6_t1: 0 columns unmapped (unknown col in {'col': 5, 'location': 'AN', 'metric': 'fertilizer_consumption', )"
+      ],
+      "validation": {
+        "input": 976,
+        "accepted": 976,
+        "rejected": 0,
+        "warnings": 9,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 120,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 12,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D06",
+      "file": "Year 2024-25.pdf",
+      "run_id": "9b5a80c11071",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 954,
+      "loaded": 954,
+      "rejected": 0,
+      "llm_calls": 95,
+      "notes": [
+        "p4_t1: 3 columns unmapped (col 1: metric 'distribute' is not an allowed id)",
+        "p6_t1: 0 columns unmapped (unknown col in {'col': 5, 'location': 'AN', 'metric': 'fertilizer_consumption', )"
+      ],
+      "validation": {
+        "input": 954,
+        "accepted": 954,
+        "rejected": 0,
+        "warnings": 13,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 120,
+          "sum_mismatch": 1
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D07",
+      "file": "37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf",
+      "run_id": "c99ce1a268ac",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 648,
+      "loaded": 648,
+      "rejected": 0,
+      "llm_calls": 4,
+      "notes": [
+        "p1_t0: 1 columns unmapped (col 18: metric 'irrigation_sources' is not an allowed id)",
+        "p2_t0: 1 columns unmapped (col 18: metric 'irrigation_sources' is not an allowed id)"
+      ],
+      "validation": {
+        "input": 648,
+        "accepted": 648,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D08",
+      "file": "IslandwiseStatistical2022-23.pdf",
+      "run_id": "6b16cfab9326",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 302,
+      "loaded": 302,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 302,
+        "accepted": 302,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D09",
+      "file": "IslandwiseStatistical2023-24.pdf",
+      "run_id": "8338d09578dd",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 306,
+      "loaded": 306,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 306,
+        "accepted": 306,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D10",
+      "file": "IslandwiseStatistical2024-25.pdf",
+      "run_id": "c22a745828d9",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 295,
+      "loaded": 295,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 295,
+        "accepted": 295,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D11",
+      "file": "Fooditems2023.pdf",
+      "run_id": "899ba9c4523e",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 7728,
+      "loaded": 7728,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 7728,
+        "accepted": 7728,
+        "rejected": 0,
+        "warnings": 574,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D12",
+      "file": "Fooditems2024.pdf",
+      "run_id": "8649f2bf9386",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 7728,
+      "loaded": 7728,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 7728,
+        "accepted": 7728,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D13",
+      "file": "Fooditems2025.pdf",
+      "run_id": "c8c4d6813b2f",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 7728,
+      "loaded": 7728,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 7728,
+        "accepted": 7728,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D14",
+      "file": "food processing for sustainable growth.pdf",
+      "run_id": "8e8f8cfc1b2c",
+      "agent": "narrative_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 15,
+      "notes": [],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D15",
+      "file": "subsidies 2024-25.pdf",
+      "run_id": "1a029571e4ec",
+      "agent": "narrative_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 42,
+      "loaded": 42,
+      "rejected": 0,
+      "llm_calls": 7,
+      "notes": [],
+      "validation": {
+        "input": 42,
+        "accepted": 42,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D16",
+      "file": "agri census 2015-16.png",
+      "run_id": "7167ab373856",
+      "agent": "image_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 144,
+      "loaded": 144,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 144,
+        "accepted": 144,
+        "rejected": 0,
+        "warnings": 2,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D17",
+      "file": "Andaman Nicobar LULC 2015-16 data.pdf",
+      "run_id": "061ea4b90440",
+      "agent": "lulc_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 28,
+      "loaded": 28,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 28,
+        "accepted": 28,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D18",
+      "file": "India LULC atlas 2024.pdf",
+      "run_id": "c7116935b61f",
+      "agent": "lulc_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [
+        "Atlas charts carry no printed values: pending chart digitisation"
+      ],
+      "validation": {
+        "input": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D19",
+      "file": "Map of India LULC 2024-25.pdf",
+      "run_id": "222f6323e327",
+      "agent": "skip",
+      "routed_by": "rule",
+      "status": "skipped",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [
+        "routed to skip"
+      ],
+      "validation": {}
+    },
+    {
+      "document_id": "D20",
+      "file": "Andaman Nicobar LULC 2015-16 map.jpg",
+      "run_id": "002dc5c90336",
+      "agent": "skip",
+      "routed_by": "rule",
+      "status": "skipped",
+      "attempts": 1,
+      "extracted": 0,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [
+        "routed to skip"
+      ],
+      "validation": {}
+    }
+  ],
+  "elapsed_s": 1445.0,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/TEAMID_AN_qlora_v1)"
+}

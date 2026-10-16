@@ -1,0 +1,449 @@
+{
+  "label": "base",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "started": "2026-10-16 03:31:08",
+  "island_extraction": {
+    "n_islands": 31,
+    "n_gold_items": 294,
+    "n_pred_items": 153,
+    "json_valid_rate": 0.968,
+    "json_salvaged_rate": 0.032,
+    "catalogue_adherence": 0.765,
+    "groundedness_rate": 0.301,
+    "raw": {
+      "precision": 0.503,
+      "recall": 0.255,
+      "f1": 0.339
+    },
+    "after_groundedness_gate": {
+      "precision": 0.978,
+      "recall": 0.153,
+      "f1": 0.265
+    },
+    "per_metric_recall": {
+      "agri_depot_count": 0.08,
+      "agri_farm_count": 0.17,
+      "agri_power_connections": 0.33,
+      "area_under_cultivation": 0.94,
+      "check_dam_count": 0.0,
+      "farmers_count": 0.12,
+      "fertilizer_consumption": 0.15,
+      "fish_landed": 0.0,
+      "forest_area": 0.45,
+      "geographical_area": 0.42,
+      "godown_count": 0.0,
+      "households": 0.11,
+      "livestock_count": 0.06,
+      "manure_unit_count": 0.0,
+      "non_organic_farm_count": 0.2,
+      "organic_farm_count": 0.0,
+      "population": 0.43,
+      "poultry_count": 0.05,
+      "seedling_distributed": 0.25,
+      "vermi_bed_count": 0.0
+    },
+    "latency_s_median": 2.53,
+    "examples": [
+      {
+        "island": "ISL_NARCONDAM",
+        "missed": [],
+        "spurious": [
+          "('area_under_cultivation', None, None)"
+        ]
+      },
+      {
+        "island": "ISL_EAST",
+        "missed": [
+          "('households', None, 5.0)"
+        ],
+        "spurious": []
+      },
+      {
+        "island": "ISL_STEWART",
+        "missed": [
+          "('households', None, 1.0)"
+        ],
+        "spurious": []
+      }
+    ]
+  },
+  "column_mapping": {
+    "n_examples": 11,
+    "n_columns": 74,
+    "json_valid_rate": 0.909,
+    "column_accuracy": 0.027,
+    "location_accuracy": 0.284,
+    "metric_accuracy": 0.108,
+    "period_accuracy": 0.689,
+    "latency_s_median": 3.42,
+    "errors": [
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 2,
+        "gold": [
+          "ZN_DIGLIPUR",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_DIGLIPUR",
+          "area_under_cultivation",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 3,
+        "gold": [
+          "ZN_DIGLIPUR",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          null,
+          "production",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 4,
+        "gold": [
+          "ZN_MAYABUNDER",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_MAYABUNDER",
+          "area_under_cultivation",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 5,
+        "gold": [
+          "ZN_MAYABUNDER",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          null,
+          "production",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 6,
+        "gold": [
+          "ZN_RANGAT",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_RANGAT",
+          "area_under_cultivation",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 7,
+        "gold": [
+          "ZN_RANGAT",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          null,
+          "production",
+          "2025-26"
+        ]
+      }
+    ]
+  },
+  "routing": {
+    "n": 20,
+    "accuracy": 0.4,
+    "valid_agent_id_rate": 1.0,
+    "hybrid_accuracy": 0.95,
+    "model_accuracy_on_ambiguous": 0.75,
+    "n_ambiguous": 4,
+    "rows": [
+      {
+        "doc": "D01",
+        "expected": "matrix_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": false,
+        "hybrid": "matrix_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D02",
+        "expected": "matrix_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": false,
+        "hybrid": "matrix_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D03",
+        "expected": "bilingual_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D04",
+        "expected": "bilingual_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D05",
+        "expected": "bilingual_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D06",
+        "expected": "bilingual_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D07",
+        "expected": "matrix_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": false,
+        "hybrid": "matrix_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D08",
+        "expected": "island_profile_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "island_profile_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D09",
+        "expected": "island_profile_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "island_profile_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D10",
+        "expected": "island_profile_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "island_profile_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D11",
+        "expected": "price_table_agent",
+        "predicted": "price_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "price_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D12",
+        "expected": "price_table_agent",
+        "predicted": "price_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "price_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D13",
+        "expected": "price_table_agent",
+        "predicted": "price_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "price_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D14",
+        "expected": "narrative_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": false,
+        "hybrid": "matrix_table_agent",
+        "hybrid_ok": false
+      },
+      {
+        "doc": "D15",
+        "expected": "narrative_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "narrative_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D16",
+        "expected": "image_table_agent",
+        "predicted": "matrix_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "image_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D17",
+        "expected": "lulc_agent",
+        "predicted": "lulc_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "lulc_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D18",
+        "expected": "lulc_agent",
+        "predicted": "lulc_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "lulc_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D19",
+        "expected": "skip",
+        "predicted": "lulc_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "skip",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D20",
+        "expected": "skip",
+        "predicted": "lulc_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "skip",
+        "hybrid_ok": true
+      }
+    ]
+  },
+  "elapsed_s": 232.0,
+  "llm_calls": 62,
+  "island_perturbed": {
+    "n_islands": 31,
+    "n_gold_items": 294,
+    "n_pred_items": 210,
+    "json_valid_rate": 0.935,
+    "json_salvaged_rate": 0.065,
+    "catalogue_adherence": 0.762,
+    "groundedness_rate": 0.39,
+    "raw": {
+      "precision": 0.461,
+      "recall": 0.279,
+      "f1": 0.347
+    },
+    "after_groundedness_gate": {
+      "precision": 0.846,
+      "recall": 0.187,
+      "f1": 0.306
+    },
+    "per_metric_recall": {
+      "agri_depot_count": 0.17,
+      "agri_farm_count": 0.17,
+      "agri_power_connections": 0.17,
+      "area_under_cultivation": 0.94,
+      "check_dam_count": 0.2,
+      "farmers_count": 0.12,
+      "fertilizer_consumption": 0.0,
+      "fish_landed": 0.0,
+      "forest_area": 0.48,
+      "geographical_area": 0.45,
+      "godown_count": 0.11,
+      "households": 0.14,
+      "livestock_count": 0.06,
+      "manure_unit_count": 0.0,
+      "non_organic_farm_count": 0.0,
+      "organic_farm_count": 0.22,
+      "population": 0.47,
+      "poultry_count": 0.05,
+      "seedling_distributed": 0.5,
+      "vermi_bed_count": 0.17
+    },
+    "latency_s_median": 3.32,
+    "examples": [
+      {
+        "island": "ISL_NARCONDAM",
+        "missed": [],
+        "spurious": [
+          "('area_under_cultivation', None, None)"
+        ]
+      },
+      {
+        "island": "ISL_EAST",
+        "missed": [
+          "('households', None, 5.0)"
+        ],
+        "spurious": []
+      },
+      {
+        "island": "ISL_STEWART",
+        "missed": [
+          "('households', None, 1.0)"
+        ],
+        "spurious": []
+      }
+    ]
+  }
+}
