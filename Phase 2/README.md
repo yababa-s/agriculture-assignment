@@ -23,6 +23,19 @@ price tables, budget memoranda, a screenshot, and LULC statistics.
 | Interim report | [`docs/interim_report.md`](docs/interim_report.md) |
 | Logs | `logs/batch_*.json` (per batch), `logs/traces/*.jsonl` (per run), `logs/train_lora_*.log` |
 
+## Large files (GitHub Release `phase2-v1`)
+
+The database and adapter weights are not in the git history; they are attached to the release
+[phase2-v1](https://github.com/yababa-s/agriculture-assignment/releases/tag/phase2-v1):
+
+| File | Size | Unzip to |
+|---|---|---|
+| [TEAMID_AN_database_v1.zip](https://github.com/yababa-s/agriculture-assignment/releases/download/phase2-v1/TEAMID_AN_database_v1.zip) | 3.7 MB | `db/` |
+| [TEAMID_AN_qlora_adapter_v1.zip](https://github.com/yababa-s/agriculture-assignment/releases/download/phase2-v1/TEAMID_AN_qlora_adapter_v1.zip) | 23 MB | `adapters/` |
+
+The base model (`mlx-community/Qwen2.5-3B-Instruct-4bit`) downloads automatically from Hugging Face on first use.
+The raw corpus is in `Phase 1/` of this repository.
+
 ## Setup (macOS, Apple Silicon)
 
 ```bash

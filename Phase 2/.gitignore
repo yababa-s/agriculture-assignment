@@ -9,3 +9,4 @@ adapters/*/
 !adapters/README.md
 data/raw/
 .env
+release/
