@@ -29,6 +29,8 @@ Optional hosted trajectory evaluation (requires internet access and your own `LA
 
 The pipeline recreates `phase2/db/agriculture_phase2.sqlite`, processes the manifest, and writes local traces under `phase2/logs/`. It does not download sources or models.
 
+When this folder is placed inside the course repository at `Phase 2/Phase2_Submission`, `source_paths.py` reads the existing files from the sibling `Phase 1` folder. The downloadable ZIP also includes its own copy of the Phase 1 corpus.
+
 ## Folder guide
 
 - `corpus/` — the Phase 1 documents, unchanged.

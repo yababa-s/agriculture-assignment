@@ -5,9 +5,10 @@ import hashlib
 from pathlib import Path
 
 from pypdf import PdfReader
+from source_paths import phase1_corpus_root
 
 ROOT = Path(__file__).resolve().parents[1]
-CORPUS = ROOT / "corpus"
+CORPUS = phase1_corpus_root()
 OUT = Path(__file__).resolve().parent / "data" / "manifest.csv"
 
 GROUPS = {

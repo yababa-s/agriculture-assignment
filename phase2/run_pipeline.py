@@ -13,6 +13,7 @@ from pathlib import Path
 import pdfplumber
 
 from krutidev import split_bilingual_label
+from source_paths import resolve_source_path
 
 ROOT = Path(__file__).resolve().parents[1]
 PHASE2 = Path(__file__).resolve().parent
@@ -130,7 +131,7 @@ def run_table_agent(conn, run_id: str, doc: dict, path: Path, stream) -> tuple[s
     agent = "pdf_table_agent"
     trace(stream, run_id, doc["doc_id"], agent, "decision", {"by": "rule", "group": doc["source_group"]})
     trace(stream, run_id, doc["doc_id"], agent, "tool_call",
-          {"tool": "pdfplumber_extract_tables", "path": str(path), "args_validated": True})
+          {"tool": "pdfplumber_extract_tables", "path": doc["relative_path"].replace("\\", "/"), "args_validated": True})
     cells = facts = pages = tables_found = 0
     try:
         with pdfplumber.open(path) as pdf:
@@ -170,7 +171,7 @@ def run_text_agent(conn, run_id: str, doc: dict, path: Path, stream) -> tuple[st
     agent = "pdf_text_agent"
     trace(stream, run_id, doc["doc_id"], agent, "decision", {"by": "rule", "group": doc["source_group"]})
     trace(stream, run_id, doc["doc_id"], agent, "tool_call",
-          {"tool": "pdfplumber_extract_text", "path": str(path), "args_validated": True})
+          {"tool": "pdfplumber_extract_text", "path": doc["relative_path"].replace("\\", "/"), "args_validated": True})
     pages = facts = 0
     try:
         with pdfplumber.open(path) as pdf:
@@ -215,7 +216,7 @@ def main() -> int:
     results = []
     with trace_path.open("w", encoding="utf-8") as stream:
         for doc in manifest:
-            path = ROOT / "corpus" / Path(doc["relative_path"])
+            path = resolve_source_path(doc["relative_path"])
             conn.execute("""INSERT OR REPLACE INTO source_document
               (doc_id,file_name,relative_path,source_group,source_type,source_name,source_url,language,modality,
                license_note,sha256,pages,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)""",

@@ -6,6 +6,7 @@ from pathlib import Path
 
 from krutidev import decode_kruti_label
 from run_pipeline import DB, ROOT, load_manifest, now
+from source_paths import resolve_source_path
 
 PHASE2 = Path(__file__).resolve().parent
 
@@ -49,7 +50,7 @@ def main() -> int:
     decoder = [{"legacy": a, "expected": b, "found": decode_kruti_label(a), "source_split": src,
                 "correct": decode_kruti_label(a) == b} for a, b, src in examples]
     manifest = load_manifest()
-    mapping_ok = len(manifest) == docs and all((ROOT / "corpus" / d["relative_path"]).exists() for d in manifest)
+    mapping_ok = len(manifest) == docs and all(resolve_source_path(d["relative_path"]).exists() for d in manifest)
     route_map = {"G1_AREA_PRODUCTION": "pdf_table_agent", "G2_BASIC_STATS": "pdf_table_agent",
                  "G3_ISLAND_PROFILES": "pdf_text_agent", "G4_NARRATIVE": "pdf_text_agent",
                  "G5_PRICES": "pdf_table_agent", "G6_CENSUS_IMAGE": "pending_image_ocr",
@@ -86,7 +87,7 @@ def main() -> int:
         agent_summary["tool_calls"] += len(actual_calls)
         agent_summary["matching_trajectories"] += int(trajectory_ok)
         rel = manifest_by_id[doc_id]["relative_path"]
-        expected_path = str((ROOT / "corpus" / rel).resolve())
+        expected_path = rel.replace("\\", "/")
         for call in actual_calls:
             ok = call.get("path") == expected_path and call.get("args_validated") is True
             tool_inputs.append({"doc_id": doc_id, "tool": call.get("tool"), "valid": ok})

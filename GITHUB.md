@@ -1,10 +1,10 @@
 # GitHub handoff
 
-This folder is a self-contained Phase 2 repository. It includes the Phase 1 corpus as supplied, the SQLite database, reproducible extraction and evaluation code, checked logs, and presentation notes.
+This folder is a self-contained Phase 2 package. It includes the Phase 1 corpus as supplied, the SQLite database, reproducible extraction and evaluation code, checked logs, and presentation notes. In the course GitHub repository, the package can reuse the existing `Phase 1` folder through `phase2/source_paths.py`.
 
-Suggested repository: `yababa-s/agriculture-assignment`, the repository referenced in the project brief. The work is prepared locally; no push or pull request is claimed unless a remote publication is recorded separately.
+Repository: `yababa-s/agriculture-assignment`, the repository referenced in the project brief. The review branch is `phase2-rebuild`; it keeps `main` unchanged.
 
-To publish as a reviewable branch without replacing the default branch:
+If reproducing the branch from this local checkout:
 
 ```powershell
 git remote add origin https://github.com/yababa-s/agriculture-assignment.git

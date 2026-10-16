@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pdfplumber
+from source_paths import resolve_source_path
 
 PHASE2 = Path(__file__).resolve().parent
 ROOT = PHASE2.parent
@@ -25,7 +26,7 @@ TEST = [
 def main() -> None:
     for split, rows in (("train", TRAIN), ("test", TEST)):
         for row in rows:
-            source_path = ROOT / "corpus" / "basic stats" / row["document"]
+            source_path = resolve_source_path(f"basic stats/{row['document']}")
             if not source_path.exists():
                 raise FileNotFoundError(row["document"])
             with pdfplumber.open(source_path) as pdf:

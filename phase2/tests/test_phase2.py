@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from krutidev import decode_kruti_label, split_bilingual_label
 from run_pipeline import load_manifest, number
+from source_paths import resolve_source_path
 
 
 class Phase2CoreTests(unittest.TestCase):
@@ -29,7 +30,7 @@ class Phase2CoreTests(unittest.TestCase):
         manifest = load_manifest()
         self.assertEqual(len(manifest), 17)
         for item in manifest:
-            path = Path(__file__).resolve().parents[2] / "corpus" / item["relative_path"]
+            path = resolve_source_path(item["relative_path"])
             self.assertTrue(path.exists(), item["relative_path"])
 
 
