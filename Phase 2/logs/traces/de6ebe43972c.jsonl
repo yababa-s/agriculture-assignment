@@ -1,0 +1,8 @@
+{"i": 0, "t": 0.0, "agent": "router_agent", "kind": "decision", "name": "intake", "by": "rule", "payload": {"document": "D14", "file": "food processing for sustainable growth.pdf", "queue_left": 6}}
+{"i": 1, "t": 0.001, "agent": "router_agent", "kind": "decision", "name": "route", "by": "rule", "payload": {"agent": "narrative_agent", "reason": "manifest source group G5_NARRATIVE"}}
+{"i": 2, "t": 0.032, "agent": "router_agent", "kind": "tool_call", "name": "segment_schemes", "by": "agent", "payload": {"pages": "<16 texts, 24562 chars>"}}
+{"i": 3, "t": 0.033, "agent": "router_agent", "kind": "tool_result", "name": "segment_schemes", "by": "tool", "payload": {"ok": true, "result": []}}
+{"i": 4, "t": 0.033, "agent": "router_agent", "kind": "decision", "name": "document_kind", "by": "rule", "payload": {"kind": "report", "reason": "no scheme headings"}}
+{"i": 5, "t": 0.033, "agent": "router_agent", "kind": "output", "name": "records", "by": "agent", "payload": {"observations": 0, "facts": 0, "schemes": 0, "outlay_records": 0, "facts_rejected": 0}}
+{"i": 6, "t": 0.033, "agent": "router_agent", "kind": "decision", "name": "validate", "by": "rule", "payload": {"input": 0, "accepted": 0, "rejected": 0, "warnings": 0, "cross_checks": {"yield_checked": 0, "yield_mismatch": 0, "sum_checked": 0, "sum_mismatch": 0}, "within_batch_duplicates": 0, "error_rate": 0.0, "top_errors": []}}
+{"i": 7, "t": 0.034, "agent": "router_agent", "kind": "output", "name": "load", "by": "agent", "payload": {"inserted": 0, "duplicates_skipped": 0, "rejected": 0, "facts": 0, "status": "needs_review"}}

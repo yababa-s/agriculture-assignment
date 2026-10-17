@@ -8,10 +8,12 @@ through the model (used to evaluate tool-selection accuracy).
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from agri.agents.base import AgentContext, BaseAgent
-from agri.tools.lang import detect_languages
+from agri.tools.lang import broken_devanagari_ratio, detect_languages
+from agri.tools.ocr import make_searchable_pdf, quick_ocr_text
 
 GROUP_TO_AGENT = {
     "G1_MATRIX_TABLES": "matrix_table_agent",
@@ -55,11 +57,15 @@ def fingerprint(path: str) -> dict:
                 cover = max(cover, (r.width * r.height) / (pg0.rect.width * pg0.rect.height))
     with pdfplumber.open(path) as pdf:
         ruled = sum(len(pg.find_tables()) for pg in pdf.pages[:3])
+    if ruled == 0 and cover > 0.5:
+        from agri.tools.pdf_tools import raster_rules
+        ruled = 1 if raster_rules(path, 1) else 0       # table lines drawn in a page image (scans, some DES files)
     first = " ".join(texts[0].split())[:600] if texts else ""
-    alltext = " ".join(texts).lower()
+    alltext = " ".join(" ".join(texts).lower().split())
     fp.update({
         "modality": "pdf", "pages": len(texts), "chars": sum(len(t) for t in texts), "ruled_tables_first3": ruled,
         "image_cover_p1": round(cover, 2),
+        "broken_hindi_ratio": broken_devanagari_ratio(" ".join(texts[:3])),
         **detect_languages(" ".join(texts[:3])),
         "keywords": [k for k in ("comparative statement of prices", "island-wise", "name of the scheme", "land use",
                                  "area and production", "production", "outlay", "census", "basic statistics")
@@ -83,13 +89,25 @@ def heuristic_route(fp: dict) -> tuple[str, bool]:
         return "island_profile_agent", True
     if "land use" in kw:
         return "lulc_agent", True
-    if fp.get("legacy_font"):
+    if fp.get("legacy_font") or (fp.get("languages") == "en+hi" and fp.get("ruled_tables_first3", 0) > 0):
         return "bilingual_table_agent", True
     if "name of the scheme" in kw:
         return "narrative_agent", True
     if fp.get("ruled_tables_first3", 0) == 0:
         return "narrative_agent", False
     return "matrix_table_agent", False
+
+
+_NUMS = re.compile(r"\d+(?:\.\d+)?")
+
+
+def looks_scanned(fp: dict) -> bool:
+    if fp.get("modality") == "image":
+        return fp.get("pixels", 0) <= 20_000_000          # bigger images are maps (brief: no raster interpretation)
+    if fp.get("broken_hindi_ratio", 0) > 0.05:
+        return True                                        # text layer garbles Hindi: read the page image instead
+    per_page = fp.get("chars", 0) / max(1, fp.get("pages", 1))
+    return per_page < 400 and fp.get("image_cover_p1", 0) > 0.5
 
 
 SYSTEM = ("You are the router of an agriculture document-extraction system. Pick the single best agent for the "
@@ -106,8 +124,30 @@ class RouterAgent(BaseAgent):
     agent_id = "router_agent"
     uses_llm = True
 
+    converted_path: str | None = None   # searchable PDF made from a scan/photo, for the next nodes
+
+    def _scanned(self, ctx: AgentContext, fp: dict):
+        """A scan or photo: OCR page 1 to tell a document from a map; documents get a searchable PDF."""
+        text = self.tool(ctx, "ocr_probe", quick_ocr_text, src=str(ctx.path),
+                         summarize=lambda t: {"words": len(t.split()), "numbers": len(_NUMS.findall(t)), "sample": t[:120]})
+        words, nums = len(text.split()), len(_NUMS.findall(text))
+        if fp.get("modality") == "image" and "holding" in text.lower():
+            ctx.tracer.decision("route", "rule", {"agent": "image_table_agent", "reason": "screenshot of a holdings census table"})
+            return "image_table_agent", "rule", "holdings census screenshot"
+        if nums < 30 and words < 250 and not fp.get("broken_hindi_ratio"):
+            ctx.tracer.decision("route", "rule", {"agent": "skip", "reason": f"picture with {words} words: map or figure"})
+            return "skip", "rule", "scanned picture with few words (map)"
+        st = self.tool(ctx, "make_searchable_pdf", make_searchable_pdf, src=str(ctx.path),
+                       force_hindi=bool(fp.get("broken_hindi_ratio")))
+        ctx.tracer.decision("ocr_to_searchable_pdf", "rule", {"reason": f"scanned document ({words} words, {nums} numbers)",
+                                                             "engines": st["engines"], "mean_conf": st["mean_conf"]})
+        self.converted_path = st["path"]
+        ctx.path = Path(st["path"])
+        return None
+
     def route(self, ctx: AgentContext, force_llm: bool = False) -> tuple[str, str, str]:
-        """Returns (agent_id, decided_by, reason)."""
+        """Returns (agent_id, decided_by, reason). After a scan is OCR'd, `converted_path` holds the searchable PDF."""
+        self.converted_path = None
         group = ctx.document.get("source_group")
         if group in GROUP_TO_AGENT and not force_llm:
             agent = GROUP_TO_AGENT[group]
@@ -115,6 +155,12 @@ class RouterAgent(BaseAgent):
             return agent, "rule", f"manifest source group {group}"
         fp = self.tool(ctx, "fingerprint_document", fingerprint, path=str(ctx.path),
                        summarize=lambda f: {k: v for k, v in f.items() if k != "first_page"})
+        if looks_scanned(fp):
+            decided = self._scanned(ctx, fp)
+            if decided:
+                return decided
+            fp = self.tool(ctx, "fingerprint_document", fingerprint, path=str(ctx.path),
+                           summarize=lambda f: {k: v for k, v in f.items() if k != "first_page"})
         h_agent, confident = heuristic_route(fp)
         if confident and not force_llm:
             # measured: fingerprint rules 0.95 vs 3B model 0.40 on the 20 corpus files, so decisive

@@ -178,6 +178,21 @@ def main() -> None:
               "  * raster maps are out of scope by brief",
               "  * an instructor file with a new price layout would rely on LLM column mapping",
               "  * no robots.txt-aware downloader yet: Phase 1 files were fetched by hand", ""]
+    rb = load("robustness_unseen.json")
+    if rb:
+        L += ["## 5a. Robustness: unseen file types (scans, photos, Unicode Hindi)\n",
+              "Built by `scripts/make_test_unseen.py` from corpus pages, so the correct values are known; run as UNSEEN files "
+              "(no manifest) by `experiments/robustness_unseen.py`. Precision = extracted values equal to a known value; "
+              "recall = known values recovered.\n",
+              "| Test document | Agent | Routed as expected | Precision | Recall | OCR |", "|---|---|---|---|---|---|"]
+        for c in rb["cases"]:
+            ocr = c.get("ocr", {})
+            L.append(f"| {c['case']} | {c['agent']} | {'yes' if c['routed_ok'] else 'no (' + c['expected_agent'] + ' expected)'} | "
+                     f"{c.get('precision', '—')} | {c.get('recall', '—')} | {', '.join(ocr.get('engines', [])) or '—'} |")
+        L += ["", "Reading: digital Unicode Hindi is solved; scanned English tables are mostly right when read; photos, scanned "
+              "bilingual pages and broken Hindi text layers work end to end but miss many values (OCR reading accuracy, "
+              "not routing, is the limit). Numbers checked by `check_unseen.py` are compared with the OCR text layer, so "
+              "for scans they show what was read, not whether the OCR read it correctly: compare a few by eye.", ""]
     if all(tools.values()):
         L += ["## 5. Tool comparison on the hardest cases\n", "| case | pdfplumber | PyMuPDF | Docling | ours |", "|---|---|---|---|---|"]
         for case in tools["ours"]:

@@ -1,0 +1,126 @@
+{
+  "batch": "ROBUSTNESS_20261018_012340",
+  "elapsed_s": 138.7,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v1)",
+  "cases": [
+    {
+      "case": "T1 scanned English tables",
+      "file": "scan_area_production_2025-26.pdf",
+      "doc": "U01",
+      "agent": "matrix_table_agent",
+      "expected_agent": "matrix_table_agent",
+      "routed_ok": true,
+      "status": "partial",
+      "loaded": 1574,
+      "llm_calls": 14,
+      "ocr": {
+        "reason": "scanned document (770 words, 687 numbers)",
+        "engines": [
+          "vision"
+        ],
+        "mean_conf": 1.0
+      },
+      "known_values": 1894,
+      "extracted_values": 1104,
+      "correct": 981,
+      "precision": 0.889,
+      "recall": 0.518
+    },
+    {
+      "case": "T2 photo of a price table",
+      "file": "photo_prices_jan2024.png",
+      "doc": "U02",
+      "agent": "price_table_agent",
+      "expected_agent": "price_table_agent",
+      "routed_ok": true,
+      "status": "partial",
+      "loaded": 42,
+      "llm_calls": 18,
+      "ocr": {
+        "reason": "scanned document (756 words, 575 numbers)",
+        "engines": [
+          "vision"
+        ],
+        "mean_conf": 1.0
+      },
+      "known_values": 346,
+      "extracted_values": 36,
+      "correct": 36,
+      "precision": 1.0,
+      "recall": 0.104
+    },
+    {
+      "case": "T3 Unicode Hindi table",
+      "file": "hindi_area_production_2025-26.pdf",
+      "doc": "U03",
+      "agent": "matrix_table_agent",
+      "expected_agent": "matrix_table_agent",
+      "routed_ok": true,
+      "status": "loaded",
+      "loaded": 144,
+      "llm_calls": 1,
+      "known_values": 132,
+      "extracted_values": 132,
+      "correct": 132,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case": "T4 scanned bilingual Hindi page",
+      "file": "scan_basic_statistics_2024-25.pdf",
+      "doc": "U04",
+      "agent": "bilingual_table_agent",
+      "expected_agent": "bilingual_table_agent",
+      "routed_ok": true,
+      "status": "loaded",
+      "loaded": 189,
+      "llm_calls": 24,
+      "ocr": {
+        "reason": "scanned document (396 words, 210 numbers)",
+        "engines": [
+          "vision(digits)+easyocr(hi)"
+        ],
+        "mean_conf": 0.834
+      },
+      "known_values": 209,
+      "extracted_values": 101,
+      "correct": 55,
+      "precision": 0.545,
+      "recall": 0.263
+    },
+    {
+      "case": "T5 map image",
+      "file": "map_india_lulc.png",
+      "doc": "U05",
+      "agent": "skip",
+      "expected_agent": "skip",
+      "routed_ok": true,
+      "status": "skipped",
+      "loaded": 0,
+      "llm_calls": 0
+    },
+    {
+      "case": "T6 Hindi PDF with broken text layer",
+      "file": "hindi_broken_textlayer_2025-26.pdf",
+      "doc": "U06",
+      "agent": "bilingual_table_agent",
+      "expected_agent": "matrix_table_agent",
+      "routed_ok": false,
+      "status": "loaded",
+      "loaded": 144,
+      "llm_calls": 4,
+      "ocr": {
+        "reason": "scanned document (185 words, 140 numbers)",
+        "engines": [
+          "vision(digits)+easyocr(hi)"
+        ],
+        "mean_conf": 0.905
+      },
+      "known_values": 132,
+      "extracted_values": 91,
+      "correct": 63,
+      "precision": 0.692,
+      "recall": 0.477
+    }
+  ]
+}

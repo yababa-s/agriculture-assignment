@@ -13,3 +13,5 @@ pandas>=2.2
 pydantic>=2.10
 pytest>=8
 markdown>=3.5
+easyocr>=1.7          # optional: Hindi OCR for scanned pages (pulls in PyTorch)
+certifi              # certificate bundle for EasyOCR's first model download
