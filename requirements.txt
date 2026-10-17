@@ -12,3 +12,4 @@ rapidfuzz>=3.14       # fuzzy entity resolution
 pandas>=2.2
 pydantic>=2.10
 pytest>=8
+markdown>=3.5
