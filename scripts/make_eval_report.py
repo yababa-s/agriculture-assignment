@@ -120,6 +120,17 @@ def main() -> None:
             L.append(f"| {d} | {rr[d]['expected']} | {rr[d]['predicted']} {'✓' if rr[d]['ok'] else '✗'} | "
                      f"{ra.get(d, {}).get('predicted')} {'✓' if ra.get(d, {}).get('ok') else '✗'} |")
         L.append("")
+    ls = load("langsmith_experiments.json")
+    if ls:
+        L += ["### Recorded in LangSmith\n",
+              f"The same held-out sets are uploaded as LangSmith datasets and each model is an experiment ({ls['note']}). "
+              f"Pipeline runs are traced to the LangSmith project [`34_AN_agriagent`]({ls.get('trace_project_url', '')}) "
+              f"(every graph node, tool call and LLM call; traced batch {ls.get('traced_batch', '')}).\n",
+              "| Experiment | Task | Model | Examples | Scores | Link |", "|---|---|---|---|---|---|"]
+        for e in ls["experiments"]:
+            L.append(f"| {e['experiment']} | {e['task']} | {e['model']} | {e['examples']} | "
+                     + ", ".join(f"{k} {v}" for k, v in e["scores"].items()) + f" | [open]({e['url']}) |")
+        L.append("")
     if ag:
         w = ag["workflow"]
         L += [f"## 3. Agent and workflow evaluation (batch `{ag['batch_id']}`)\n",
