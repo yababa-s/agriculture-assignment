@@ -189,6 +189,17 @@ Routing (model only, manifest hidden):
 | D19 | skip | lulc_agent ✗ | matrix_table_agent ✗ |
 | D20 | skip | lulc_agent ✗ | matrix_table_agent ✗ |
 
+### Recorded in LangSmith
+
+The same held-out sets are uploaded as LangSmith datasets and each model is an experiment (scores are per-example averages (macro); local eval pools items (micro)). Pipeline runs are traced to the LangSmith project [`34_AN_agriagent`](https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/projects/p/a4a2d107-08d5-4e06-af04-2f547794ef12) (every graph node, tool call and LLM call; traced batch B20261017_235633 (D07, D10, D13, D15, D16)).
+
+| Experiment | Task | Model | Examples | Scores | Link |
+|---|---|---|---|---|---|
+| island-base-02e4d027 | island | base | 31 | groundedness 0.43, item_f1 0.435 | [open](https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/d2082cd3-516d-4a67-8247-d123f5ab3178/compare?selectedSessions=fe1f5218-5cf3-456e-a9ec-ba72f3923f22) |
+| columns-base-fe64e37b | columns | base | 11 | column_accuracy 0.05 | [open](https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/3badbec3-789f-4179-9f15-b8f3fb0943e2/compare?selectedSessions=efd0ae31-d5b8-4c36-8ffd-dfe3f7f5b476) |
+| island-qlora-6c0085ba | island | qlora_v1 | 31 | groundedness 0.832, item_f1 0.899 | [open](https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/d2082cd3-516d-4a67-8247-d123f5ab3178/compare?selectedSessions=3a794682-21ef-4c37-99fe-f3221accba19) |
+| columns-qlora-e7703e12 | columns | qlora_v1 | 11 | column_accuracy 0.662 | [open](https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/3badbec3-789f-4179-9f15-b8f3fb0943e2/compare?selectedSessions=c59399da-744d-44ca-bcb4-5857826216c2) |
+
 ## 3. Agent and workflow evaluation (batch `B20261016_041718`)
 
 Evaluator menu: Microsoft Foundry agent evaluators. Trajectory scoring uses AgentEvals (`create_trajectory_match_evaluator`, superset mode). Every run is traced locally (`logs/traces`) and in LangSmith when a key is configured.

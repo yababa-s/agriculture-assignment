@@ -87,7 +87,7 @@ Full tables are in [evaluation.md](evaluation.md), generated from `eval/results/
 
 * **Evaluators used (Foundry menu):** tool selection, trajectory (AgentEvals superset match), tool input accuracy, task completion, task adherence, groundedness, navigation efficiency.
 * **Skipped, with reasons:** intent resolution, relevance/coherence/fluency and safety. They need natural-language answers, which arrive in Phase 3.
-* **LangSmith:** integrated (tracing + `scripts/langsmith_eval.py`) and waiting for the team's API key.
+* **LangSmith:** held-out sets uploaded as datasets; base vs adapter recorded as 4 experiments; a 5-document pipeline batch traced end to end ([project](https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/projects/p/a4a2d107-08d5-4e06-af04-2f547794ef12)). Links in [evaluation.md](evaluation.md).
 
 ## 8. Database
 
@@ -126,4 +126,3 @@ The database (`db/34_AN_knowledgebase_v1.sqlite`, 14.6 MB) holds:
 4. **Instructor files:** widen layout coverage (more unseen price/table layouts) and retrain the adapter with any instructor files allowed into training.
 5. **Query agent:** natural-language → SQL with provenance, including the 10-query acceptance test (2 spatial, 2 temporal, 1 provenance), using `document_chunk` for retrieval.
 6. **Hindi names:** a few decoded names carry spacing artefacts from the PDF text layer (e.g. `सरसां े`), and one DES row prints तिलहन (oilseeds) next to "Seasam". Needs a Unicode normalisation pass plus manual review.
-7. **LangSmith:** run `scripts/langsmith_eval.py` once a team key exists, to host datasets and experiments.

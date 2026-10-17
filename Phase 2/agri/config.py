@@ -6,6 +6,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+
+def _load_dotenv(path: Path) -> None:
+    """Read KEY=VALUE lines from a local .env (git-ignored) without overriding the real environment."""
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, value = line.split("=", 1)
+            os.environ.setdefault(key.strip(), value.strip().strip("'\""))
+
+
+_load_dotenv(ROOT / ".env")
+
 # Naming convention from the methodology: TEAMID_STATE_ARTIFACT_vN
 TEAM_ID = os.getenv("TEAM_ID", "34")
 STATE = "AN"  # Andaman & Nicobar Islands

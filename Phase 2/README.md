@@ -45,8 +45,8 @@ export TEAM_ID=<your team id>                         # used in artifact names (
 ```
 
 The LLM runs locally through Apple MLX. No API key is needed, and no document leaves the machine.
-LangSmith is optional: `export LANGSMITH_API_KEY=...` turns on tracing to LangSmith and enables
-`scripts/langsmith_eval.py`.
+LangSmith: put `LANGSMITH_API_KEY=...` in a local `.env` file (git-ignored). Tracing then goes to the project
+`34_AN_agriagent`, and `scripts/langsmith_eval.py` records the base vs adapter experiments. Results are linked in `docs/evaluation.md`.
 
 ## Run
 

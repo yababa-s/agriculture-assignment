@@ -1,0 +1,155 @@
+{
+  "batch_id": "B20261017_235633",
+  "documents": [
+    {
+      "document_id": "D07",
+      "file": "37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf",
+      "run_id": "c3343905eb85",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 648,
+      "loaded": 648,
+      "rejected": 0,
+      "llm_calls": 4,
+      "notes": [
+        "p1_t0: 1 columns unmapped (col 18: metric 'irrigation_sources' is not an allowed id)",
+        "p2_t0: 1 columns unmapped (col 18: metric 'irrigation_sources' is not an allowed id)"
+      ],
+      "validation": {
+        "input": 648,
+        "accepted": 648,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D10",
+      "file": "IslandwiseStatistical2024-25.pdf",
+      "run_id": "781230abb479",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 295,
+      "loaded": 295,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 295,
+        "accepted": 295,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D13",
+      "file": "Fooditems2025.pdf",
+      "run_id": "5827971fd1de",
+      "agent": "price_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 7728,
+      "loaded": 7728,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 7728,
+        "accepted": 7728,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D15",
+      "file": "subsidies 2024-25.pdf",
+      "run_id": "687e3ea3805c",
+      "agent": "narrative_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 42,
+      "loaded": 42,
+      "rejected": 0,
+      "llm_calls": 7,
+      "notes": [],
+      "validation": {
+        "input": 42,
+        "accepted": 42,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "D16",
+      "file": "agri census 2015-16.png",
+      "run_id": "0a265d69cf31",
+      "agent": "image_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 144,
+      "loaded": 144,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 144,
+        "accepted": 144,
+        "rejected": 0,
+        "warnings": 2,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 500.9,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v1)"
+}
