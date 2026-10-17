@@ -268,7 +268,7 @@ Evaluator menu: Microsoft Foundry agent evaluators. Trajectory scoring uses Agen
 * Needing review or failed: none
 * Manual steps that remain outside the run, each done once:
   * source discovery and download (Phase 1)
-  * copying document URLs into the manifest
+  * recording download URLs in the source registry (once per file)
   * reviewing gold sets
   * deciding the source group of each corpus file (unseen files are routed automatically)
 * Remaining barriers to automation:
