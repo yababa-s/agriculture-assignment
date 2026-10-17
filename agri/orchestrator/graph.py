@@ -134,7 +134,11 @@ class Orchestrator:
             agent_id, by, reason = "skip", "rule", f"router failure: {e}"
         self.conn.execute("UPDATE extraction_run SET agent_id=? WHERE run_id=?",
                           ("router_agent" if agent_id == "skip" else agent_id, s["run_id"]))
-        return {"agent_id": agent_id, "routed_by": by}
+        update = {"agent_id": agent_id, "routed_by": by}
+        if self.router.converted_path:
+            # a scan was OCR'd into a searchable PDF: the extraction agents read that file (same pages)
+            update["current"] = {**s["current"], "abs_path": self.router.converted_path, "ocr_of": s["current"]["abs_path"]}
+        return update
 
     def extract(self, s: PipelineState) -> dict:
         attempt = s.get("attempt", 1)

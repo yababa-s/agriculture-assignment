@@ -370,3 +370,53 @@ METRIC_ALIASES = {
     "pesticide_distributed": ["pesticides", "c. pesticides", "bio pesticides", "bio-pesticides", "bio pesticide"],
     "fertilizer_consumption": ["fertilizers (mt)", "d. fertilizers (mt)", "fertilizers", "fertilizer"],
 }
+
+# ---------------------------------------------------------------- Unicode Hindi names
+# Standard Hindi (Devanagari Unicode) names and common spelling variants, so tables printed in
+# Hindi resolve by rule. Kruti Dev documents add more aliases automatically (origin='kruti_decode').
+HINDI_COMMODITY = {
+    "paddy": ["धान", "चावल (धान)"], "rice": ["चावल"], "maize": ["मक्का"], "wheat": ["गेहूं", "गेहूँ"],
+    "jowar": ["ज्वार"], "bajra": ["बाजरा"], "ragi": ["रागी"],
+    "green_gram": ["मूंग", "मूँग", "मूंग दाल", "मूँग दाल"], "black_gram": ["उड़द", "उडद", "उड़द दाल", "उडद दाल"],
+    "arhar": ["अरहर", "तुअर", "अरहर दाल"], "cowpea": ["लोबिया"], "masur": ["मसूर"], "gram": ["चना"],
+    "sesamum": ["तिल"], "groundnut": ["मूंगफली", "मूँगफली"], "mustard": ["सरसों", "सरसो"], "sunflower": ["सूरजमुखी"],
+    "black_pepper": ["काली मिर्च"], "clove": ["लौंग"], "nutmeg": ["जायफल"], "cinnamon": ["दालचीनी", "तेजपत्ता"],
+    "ginger": ["अदरक"], "chilli_dry": ["मिर्च", "सूखी मिर्च", "लाल मिर्च"], "turmeric": ["हल्दी"], "bay_leaf": ["तेज पत्ता"],
+    "mace": ["जावित्री"], "tamarind": ["इमली"], "curry_leaf": ["करी पत्ता"], "betel_leaf": ["पान"], "garlic": ["लहसुन"],
+    "coconut": ["नारियल"], "arecanut": ["सुपारी"], "cashewnut": ["काजू"], "sugarcane": ["गन्ना"],
+    "mango": ["आम"], "banana": ["केला"], "papaya": ["पपीता"], "pineapple": ["अनानास", "अनारस"], "sapota": ["चीकू", "सपोटा"],
+    "guava": ["अमरूद"], "pomegranate": ["अनार"], "watermelon": ["तरबूज"], "jackfruit": ["कटहल"], "lemon": ["नींबू"],
+    "orange": ["संतरा"], "custard_apple": ["शरीफा", "सीताफल"], "apple": ["सेब"], "grape": ["अंगूर"],
+    "okra": ["भिंडी"], "bitter_gourd": ["करेला"], "brinjal": ["बैंगन"], "bottle_gourd": ["लौकी"], "tomato": ["टमाटर"],
+    "cucumber": ["खीरा"], "drumstick": ["सहजन"], "cauliflower": ["फूलगोभी"], "cabbage": ["पत्तागोभी", "बंदगोभी"],
+    "carrot": ["गाजर"], "green_chilli": ["हरी मिर्च"], "beans": ["सेम", "बीन्स"], "pumpkin": ["कद्दू", "कुम्हड़ा"],
+    "radish": ["मूली"], "potato": ["आलू"], "onion": ["प्याज"], "spinach": ["पालक"], "green_pea": ["मटर"],
+    "sweet_potato": ["शकरकंद", "शक्करकंद"], "tapioca": ["टैपिओका", "टपिओका"], "colocasia": ["अरबी"],
+    "elephant_foot_yam": ["जिमीकंद", "सूरन"], "marigold": ["गेंदा"], "rose": ["गुलाब"], "jasmine": ["चमेली"],
+    "hibiscus": ["गुड़हल", "जपाकुसुम"], "milk": ["दूध"], "eggs": ["अंडा", "अंडे"], "mutton": ["मटन", "बकरे का मांस"],
+    "sugar": ["चीनी"], "gur": ["गुड़"], "salt": ["नमक"], "tea": ["चाय"],
+    "agg_cereals": ["अनाज", "खाद्यान्न"], "agg_pulses": ["दलहन", "दालें"], "agg_oilseeds": ["तिलहन"],
+    "agg_vegetables": ["सब्जियां", "सब्जियाँ", "सब्जी"], "agg_fruits": ["फल"], "agg_spices": ["मसाले", "मसाला"],
+    "agg_root_crops": ["कंद मूल फसल", "कन्द मूल फसल"], "agg_plantation": ["बागान फसलें", "रोपण फसलें"],
+    "agg_flowers": ["फूल", "पुष्प"],
+}
+HINDI_METRIC = {
+    "area_cultivated": ["क्षेत्रफल", "क्षेत्र", "रकबा", "क्षेत्रफल (हेक्टेयर)"],
+    "production": ["उत्पादन", "उत्पादन (मीट्रिक टन)", "उत्पादन (मै.ट.)"],
+    "yield": ["उपज", "उत्पादकता", "प्रति हेक्टेयर उपज"],
+    "retail_price": ["खुदरा मूल्य", "खुदरा भाव", "मूल्य", "भाव"],
+    "wholesale_price": ["थोक मूल्य", "थोक भाव"],
+    "farmers_count": ["किसान", "कृषक", "किसानों की संख्या"],
+    "fertilizer_consumption": ["उर्वरक", "खाद"],
+    "holdings_count": ["जोतों की संख्या", "जोत संख्या"],
+    "holdings_area": ["जोत क्षेत्र"],
+}
+HINDI_LOCATION = {
+    "AN": ["अंडमान और निकोबार द्वीपसमूह", "अंडमान तथा निकोबार द्वीपसमूह", "अण्डमान तथा निकोबार द्वीपसमूह", "अं. तथा नि. द्वीपसमूह", "कुल"],
+    "AN_NMA": ["उत्तर और मध्य अंडमान", "उत्तर एवं मध्य अंडमान", "उ. और म. अण्डमान"],
+    "AN_SA": ["दक्षिण अंडमान", "दक्षिण अण्डमान"],
+    "AN_NIC": ["निकोबार"],
+    "ZN_DIGLIPUR": ["दिगलीपुर", "डिगलीपुर"], "ZN_MAYABUNDER": ["मायाबंदर", "मायाबन्दर"], "ZN_RANGAT": ["रंगत"],
+    "ZN_SOUTHANDAMAN": ["दक्षिण अंडमान"], "ZN_LITTLEANDAMAN": ["लिटिल अंडमान", "लिटिल अण्डमान"],
+    "ZN_CARNICOBAR": ["कार निकोबार"], "ZN_NANCOWRY": ["नानकौड़ी", "ननकौड़ी", "कमोर्टा"], "ZN_CAMPBELLBAY": ["कैम्पबेल बे"],
+}

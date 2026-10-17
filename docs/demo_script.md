@@ -59,8 +59,27 @@ $PY scripts/run_pipeline.py --adapter adapters/34_AN_qlora_v1 --files <instructo
 $PY scripts/show_trace.py U01
 ```
 They are registered as U01…, routed from the fingerprint (model consulted only if ambiguous), extracted,
-validated and loaded. A non-English (Hindi Kruti Dev) file goes to the bilingual agent automatically.
-Rehearsal set: `D06`, `D10`, `D13`, which are never used in training.
+validated and loaded. Then run the live check:
+```bash
+$PY scripts/check_unseen.py --samples 6
+```
+It prints, per file: route, OCR engine (for scans/photos), counts, **groundedness** and sample facts with
+page / row / column. Open the PDF and read 3–4 of those numbers aloud.
+
+What each kind of file does (measured, `docs/evaluation.md` §5a):
+
+| Evaluator hands you | What happens | Expectation |
+|---|---|---|
+| Digital PDF, English | normal pipeline | strong |
+| Digital PDF, Hindi in Kruti Dev | bilingual agent decodes the font | strong |
+| Digital PDF, Unicode Hindi | Hindi aliases resolve crops/places/measures | strong (test: 100%) |
+| Scanned PDF / photo, English | OCR → searchable PDF → table agents | values mostly right, misses some (test: P 0.89, R 0.52) |
+| Scanned Hindi or bilingual page | OCR: macOS for digits + EasyOCR for Hindi (~1 min/page) | partial (test: P 0.55, R 0.26); say so honestly |
+| Hindi PDF with a garbled text layer | detected, read from the page image | partial (test: P 0.69, R 0.48) |
+| A map | skipped with a reason | correct |
+
+For scans, groundedness compares with the OCR text, so also check a few values against the image by eye.
+Rehearsal sets: `D06`, `D10`, `D13` (never used in training) and `data/test_unseen/` (all six kinds above).
 
 ## 5. Evaluation (PDF §5), 4 min
 Open `docs/evaluation.md`:

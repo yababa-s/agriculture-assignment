@@ -10,3 +10,5 @@ adapters/*/
 data/raw/
 .env
 release/
+data/ocr_cache/
+db/robustness_tmp.sqlite

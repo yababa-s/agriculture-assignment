@@ -16,7 +16,8 @@ from agri.agents.table_mapping import ColSpec, TableSpec, llm_map
 from agri.tools.parsing import MONTHS, parse_period, parse_value
 from agri.tools.pdf_tools import Grid, extract_grids, page_texts
 
-_TITLE = re.compile(r"Prices of (?P<series>.+?) items? for the month of (?P<month>[A-Za-z]+)", re.I)
+# spaces optional: OCR'd text layers sometimes lose the gaps between words
+_TITLE = re.compile(r"Prices\s*of\s*(?P<series>.+?)\s*items?\s*for\s*the\s*month\s*of\s*,?\s*(?P<month>[A-Za-z]+?)(?=[\s,]|\d|$)", re.I)
 _UNIT_MAP = [
     (re.compile(r"100\s*gm", re.I), "inr_per_100g"), (re.compile(r"\bkg", re.I), "inr_per_kg"),
     (re.compile(r"doz", re.I), "inr_per_dozen"), (re.compile(r"lit|ltr", re.I), "inr_per_litre"),

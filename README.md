@@ -54,6 +54,7 @@ LangSmith: put `LANGSMITH_API_KEY=...` in a local `.env` file (git-ignored). Tra
 ./.venv/bin/python scripts/run_pipeline.py --fresh --adapter adapters/34_AN_qlora_v1   # whole corpus
 ./.venv/bin/python scripts/run_pipeline.py --files ~/Downloads/new_document.pdf             # unseen document
 ./.venv/bin/python scripts/show_trace.py D07 --records 5                                  # demo trace
+./.venv/bin/python scripts/check_unseen.py                                                 # live check of unseen files
 ./.venv/bin/python scripts/eval_agents.py                                                  # agent evaluation
 ./.venv/bin/python scripts/eval_llm_tasks.py --label qlora_v1 --adapter adapters/34_AN_qlora_v1
 ```

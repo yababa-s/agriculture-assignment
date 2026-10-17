@@ -84,6 +84,11 @@ def seed_reference(conn: sqlite3.Connection) -> None:
         _aliases(conn, "unit", uid, aliases)
     for mid, aliases in seed.METRIC_ALIASES.items():
         _aliases(conn, "metric", mid, aliases)
+    for etype, table in (("commodity", seed.HINDI_COMMODITY), ("metric", seed.HINDI_METRIC), ("location", seed.HINDI_LOCATION)):
+        for eid, names in table.items():
+            _aliases(conn, etype, eid, names)
+    for cid, names in seed.HINDI_COMMODITY.items():
+        conn.execute("UPDATE commodity SET name_hi = COALESCE(name_hi, ?) WHERE commodity_id = ?", (names[0], cid))
 
 
 def _aliases(conn, etype: str, eid: str, aliases: list[str], origin: str = "seed") -> None:

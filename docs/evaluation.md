@@ -277,6 +277,21 @@ Evaluator menu: Microsoft Foundry agent evaluators. Trajectory scoring uses Agen
   * an instructor file with a new price layout would rely on LLM column mapping
   * no robots.txt-aware downloader yet: Phase 1 files were fetched by hand
 
+## 5a. Robustness: unseen file types (scans, photos, Unicode Hindi)
+
+Built by `scripts/make_test_unseen.py` from corpus pages, so the correct values are known; run as UNSEEN files (no manifest) by `experiments/robustness_unseen.py`. Precision = extracted values equal to a known value; recall = known values recovered.
+
+| Test document | Agent | Routed as expected | Precision | Recall | OCR |
+|---|---|---|---|---|---|
+| T1 scanned English tables | matrix_table_agent | yes | 0.889 | 0.518 | vision |
+| T2 photo of a price table | price_table_agent | yes | 1.0 | 0.104 | vision |
+| T3 Unicode Hindi table | matrix_table_agent | yes | 1.0 | 1.0 | — |
+| T4 scanned bilingual Hindi page | bilingual_table_agent | yes | 0.545 | 0.263 | vision(digits)+easyocr(hi) |
+| T5 map image | skip | yes | — | — | — |
+| T6 Hindi PDF with broken text layer | bilingual_table_agent | no (matrix_table_agent expected) | 0.692 | 0.477 | vision(digits)+easyocr(hi) |
+
+Reading: digital Unicode Hindi is solved; scanned English tables are mostly right when read; photos, scanned bilingual pages and broken Hindi text layers work end to end but miss many values (OCR reading accuracy, not routing, is the limit). Numbers checked by `check_unseen.py` are compared with the OCR text layer, so for scans they show what was read, not whether the OCR read it correctly: compare a few by eye.
+
 ## 5. Tool comparison on the hardest cases
 
 | case | pdfplumber | PyMuPDF | Docling | ours |

@@ -109,7 +109,7 @@ def _reread_header_cells(path: str, pno: int, tbl, n_header: int, ncols: int, he
     return out
 
 
-def raster_rules(path: str, pno: int, min_v: float = 0.3, min_h: float = 0.08):
+def raster_rules(path: str, pno: int, min_v: float = 0.08, min_h: float = 0.1):
     """Detect table ruling lines drawn inside a raster image covering the page.
 
     Some DES PDFs place the table grid as a scanned image under the text layer, so
@@ -143,13 +143,56 @@ def raster_rules(path: str, pno: int, min_v: float = 0.3, min_h: float = 0.08):
                     start = None
             return out
 
-        vx = groups(dark.mean(axis=0) > min_v)
-        hy = groups(dark.mean(axis=1) > min_h)
+        def longest_run(mask2d, axis):
+            """Longest run of consecutive dark pixels along each row (axis=1) or column (axis=0).
+            Ruling lines are long unbroken runs; text rows are dark too but broken into short strokes."""
+            m = mask2d if axis == 1 else mask2d.T
+            best = np.zeros(m.shape[0], dtype=np.int32)
+            cur = np.zeros(m.shape[0], dtype=np.int32)
+            for col in range(m.shape[1]):
+                cur = np.where(m[:, col], cur + 1, 0)
+                best = np.maximum(best, cur)
+            return best
+
+        vx = groups(longest_run(dark, 0) > min_v * dark.shape[0])
+        hy = groups(longest_run(dark, 1) > min_h * dark.shape[1])
         if len(vx) < 3 or len(hy) < 3:
             return None
-        xs = [rect.x0 + x / pix.width * rect.width for x in vx]
-        ys = [rect.y0 + y / pix.height * rect.height for y in hy]
-        return xs, ys
+
+        def segments(line_px, along_axis):
+            """Where a detected rule is actually drawn: runs of dark pixels along it (merged header
+            cells have no rule between their columns, so full-length lines would split them)."""
+            c = int(round(line_px))
+            band = dark[:, max(0, c - 1):c + 2].any(axis=1) if along_axis == 0 else dark[max(0, c - 1):c + 2, :].any(axis=0)
+            min_seg = max(8, int(0.004 * band.size))
+            out, start, gap = [], None, 0
+            for i, v in enumerate(list(band) + [False] * 5):   # sentinel closes a run that reaches the edge
+                if v:
+                    start = i if start is None else start
+                    gap = 0
+                elif start is not None:
+                    gap += 1
+                    if gap > 3:                      # tolerate tiny breaks in a scanned line
+                        if i - gap - start + 1 >= min_seg:
+                            out.append((start, i - gap))
+                        start, gap = None, 0
+            return out
+
+        sx_, sy_ = rect.width / pix.width, rect.height / pix.height
+        vsegs, hsegs = [], []
+        for x in vx:
+            X = rect.x0 + x * sx_
+            for a, b in segments(x, 0):
+                top, bottom = rect.y0 + a * sy_, rect.y0 + b * sy_
+                vsegs.append({"object_type": "line", "x0": X, "x1": X, "top": top, "bottom": bottom,
+                              "width": 0, "height": bottom - top})
+        for y in hy:
+            Y = rect.y0 + y * sy_
+            for a, b in segments(y, 1):
+                x0, x1 = rect.x0 + a * sx_, rect.x0 + b * sx_
+                hsegs.append({"object_type": "line", "x0": x0, "x1": x1, "top": Y, "bottom": Y,
+                              "width": x1 - x0, "height": 0})
+        return vsegs, hsegs
 
 
 def extract_grids(path: str, pages: list[int] | None = None) -> list[Grid]:
@@ -176,6 +219,9 @@ def extract_grids(path: str, pages: list[int] | None = None) -> list[Grid]:
                 first_data = next((i for i, r in enumerate(raw) if _row_is_data([_clean(c) for c in r])), None)
                 if first_data is None:
                     continue
+                if ruling == "raster":
+                    # an explicit grid splits merged header cells into empty ones: let them inherit from the left
+                    raw[:first_data] = [[None if (c is not None and not _clean(c)) else c for c in h] for h in raw[:first_data]]
                 if any(_looks_scrambled(c) for h in raw[:first_data] for c in h):
                     raw[:first_data] = _reread_header_cells(path, pno, tbl, first_data, ncols, raw[:first_data])
                 header, lead_body = [], []
@@ -214,8 +260,14 @@ def extract_grids(path: str, pages: list[int] | None = None) -> list[Grid]:
 def decode_bilingual(cell: str, legacy_font: bool) -> tuple[str, str]:
     """(hindi_unicode, english) for a cell. Only documents flagged as Kruti Dev are decoded,
     otherwise English words missing from the dictionary would be misread as Hindi."""
-    if not legacy_font or not cell:
-        return "", cell or ""
+    if not cell:
+        return "", ""
+    if not legacy_font:
+        deva = [t for t in cell.split() if any("\u0900" <= ch <= "\u097f" for ch in t)]
+        latin = [t for t in cell.split() if t not in deva and any(ch.isalpha() for ch in t)]
+        if deva and latin:   # Unicode bilingual label, e.g. OCR of a DES table: "धान Paddy"
+            return " ".join(deva), " ".join(t for t in cell.split() if t not in deva)
+        return "", cell
     return split_bilingual_label(cell)
 
 
