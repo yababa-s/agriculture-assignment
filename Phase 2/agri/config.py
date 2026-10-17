@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # Naming convention from the methodology: TEAMID_STATE_ARTIFACT_vN
-TEAM_ID = os.getenv("TEAM_ID", "TEAMID")
+TEAM_ID = os.getenv("TEAM_ID", "34")
 STATE = "AN"  # Andaman & Nicobar Islands
 
 CORPUS_DIR = Path(os.getenv("CORPUS_DIR", str(ROOT.parent / "AI Project Data Corpus")))

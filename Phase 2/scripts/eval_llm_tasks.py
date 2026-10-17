@@ -7,7 +7,7 @@ Tasks (all inputs come from EVAL documents only; see data/splits/splits.json):
 
 Model output is scored raw (no teacher fill, no retries) so the number reflects the model.
 Usage: python scripts/eval_llm_tasks.py --label base
-       python scripts/eval_llm_tasks.py --label qlora_v1 --adapter adapters/TEAMID_AN_qlora_v1
+       python scripts/eval_llm_tasks.py --label qlora_v1 --adapter adapters/34_AN_qlora_v1
 """
 from __future__ import annotations
 

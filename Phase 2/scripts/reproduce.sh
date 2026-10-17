@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=./.venv/bin/python
-ADAPTER=${ADAPTER:-adapters/TEAMID_AN_qlora_v1}
+ADAPTER=${ADAPTER:-adapters/34_AN_qlora_v1}
 
 $PY scripts/build_manifest.py                      # data/manifest.csv
 $PY scripts/init_db.py --fresh                     # schema + reference tables

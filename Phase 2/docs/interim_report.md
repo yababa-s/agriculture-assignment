@@ -1,6 +1,6 @@
 # Interim report: Phase 2
 **Intelligent Agriculture Information System, Andaman & Nicobar Islands**
-CS F/U 407 Artificial Intelligence · Team TEAMID · Phase 2 (data assimilation, working agents, database)
+CS F/U 407 Artificial Intelligence · Team 34 · Phase 2 (data assimilation, working agents, database)
 
 ## 1. Summary
 
@@ -97,7 +97,7 @@ values, duplicates and validation rules are in [schema.md](schema.md). The 10 sa
 results are in [sample_queries.md](sample_queries.md): spatial (Q1, Q2, Q6), temporal (Q3, Q4, Q8),
 provenance (Q5), cross-source (Q7), census (Q9) and land use (Q10).
 
-The database (`db/TEAMID_AN_knowledgebase_v1.sqlite`, 14.6 MB) holds:
+The database (`db/34_AN_knowledgebase_v1.sqlite`, 14.6 MB) holds:
 
 | What | Count |
 |---|---|
@@ -110,14 +110,13 @@ The database (`db/TEAMID_AN_knowledgebase_v1.sqlite`, 14.6 MB) holds:
 | Cross-source disagreements (`v_conflict`) | 341 |
 | Hindi crop names | 40, filled automatically from decoded Kruti Dev labels |
 
-## 9. Individual contributions (fill in names)
+## 9. Team 34
 
-| Role | Owns (code) | Can explain at the viva |
-|---|---|---|
-| Source Lead | `agri/sources.py`, `scripts/build_manifest.py`, `data/manifest.csv`, `agri/db/seed.py` (gazetteer) | source groups, licences, Kruti Dev discovery, why D18–D20 are pending/skipped |
-| Data Engineering Lead | `agri/db/*`, `agri/tools/pdf_tools.py`, `agri/orchestrator/graph.py`, `agri/agents/validator.py` | schema, dedup/missing values, raster ruling detection, LangGraph flow, retries |
-| Model Lead | `agri/llm/client.py`, `agri/agents/island_agent.py`, `table_mapping.py`, `router.py`, `scripts/train_lora.sh`, `scripts/build_datasets.py` | prompts, groundedness gate, QLoRA setup, with/without adapter results |
-| Evaluation Lead | `scripts/eval_*.py`, `data/gold/*`, `experiments/tool_comparison.py`, `tests/` | gold construction, splits and contamination check, Foundry evaluator choices, AgentEvals/LangSmith |
+| Name | ID |
+|---|---|
+| Suyash Tripathi | 2025A7PS0663P |
+| Abhineet Sharan | 2025A7PS0643P |
+| Shikhar Singhania | 2024A7PS0561P |
 
 ## 10. Pending for Phase 3
 

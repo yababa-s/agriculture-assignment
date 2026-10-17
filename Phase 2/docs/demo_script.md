@@ -5,7 +5,7 @@ Run from the repo root with the venv: `PY=./.venv/bin/python`. Do the pre-flight
 ## 0. Pre-flight
 ```bash
 $PY -m pytest -q tests                                    # 27 tests, < 1 s
-$PY scripts/run_pipeline.py --fresh --adapter adapters/TEAMID_AN_qlora_v1   # production DB (~25 min)
+$PY scripts/run_pipeline.py --fresh --adapter adapters/34_AN_qlora_v1   # production DB (~25 min)
 $PY scripts/eval_agents.py && $PY scripts/sample_queries.py && $PY scripts/make_eval_report.py
 ```
 Keep `docs/evaluation.md` and `docs/source_agent_map.md` open in tabs.
@@ -55,7 +55,7 @@ Explain:
 
 **Unseen documents (gate requirement: 3 unseen, ≥ 1 non-English):**
 ```bash
-$PY scripts/run_pipeline.py --adapter adapters/TEAMID_AN_qlora_v1 --files <instructor_file_1> <file_2> <file_3>
+$PY scripts/run_pipeline.py --adapter adapters/34_AN_qlora_v1 --files <instructor_file_1> <file_2> <file_3>
 $PY scripts/show_trace.py U01
 ```
 They are registered as U01…, routed from the fingerprint (model consulted only if ambiguous), extracted,
@@ -79,7 +79,7 @@ Read §4 of `evaluation.md`:
 
 ## 7. Database (PDF §7), 2 min
 ```bash
-sqlite3 db/TEAMID_AN_knowledgebase_v1.sqlite "SELECT * FROM v_provenance WHERE metric_id='production' AND commodity_id='coconut' AND location_id='AN' AND period_label='2025-26';"
-sqlite3 db/TEAMID_AN_knowledgebase_v1.sqlite "SELECT metric_id, commodity_id, period_label, doc_a, value_a, doc_b, value_b, pct_diff FROM v_conflict LIMIT 5;"
+sqlite3 db/34_AN_knowledgebase_v1.sqlite "SELECT * FROM v_provenance WHERE metric_id='production' AND commodity_id='coconut' AND location_id='AN' AND period_label='2025-26';"
+sqlite3 db/34_AN_knowledgebase_v1.sqlite "SELECT metric_id, commodity_id, period_label, doc_a, value_a, doc_b, value_b, pct_diff FROM v_conflict LIMIT 5;"
 ```
 Use `docs/schema.md` §5 to show agent output → schema. Use `docs/sample_queries.md` for the 10 queries.

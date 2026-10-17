@@ -1,4 +1,4 @@
-# LoRA adapter: TEAMID_AN_qlora_v1
+# LoRA adapter: 34_AN_qlora_v1
 
 Only adapter weights are distributed (about 26 MB); the base model is downloaded from Hugging Face.
 
@@ -12,9 +12,9 @@ Only adapter weights are distributed (about 26 MB); the base model is downloaded
 | Data | `data/training/train.jsonl` (84) + `valid.jsonl` (9): island-profile extraction from D08/D09, column mapping from D01/D03/D04/D05. **No evaluation document is used** |
 | Loss | validation 0.222 → 0.009 (`logs/train_lora_v1.log`) |
 | Hardware / time | Apple M4 Pro, 24 GB, about 35 min |
-| Rebuild | `ADAPTER=adapters/TEAMID_AN_qlora_v1 ./scripts/train_lora.sh` |
-| Use | `LLM(adapter_path="adapters/TEAMID_AN_qlora_v1")`, or `--adapter` on the scripts |
+| Rebuild | `ADAPTER=adapters/34_AN_qlora_v1 ./scripts/train_lora.sh` |
+| Use | `LLM(adapter_path="adapters/34_AN_qlora_v1")`, or `--adapter` on the scripts |
 
-The folder `TEAMID_AN_qlora_v1/` holds `adapters.safetensors` (final), `adapter_config.json` and the
+The folder `34_AN_qlora_v1/` holds `adapters.safetensors` (final), `adapter_config.json` and the
 checkpoints taken every 50 steps. Large files go to the course's designated storage, not to GitHub
 (`.gitignore` excludes `adapters/*/`).
