@@ -111,7 +111,7 @@ def upsert_document(conn, r: dict) -> None:
         """INSERT INTO document (document_id, source_id, file_name, relative_path, document_url, source_group,
                period_label, modality, languages, scripts, legacy_font, pages, sha256, collection_date, license)
            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-           ON CONFLICT(document_id) DO UPDATE SET document_url=excluded.document_url, source_group=excluded.source_group,
+           ON CONFLICT(document_id) DO UPDATE SET document_url=excluded.document_url, collection_date=excluded.collection_date, source_group=excluded.source_group,
                modality=excluded.modality,
                languages=excluded.languages, scripts=excluded.scripts, legacy_font=excluded.legacy_font""",
         (r["doc_id"], r["source_id"], r["file_name"], r.get("relative_path"), r.get("document_url"), r["source_group"],

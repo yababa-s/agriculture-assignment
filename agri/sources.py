@@ -50,6 +50,9 @@ SOURCE_GROUPS = {
     "G8_RASTER_MAPS": "Large raster maps (out of scope: no raster interpretation per brief)",
 }
 
+# Collection date of every corpus file, from the team's Phase 1 records.
+COLLECTION_DATE = "2026-09-26"
+
 # Download URLs recorded in the Phase 1 source inventory (one per file).
 URL_DES_ECOSTAT = "http://andssw1.and.nic.in/ecostat/index.php"
 URL_BHUVAN_LULC = ("https://bhuvan.nrsc.gov.in/ngmaps/thematic?theme1=LULC250K_2425&tlp=raster"
