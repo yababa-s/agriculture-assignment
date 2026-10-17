@@ -1,6 +1,6 @@
 # Database schema and data dictionary
 
-Physical store: **SQLite**, one file (`db/TEAMID_AN_knowledgebase_v1.sqlite`), DDL in
+Physical store: **SQLite**, one file (`db/34_AN_knowledgebase_v1.sqlite`), DDL in
 [`agri/db/schema.sql`](../agri/db/schema.sql). SQLite was chosen over MongoDB/Postgres for Phase 2
 because the submission must be reproducible from one file with no server. The model is
 relational, so moving to Postgres/PostGIS for Phase 3 spatial queries changes no table.

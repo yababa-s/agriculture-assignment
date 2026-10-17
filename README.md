@@ -12,7 +12,7 @@ price tables, budget memoranda, a screenshot, and LULC statistics.
 | Deliverable (methodology §5) | Location |
 |---|---|
 | Codebase | `agri/` (agents, tools, orchestrator, DB layer), `scripts/` (entry points) |
-| Database + schema + data dictionary | `db/TEAMID_AN_knowledgebase_v1.sqlite`, [`agri/db/schema.sql`](agri/db/schema.sql), [`docs/schema.md`](docs/schema.md) |
+| Database + schema + data dictionary | `db/34_AN_knowledgebase_v1.sqlite`, [`agri/db/schema.sql`](agri/db/schema.sql), [`docs/schema.md`](docs/schema.md) |
 | 10 sample queries with expected results | [`docs/sample_queries.md`](docs/sample_queries.md) (`scripts/sample_queries.py`) |
 | Dataset/corpus manifest | [`data/manifest.csv`](data/manifest.csv): source, URL, collection date, language, licence, checksum |
 | Agent & model | `agri/agents/*`, base model `mlx-community/Qwen2.5-3B-Instruct-4bit` (Qwen Research License: research/non-commercial use; see `adapters/README.md`), LoRA adapter in `adapters/` (adapter weights only) |
@@ -30,8 +30,8 @@ The database and adapter weights are not in the git history; they are attached t
 
 | File | Size | Unzip to |
 |---|---|---|
-| [TEAMID_AN_database_v1.zip](https://github.com/yababa-s/agriculture-assignment/releases/download/phase2-v1/TEAMID_AN_database_v1.zip) | 3.7 MB | `db/` |
-| [TEAMID_AN_qlora_adapter_v1.zip](https://github.com/yababa-s/agriculture-assignment/releases/download/phase2-v1/TEAMID_AN_qlora_adapter_v1.zip) | 23 MB | `adapters/` |
+| [34_AN_database_v1.zip](https://github.com/yababa-s/agriculture-assignment/releases/download/phase2-v1/34_AN_database_v1.zip) | 3.7 MB | `db/` |
+| [34_AN_qlora_adapter_v1.zip](https://github.com/yababa-s/agriculture-assignment/releases/download/phase2-v1/34_AN_qlora_adapter_v1.zip) | 23 MB | `adapters/` |
 
 The base model (`mlx-community/Qwen2.5-3B-Instruct-4bit`) downloads automatically from Hugging Face on first use.
 The raw corpus is in `Phase 1/` of this repository.
@@ -41,7 +41,7 @@ The raw corpus is in `Phase 1/` of this repository.
 ```bash
 python3 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
 export CORPUS_DIR="/path/to/AI Project Data Corpus"   # default: ../AI Project Data Corpus
-export TEAM_ID=<your team id>                         # used in artifact names (TEAMID_AN_*)
+export TEAM_ID=<your team id>                         # used in artifact names (34_AN_*)
 ```
 
 The LLM runs locally through Apple MLX. No API key is needed, and no document leaves the machine.
@@ -51,11 +51,11 @@ LangSmith is optional: `export LANGSMITH_API_KEY=...` turns on tracing to LangSm
 ## Run
 
 ```bash
-./.venv/bin/python scripts/run_pipeline.py --fresh --adapter adapters/TEAMID_AN_qlora_v1   # whole corpus
+./.venv/bin/python scripts/run_pipeline.py --fresh --adapter adapters/34_AN_qlora_v1   # whole corpus
 ./.venv/bin/python scripts/run_pipeline.py --files ~/Downloads/new_document.pdf             # unseen document
 ./.venv/bin/python scripts/show_trace.py D07 --records 5                                  # demo trace
 ./.venv/bin/python scripts/eval_agents.py                                                  # agent evaluation
-./.venv/bin/python scripts/eval_llm_tasks.py --label qlora_v1 --adapter adapters/TEAMID_AN_qlora_v1
+./.venv/bin/python scripts/eval_llm_tasks.py --label qlora_v1 --adapter adapters/34_AN_qlora_v1
 ```
 
 `scripts/reproduce.sh` rebuilds every artifact from the raw corpus in order.
@@ -100,7 +100,10 @@ docs/            design, evaluation and report documents
 eval/results/    machine-readable evaluation outputs
 ```
 
-## Team roles
+## Team 34
 
-Fill in from the charter: Source Lead, Data Engineering Lead, Model Lead, Evaluation Lead.
-Map each person to the modules they own (`docs/interim_report.md` §8) for the viva.
+| Name | ID |
+|---|---|
+| Suyash Tripathi | 2025A7PS0663P |
+| Abhineet Sharan | 2025A7PS0643P |
+| Shikhar Singhania | 2024A7PS0561P |

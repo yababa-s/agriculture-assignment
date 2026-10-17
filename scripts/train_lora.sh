@@ -4,7 +4,7 @@
 # built by scripts/build_datasets.py from TRAIN documents only.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-ADAPTER=${ADAPTER:-adapters/TEAMID_AN_qlora_v1}
+ADAPTER=${ADAPTER:-adapters/34_AN_qlora_v1}
 ITERS=${ITERS:-250}
 ./.venv/bin/python -m mlx_lm lora \
   --model "${BASE_MODEL:-mlx-community/Qwen2.5-3B-Instruct-4bit}" \

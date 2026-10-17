@@ -4,7 +4,7 @@ Needs LANGSMITH_API_KEY (free tier is enough). Without it the script explains wh
 all the same numbers are produced locally by scripts/eval_llm_tasks.py.
 
   export LANGSMITH_API_KEY=...            # https://smith.langchain.com -> Settings -> API keys
-  python scripts/langsmith_eval.py --adapter adapters/TEAMID_AN_qlora_v1
+  python scripts/langsmith_eval.py --adapter adapters/34_AN_qlora_v1
 
 Datasets created: <project>-island-D10, <project>-columns-eval, <project>-routing
 Experiments: one per model (base, adapter), each scored by the evaluators below. Pipeline runs are
@@ -64,7 +64,7 @@ def main() -> None:
     a = ap.parse_args()
     if not os.getenv("LANGSMITH_API_KEY"):
         print("LANGSMITH_API_KEY is not set. Create a free key at https://smith.langchain.com (Settings > API Keys),\n"
-              "then: export LANGSMITH_API_KEY=... && python scripts/langsmith_eval.py --adapter adapters/TEAMID_AN_qlora_v1")
+              "then: export LANGSMITH_API_KEY=... && python scripts/langsmith_eval.py --adapter adapters/34_AN_qlora_v1")
         return
     from langsmith import Client
     client = Client()
