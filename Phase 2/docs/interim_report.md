@@ -35,7 +35,7 @@ Phase 2 builds and measures the extraction layer and the database; Phase 3 adds 
 
 * `data/manifest.csv` records, per file:
   * source and portal
-  * document URL (placeholder until copied from the Phase 1 inventory)
+  * download URL from the Phase 1 inventory (DES ecostat portal, Bhuvan LULC viewer, MoFPI state profile)
   * collection date
   * languages and scripts (Kruti Dev detected automatically)
   * modality, pages, SHA-256
@@ -122,7 +122,7 @@ The database (`db/34_AN_knowledgebase_v1.sqlite`, 14.6 MB) holds:
 
 1. **D18 atlas:** chart digitisation, or source the underlying NRSC state tables.
 2. **D15 memoranda:** turn the subsidy line items (quantity × amount) into observations.
-3. **Manifest:** copy document URLs from the Phase 1 sheet; add LGD codes to the location table.
+3. **Manifest / gazetteer:** confirm collection dates from Phase 1; add LGD codes to the location table.
 4. **Instructor files:** widen layout coverage (more unseen price/table layouts) and retrain the adapter with any instructor files allowed into training.
 5. **Query agent:** natural-language → SQL with provenance, including the 10-query acceptance test (2 spatial, 2 temporal, 1 provenance), using `document_chunk` for retrieval.
 6. **Hindi names:** a few decoded names carry spacing artefacts from the PDF text layer (e.g. `सरसां े`), and one DES row prints तिलहन (oilseeds) next to "Seasam". Needs a Unicode normalisation pass plus manual review.

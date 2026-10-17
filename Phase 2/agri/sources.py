@@ -1,7 +1,7 @@
 """Source registry: every publisher/portal and every corpus file, with its source group.
 
 The source group decides which agent handles the file (see docs/source_agent_map.md).
-Document URLs marked TODO must be copied from the Phase 1 source inventory sheet.
+Download URLs come from the team's Phase 1 source inventory (DOCUMENT_URLS below).
 """
 from __future__ import annotations
 
@@ -48,6 +48,19 @@ SOURCE_GROUPS = {
     "G6_IMAGE_TABLES": "Raster screenshots of tables (OCR required)",
     "G7_LULC": "Land use / land cover statistics and atlases",
     "G8_RASTER_MAPS": "Large raster maps (out of scope: no raster interpretation per brief)",
+}
+
+# Download URLs recorded in the Phase 1 source inventory (one per file).
+URL_DES_ECOSTAT = "http://andssw1.and.nic.in/ecostat/index.php"
+URL_BHUVAN_LULC = ("https://bhuvan.nrsc.gov.in/ngmaps/thematic?theme1=LULC250K_2425&tlp=raster"
+                   "&state=ANDAMAN+AND+NICOBAR&district=ALL#6.28/10.242/93.243")
+URL_MOFPI_PROFILE = "https://www.mofpi.gov.in/sites/default/files/KnowledgeCentre/State%20Profile/Andaman_Nicobar.pdf"
+DOCUMENT_URLS = {
+    **{f"D{i:02d}": URL_DES_ECOSTAT for i in range(1, 14)},   # area & production, basic stats, island-wise, prices
+    "D14": URL_MOFPI_PROFILE,
+    "D15": URL_DES_ECOSTAT,
+    "D16": URL_DES_ECOSTAT,
+    **{f"D{i:02d}": URL_BHUVAN_LULC for i in range(17, 21)},  # SAT Bhuvan folder
 }
 
 # doc_id, relative path, source_id, group, period label, geography, notes

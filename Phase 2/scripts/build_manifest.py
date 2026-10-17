@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import pymupdf  # noqa: E402
 
 from agri.config import CORPUS_DIR, MANIFEST_PATH  # noqa: E402
-from agri.sources import DOCUMENTS, SOURCES  # noqa: E402
+from agri.sources import DOCUMENT_URLS, DOCUMENTS, SOURCES  # noqa: E402
 from agri.tools.lang import detect_languages  # noqa: E402
 
 
@@ -49,7 +49,7 @@ def main() -> None:
             "source_id": src,
             "source_name": SOURCES[src]["name"],
             "portal_url": SOURCES[src]["portal_url"],
-            "document_url": "TODO: copy from Phase 1 source inventory",
+            "document_url": DOCUMENT_URLS[doc_id],
             "source_group": group,
             "period": period,
             "geography": geo,
