@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import csv
-import datetime as dt
 import hashlib
 import re
 import sys
@@ -13,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import pymupdf  # noqa: E402
 
 from agri.config import CORPUS_DIR, MANIFEST_PATH  # noqa: E402
-from agri.sources import DOCUMENT_URLS, DOCUMENTS, SOURCES  # noqa: E402
+from agri.sources import COLLECTION_DATE, DOCUMENT_URLS, DOCUMENTS, SOURCES  # noqa: E402
 from agri.tools.lang import detect_languages  # noqa: E402
 
 
@@ -60,8 +59,7 @@ def main() -> None:
             "legacy_font_encoding": info["legacy_font"],
             "size_bytes": stat.st_size,
             "sha256": sha256(path),
-            # File timestamp is a proxy; replace with the real collection date from Phase 1 if it differs.
-            "collection_date": dt.date.fromtimestamp(getattr(stat, "st_birthtime", stat.st_mtime)).isoformat(),
+            "collection_date": COLLECTION_DATE,
             "license": SOURCES[src]["license"],
             "notes": notes,
         })
