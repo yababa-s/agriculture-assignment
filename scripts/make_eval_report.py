@@ -139,7 +139,7 @@ def main() -> None:
               "and in LangSmith when a key is configured.\n",
               "| Foundry evaluator | Our implementation | Result |", "|---|---|---|",
               f"| Tool Call Accuracy: selection | router decision vs routing gold | {w['routing_accuracy']} |",
-              f"| Tool Call Accuracy: trajectory | AgentEvals superset match vs reference tool sequence | see per-agent table |",
+              "| Tool Call Accuracy: trajectory | AgentEvals superset match vs reference tool sequence | see per-agent table |",
               "| Tool Input Accuracy | argument validators on each recorded tool call | see per-document JSON |",
               f"| Task Completion | terminal status loaded=1, partial=0.5 | {w['task_completion_mean']} |",
               f"| Task Adherence | validator acceptance rate | {w['observations_loaded']} loaded / {w['rejected']} rejected |",
@@ -199,7 +199,7 @@ def main() -> None:
             cells = []
             for t in ("pdfplumber", "pymupdf", "docling", "ours"):
                 r = tools[t].get(case, {})
-                cells.append("n/a" if "not_applicable" in r else (f"error" if "error" in r else f"{r['correct']}/{r['of']}"))
+                cells.append("n/a" if "not_applicable" in r else ("error" if "error" in r else f"{r['correct']}/{r['of']}"))
             L.append(f"| {case} | " + " | ".join(cells) + " |")
         L.append("")
     out = config.ROOT / "docs" / "evaluation.md"

@@ -1,7 +1,6 @@
 """PDF tools exposed to agents: page text (with Kruti Dev decoding) and table grids."""
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
@@ -9,7 +8,7 @@ from pathlib import Path
 import pdfplumber
 import pymupdf
 
-from agri.tools.krutidev import has_kruti, krutidev_to_unicode, split_bilingual_label
+from agri.tools.krutidev import has_kruti, split_bilingual_label
 from agri.tools.parsing import is_numeric_cell
 
 

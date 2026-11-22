@@ -75,7 +75,7 @@ def main() -> None:
         warn = sum(1 for r in rows if r["validation"] == "warning")
         if warn:
             print(f"  validation warnings: {warn}")
-        print(f"  sample facts (check against the PDF):")
+        print("  sample facts (check against the PDF):")
         for r in random.Random(34).sample(rows, min(a.samples, len(rows))):
             what = r["commodity_id"] or json.loads(r["dims"]).get("item") or ""
             print(f"    p{r['page']:<3} {r['metric_id']:<18} {what:<16} {r['location_id']:<16} {r['period_label']:<13} "

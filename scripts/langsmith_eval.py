@@ -21,7 +21,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from agri import config  # noqa: E402
-from agri.agents.island_agent import SYSTEM as ISLAND_SYSTEM, build_prompt, check_item  # noqa: E402
+from agri.agents.island_agent import SYSTEM as ISLAND_SYSTEM  # noqa: E402
+from agri.agents.island_agent import build_prompt, check_item
 from agri.llm.client import LLM  # noqa: E402
 from agri.tools.parsing import parse_period  # noqa: E402
 

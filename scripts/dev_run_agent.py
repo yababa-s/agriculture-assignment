@@ -1,12 +1,16 @@
 """Developer helper: run one agent on one document without the orchestrator and print a summary."""
-import argparse, collections, sys, uuid
+import argparse
+import collections
+import sys
+import uuid
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from agri.config import CORPUS_DIR, DB_PATH
-from agri.db.db import connect
 from agri.agents.base import AgentContext
 from agri.agents.normalizer import Normalizer
 from agri.agents.registry import AGENTS
+from agri.config import CORPUS_DIR, DB_PATH
+from agri.db.db import connect
 from agri.llm.client import LLM
 from agri.tracing import Tracer
 
