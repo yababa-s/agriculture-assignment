@@ -1,0 +1,155 @@
+{
+ "description": "Paraphrase TEST set (15 questions) written after the rule planner was frozen and never used while developing it. Reported separately from the 30-question development set.",
+ "queries": [
+  {
+   "id": "X01",
+   "question": "Name the zone with the highest ginger output in 2025-26",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='production' AND o.commodity_id='ginger' AND l.level='agri_zone' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X02",
+   "question": "Across the three districts, where was the most land under coconut in 2024-25?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='area_cultivated' AND o.commodity_id='coconut' AND l.level='district' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X03",
+   "question": "Which island reported the most poultry in 2024-25?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='poultry_count' AND o.commodity_id IS NULL AND l.level='island' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X04",
+   "question": "Which zone grew the least maize in 2025-26?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='area_cultivated' AND o.commodity_id='maize' AND l.level='agri_zone' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value ASC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X05",
+   "question": "Arecanut area over the years for the Union Territory",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='arecanut' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X06",
+   "question": "Track the potato retail price between January 2024 and December 2025",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='potato' AND o.location_id='MKT_AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start>='2024-01-01' AND o.period_start<='2025-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X07",
+   "question": "When did onion hit its highest price between January 2023 and December 2025?",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "peak",
+   "gold_sql": "SELECT o.period_label, MAX(o.value) AS value FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='onion' AND o.location_id='MKT_AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start BETWEEN '2023-01-01' AND '2025-12-31' GROUP BY o.period_label ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X08",
+   "question": "Banana production of A&N from 2019-20 to 2024-25",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='production' AND o.commodity_id='banana' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start>='2019-01-01' AND o.period_start<='2024-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X09",
+   "question": "Which report and page did the 2024-25 Nicobar district coconut production come from?",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='coconut' AND o.location_id='AN_NIC' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X10",
+   "question": "Give the source table for the 2025-26 ginger production of the UT",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='ginger' AND o.location_id='AN' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X11",
+   "question": "Where did the 2024-25 Car Nicobar Island farmer count come from?",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND o.location_id='ISL_CARNICOBAR' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X12",
+   "question": "Do different documents agree on the UT's banana area?",
+   "type": "cross_source",
+   "intent": "compare_sources",
+   "check": "agree",
+   "gold_sql": "SELECT COUNT(*) FROM (SELECT o.period_label FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='banana' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label HAVING COUNT(DISTINCT o.document_id)>=2)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X13",
+   "question": "What was the black pepper production of the UT in 2025-26?",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='black_pepper' AND o.location_id='AN' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X14",
+   "question": "How many farmers did Baratang Island have in 2024-25?",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND o.location_id='ISL_BARATANG' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "X15",
+   "question": "निकोबार जिले में नारियल का क्षेत्रफल 2024-25",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='coconut' AND o.location_id='AN_NIC' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "hi"
+  }
+ ]
+}

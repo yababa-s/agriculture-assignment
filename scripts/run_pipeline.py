@@ -30,6 +30,8 @@ def main() -> None:
     ap.add_argument("--no-llm", action="store_true")
     ap.add_argument("--adapter", default=None, help="LoRA adapter directory")
     ap.add_argument("--force-llm-routing", action="store_true", help="route every file with the model, ignoring the manifest")
+    ap.add_argument("--replace", action="store_true",
+                    help="delete the selected documents' existing records first (re-extraction after a fix)")
     ap.add_argument("--db", default=str(config.DB_PATH))
     a = ap.parse_args()
 
@@ -42,10 +44,21 @@ def main() -> None:
         docs += [register_unseen(conn, f) for f in a.files]
     if a.docs or not a.files:
         docs += corpus_documents(conn, a.docs)
+    if a.replace:
+        for d in docs:
+            n = conn.execute("DELETE FROM observation WHERE document_id=?", (d["document_id"],)).rowcount
+            conn.execute("DELETE FROM text_fact WHERE document_id=?", (d["document_id"],))
+            print(f"replace: removed {n} existing records of {d['document_id']}")
+        conn.commit()
     orch = Orchestrator(conn, llm, use_llm=not a.no_llm, force_llm_routing=a.force_llm_routing)
     t0 = time.time()
     out = orch.run(docs)
     out["elapsed_s"] = round(time.time() - t0, 1)
+    unseen = [d["document_id"] for d in docs if str(d["document_id"]).startswith("U")]
+    for u in unseen:  # layouts never evaluated: keep the records, but mark them for review
+        conn.execute("UPDATE observation SET validation='warning', validation_note=COALESCE(validation_note || '; ', '') || "
+                     "'unseen layout: verify against the page before use' WHERE document_id=? AND validation='ok'", (u,))
+    conn.commit()
     out["model"] = llm.label if not a.no_llm else "none (rules only)"
     path = config.ROOT / "logs" / f"batch_{out['batch_id']}.json"
     path.write_text(json.dumps(out, indent=2, default=str))

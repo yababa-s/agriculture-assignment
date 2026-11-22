@@ -1,0 +1,52 @@
+[
+ {
+  "id": "S1",
+  "question": "Which agri zone produced the most paddy in 2025-26?",
+  "type": "spatial"
+ },
+ {
+  "id": "S2",
+  "question": "Which district had the largest area under arecanut in 2024-25?",
+  "type": "spatial"
+ },
+ {
+  "id": "N1",
+  "question": "Which islands within 60 km of Port Blair have the most farmers?",
+  "type": "spatial"
+ },
+ {
+  "id": "T1",
+  "question": "How did paddy production in the UT change from 2019-20 to 2025-26?",
+  "type": "temporal"
+ },
+ {
+  "id": "T2",
+  "question": "Monthly retail price of onion from January 2023 to December 2025",
+  "type": "temporal"
+ },
+ {
+  "id": "T5",
+  "question": "How has the number of farmers on North Andaman Island changed from 2022-23 to 2024-25?",
+  "type": "temporal"
+ },
+ {
+  "id": "P1",
+  "question": "Which source and page did the 2025-26 coconut production figure for A&N come from?",
+  "type": "provenance"
+ },
+ {
+  "id": "P3",
+  "question": "Where does the number of farmers on Middle Andaman Island in 2024-25 come from?",
+  "type": "provenance"
+ },
+ {
+  "id": "C1",
+  "question": "Do the sources agree on paddy area in the UT?",
+  "type": "cross_source"
+ },
+ {
+  "id": "L2",
+  "question": "दक्षिण अण्डमान में सुपारी का उत्पादन 2024-25",
+  "type": "lookup"
+ }
+]

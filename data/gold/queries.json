@@ -1,0 +1,313 @@
+{
+ "description": "Held-out query evaluation set (30 questions). Gold answers come from the hand-written gold_sql, which queries the observation table directly and shares no code with the Query Agent's tools. 'demo' marks the 10 queries run live in the Phase 3 demonstration (>=2 spatial, >=2 temporal, >=1 provenance).",
+ "check_rules": {
+  "top1": "agent's first row has the gold top location and a value within 0.5%",
+  "series": "agent returns exactly the gold periods and every value lies in the gold [min,max] (+-0.5%)",
+  "peak": "agent's peak period equals the gold maximum period",
+  "provenance": "agent's first citation (document, page) is one of the gold rows and its value matches",
+  "value": "agent's first value lies in the gold [min,max] (+-0.5%)",
+  "agree": "agent's count of periods reported by 2+ documents equals the gold count"
+ },
+ "queries": [
+  {
+   "id": "S1",
+   "question": "Which agri zone produced the most paddy in 2025-26?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='production' AND o.commodity_id='paddy' AND l.level='agri_zone' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "S2",
+   "question": "Which district had the largest area under arecanut in 2024-25?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='area_cultivated' AND o.commodity_id='arecanut' AND l.level='district' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "S3",
+   "question": "Top 5 islands by number of farmers in 2024-25",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND l.level='island' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "S4",
+   "question": "Where is banana grown the most? Compare the agri zones on banana area in 2025-26.",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='area_cultivated' AND o.commodity_id='banana' AND l.level='agri_zone' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "S5",
+   "question": "Which island has the largest forest area in 2024-25?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='forest_area' AND o.commodity_id IS NULL AND l.level='island' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "S6",
+   "question": "Rank the districts by coconut production for 2024-25",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='production' AND o.commodity_id='coconut' AND l.level='district' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "S7",
+   "question": "Which island had the fewest households in the 2011 Census?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) AS value FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='households' AND o.commodity_id IS NULL AND l.level='island' AND o.period_label='2011' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY value ASC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "N1",
+   "question": "Which islands within 60 km of Port Blair have the most farmers?",
+   "type": "spatial",
+   "intent": "nearby",
+   "check": "top1",
+   "gold_sql": "SELECT i.location_id, MAX(o.value) AS value FROM location r, location i JOIN observation o ON o.location_id=i.location_id WHERE r.location_id='TH_PORTBLAIR' AND i.level='island' AND o.metric_id='farmers_count' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND 6371*2*asin(sqrt(power(sin(radians(i.lat-r.lat)/2),2)+cos(radians(r.lat))*cos(radians(i.lat))*power(sin(radians(i.lon-r.lon)/2),2))) <= 60 GROUP BY i.location_id ORDER BY value DESC",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "N2",
+   "question": "Islands within 150 km of Car Nicobar and their population",
+   "type": "spatial",
+   "intent": "nearby",
+   "check": "top1",
+   "gold_sql": "SELECT i.location_id, MAX(o.value) AS value FROM location r, location i JOIN observation o ON o.location_id=i.location_id WHERE r.location_id='TH_CARNICOBAR' AND i.level='island' AND o.metric_id='population' AND o.period_label='2011' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND 6371*2*asin(sqrt(power(sin(radians(i.lat-r.lat)/2),2)+cos(radians(r.lat))*cos(radians(i.lat))*power(sin(radians(i.lon-r.lon)/2),2))) <= 150 GROUP BY i.location_id ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "T1",
+   "question": "How did paddy production in the UT change from 2019-20 to 2025-26?",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value) AS vmin, MAX(o.value) AS vmax FROM observation o WHERE o.metric_id='production' AND o.commodity_id='paddy' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start >= '2019-01-01' AND o.period_start <= '2025-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "T2",
+   "question": "Monthly retail price of onion from January 2023 to December 2025",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value) AS vmin, MAX(o.value) AS vmax FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='onion' AND o.location_id='MKT_AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start >= '2023-01-01' AND o.period_start <= '2025-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "T3",
+   "question": "Show the trend in paddy area for the whole UT across all years",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value) AS vmin, MAX(o.value) AS vmax FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='paddy' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "T4",
+   "question": "In which month was tomato most expensive between January 2023 and December 2025?",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "peak",
+   "gold_sql": "SELECT o.period_label, MAX(o.value) AS value FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='tomato' AND o.location_id='MKT_AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start BETWEEN '2023-01-01' AND '2025-12-31' GROUP BY o.period_label ORDER BY value DESC",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "T5",
+   "question": "How has the number of farmers on North Andaman Island changed from 2022-23 to 2024-25?",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value) AS vmin, MAX(o.value) AS vmax FROM observation o WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND o.location_id='ISL_NORTHANDAMAN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start >= '2022-01-01' AND o.period_start <= '2024-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "T6",
+   "question": "Coconut production of A&N year by year",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value) AS vmin, MAX(o.value) AS vmax FROM observation o WHERE o.metric_id='production' AND o.commodity_id='coconut' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "T7",
+   "question": "2019-20 से 2024-25 तक धान का उत्पादन कैसे बदला?",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value) AS vmin, MAX(o.value) AS vmax FROM observation o WHERE o.metric_id='production' AND o.commodity_id='paddy' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start >= '2019-01-01' AND o.period_start <= '2024-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "demo": false,
+   "lang": "hi"
+  },
+  {
+   "id": "P1",
+   "question": "Which source and page did the 2025-26 coconut production figure for A&N come from?",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='coconut' AND o.location_id='AN' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "P2",
+   "question": "Which document and page report the 2024-25 arecanut production of South Andaman district?",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='arecanut' AND o.location_id='AN_SA' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "P3",
+   "question": "Where does the number of farmers on Middle Andaman Island in 2024-25 come from?",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND o.location_id='ISL_MIDDLEANDAMAN' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "P4",
+   "question": "Cite the source for the onion retail price in November 2023",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='onion' AND o.location_id='MKT_AN' AND o.period_label='November 2023' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "P5",
+   "question": "Which page of which report gives the 2023-24 banana area for A&N?",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='banana' AND o.location_id='AN' AND o.period_label='2023-24' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "P6",
+   "question": "What is the source of the 2025-26 paddy production figure for Diglipur zone?",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='paddy' AND o.location_id='ZN_DIGLIPUR' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "C1",
+   "question": "Do the sources agree on paddy area in the UT?",
+   "type": "cross_source",
+   "intent": "compare_sources",
+   "check": "agree",
+   "gold_sql": "SELECT COUNT(*) AS n_multi FROM (SELECT o.period_label FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='paddy' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label HAVING COUNT(DISTINCT o.document_id) >= 2)",
+   "demo": true,
+   "lang": "en"
+  },
+  {
+   "id": "C2",
+   "question": "Are the coconut production figures consistent across documents for A&N?",
+   "type": "cross_source",
+   "intent": "compare_sources",
+   "check": "agree",
+   "gold_sql": "SELECT COUNT(*) AS n_multi FROM (SELECT o.period_label FROM observation o WHERE o.metric_id='production' AND o.commodity_id='coconut' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label HAVING COUNT(DISTINCT o.document_id) >= 2)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "C3",
+   "question": "Compare sources for the 2023-24 arecanut area of the UT",
+   "type": "cross_source",
+   "intent": "compare_sources",
+   "check": "agree",
+   "gold_sql": "SELECT COUNT(*) AS n_multi FROM (SELECT o.period_label FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='arecanut' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_label='2023-24' GROUP BY o.period_label HAVING COUNT(DISTINCT o.document_id) >= 2)",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "L1",
+   "question": "What was the arecanut production of South Andaman district in 2024-25?",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='arecanut' AND o.location_id='AN_SA' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "L2",
+   "question": "दक्षिण अण्डमान में सुपारी का उत्पादन 2024-25",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='arecanut' AND o.location_id='AN_SA' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": true,
+   "lang": "hi"
+  },
+  {
+   "id": "L3",
+   "question": "How many farmers were there on Car Nicobar Island in 2024-25?",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND o.location_id='ISL_CARNICOBAR' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "L4",
+   "question": "Price of eggs in March 2024",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='eggs' AND o.location_id='MKT_AN' AND o.period_label='March 2024' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "L5",
+   "question": "What was the total paddy area in A&N in 2024-25?",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='paddy' AND o.location_id='AN' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "demo": false,
+   "lang": "en"
+  }
+ ]
+}

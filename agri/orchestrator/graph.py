@@ -131,7 +131,7 @@ class Orchestrator:
             agent_id, by, reason = self.router.route(ctx, force_llm=self.force_llm_routing)
         except Exception as e:  # noqa: BLE001
             ctx.tracer.error("route", repr(e), handled_by="skip_document")
-            agent_id, by, reason = "skip", "rule", f"router failure: {e}"
+            agent_id, by, _reason = "skip", "rule", f"router failure: {e}"
         self.conn.execute("UPDATE extraction_run SET agent_id=? WHERE run_id=?",
                           ("router_agent" if agent_id == "skip" else agent_id, s["run_id"]))
         update = {"agent_id": agent_id, "routed_by": by}
@@ -227,9 +227,14 @@ def corpus_documents(conn, ids: list[str] | None = None) -> list[dict]:
     rows = [dict(r) for r in conn.execute("SELECT * FROM document ORDER BY document_id")]
     if ids:
         rows = [r for r in rows if r["document_id"] in ids]
+    present = []
     for r in rows:
         r["abs_path"] = str(config.CORPUS_DIR / r["relative_path"])
-    return rows
+        if Path(r["abs_path"]).exists():
+            present.append(r)
+        else:  # e.g. D14 is not redistributed (licence): download it from its document_url to process it
+            print(f"skip {r['document_id']}: file not found at {r['abs_path']} (see release/CORPUS_EXCLUDED.txt)")
+    return present
 
 
 def register_unseen(conn, path: str) -> dict:
