@@ -1,0 +1,11 @@
+
+Q: How did paddy production in the UT change from 2019-20 to 2025-26?
+[temporal | planner=rules | tool=time_series | 0.01s | id=cf1608f954]
+Production of Paddy (Rice), Andaman & Nicobar Islands: 17,982 t in 2019-20 -> 9,712 t in 2025-26 (-46.0% over 7 periods). Peak 20,043 in 2020-21; low 9,712 in 2025-26. Sources: D02, D03, D04, D05, D06.
+  2019-20: 17,982 t [D03 p1]
+  2020-21: 20,043 t [D04 p1]
+  2021-22: 16,404 t [D05 p1]
+  2022-23: 15,785 t [D06 p1]
+  2023-24: 14,361 t [D06 p1]
+  2024-25: 13,490 t [D06 p1]
+  2025-26: 9,712 t [D02 p1]

@@ -1,0 +1,27 @@
+
+Q: Which islands within 60 km of Port Blair have the most farmers?
+[spatial | planner=rules | tool=nearby | 0.01s | id=9f46826e43]
+8 islands within 60 km of Port Blair Tehsil; Farmers / cultivators (2024-25):
+  South Andaman Island (9.9 km): 2,936  [D10 p8]
+  Baratang Island (48.3 km): 979  [D10 p6]
+  Shaheed Dweep (Neil) (36.2 km): 516  [D10 p9]
+  Swaraj Dweep (Havelock) (43.7 km): 516  [D10 p7]
+
+plan: {"intent": "nearby", "metric": "farmers_count", "commodity": null, "location": null, "level": "island", "period": null, "start": null, "end": null, "top_k": 10, "order": "desc", "radius_km": 60.0, "confident": true}
+tool args: {"location": "TH_PORTBLAIR", "radius_km": 60.0, "metric": "farmers_count", "commodity": null, "level": "island", "period": "2024-25"}
+SQL:
+-- haversine over location.lat/lon, then:
+
+SELECT o.obs_id, o.metric_id, o.commodity_id, c.name AS commodity, o.location_id, l.name AS location,
+       l.level, l.lat, l.lon, o.period_label, o.period_start, o.season, o.dims, o.value, o.unit_id,
+       o.value_raw, o.document_id, d.file_name, d.period_label AS doc_period, s.name AS publisher,
+       o.page, o.table_ref, o.row_label, o.col_label, o.agent_id, o.run_id, o.validation
+FROM observation o
+JOIN location l ON l.location_id = o.location_id
+JOIN document d ON d.document_id = o.document_id
+JOIN source   s ON s.source_id   = d.source_id
+LEFT JOIN commodity c ON c.commodity_id = o.commodity_id
+WHERE o.value IS NOT NULL AND o.metric_id = :metric
+  AND (:commodity IS NULL AND o.commodity_id IS NULL OR o.commodity_id = :commodity)
+  AND json_extract(o.dims, '$.item') IS NULL AND json_extract(o.dims, '$.variety') IS NULL
+AND o.location_id IN (...) AND o.period_label=:period

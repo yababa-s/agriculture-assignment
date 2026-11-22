@@ -1,0 +1,4 @@
+batch B20261123_024107  1 documents  0.7s  model=none (rules only)
+doc  agent                   route  status        try   extr   load   rej  llm
+D02  matrix_table_agent      rule   loaded          1   2352   2352     0    0
+summary -> /Users/suyashtripathi/Desktop/AgriAgent_AN/logs/batch_B20261123_024107.json

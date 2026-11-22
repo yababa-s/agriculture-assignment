@@ -1,0 +1,2 @@
+backup written: /Users/suyashtripathi/Desktop/AgriAgent_AN/backups/34_AN_knowledgebase_v2_20261123_024106.sqlite.gz
+checksum:      /Users/suyashtripathi/Desktop/AgriAgent_AN/backups/34_AN_knowledgebase_v2_20261123_024106.sqlite.gz.sha256

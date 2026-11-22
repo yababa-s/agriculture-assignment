@@ -1,0 +1,6 @@
+[ok] database  db/34_AN_knowledgebase_v2.sqlite
+[ok] adapters  adapters/34_AN_qlora_v1/adapters.safetensors
+[ok] adapters  adapters/34_AN_qlora_v2/adapters.safetensors
+[ok] corpus    data/raw/Area and Production/42-Zone-Wise Area and Production of Crops During 2023-24.pdf
+[ok] corpus    data/raw/Area and Production/47-Area and Production 2025-26.pdf
+[ok] corpus    data/raw/Basic Statistics/Year 2021-22.pdf
