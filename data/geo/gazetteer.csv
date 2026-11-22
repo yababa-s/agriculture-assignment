@@ -1,0 +1,54 @@
+location_id,lat,lon,point_type,note
+AN_NMA,,,polygon_centroid,district polygon (Census 2011 / Survey of India)
+AN_SA,,,polygon_centroid,district polygon (Census 2011 / Survey of India)
+AN_NIC,,,polygon_centroid,district polygon (Census 2011 / Survey of India)
+AN,11.62,92.73,capital,Sri Vijaya Puram (Port Blair)
+MKT_AN,11.67,92.74,market,Port Blair retail market (DES price survey)
+TH_DIGLIPUR,13.27,92.97,hq,Diglipur
+TH_MAYABUNDER,12.92,92.90,hq,Mayabunder
+TH_RANGAT,12.50,92.93,hq,Rangat
+TH_PORTBLAIR,11.67,92.74,hq,Port Blair
+TH_FERRARGUNJ,11.72,92.66,hq,Ferrargunj
+TH_LITTLEANDAMAN,10.59,92.55,hq,Hut Bay
+TH_CARNICOBAR,9.17,92.81,hq,Malacca (Car Nicobar)
+TH_NANCOWRY,8.03,93.54,hq,Kamorta
+TH_GREATNICOBAR,7.01,93.93,hq,Campbell Bay
+ZN_DIGLIPUR,13.27,92.97,hq,Diglipur agri office
+ZN_MAYABUNDER,12.92,92.90,hq,Mayabunder agri office
+ZN_RANGAT,12.50,92.93,hq,Rangat agri office
+ZN_SOUTHANDAMAN,11.62,92.72,hq,Port Blair agri office
+ZN_LITTLEANDAMAN,10.59,92.55,hq,Hut Bay agri office
+ZN_CARNICOBAR,9.17,92.81,hq,Car Nicobar agri office
+ZN_NANCOWRY,8.03,93.54,hq,Kamorta agri office
+ZN_CAMPBELLBAY,7.01,93.93,hq,Campbell Bay agri office
+ISL_NARCONDAM,13.43,94.27,island,
+ISL_EAST,13.63,93.06,island,
+ISL_LANDFALL,13.66,93.03,island,
+ISL_SMITH,13.31,93.07,island,
+ISL_NORTHANDAMAN,13.10,92.93,island,
+ISL_STEWART,12.88,92.92,island,
+ISL_CURLEW,12.85,92.93,island,
+ISL_AVES,12.90,92.95,island,
+ISL_INTERVIEW,12.98,92.71,island,
+ISL_MIDDLEANDAMAN,12.55,92.85,island,
+ISL_STRAIT,12.15,92.78,island,
+ISL_LONG,12.40,92.93,island,
+ISL_NORTHPASSAGE,12.29,92.92,island,
+ISL_BARATANG,12.10,92.80,island,
+ISL_FLATBAY,11.80,92.57,island,
+ISL_SWARAJ,11.97,93.00,island,
+ISL_RUTLAND,11.45,92.65,island,
+ISL_NORTHSENTINEL,11.55,92.24,island,
+ISL_SOUTHANDAMAN,11.75,92.70,island,
+ISL_SHAHEED,11.83,93.03,island,
+ISL_LITTLEANDAMAN,10.75,92.55,island,
+ISL_CARNICOBAR,9.17,92.77,island,
+ISL_CHOWRA,8.45,93.04,island,
+ISL_TERESSA,8.27,93.13,island,
+ISL_KATCHAL,7.95,93.40,island,
+ISL_NANCOWRY,7.97,93.53,island,
+ISL_KAMORTA,8.13,93.52,island,
+ISL_PILOMILLOW,7.24,93.71,island,
+ISL_LITTLENICOBAR,7.33,93.67,island,
+ISL_TILLANGCHONG,8.50,93.62,island,
+ISL_GREATNICOBAR,7.00,93.85,island,

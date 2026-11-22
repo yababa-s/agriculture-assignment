@@ -44,6 +44,10 @@ def init_db(path: Path | str = DB_PATH, fresh: bool = False) -> sqlite3.Connecti
     conn.executescript(SCHEMA_PATH.read_text())
     seed_reference(conn)
     load_manifest(conn)
+    from agri.db.migrate import apply_geo, ensure_meta, migrate_v2
+    ensure_meta(conn)
+    migrate_v2(conn)          # no-op on a fresh v2 schema; upgrades a v1 file
+    apply_geo(conn)
     conn.commit()
     return conn
 

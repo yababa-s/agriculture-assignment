@@ -1,4 +1,6 @@
--- Agricultural Knowledge Base, Andaman & Nicobar Islands (schema v1, frozen for Phase 2)
+-- Agricultural Knowledge Base, Andaman & Nicobar Islands (schema v2, Phase 3)
+-- v2 = v1 + location.lat/lon/geo_source (geospatial queries and maps). Frozen for Phase 3.
+-- Upgrade an existing v1 file in place with: python -m agri.db.migrate
 --
 -- Design: a star schema. Every extracted number is ONE row in `observation`
 -- (the fact table), keyed to lookup tables for commodity, location, metric and
@@ -70,7 +72,10 @@ CREATE TABLE IF NOT EXISTS location (
     level        TEXT NOT NULL CHECK (level IN ('country','ut','district','tehsil','agri_zone','island','market')),
     parent_id    TEXT REFERENCES location(location_id),
     lgd_code     TEXT,                         -- Local Government Directory code where known
-    area_sq_km   REAL
+    area_sq_km   REAL,
+    lat          REAL,                         -- WGS84; island centre, HQ town or district centroid (v2)
+    lon          REAL,
+    geo_source   TEXT                          -- how the point was obtained, see data/geo/locations.csv (v2)
 );
 
 CREATE TABLE IF NOT EXISTS commodity (         -- crops AND market items (eggs, fish, rice ...)
@@ -229,3 +234,6 @@ FROM observation o
 JOIN document d ON d.document_id = o.document_id
 JOIN source   s ON s.source_id   = d.source_id
 JOIN extraction_run r ON r.run_id = o.run_id;
+
+-- ---------------------------------------------------------------- metadata (v2)
+CREATE TABLE IF NOT EXISTS meta_schema (key TEXT PRIMARY KEY, value TEXT NOT NULL);
