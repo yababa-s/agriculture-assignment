@@ -30,6 +30,22 @@ def ocr_boxes(path: str) -> list[dict]:
     return out
 
 
+def reocr_cell(path: str, x0: float, x1: float, yc: float, h: float, scale: int = 4) -> str | None:
+    """Re-read one empty cell: crop it, upscale, OCR again. Vision often drops lone digits like '0' or '2'."""
+    try:
+        from ocrmac import ocrmac
+        from PIL import Image, ImageOps
+    except ImportError:
+        return None
+    img = Image.open(path).convert("L")
+    pad = h * 0.6
+    box = (max(0, int(x0)), max(0, int(yc - pad)), min(img.width, int(x1)), min(img.height, int(yc + pad)))
+    crop = ImageOps.expand(img.crop(box).resize(((box[2] - box[0]) * scale, (box[3] - box[1]) * scale)), border=20, fill=255)
+    texts = [t for t, conf, _ in ocrmac.OCR(crop.convert("RGB"), recognition_level="accurate").recognize() if conf >= 0.3]
+    nums = [t for t in texts if parse_value(t)[0] is not None]
+    return nums[0] if len(nums) == 1 else None
+
+
 def _holder(text: str) -> str | None:
     t = text.lower().strip(" .")
     for key, val in (("ind", "individual"), ("joint", "joint"), ("inst", "institutional"), ("total", "total")):
@@ -96,8 +112,12 @@ class ImageTableAgent(BaseAgent):
         ctx.tracer.decision("map_ocr_columns", "rule", {"header_row": text_rows[hdr_i], "period": period["period_label"],
                                                          "columns": [f"{m}:{h}" for m, _, h in col_specs]})
         derived = 0
+        seen_total = False
         for r in rows[hdr_i + 1:]:
-            if any("contents are owned" in b["text"].lower() for b in r):
+            row_text = " ".join(b["text"] for b in r).lower()
+            # the table ends at its Total row; page chrome (footer, visitor counter) follows it
+            if seen_total or any(w in row_text for w in ("contents are owned", "best viewed", "visitors count", "hosted by")):
+                ctx.tracer.decision("stop_at_table_end", "rule", {"row": row_text[:80]})
                 break
             cells: list[dict | None] = [None] * len(centers)
             label_parts = []
@@ -112,6 +132,17 @@ class ImageTableAgent(BaseAgent):
             if not label or all(c is None for c in cells):
                 continue
             is_total = bool(re.search(r"\(|total", label, re.I))
+            seen_total = label.lower().strip(" :.") == "total"
+            if any(c is not None for c in cells):
+                yc, hh = median([c["yc"] for c in cells if c]), median([c["h"] for c in cells if c])
+                for k, c in enumerate(cells):
+                    if c is None:
+                        txt = reocr_cell(str(ctx.path), centers[k] - half * 0.95, centers[k] + half * 0.95, yc, hh)
+                        ctx.tracer.tool_call("reocr_cell", {"row": label, "column": k})
+                        if txt is not None:
+                            cells[k] = {"text": txt, "conf": 0.6, "xc": centers[k], "yc": yc, "h": hh}
+                            ctx.tracer.error("ocr_missing_cell", {"row": label, "column": k, "reread": txt},
+                                             handled_by="reocr_upscaled_crop")
             vals = [parse_value(c["text"])[0] if c else None for c in cells]
             notes = [""] * len(cells)
             for base in (0, 4):

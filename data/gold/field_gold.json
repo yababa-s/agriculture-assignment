@@ -1,0 +1,3590 @@
+{
+ "description": "Per-agent field-level gold. Each region is one held-out page (or page set); every fact in the region was transcribed by eye from the rendered page image, independently of the extractors (2026-11-23). Scoring: a database record in the region is a true positive if metric, commodity, location, period, the listed dims and the value (within 0.5%) match an unmatched gold fact.",
+ "island_profile_agent": "uses data/gold/island_profiles_D10.json (294 items, 31 islands)",
+ "regions": [
+  {
+   "agent": "matrix_table_agent",
+   "document_id": "D02",
+   "pages": [
+    1
+   ],
+   "filter": {
+    "commodity": [
+     "paddy",
+     "maize",
+     "green_gram",
+     "black_gram",
+     "ginger"
+    ]
+   },
+   "language": "en",
+   "facts": [
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 2100.3
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 6941.03
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 484.61
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 1405.7
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 480.525
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 1252.3
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 3065.432
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 9599.034
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 47.9
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 109.95
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 47.9
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 109.95
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "ZN_CAMPBELLBAY",
+     "period": "2025-26",
+     "value": 0.5
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "ZN_CAMPBELLBAY",
+     "period": "2025-26",
+     "value": 3.28
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "AN_NIC",
+     "period": "2025-26",
+     "value": 0.5
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "AN_NIC",
+     "period": "2025-26",
+     "value": 3.28
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "paddy",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 3113.832
+    },
+    {
+     "metric": "production",
+     "commodity": "paddy",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 9712.264
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "maize",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 5.5
+    },
+    {
+     "metric": "production",
+     "commodity": "maize",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 22
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "maize",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 0.2
+    },
+    {
+     "metric": "production",
+     "commodity": "maize",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 0.1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "maize",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 0.5
+    },
+    {
+     "metric": "production",
+     "commodity": "maize",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 3.61
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "maize",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 6.2
+    },
+    {
+     "metric": "production",
+     "commodity": "maize",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 25.71
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "maize",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 8.82
+    },
+    {
+     "metric": "production",
+     "commodity": "maize",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 10.58
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "maize",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 8.82
+    },
+    {
+     "metric": "production",
+     "commodity": "maize",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 10.58
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "maize",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 15.02
+    },
+    {
+     "metric": "production",
+     "commodity": "maize",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 36.29
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "green_gram",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 400
+    },
+    {
+     "metric": "production",
+     "commodity": "green_gram",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 160.23
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "green_gram",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 7.05
+    },
+    {
+     "metric": "production",
+     "commodity": "green_gram",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 1.73
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "green_gram",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 5.13
+    },
+    {
+     "metric": "production",
+     "commodity": "green_gram",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 2.71
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "green_gram",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 412.18
+    },
+    {
+     "metric": "production",
+     "commodity": "green_gram",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 164.67
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "green_gram",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 2.5
+    },
+    {
+     "metric": "production",
+     "commodity": "green_gram",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 2
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "green_gram",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 2.5
+    },
+    {
+     "metric": "production",
+     "commodity": "green_gram",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 2
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "green_gram",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 414.68
+    },
+    {
+     "metric": "production",
+     "commodity": "green_gram",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 166.67
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "black_gram",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 348.5
+    },
+    {
+     "metric": "production",
+     "commodity": "black_gram",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 137.8
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "black_gram",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 3.8
+    },
+    {
+     "metric": "production",
+     "commodity": "black_gram",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 0.5
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "black_gram",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 3.1
+    },
+    {
+     "metric": "production",
+     "commodity": "black_gram",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 1.33
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "black_gram",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 355.4
+    },
+    {
+     "metric": "production",
+     "commodity": "black_gram",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 139.63
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "black_gram",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 2
+    },
+    {
+     "metric": "production",
+     "commodity": "black_gram",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "black_gram",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 2
+    },
+    {
+     "metric": "production",
+     "commodity": "black_gram",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "black_gram",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 357.4
+    },
+    {
+     "metric": "production",
+     "commodity": "black_gram",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 140.63
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 120
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "ZN_DIGLIPUR",
+     "period": "2025-26",
+     "value": 536.1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 2.55
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "ZN_MAYABUNDER",
+     "period": "2025-26",
+     "value": 9.5
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 4.5
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "ZN_RANGAT",
+     "period": "2025-26",
+     "value": 12.1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 127.05
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "AN_NMA",
+     "period": "2025-26",
+     "value": 557.7
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 11.125
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "ZN_SOUTHANDAMAN",
+     "period": "2025-26",
+     "value": 31.23
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "ZN_LITTLEANDAMAN",
+     "period": "2025-26",
+     "value": 3.41
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "ZN_LITTLEANDAMAN",
+     "period": "2025-26",
+     "value": 16.55
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 14.535
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "AN_SA",
+     "period": "2025-26",
+     "value": 47.78
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "ZN_CAMPBELLBAY",
+     "period": "2025-26",
+     "value": 0.28
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "ZN_CAMPBELLBAY",
+     "period": "2025-26",
+     "value": 0.18
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "AN_NIC",
+     "period": "2025-26",
+     "value": 0.28
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "AN_NIC",
+     "period": "2025-26",
+     "value": 0.18
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "ginger",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 141.865
+    },
+    {
+     "metric": "production",
+     "commodity": "ginger",
+     "location": "AN",
+     "period": "2025-26",
+     "value": 605.66
+    }
+   ],
+   "note": "Rows Paddy, Maize, Green Gram, Black Gram, Ginger; all 12 location column pairs; blank cells excluded."
+  },
+  {
+   "agent": "bilingual_table_agent",
+   "document_id": "D06",
+   "pages": [
+    2
+   ],
+   "filter": {
+    "commodity": [
+     "coconut",
+     "arecanut",
+     "cashewnut",
+     "sweet_potato",
+     "tapioca",
+     "banana",
+     "mango",
+     "papaya",
+     "citrus",
+     "pineapple",
+     "sapota"
+    ],
+    "metric": [
+     "area_cultivated",
+     "production"
+    ]
+   },
+   "language": "hi+en",
+   "facts": [
+    {
+     "metric": "area_cultivated",
+     "commodity": "coconut",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 2825
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "coconut",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 1325
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "coconut",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 13752
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "coconut",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 17902
+    },
+    {
+     "metric": "production",
+     "commodity": "coconut",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 18.523
+    },
+    {
+     "metric": "production",
+     "commodity": "coconut",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 6.1937
+    },
+    {
+     "metric": "production",
+     "commodity": "coconut",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 87.4
+    },
+    {
+     "metric": "production",
+     "commodity": "coconut",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 112.12
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "arecanut",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 1372.2
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "arecanut",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 3212
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "arecanut",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 196.8
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "arecanut",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 4757.4
+    },
+    {
+     "metric": "production",
+     "commodity": "arecanut",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 8062.23
+    },
+    {
+     "metric": "production",
+     "commodity": "arecanut",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 5836.03
+    },
+    {
+     "metric": "production",
+     "commodity": "arecanut",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 66.12
+    },
+    {
+     "metric": "production",
+     "commodity": "arecanut",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 13964.38
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "cashewnut",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 5.9
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "cashewnut",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 11.6
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "cashewnut",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 5.5
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "cashewnut",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 23
+    },
+    {
+     "metric": "production",
+     "commodity": "cashewnut",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 4.2
+    },
+    {
+     "metric": "production",
+     "commodity": "cashewnut",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 5.2
+    },
+    {
+     "metric": "production",
+     "commodity": "cashewnut",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 1.1
+    },
+    {
+     "metric": "production",
+     "commodity": "cashewnut",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 10.5
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sweet_potato",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 22.25
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sweet_potato",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 24.84
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sweet_potato",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 50.7
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sweet_potato",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 97.79
+    },
+    {
+     "metric": "production",
+     "commodity": "sweet_potato",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 233.1
+    },
+    {
+     "metric": "production",
+     "commodity": "sweet_potato",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 362.2
+    },
+    {
+     "metric": "production",
+     "commodity": "sweet_potato",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 197.3
+    },
+    {
+     "metric": "production",
+     "commodity": "sweet_potato",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 792.5
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "tapioca",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 59.4
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "tapioca",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 22.01
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "tapioca",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 81
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "tapioca",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 162.4
+    },
+    {
+     "metric": "production",
+     "commodity": "tapioca",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 418
+    },
+    {
+     "metric": "production",
+     "commodity": "tapioca",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 186.5
+    },
+    {
+     "metric": "production",
+     "commodity": "tapioca",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 298
+    },
+    {
+     "metric": "production",
+     "commodity": "tapioca",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 902.5
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "banana",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 406.1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "banana",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 768.4
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "banana",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 403.5
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "banana",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 1578
+    },
+    {
+     "metric": "production",
+     "commodity": "banana",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 7240.6
+    },
+    {
+     "metric": "production",
+     "commodity": "banana",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 5497.9
+    },
+    {
+     "metric": "production",
+     "commodity": "banana",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 309.21
+    },
+    {
+     "metric": "production",
+     "commodity": "banana",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 13048
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "mango",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 95.2
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "mango",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 251.8
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "mango",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 41.9
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "mango",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 388.9
+    },
+    {
+     "metric": "production",
+     "commodity": "mango",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 439.53
+    },
+    {
+     "metric": "production",
+     "commodity": "mango",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 1919.3
+    },
+    {
+     "metric": "production",
+     "commodity": "mango",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 52.39
+    },
+    {
+     "metric": "production",
+     "commodity": "mango",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 2411.2
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "papaya",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 37
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "papaya",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 111.8
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "papaya",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 17.9
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "papaya",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 166.7
+    },
+    {
+     "metric": "production",
+     "commodity": "papaya",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 662.1
+    },
+    {
+     "metric": "production",
+     "commodity": "papaya",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 857.4
+    },
+    {
+     "metric": "production",
+     "commodity": "papaya",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 27.65
+    },
+    {
+     "metric": "production",
+     "commodity": "papaya",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 1547
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "citrus",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 138.7
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "citrus",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 12
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "citrus",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 364.9
+    },
+    {
+     "metric": "production",
+     "commodity": "citrus",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 555.59
+    },
+    {
+     "metric": "production",
+     "commodity": "citrus",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 229.42
+    },
+    {
+     "metric": "production",
+     "commodity": "citrus",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 7.3
+    },
+    {
+     "metric": "production",
+     "commodity": "citrus",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 792.31
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "pineapple",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 14.25
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "pineapple",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 74.05
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "pineapple",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 17.8
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "pineapple",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 106.1
+    },
+    {
+     "metric": "production",
+     "commodity": "pineapple",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 102.49
+    },
+    {
+     "metric": "production",
+     "commodity": "pineapple",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 106.13
+    },
+    {
+     "metric": "production",
+     "commodity": "pineapple",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 15
+    },
+    {
+     "metric": "production",
+     "commodity": "pineapple",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 223.62
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sapota",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 53.6
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sapota",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 200.1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sapota",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 16.1
+    },
+    {
+     "metric": "area_cultivated",
+     "commodity": "sapota",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 269.8
+    },
+    {
+     "metric": "production",
+     "commodity": "sapota",
+     "location": "AN_SA",
+     "period": "2024-25",
+     "value": 153.16
+    },
+    {
+     "metric": "production",
+     "commodity": "sapota",
+     "location": "AN_NMA",
+     "period": "2024-25",
+     "value": 827.1
+    },
+    {
+     "metric": "production",
+     "commodity": "sapota",
+     "location": "AN_NIC",
+     "period": "2024-25",
+     "value": 16.55
+    },
+    {
+     "metric": "production",
+     "commodity": "sapota",
+     "location": "AN",
+     "period": "2024-25",
+     "value": 996.81
+    }
+   ],
+   "note": "Plantation, root-crop and fruit rows of the area/production table (Kruti Dev Hindi labels); totals and 'other' rows excluded."
+  },
+  {
+   "agent": "price_table_agent",
+   "document_id": "D13",
+   "pages": [
+    11
+   ],
+   "filter": {
+    "commodity": [
+     "tomato",
+     "onion",
+     "potato",
+     "brinjal",
+     "ginger",
+     "banana_china",
+     "eggs",
+     "coconut_green",
+     "lemon",
+     "chicken_dressed"
+    ]
+   },
+   "language": "en",
+   "facts": [
+    {
+     "metric": "retail_price",
+     "commodity": "tomato",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 110
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "tomato",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 90
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "tomato",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 118
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "tomato",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 82.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "tomato",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 60
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "tomato",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 117.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "tomato",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 23.4
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "onion",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 50
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "onion",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 47.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "onion",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 106
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "onion",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 81.88
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "onion",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 57.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "onion",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 65
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "onion",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 19.2
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "potato",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 49.38
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "potato",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 49.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "potato",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 67
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "potato",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 40
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "potato",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 40
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "potato",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 42.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "potato",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 15
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "brinjal",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 196.25
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "brinjal",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 193
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "brinjal",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 174
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "brinjal",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 165
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "brinjal",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 160
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "brinjal",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 157.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "brinjal",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 47.6
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "ginger",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 225
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "ginger",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 231
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "ginger",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 315
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "ginger",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 277.5
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "ginger",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 170
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "ginger",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 160
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "ginger",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 80
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "banana_china",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 65
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "banana_china",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 66
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "banana_china",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 88
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "banana_china",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 65
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "banana_china",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 60
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "banana_china",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 60
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "banana_china",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 30
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "eggs",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 105.75
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "eggs",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 96
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "eggs",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 96
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "eggs",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 84
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "eggs",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 84
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "eggs",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 84
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "eggs",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 47.8
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "coconut_green",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 40
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "coconut_green",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 40
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "coconut_green",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 40
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "coconut_green",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 40
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "coconut_green",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 40
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "coconut_green",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 30
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "coconut_green",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 15
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "lemon",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 8.94
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "lemon",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 7.45
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "lemon",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 120
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "lemon",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 120
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "lemon",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 120
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "lemon",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 90
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "lemon",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 50.4
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "chicken_dressed",
+     "location": "MKT_AN",
+     "period": "November 2025",
+     "value": 286.67
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "chicken_dressed",
+     "location": "MKT_AN",
+     "period": "October 2025",
+     "value": 290
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "chicken_dressed",
+     "location": "MKT_AN",
+     "period": "November 2024",
+     "value": 260
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "chicken_dressed",
+     "location": "MKT_AN",
+     "period": "November 2023",
+     "value": 260
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "chicken_dressed",
+     "location": "MKT_AN",
+     "period": "November 2022",
+     "value": 260
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "chicken_dressed",
+     "location": "MKT_AN",
+     "period": "November 2021",
+     "value": 270
+    },
+    {
+     "metric": "retail_price",
+     "commodity": "chicken_dressed",
+     "location": "MKT_AN",
+     "period": "April 2011",
+     "value": 150
+    }
+   ],
+   "note": "November 2025 comparative statement: 10 items x 7 period columns (Nov-25, Oct-25, Nov-24..Nov-21, Apr-2011)."
+  },
+  {
+   "agent": "narrative_agent",
+   "document_id": "D15",
+   "pages": [
+    1,
+    5
+   ],
+   "filter": {
+    "metric": [
+     "scheme_outlay",
+     "scheme_expenditure"
+    ]
+   },
+   "language": "en",
+   "facts": [
+    {
+     "metric": "scheme_outlay",
+     "commodity": null,
+     "location": "AN",
+     "period": "2021-22",
+     "value": 1900,
+     "dims": {
+      "scheme": "Assistance to farmers under High Yielding Programme"
+     }
+    },
+    {
+     "metric": "scheme_expenditure",
+     "commodity": null,
+     "location": "AN",
+     "period": "2021-22",
+     "value": 1611.32,
+     "dims": {
+      "scheme": "Assistance to farmers under High Yielding Programme"
+     }
+    },
+    {
+     "metric": "scheme_outlay",
+     "commodity": null,
+     "location": "AN",
+     "period": "2022-23",
+     "value": 1785,
+     "dims": {
+      "scheme": "Assistance to farmers under High Yielding Programme"
+     }
+    },
+    {
+     "metric": "scheme_expenditure",
+     "commodity": null,
+     "location": "AN",
+     "period": "2022-23",
+     "value": 1472.9,
+     "dims": {
+      "scheme": "Assistance to farmers under High Yielding Programme"
+     }
+    },
+    {
+     "metric": "scheme_outlay",
+     "commodity": null,
+     "location": "AN",
+     "period": "2023-24",
+     "value": 2441.85,
+     "dims": {
+      "scheme": "Assistance to farmers under High Yielding Programme"
+     }
+    },
+    {
+     "metric": "scheme_expenditure",
+     "commodity": null,
+     "location": "AN",
+     "period": "2023-24",
+     "value": 1766.7,
+     "dims": {
+      "scheme": "Assistance to farmers under High Yielding Programme"
+     }
+    },
+    {
+     "metric": "scheme_outlay",
+     "commodity": null,
+     "location": "AN",
+     "period": "2021-22",
+     "value": 1582,
+     "dims": {
+      "scheme": "Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture"
+     }
+    },
+    {
+     "metric": "scheme_expenditure",
+     "commodity": null,
+     "location": "AN",
+     "period": "2021-22",
+     "value": 1528.74,
+     "dims": {
+      "scheme": "Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture"
+     }
+    },
+    {
+     "metric": "scheme_outlay",
+     "commodity": null,
+     "location": "AN",
+     "period": "2022-23",
+     "value": 1584,
+     "dims": {
+      "scheme": "Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture"
+     }
+    },
+    {
+     "metric": "scheme_expenditure",
+     "commodity": null,
+     "location": "AN",
+     "period": "2022-23",
+     "value": 1549.36,
+     "dims": {
+      "scheme": "Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture"
+     }
+    },
+    {
+     "metric": "scheme_outlay",
+     "commodity": null,
+     "location": "AN",
+     "period": "2023-24",
+     "value": 1435.13,
+     "dims": {
+      "scheme": "Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture"
+     }
+    },
+    {
+     "metric": "scheme_expenditure",
+     "commodity": null,
+     "location": "AN",
+     "period": "2023-24",
+     "value": 1517.68,
+     "dims": {
+      "scheme": "Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture"
+     }
+    }
+   ],
+   "note": "Outlay/expenditure tables of two scheme memoranda. Line-item allocations (Rs thousand) are out of the agent's target schema and not scored."
+  },
+  {
+   "agent": "image_table_agent",
+   "document_id": "D16",
+   "pages": [
+    1
+   ],
+   "filter": {},
+   "language": "en",
+   "facts": [
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2722,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 425,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 90,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3237,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 814.19,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 147.95,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 17.93,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 980.07,
+     "dims": {
+      "size_class": "Below 0.5",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1576,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 311,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 30,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1917,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1147.38,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 225.24,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 19.93,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1392.55,
+     "dims": {
+      "size_class": "05 - 1",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 4298,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 736,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 120,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 5154,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1961.57,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 373.19,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 37.86,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2372.62,
+     "dims": {
+      "size_class": "Marginal (1+2)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1856,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 638,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 39,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2533,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2667.69,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1008.76,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 61.36,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3737.81,
+     "dims": {
+      "size_class": "1.0 - 2.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1856,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 638,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 39,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2533,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2667.69,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1008.76,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 61.36,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3737.81,
+     "dims": {
+      "size_class": "Small (3)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1282,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 623,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 34,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1939,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2840.03,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1520.55,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 78.16,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 4438.74,
+     "dims": {
+      "size_class": "2.0 - 3.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 328,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 599,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 9,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 936,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1200.56,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2202.9,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 31.79,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3435.25,
+     "dims": {
+      "size_class": "3.0 - 4.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1610,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1222,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 43,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2875,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 4040.59,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3723.45,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 109.95,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 7873.99,
+     "dims": {
+      "size_class": "Semi Medium (4+5)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 580,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 656,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 11,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1247,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2643.23,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2710.29,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 47.22,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 5400.74,
+     "dims": {
+      "size_class": "4.0 - 5.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 63,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 33,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 8,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 104,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 374.64,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 204.27,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 44.58,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 623.49,
+     "dims": {
+      "size_class": "5.0 - 7.5",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 5,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 5,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 13,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 24.93,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 39.14,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 40.62,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 104.69,
+     "dims": {
+      "size_class": "7.5 - 10.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 646,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 694,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 24,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1364,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3042.8,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2953.7,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 132.42,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 6128.92,
+     "dims": {
+      "size_class": "Medium(6+7+8)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 11,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 13,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 31.22,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0.0,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 160.99,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 192.21,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 15,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 15,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0.0,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0.0,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 914.52,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 914.52,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 26,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 28,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 31.22,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1075.51,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1106.73,
+     "dims": {
+      "size_class": "Large 9+10)",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 8412,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 3290,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 252,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 11954,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "total"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 11743.87,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 8059.1,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 1417.1,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "institutional"
+     }
+    },
+    {
+     "metric": "holdings_area",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 21220.07,
+     "dims": {
+      "size_class": "Total",
+      "holder_type": "total"
+     }
+    }
+   ],
+   "note": "All 16 rows x 8 columns of the Agriculture Census 2015-16 screenshot (OCR). Zero cells are printed values and are scored."
+  },
+  {
+   "agent": "lulc_agent",
+   "document_id": "D17",
+   "pages": [
+    1
+   ],
+   "filter": {},
+   "language": "en",
+   "facts": [
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 312.11,
+     "dims": {
+      "lulc_l2": "Crop land"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 2.99,
+     "dims": {
+      "lulc_l2": "Crop land"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 0.19,
+     "dims": {
+      "lulc_l2": "Fallow"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 22.96,
+     "dims": {
+      "lulc_l2": "Plantation"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 53.38,
+     "dims": {
+      "lulc_l2": "Plantation"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 0.06,
+     "dims": {
+      "lulc_l2": "Sandy Area"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 6.93,
+     "dims": {
+      "lulc_l2": "Sandy Area"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 2.61,
+     "dims": {
+      "lulc_l2": "Scrub Land"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 4.82,
+     "dims": {
+      "lulc_l2": "Rural"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 1.83,
+     "dims": {
+      "lulc_l2": "Rural"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 52.28,
+     "dims": {
+      "lulc_l2": "Urban"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 11.49,
+     "dims": {
+      "lulc_l2": "Urban"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 1350.15,
+     "dims": {
+      "lulc_l2": "Deciduous"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 75.34,
+     "dims": {
+      "lulc_l2": "Deciduous"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 3743.15,
+     "dims": {
+      "lulc_l2": "Evergreen/Semi evergreen"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 1315.1,
+     "dims": {
+      "lulc_l2": "Evergreen/Semi evergreen"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 73.6,
+     "dims": {
+      "lulc_l2": "Scrub Forest"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 199.94,
+     "dims": {
+      "lulc_l2": "Scrub Forest"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 734.01,
+     "dims": {
+      "lulc_l2": "Swamp / Mangroves"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 91.32,
+     "dims": {
+      "lulc_l2": "Swamp / Mangroves"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 15.9,
+     "dims": {
+      "lulc_l2": "Inland Wetland"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 1.93,
+     "dims": {
+      "lulc_l2": "Inland Wetland"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 53.12,
+     "dims": {
+      "lulc_l2": "Coastal Wetland"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 64.72,
+     "dims": {
+      "lulc_l2": "Coastal Wetland"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 39.04,
+     "dims": {
+      "lulc_l2": "River/Stream/Canals"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 12.09,
+     "dims": {
+      "lulc_l2": "River/Stream/Canals"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_ANDAMAN",
+     "period": "2015-16",
+     "value": 4.0,
+     "dims": {
+      "lulc_l2": "Water bodies"
+     }
+    },
+    {
+     "metric": "lulc_area",
+     "commodity": null,
+     "location": "AN_NIC",
+     "period": "2015-16",
+     "value": 3.95,
+     "dims": {
+      "lulc_l2": "Water bodies"
+     }
+    }
+   ],
+   "note": "ANDAMAN and NICOBAR columns of the UT land-use table; other UTs are out of scope for the A&N knowledge base."
+  }
+ ]
+}
