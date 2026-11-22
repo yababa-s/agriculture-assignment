@@ -1,0 +1,36 @@
+{
+  "batch_id": "B20261103_185052",
+  "documents": [
+    {
+      "document_id": "U01",
+      "file": "hindi_area_production_2025-26.pdf",
+      "run_id": "68876945e534",
+      "agent": "matrix_table_agent",
+      "routed_by": "model",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 144,
+      "loaded": 144,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [],
+      "validation": {
+        "input": 144,
+        "accepted": 144,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 5.3,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit"
+}

@@ -78,3 +78,16 @@ def test_validator(conn):
     unknown = dict(base, location_id="NOWHERE")
     out = v.validate([base, bad, unknown])
     assert out["summary"]["accepted"] == 1 and out["summary"]["rejected"] == 2
+
+
+def test_route_kruti_prose_to_narrative():
+    from agri.agents.router import heuristic_route
+    prose = {"modality": "pdf", "pages": 3, "chars": 6000, "legacy_font": True, "languages": "en+hi", "ruled_tables_first3": 0}
+    assert heuristic_route(prose) == ("narrative_agent", True)
+    assert heuristic_route({**prose, "ruled_tables_first3": 4}) == ("bilingual_table_agent", True)
+
+
+def test_decode_kruti_prose_keeps_numbers():
+    from agri.tools.krutidev import decode_kruti_prose
+    out = decode_kruti_prose("dqy Qly 9301.75")
+    assert out.endswith("9301.75") and "dqy" not in out

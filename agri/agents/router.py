@@ -89,6 +89,8 @@ def heuristic_route(fp: dict) -> tuple[str, bool]:
         return "island_profile_agent", True
     if "land use" in kw:
         return "lulc_agent", True
+    if fp.get("legacy_font") and fp.get("ruled_tables_first3", 0) == 0:
+        return "narrative_agent", True           # Kruti Dev prose: no tables, the narrative agent decodes it
     if fp.get("legacy_font") or (fp.get("languages") == "en+hi" and fp.get("ruled_tables_first3", 0) > 0):
         return "bilingual_table_agent", True
     if "name of the scheme" in kw:

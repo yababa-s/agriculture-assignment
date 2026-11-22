@@ -1,0 +1,39 @@
+{
+  "batch_id": "B20261103_215344",
+  "documents": [
+    {
+      "document_id": "D06",
+      "file": "Year 2024-25.pdf",
+      "run_id": "4bd3097ece0a",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 954,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 95,
+      "notes": [
+        "p4_t1: 3 columns unmapped (col 1: metric 'distribute' is not an allowed id)",
+        "p6_t1: 0 columns unmapped (unknown col in {'col': 5, 'location': 'AN', 'metric': 'fertilizer_consumption', )"
+      ],
+      "validation": {
+        "input": 954,
+        "accepted": 954,
+        "rejected": 0,
+        "warnings": 13,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 120,
+          "sum_mismatch": 1
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 53.4,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v1)"
+}

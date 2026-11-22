@@ -102,6 +102,31 @@ def split_bilingual_label(label: str) -> tuple[str, str]:
     return krutidev_to_unicode(" ".join(prefix)), " ".join(rest)
 
 
+_NUMBER_TOK = re.compile(r"[(]?\d[\d,]*(?:\.\d+)?%?[)]?[,.;]?")
+
+
+def decode_kruti_prose(text: str) -> str:
+    """Decode Kruti Dev running text (paragraphs, not table labels) line by line.
+
+    Runs of non-English tokens are converted; English words and plain numbers stay as they are,
+    so figures quoted inside Hindi sentences keep their printed form.
+    """
+    out = []
+    for line in text.splitlines():
+        tokens, buf, parts = line.split(" "), [], []
+        for tok in tokens + [None]:
+            if tok is not None and not _NUMBER_TOK.fullmatch(tok) and not _looks_english(tok):
+                buf.append(tok)
+                continue
+            if buf:
+                parts.append(krutidev_to_unicode(" ".join(buf)))
+                buf = []
+            if tok is not None:
+                parts.append(tok)
+        out.append(" ".join(parts))
+    return "\n".join(out)
+
+
 _SIGNAL_CHARS = set("[]{};'\"|<>=~`^*¡¼½/}{±")
 
 

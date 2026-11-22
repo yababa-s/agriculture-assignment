@@ -1,0 +1,159 @@
+// Agricultural Knowledge Base, Andaman & Nicobar Islands (schema v1)
+// Paste into https://dbdiagram.io/d to draw the diagram. Same tables as agri/db/schema.sql.
+
+Table source {
+  source_id varchar [pk, note: 'e.g. SRC_DES']
+  name varchar [not null]
+  portal_url varchar
+  source_type varchar [not null]
+  license varchar [not null]
+}
+
+Table document {
+  document_id varchar [pk, note: 'D01..D20, U01.. for unseen files']
+  source_id varchar [not null, ref: > source.source_id]
+  file_name varchar [not null]
+  relative_path varchar
+  document_url varchar
+  source_group varchar [not null, note: 'G1..G8, decides the agent']
+  period_label varchar
+  modality varchar [not null]
+  languages varchar [not null]
+  scripts varchar
+  legacy_font int
+  pages int
+  sha256 varchar [unique, not null]
+  collection_date varchar
+  license varchar
+}
+
+Table agent {
+  agent_id varchar [pk]
+  description varchar [not null]
+  version varchar [not null]
+}
+
+Table extraction_run {
+  run_id varchar [pk]
+  batch_id varchar [not null]
+  document_id varchar [not null, ref: > document.document_id]
+  agent_id varchar [not null, ref: > agent.agent_id]
+  model_name varchar
+  adapter varchar
+  started_at varchar [not null]
+  finished_at varchar
+  status varchar [not null, note: 'loaded | partial | failed | needs_review | skipped']
+  attempts int
+  n_extracted int
+  n_loaded int
+  n_rejected int
+  n_llm_calls int
+  manual_interventions int
+  trace_path varchar
+  error varchar
+}
+
+Table location {
+  location_id varchar [pk, note: 'AN, AN_SA, ZN_DIGLIPUR, ISL_SWARAJ ...']
+  name varchar [not null]
+  name_hi varchar
+  level varchar [not null, note: 'country | ut | district | tehsil | agri_zone | island | market']
+  parent_id varchar [ref: > location.location_id]
+  lgd_code varchar
+  area_sq_km float
+}
+
+Table commodity {
+  commodity_id varchar [pk, note: 'paddy, black_pepper ...']
+  name varchar [not null]
+  name_hi varchar
+  category varchar [not null]
+  is_aggregate int
+}
+
+Table unit {
+  unit_id varchar [pk, note: 'ha, mt, inr_per_kg ...']
+  symbol varchar [not null]
+  dimension varchar [not null]
+  base_unit_id varchar [ref: > unit.unit_id]
+  to_base_factor float
+}
+
+Table metric {
+  metric_id varchar [pk, note: 'area_cultivated, production, retail_price ...']
+  name varchar [not null]
+  domain varchar [not null]
+  default_unit varchar [ref: > unit.unit_id]
+  description varchar
+}
+
+Table alias {
+  alias varchar [not null]
+  entity_type varchar [not null, note: 'commodity | location | metric | unit']
+  entity_id varchar [not null, note: 'id in the table named by entity_type']
+  lang varchar
+  origin varchar [note: 'seed | llm | kruti_decode']
+  indexes {
+    (alias, entity_type, entity_id) [pk]
+  }
+}
+
+Table observation {
+  obs_id int [pk, increment]
+  metric_id varchar [not null, ref: > metric.metric_id]
+  commodity_id varchar [ref: > commodity.commodity_id]
+  location_id varchar [not null, ref: > location.location_id]
+  period_label varchar [not null]
+  period_type varchar [not null]
+  period_start varchar [not null]
+  period_end varchar [not null]
+  season varchar
+  dims varchar [note: 'JSON qualifiers: variety, size_class, channel ...']
+  value float [note: 'NULL when missing']
+  unit_id varchar [ref: > unit.unit_id]
+  value_raw varchar [not null, note: 'exact printed text']
+  unit_raw varchar
+  missing_reason varchar
+  is_total_row int
+  document_id varchar [not null, ref: > document.document_id]
+  page int
+  table_ref varchar
+  row_label varchar
+  col_label varchar
+  run_id varchar [not null, ref: > extraction_run.run_id]
+  agent_id varchar [not null, ref: > agent.agent_id]
+  confidence float
+  validation varchar
+  validation_note varchar
+  dedup_key varchar [unique, not null]
+  Note: 'Fact table: one row per extracted number, with full provenance'
+}
+
+Table text_fact {
+  fact_id int [pk, increment]
+  subject varchar [not null]
+  predicate varchar [not null]
+  object varchar [not null]
+  location_id varchar [ref: > location.location_id]
+  period_label varchar
+  document_id varchar [not null, ref: > document.document_id]
+  page int
+  evidence varchar [not null]
+  run_id varchar [not null, ref: > extraction_run.run_id]
+  agent_id varchar [not null, ref: > agent.agent_id]
+  dedup_key varchar [unique, not null]
+}
+
+Table document_chunk {
+  chunk_id int [pk, increment]
+  document_id varchar [not null, ref: > document.document_id]
+  page int [not null]
+  text varchar [not null]
+}
+
+Table rejected_record {
+  rej_id int [pk, increment]
+  run_id varchar [not null, ref: > extraction_run.run_id]
+  payload varchar [not null]
+  reason varchar [not null]
+}

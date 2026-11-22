@@ -1,0 +1,36 @@
+{
+  "batch_id": "B20261103_161011",
+  "documents": [
+    {
+      "document_id": "D16",
+      "file": "agri census 2015-16.png",
+      "run_id": "8b7dbf34d0d1",
+      "agent": "image_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 144,
+      "loaded": 0,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 144,
+        "accepted": 144,
+        "rejected": 0,
+        "warnings": 2,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 1.3,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v1)"
+}

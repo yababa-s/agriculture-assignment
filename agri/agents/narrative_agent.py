@@ -11,6 +11,7 @@ import re
 from rapidfuzz import fuzz
 
 from agri.agents.base import AgentContext, AgentResult, BaseAgent, make_record
+from agri.tools.krutidev import decode_kruti_prose, has_kruti
 from agri.tools.parsing import parse_period
 from agri.tools.pdf_tools import page_texts
 
@@ -100,6 +101,10 @@ class NarrativeAgent(BaseAgent):
     def run(self, ctx: AgentContext) -> AgentResult:
         result = AgentResult()
         pages = list(page_texts(str(ctx.path)))
+        legacy = [i + 1 for i, t in enumerate(pages) if has_kruti(t)]
+        if legacy:
+            pages = [decode_kruti_prose(t) if i + 1 in legacy else t for i, t in enumerate(pages)]
+            ctx.tracer.decision("decode_kruti_dev", "rule", {"pages": legacy, "reason": "Hindi in Kruti Dev legacy font"})
         schemes = self.tool(ctx, "segment_schemes", segment_schemes, pages=pages,
                             summarize=lambda ss: [{"page": s["page"], "name": s["name"][:60]} for s in ss])
         ctx.tracer.decision("document_kind", "rule", {"kind": "budget_memoranda" if schemes else "report",
@@ -144,7 +149,7 @@ class NarrativeAgent(BaseAgent):
         rejected = []
         for f in r.parsed:
             if not isinstance(f, dict) or f.get("predicate") not in PREDICATES or not grounded(f.get("evidence", ""), text):
-                rejected.append((f.get("predicate") if isinstance(f, dict) else None))
+                rejected.append(f.get("predicate") if isinstance(f, dict) else None)
                 continue
             result.facts.append({"subject": str(f.get("subject") or subject_hint or "")[:200], "predicate": f["predicate"],
                                  "object": str(f.get("object"))[:300], "location_id": "AN",
