@@ -1,6 +1,6 @@
 # Database schema and data dictionary
 
-Physical store: **SQLite**, one file (`db/34_AN_knowledgebase_v1.sqlite`), DDL in
+Physical store: **SQLite**, one file (`db/34_AN_knowledgebase_v2.sqlite`), DDL in
 [`agri/db/schema.sql`](../agri/db/schema.sql). SQLite was chosen over MongoDB/Postgres for Phase 2
 because the submission must be reproducible from one file with no server. The model is
 relational, so moving to Postgres/PostGIS for Phase 3 spatial queries changes no table.
@@ -208,3 +208,13 @@ Query Q5 in [`sample_queries.md`](sample_queries.md) traces this number back to 
 | v_price | team's Price entity (commodity, market, period, retail/wholesale/farm-harvest price, unit, source) |
 | v_conflict | same fact, different documents, values differ by more than 1% |
 | v_provenance | each number with file, publisher, page, table, row, column, run, agent, model, adapter |
+
+## Schema v2 (Phase 3)
+
+| Change | Purpose |
+|---|---|
+| `location.lat`, `location.lon` (REAL, WGS84), `location.geo_source` (TEXT) | spatial queries (`nearby`), maps, animations; filled for 53 places from `data/geo/locations.csv` (see [geo.md](geo.md)) |
+| `meta_schema(key, value)` with `schema_version = v2` | lets tools detect the schema version |
+| `observation.validation = 'warning'` with note "unseen layout: verify against the page before use" | set for every record from a document outside the manifest (U##); answers show ⚠ unverified |
+
+Upgrade an existing file in place with `python -m agri.db.migrate --db PATH`. A fresh `init_db()` is always v2.

@@ -98,7 +98,7 @@ Read §4 of `evaluation.md`:
 
 ## 7. Database (PDF §7), 2 min
 ```bash
-sqlite3 db/34_AN_knowledgebase_v1.sqlite "SELECT * FROM v_provenance WHERE metric_id='production' AND commodity_id='coconut' AND location_id='AN' AND period_label='2025-26';"
-sqlite3 db/34_AN_knowledgebase_v1.sqlite "SELECT metric_id, commodity_id, period_label, doc_a, value_a, doc_b, value_b, pct_diff FROM v_conflict LIMIT 5;"
+sqlite3 db/34_AN_knowledgebase_v2.sqlite "SELECT * FROM v_provenance WHERE metric_id='production' AND commodity_id='coconut' AND location_id='AN' AND period_label='2025-26';"
+sqlite3 db/34_AN_knowledgebase_v2.sqlite "SELECT metric_id, commodity_id, period_label, doc_a, value_a, doc_b, value_b, pct_diff FROM v_conflict LIMIT 5;"
 ```
 Use `docs/schema.md` §5 to show agent output → schema. Use `docs/sample_queries.md` for the 10 queries.
