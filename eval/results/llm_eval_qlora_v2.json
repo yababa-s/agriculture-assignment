@@ -1,0 +1,381 @@
+{
+  "label": "qlora_v2",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v2)",
+  "started": "2026-11-23 02:40:15",
+  "island_extraction": {
+    "n_islands": 31,
+    "n_gold_items": 294,
+    "n_pred_items": 501,
+    "json_valid_rate": 0.839,
+    "json_salvaged_rate": 0.161,
+    "catalogue_adherence": 0.956,
+    "groundedness_rate": 0.605,
+    "raw": {
+      "precision": 0.683,
+      "recall": 0.915,
+      "f1": 0.782
+    },
+    "after_groundedness_gate": {
+      "precision": 0.966,
+      "recall": 0.867,
+      "f1": 0.914
+    },
+    "per_metric_recall": {
+      "agri_depot_count": 1.0,
+      "agri_farm_count": 0.83,
+      "agri_power_connections": 0.5,
+      "area_under_cultivation": 1.0,
+      "check_dam_count": 1.0,
+      "farmers_count": 1.0,
+      "fertilizer_consumption": 0.45,
+      "fish_landed": 0.83,
+      "forest_area": 1.0,
+      "geographical_area": 1.0,
+      "godown_count": 0.67,
+      "households": 1.0,
+      "livestock_count": 0.94,
+      "manure_unit_count": 0.8,
+      "non_organic_farm_count": 1.0,
+      "organic_farm_count": 1.0,
+      "population": 1.0,
+      "poultry_count": 0.89,
+      "seedling_distributed": 0.88,
+      "vermi_bed_count": 1.0
+    },
+    "latency_s_median": 10.59,
+    "examples": [
+      {
+        "island": "ISL_NARCONDAM",
+        "missed": [],
+        "spurious": []
+      },
+      {
+        "island": "ISL_EAST",
+        "missed": [],
+        "spurious": []
+      },
+      {
+        "island": "ISL_STEWART",
+        "missed": [],
+        "spurious": []
+      }
+    ]
+  },
+  "column_mapping": {
+    "n_examples": 11,
+    "n_columns": 74,
+    "json_valid_rate": 1.0,
+    "column_accuracy": 0.595,
+    "location_accuracy": 0.73,
+    "metric_accuracy": 0.986,
+    "period_accuracy": 0.865,
+    "latency_s_median": 5.15,
+    "errors": [
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 2,
+        "gold": [
+          "ZN_DIGLIPUR",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "AN",
+          "area_cultivated",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 3,
+        "gold": [
+          "ZN_DIGLIPUR",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          "AN",
+          "production",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 4,
+        "gold": [
+          "ZN_MAYABUNDER",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "AN",
+          "area_cultivated",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 5,
+        "gold": [
+          "ZN_MAYABUNDER",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          "AN",
+          "production",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 6,
+        "gold": [
+          "ZN_RANGAT",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "AN",
+          "area_cultivated",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 7,
+        "gold": [
+          "ZN_RANGAT",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          "AN",
+          "production",
+          "2025-26"
+        ]
+      }
+    ]
+  },
+  "routing": {
+    "n": 20,
+    "accuracy": 0.35,
+    "valid_agent_id_rate": 0.85,
+    "hybrid_accuracy": 0.8,
+    "model_accuracy_on_ambiguous": 0.0,
+    "n_ambiguous": 4,
+    "rows": [
+      {
+        "doc": "D01",
+        "expected": "matrix_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": false,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": false
+      },
+      {
+        "doc": "D02",
+        "expected": "matrix_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": false,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": false
+      },
+      {
+        "doc": "D03",
+        "expected": "bilingual_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D04",
+        "expected": "bilingual_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D05",
+        "expected": "bilingual_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D06",
+        "expected": "bilingual_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D07",
+        "expected": "matrix_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": false,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": false
+      },
+      {
+        "doc": "D08",
+        "expected": "island_profile_agent",
+        "predicted": "island_profile_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "island_profile_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D09",
+        "expected": "island_profile_agent",
+        "predicted": "island_profile_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "island_profile_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D10",
+        "expected": "island_profile_agent",
+        "predicted": "island_profile_agent",
+        "valid_id": true,
+        "ok": true,
+        "heuristic_confident": true,
+        "hybrid": "island_profile_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D11",
+        "expected": "price_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "price_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D12",
+        "expected": "price_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "price_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D13",
+        "expected": "price_table_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "price_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D14",
+        "expected": "narrative_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": false,
+        "hybrid": "bilingual_table_agent",
+        "hybrid_ok": false
+      },
+      {
+        "doc": "D15",
+        "expected": "narrative_agent",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "narrative_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D16",
+        "expected": "image_table_agent",
+        "predicted": "agri_census_agent",
+        "valid_id": false,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "image_table_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D17",
+        "expected": "lulc_agent",
+        "predicted": "land_use_agent",
+        "valid_id": false,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "lulc_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D18",
+        "expected": "lulc_agent",
+        "predicted": "land_use_agent",
+        "valid_id": false,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "lulc_agent",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D19",
+        "expected": "skip",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "skip",
+        "hybrid_ok": true
+      },
+      {
+        "doc": "D20",
+        "expected": "skip",
+        "predicted": "bilingual_table_agent",
+        "valid_id": true,
+        "ok": false,
+        "heuristic_confident": true,
+        "hybrid": "skip",
+        "hybrid_ok": true
+      }
+    ],
+    "n_eval": 14,
+    "accuracy_heldout": 0.143,
+    "valid_id_rate_heldout": 0.786
+  },
+  "elapsed_s": 502.6,
+  "llm_calls": 62
+}

@@ -1,0 +1,310 @@
+{
+ "label": "v1_phase2",
+ "db": "34_AN_knowledgebase_v1.sqlite",
+ "per_agent": [
+  {
+   "agent": "matrix_table_agent",
+   "document_id": "D02",
+   "pages": [
+    1
+   ],
+   "language": "en",
+   "n_gold": 80,
+   "n_extracted": 80,
+   "tp": 80,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "f1_ci95": [
+    1.0,
+    1.0
+   ],
+   "provenance_accuracy": 1.0,
+   "errors": {},
+   "note": "Rows Paddy, Maize, Green Gram, Black Gram, Ginger; all 12 location column pairs; blank cells excluded."
+  },
+  {
+   "agent": "bilingual_table_agent",
+   "document_id": "D06",
+   "pages": [
+    2
+   ],
+   "language": "hi+en",
+   "n_gold": 87,
+   "n_extracted": 87,
+   "tp": 87,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "f1_ci95": [
+    1.0,
+    1.0
+   ],
+   "provenance_accuracy": 1.0,
+   "errors": {},
+   "note": "Plantation, root-crop and fruit rows of the area/production table (Kruti Dev Hindi labels); totals and 'other' rows excluded."
+  },
+  {
+   "agent": "price_table_agent",
+   "document_id": "D13",
+   "pages": [
+    11
+   ],
+   "language": "en",
+   "n_gold": 70,
+   "n_extracted": 70,
+   "tp": 70,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "f1_ci95": [
+    1.0,
+    1.0
+   ],
+   "provenance_accuracy": 1.0,
+   "errors": {},
+   "note": "November 2025 comparative statement: 10 items x 7 period columns (Nov-25, Oct-25, Nov-24..Nov-21, Apr-2011)."
+  },
+  {
+   "agent": "island_profile_agent",
+   "document_id": "D10",
+   "pages": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "language": "en+hi",
+   "n_gold": 294,
+   "n_extracted": 295,
+   "tp": 294,
+   "precision": 0.997,
+   "recall": 1.0,
+   "f1": 0.998,
+   "f1_ci95": [
+    0.995,
+    1.0
+   ],
+   "provenance_accuracy": 1.0,
+   "errors": {
+    "value": 1
+   },
+   "note": "data/gold/island_profiles_D10.json (31 islands)"
+  },
+  {
+   "agent": "narrative_agent",
+   "document_id": "D15",
+   "pages": [
+    1,
+    5
+   ],
+   "language": "en",
+   "n_gold": 12,
+   "n_extracted": 12,
+   "tp": 12,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "f1_ci95": [
+    1.0,
+    1.0
+   ],
+   "provenance_accuracy": 1.0,
+   "errors": {},
+   "note": "Outlay/expenditure tables of two scheme memoranda. Line-item allocations (Rs thousand) are out of the agent's target schema and not scored."
+  },
+  {
+   "agent": "image_table_agent",
+   "document_id": "D16",
+   "pages": [
+    1
+   ],
+   "language": "en",
+   "n_gold": 128,
+   "n_extracted": 128,
+   "tp": 124,
+   "precision": 0.969,
+   "recall": 0.969,
+   "f1": 0.969,
+   "f1_ci95": [
+    0.944,
+    0.989
+   ],
+   "provenance_accuracy": 1.0,
+   "errors": {
+    "spurious": 4,
+    "missed": 4
+   },
+   "note": "All 16 rows x 8 columns of the Agriculture Census 2015-16 screenshot (OCR). Zero cells are printed values and are scored."
+  },
+  {
+   "agent": "lulc_agent",
+   "document_id": "D17",
+   "pages": [
+    1
+   ],
+   "language": "en",
+   "n_gold": 28,
+   "n_extracted": 28,
+   "tp": 28,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "f1_ci95": [
+    1.0,
+    1.0
+   ],
+   "provenance_accuracy": 1.0,
+   "errors": {},
+   "note": "ANDAMAN and NICOBAR columns of the UT land-use table; other UTs are out of scope for the A&N knowledge base."
+  }
+ ],
+ "macro": {
+  "precision": 0.995,
+  "recall": 0.996,
+  "f1": 0.995,
+  "provenance_accuracy": 1.0
+ },
+ "micro": {
+  "precision": 0.993,
+  "recall": 0.994,
+  "f1": 0.994
+ },
+ "n_gold_total": 699,
+ "errors_total": {
+  "value": 1,
+  "spurious": 4,
+  "missed": 4
+ },
+ "examples": {
+  "matrix_table_agent": {
+   "spurious_or_wrong": [],
+   "missed": []
+  },
+  "bilingual_table_agent": {
+   "spurious_or_wrong": [],
+   "missed": []
+  },
+  "price_table_agent": {
+   "spurious_or_wrong": [],
+   "missed": []
+  },
+  "island_profile_agent": {
+   "spurious_or_wrong": [
+    {
+     "metric_id": "fish_landed",
+     "commodity_id": null,
+     "location_id": "ISL_NORTHANDAMAN",
+     "period_label": null,
+     "value": 650.0,
+     "value_raw": "650",
+     "page": 4
+    }
+   ],
+   "missed": []
+  },
+  "narrative_agent": {
+   "spurious_or_wrong": [],
+   "missed": []
+  },
+  "image_table_agent": {
+   "spurious_or_wrong": [
+    {
+     "metric_id": "holdings_area",
+     "commodity_id": null,
+     "location_id": "AN",
+     "period_label": "2015-16",
+     "value": 232476.0,
+     "value_raw": "232476",
+     "page": 1
+    },
+    {
+     "metric_id": "holdings_area",
+     "commodity_id": null,
+     "location_id": "AN",
+     "period_label": "2015-16",
+     "value": 234181.0,
+     "value_raw": "234181",
+     "page": 1
+    },
+    {
+     "metric_id": "holdings_count",
+     "commodity_id": null,
+     "location_id": "AN",
+     "period_label": "2015-16",
+     "value": 8.0,
+     "value_raw": "8",
+     "page": 1
+    },
+    {
+     "metric_id": "holdings_area",
+     "commodity_id": null,
+     "location_id": "AN",
+     "period_label": "2015-16",
+     "value": 6.0,
+     "value_raw": "6",
+     "page": 1
+    }
+   ],
+   "missed": [
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 2,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "10.0 - 20.0",
+      "holder_type": "joint"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "individual"
+     }
+    },
+    {
+     "metric": "holdings_count",
+     "commodity": null,
+     "location": "AN",
+     "period": "2015-16",
+     "value": 0,
+     "dims": {
+      "size_class": "20.0 ha and above",
+      "holder_type": "joint"
+     }
+    }
+   ]
+  },
+  "lulc_agent": {
+   "spurious_or_wrong": [],
+   "missed": []
+  }
+ }
+}

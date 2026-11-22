@@ -1,0 +1,4 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 5955.94it/s]
+island {'n_islands': 31, 'n_gold_items': 294, 'n_pred_items': 198, 'json_valid_rate': 1.0, 'json_salvaged_rate': 0.0, 'catalogue_adherence': 0.909, 'groundedness_rate': 0.657, 'raw': {'precision': 0.813, 'recall': 0.548, 'f1': 0.654}, 'after_groundedness_gate': {'precision': 0.969, 'recall': 0.429, 'f1': 0.594}, 'latency_s_median': 17.88}
+columns {'n_examples': 11, 'n_columns': 74, 'json_valid_rate': 1.0, 'column_accuracy': 0.23, 'location_accuracy': 0.27, 'metric_accuracy': 0.73, 'period_accuracy': 0.865, 'latency_s_median': 20.58}
+-> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/llm_eval_base_fewshot2.json  (885.0s)

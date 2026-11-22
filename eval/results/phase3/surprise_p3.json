@@ -1,0 +1,50 @@
+{
+ "description": "Fresh Phase 3 test files fetched 23 Nov 2026 from the DES portal (never seen in development). Run blind with the deployed pipeline (adapter v1). 15 random records per file (seed 407) were checked by hand against the page: correct = metric, item, place and value right.",
+ "batch": "B20261123_021945",
+ "documents": [
+  {
+   "file": "IslandwiseStatistical2021-22.pdf",
+   "doc": "U01",
+   "layout": "known (island profile, new year)",
+   "agent": "island_profile_agent",
+   "routed_as_expected": "yes",
+   "status": "loaded",
+   "records": 274,
+   "n_checked": 15,
+   "n_correct": 15,
+   "precision": 1.0,
+   "recall_note": "31/31 islands profiled"
+  },
+  {
+   "file": "AtaGlance2025.pdf",
+   "doc": "U03",
+   "layout": "new (UT at a glance)",
+   "agent": "bilingual_table_agent",
+   "routed_as_expected": "partly (no agent for compendia)",
+   "status": "partial",
+   "records": 64,
+   "n_checked": 15,
+   "n_correct": 5,
+   "precision": 0.333,
+   "recall_note": "crop rows right; worker/bank rows forced into metrics"
+  },
+  {
+   "file": "DistrictAtAGlance2024-25.pdf",
+   "doc": "U02",
+   "layout": "new (district compendium, 4 pp)",
+   "agent": "bilingual_table_agent",
+   "routed_as_expected": "partly (no agent for compendia)",
+   "status": "partial",
+   "records": 376,
+   "n_checked": 15,
+   "n_correct": 0,
+   "precision": 0.0,
+   "recall_note": "non-agricultural rows mapped to agricultural metrics; wrong district columns"
+  }
+ ],
+ "error_counts": {
+  "Out-of-schema row forced into an agricultural metric (new layout)": 23,
+  "Wrong district column (new layout)": 2
+ },
+ "checked_by": "Source Lead (team) - sample listed in logs/surprise_p3_sample.txt"
+}

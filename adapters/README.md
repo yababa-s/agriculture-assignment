@@ -18,3 +18,19 @@ Only adapter weights are distributed (about 26 MB); the base model is downloaded
 The folder `34_AN_qlora_v1/` holds `adapters.safetensors` (final), `adapter_config.json` and the
 checkpoints taken every 50 steps. Large files go to the course's designated storage, not to GitHub
 (`.gitignore` excludes `adapters/*/`).
+
+# LoRA adapter: 34_AN_qlora_v2 (Phase 3, multi-task)
+
+| Item | Value |
+|---|---|
+| Same as v1 | base model, rank 8, scale 20, 16 layers, lr 1e-4, batch 1, prompt masked, seed 407 |
+| Data | `data/training_v2/` = v1's 84 train examples + 180 query-planning examples (template-generated; each one < 80 rapidfuzz similarity to the 45 evaluation questions) + 18 routing examples (fingerprints of the 6 TRAIN documents ×3); 29 valid |
+| Iterations | 450 (validation loss 0.364 → 0.026, `logs/train_lora_v2.log`) |
+| Held-out results | island F1 0.914 (v1 0.935), columns 0.595 (v1 0.635), JSON valid 0.839 (v1 0.613), query planning 0.93 on the untouched test set (base 0.60, 3-shot 0.67), routing on 14 non-train files 0.14 (base 0.50) |
+| Used for | query planning (`QUERY_ADAPTER_PATH`, default). Extraction keeps v1 (better on islands and columns) |
+| Rebuild | `python scripts/build_datasets_v2.py && DATA=data/training_v2 ADAPTER=adapters/34_AN_qlora_v2 ITERS=450 ./scripts/train_lora.sh` |
+
+**PEFT format (any OS):** `python scripts/convert_adapter_mlx_to_peft.py adapters/34_AN_qlora_v2` writes `peft/` next
+to the MLX weights. `LLM_BACKEND=hf` then loads `Qwen/Qwen2.5-3B-Instruct` with the converted adapter. The conversion
+transposes A and B and sets alpha = scale × r. Outputs agree with MLX on the planning task, apart from the 4-bit vs
+full-precision base.

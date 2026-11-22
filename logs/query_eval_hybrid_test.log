@@ -1,0 +1,18 @@
+X01  spatial       OK  intent=rank  got ZN_DIGLIPUR=536.1 want ['ZN_DIGLIPUR']=536.1
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2404.53it/s]
+X02  spatial       OK  intent=rank  got AN_NIC=13752.0 want ['AN_NIC']=13752.0
+X03  spatial       OK  intent=rank  got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0
+X04  spatial       BAD intent=rank  no rows
+X05  temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+X06  temporal      OK  intent=trend  missing/wrong [] extra [] (24/24)
+X07  temporal      OK  intent=trend  peak December 2024 want December 2024
+X08  temporal      OK  intent=trend  missing/wrong [] extra [] (4/4)
+X09  provenance    OK  intent=provenance  cited D06 p2 value 87.4
+X10  provenance    OK  intent=lookup  cited D02 p1 value 605.66
+X11  provenance    OK  intent=provenance  cited D10 p11 value 2595.0
+X12  cross_source  OK  intent=compare_sources  got 1 want 1
+X13  lookup        OK  intent=lookup  got 21.3635 want 21.3635..21.3635
+X14  lookup        OK  intent=lookup  got 979.0 want 979.0..979.0
+X15  lookup        OK  intent=lookup  got 13752.0 want 13752.0..13752.0
+
+hybrid_rules_v2: answer 0.933 (n=15), macro 0.95, intent 0.933, tool 1.0, valid plans 1.0, grounded 1.0 (n=14) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_test_hybrid_rules_v2.json

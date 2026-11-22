@@ -1,0 +1,9 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 5847.08it/s]
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 3833.14it/s]
+
+batch B20261123_021945  3 documents  1380.1s  model=mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v1)
+doc  agent                   route  status        try   extr   load   rej  llm
+U01  island_profile_agent    rule   loaded          1    274    274     0   31
+U02  bilingual_table_agent   rule   partial         1    420    376     0  173
+U03  bilingual_table_agent   rule   partial         1     64     64     0   38
+summary -> /Users/suyashtripathi/Desktop/AgriAgent_AN/logs/batch_B20261123_021945.json

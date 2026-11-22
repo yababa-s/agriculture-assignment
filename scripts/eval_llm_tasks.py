@@ -21,11 +21,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from agri import config  # noqa: E402
 import re  # noqa: E402
 
-from agri.agents.island_agent import CATALOGUE, SYSTEM as ISLAND_SYSTEM, build_prompt, check_item, teacher_extract  # noqa: E402
-from agri.agents.router import AGENT_GUIDE, SYSTEM as ROUTER_SYSTEM, fingerprint, heuristic_route, router_prompt  # noqa: E402
+from agri import config  # noqa: E402
+from agri.agents.island_agent import CATALOGUE, build_prompt, check_item, teacher_extract  # noqa: E402
+from agri.agents.island_agent import SYSTEM as ISLAND_SYSTEM
+from agri.agents.router import AGENT_GUIDE, fingerprint, heuristic_route, router_prompt  # noqa: E402
+from agri.agents.router import SYSTEM as ROUTER_SYSTEM
 from agri.llm.client import LLM  # noqa: E402
 from agri.tools.parsing import parse_period  # noqa: E402
 
@@ -173,7 +175,43 @@ def eval_routing(llm: LLM) -> dict:
             "valid_agent_id_rate": round(sum(r["valid_id"] for r in rows) / len(rows), 3),
             "hybrid_accuracy": round(sum(r["hybrid_ok"] for r in rows) / len(rows), 3),
             "model_accuracy_on_ambiguous": round(sum(r["ok"] for r in amb) / max(1, len(amb)), 3),
-            "n_ambiguous": len(amb), "rows": rows}
+            "n_ambiguous": len(amb), "rows": rows, **_heldout(rows)}
+
+
+def _heldout(rows: list[dict]) -> dict:
+    """Routing accuracy on the 14 files whose fingerprints were never used to train any adapter."""
+    sp = json.loads(config.SPLITS_PATH.read_text())
+    train = set(sp["train"]["island"]) | set(sp["train"]["tables"])
+    h = [r for r in rows if r["doc"] not in train]
+    return {"n_eval": len(h), "accuracy_heldout": round(sum(r["ok"] for r in h) / max(1, len(h)), 3),
+            "valid_id_rate_heldout": round(sum(r["valid_id"] for r in h) / max(1, len(h)), 3)}
+
+
+class FewShotLLM:
+    """Prompt-engineering baseline: the base model with k worked examples (from TRAIN documents only)
+    prepended to the system prompt of each task. Same held-out inputs as the adapter run."""
+
+    def __init__(self, llm: LLM, k: int):
+        self.llm, self.k = llm, k
+        self.examples: dict[str, list[tuple[str, str]]] = defaultdict(list)
+        rows = [json.loads(x)["messages"] for x in (config.ROOT / "data" / "training" / "train.jsonl").read_text().splitlines()]
+        for m in sorted(rows, key=lambda m: len(m[1]["content"]) + len(m[2]["content"])):
+            key = m[0]["content"][:60]
+            if len(self.examples[key]) < k:
+                self.examples[key].append((m[1]["content"], m[2]["content"]))
+        self.label = f"{llm.label} + {k}-shot prompt"
+        self.enabled = llm.enabled
+
+    @property
+    def calls(self) -> int:
+        return self.llm.calls
+
+    def json_call(self, system: str, user: str, max_tokens: int | None = None):
+        exs = self.examples.get(system[:60], [])
+        if exs:
+            system = system + "\n\nWorked examples (follow the same output format):\n" + "\n\n".join(
+                f"EXAMPLE {i} INPUT:\n{u}\nEXAMPLE {i} OUTPUT:\n{a}" for i, (u, a) in enumerate(exs, 1))
+        return self.llm.json_call(system, user, max_tokens)
 
 
 def main() -> None:
@@ -182,8 +220,11 @@ def main() -> None:
     ap.add_argument("--adapter", default=None)
     ap.add_argument("--tasks", default="island,columns,routing")
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--few-shot", type=int, default=0, help="prepend k training examples to each prompt (no adapter)")
     a = ap.parse_args()
     llm = None if a.label == "teacher" else LLM(adapter_path=a.adapter)
+    if llm is not None and a.few_shot:
+        llm = FewShotLLM(llm, a.few_shot)
     out = {"label": a.label, "model": llm.label if llm else "rule teacher (regex)", "started": time.strftime("%Y-%m-%d %H:%M:%S")}
     t0 = time.time()
     if "perturbed" in a.tasks:

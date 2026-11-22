@@ -1,0 +1,5 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 4500.33it/s]
+island {'n_islands': 31, 'n_gold_items': 294, 'n_pred_items': 501, 'json_valid_rate': 0.839, 'json_salvaged_rate': 0.161, 'catalogue_adherence': 0.956, 'groundedness_rate': 0.605, 'raw': {'precision': 0.683, 'recall': 0.915, 'f1': 0.782}, 'after_groundedness_gate': {'precision': 0.966, 'recall': 0.867, 'f1': 0.914}, 'latency_s_median': 10.59}
+columns {'n_examples': 11, 'n_columns': 74, 'json_valid_rate': 1.0, 'column_accuracy': 0.595, 'location_accuracy': 0.73, 'metric_accuracy': 0.986, 'period_accuracy': 0.865, 'latency_s_median': 5.15}
+routing {'n': 20, 'accuracy': 0.35, 'valid_agent_id_rate': 0.85, 'hybrid_accuracy': 0.8, 'model_accuracy_on_ambiguous': 0.0, 'n_ambiguous': 4, 'n_eval': 14, 'accuracy_heldout': 0.143, 'valid_id_rate_heldout': 0.786}
+-> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/llm_eval_qlora_v2.json  (502.6s)

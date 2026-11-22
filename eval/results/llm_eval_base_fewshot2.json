@@ -1,0 +1,172 @@
+{
+  "label": "base_fewshot2",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + 2-shot prompt",
+  "started": "2026-11-23 02:16:14",
+  "island_extraction": {
+    "n_islands": 31,
+    "n_gold_items": 294,
+    "n_pred_items": 198,
+    "json_valid_rate": 1.0,
+    "json_salvaged_rate": 0.0,
+    "catalogue_adherence": 0.909,
+    "groundedness_rate": 0.657,
+    "raw": {
+      "precision": 0.813,
+      "recall": 0.548,
+      "f1": 0.654
+    },
+    "after_groundedness_gate": {
+      "precision": 0.969,
+      "recall": 0.429,
+      "f1": 0.594
+    },
+    "per_metric_recall": {
+      "agri_depot_count": 0.25,
+      "agri_farm_count": 0.33,
+      "agri_power_connections": 0.0,
+      "area_under_cultivation": 0.61,
+      "check_dam_count": 0.0,
+      "farmers_count": 0.31,
+      "fertilizer_consumption": 0.55,
+      "fish_landed": 0.33,
+      "forest_area": 0.94,
+      "geographical_area": 1.0,
+      "godown_count": 0.22,
+      "households": 0.25,
+      "livestock_count": 0.5,
+      "manure_unit_count": 0.4,
+      "non_organic_farm_count": 0.2,
+      "organic_farm_count": 0.11,
+      "population": 0.97,
+      "poultry_count": 0.53,
+      "seedling_distributed": 0.38,
+      "vermi_bed_count": 0.17
+    },
+    "latency_s_median": 17.88,
+    "examples": [
+      {
+        "island": "ISL_NARCONDAM",
+        "missed": [
+          "('households', None, 1.0)"
+        ],
+        "spurious": []
+      },
+      {
+        "island": "ISL_EAST",
+        "missed": [],
+        "spurious": []
+      },
+      {
+        "island": "ISL_STEWART",
+        "missed": [
+          "('households', None, 1.0)"
+        ],
+        "spurious": []
+      }
+    ]
+  },
+  "column_mapping": {
+    "n_examples": 11,
+    "n_columns": 74,
+    "json_valid_rate": 1.0,
+    "column_accuracy": 0.23,
+    "location_accuracy": 0.27,
+    "metric_accuracy": 0.73,
+    "period_accuracy": 0.865,
+    "latency_s_median": 20.58,
+    "errors": [
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 2,
+        "gold": [
+          "ZN_DIGLIPUR",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_DIGLIPUR",
+          "area_under_cultivation",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 3,
+        "gold": [
+          "ZN_DIGLIPUR",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_DIGLIPUR",
+          "production",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 4,
+        "gold": [
+          "ZN_MAYABUNDER",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_MAYABUNDER",
+          "area_under_cultivation",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 5,
+        "gold": [
+          "ZN_MAYABUNDER",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_MAYABUNDER",
+          "production",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 6,
+        "gold": [
+          "ZN_RANGAT",
+          "area_cultivated",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_RANGAT",
+          "area_under_cultivation",
+          "2025-26"
+        ]
+      },
+      {
+        "doc": "D02",
+        "table": "p1_t0",
+        "col": 7,
+        "gold": [
+          "ZN_RANGAT",
+          "production",
+          "2025-26"
+        ],
+        "pred": [
+          "TH_RANGAT",
+          "production",
+          "2025-26"
+        ]
+      }
+    ]
+  },
+  "elapsed_s": 885.0,
+  "llm_calls": 42
+}

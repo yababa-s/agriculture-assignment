@@ -1,0 +1,31 @@
+[anim]
+  figures/anim/anim1_paddy_districts.mp4
+  figures/anim/anim1_paddy_districts.gif
+  figures/anim/anim2_price_calendar.mp4
+  figures/anim/anim2_price_calendar.gif
+Traceback (most recent call last):
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/scripts/make_figures.py", line 428, in <module>
+    main()
+    ~~~~^^
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/scripts/make_figures.py", line 424, in main
+    fn()
+    ~~^^
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/scripts/make_figures.py", line 406, in anim_islands
+    save_anim(anim, "anim3_island_farmers", fps=1)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/scripts/make_figures.py", line 324, in save_anim
+    anim.save(p, writer=_writer(p, fps), dpi=110 if ext == ".mp4" else 70)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/.venv/lib/python3.13/site-packages/matplotlib/animation.py", line 1142, in save
+    anim._draw_next_frame(d, blit=False)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/.venv/lib/python3.13/site-packages/matplotlib/animation.py", line 1177, in _draw_next_frame
+    self._draw_frame(framedata)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/.venv/lib/python3.13/site-packages/matplotlib/animation.py", line 1807, in _draw_frame
+    self._drawn_artists = self._func(framedata, *self._args)
+                          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/suyashtripathi/Desktop/AgriAgent_AN/scripts/make_figures.py", line 399, in frame
+    ax.scatter(*xy[lid], s=v / 15, color=C["accent"], alpha=0.6, edgecolor="white", zorder=4)
+                           ~~^~~~
+TypeError: unsupported operand type(s) for /: 'NoneType' and 'int'

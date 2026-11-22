@@ -1,0 +1,204 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2469.66it/s]
+S1   spatial       BAD intent=compare_sources  got AN=9712.264 want ['ZN_DIGLIPUR']=6941.03
+S2   spatial       BAD intent=compare_sources  got AN_NMA=125.939 want ['AN_NMA']=3212.0
+S3   spatial       BAD intent=compare_sources  got AN=25695.0 want ['ISL_MIDDLEANDAMAN']=8730.0
+S4   spatial       BAD intent=compare_sources  got AN=1676.5 want ['ZN_DIGLIPUR']=610.0
+S5   spatial       BAD intent=trend  no rows
+S6   spatial       OK  intent=rank  got AN_NIC=87.4 want ['AN_NIC']=87.4
+S7   spatial       BAD intent=lookup  no rows
+N1   spatial       OK  intent=nearby  got ISL_SOUTHANDAMAN=2936.0 want ['ISL_SOUTHANDAMAN']=2936.0
+N2   spatial       OK  intent=nearby  got ISL_CARNICOBAR=17841.0 want ['ISL_CARNICOBAR']=17841.0
+T1   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T2   temporal      OK  intent=trend  missing/wrong [] extra [] (36/36)
+T3   temporal      BAD intent=trend  missing/wrong ['2024-25', '2025-26'] extra [] (5/7)
+T4   temporal      OK  intent=trend  peak August 2023 want August 2023
+T5   temporal      OK  intent=trend  missing/wrong [] extra [] (3/3)
+T6   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T7   temporal      BAD intent=trend  missing/wrong ['2019-20', '2020-21', '2021-22', '2022-23'] extra [] (6/6)
+P1   provenance    OK  intent=lookup  cited D02 p1 value 118.616
+P2   provenance    OK  intent=lookup  cited D06 p2 value 8062.23
+P3   provenance    OK  intent=lookup  cited D10 p5 value 8730.0
+P4   provenance    OK  intent=lookup  cited D13 p11 value 81.88
+P5   provenance    BAD intent=lookup  cited D05 p4 value 365.609
+P6   provenance    OK  intent=lookup  cited D02 p1 value 6941.03
+C1   cross_source  BAD intent=compare_sources  got 0 want 4
+C2   cross_source  BAD intent=compare_sources  got 0 want 4
+C3   cross_source  BAD intent=compare_sources  got 0 want 1
+L1   lookup        BAD intent=trend  got 8604.45 want 8062.23..8062.23
+L2   lookup        BAD intent=rank  no rows
+L3   lookup        BAD intent=lookup  no rows
+L4   lookup        OK  intent=lookup  got 84.0 want 84.0..84.0
+L5   lookup        OK  intent=lookup  got 4365.2 want 4365.2..4365.2
+
+base_zeroshot: answer 0.5 (n=30), macro 0.456, intent 0.533, tool 0.733, valid plans 1.0, grounded 1.0 (n=26) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_dev_base_zeroshot.json
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2083.26it/s]
+S1   spatial       OK  intent=rank  got ZN_DIGLIPUR=6941.03 want ['ZN_DIGLIPUR']=6941.03
+S2   spatial       BAD intent=rank  got AN_NIC=149.64 want ['AN_NMA']=3212.0
+S3   spatial       OK  intent=rank  got ISL_MIDDLEANDAMAN=8730.0 want ['ISL_MIDDLEANDAMAN']=8730.0
+S4   spatial       BAD intent=compare_sources  got AN=1676.5 want ['ZN_DIGLIPUR']=610.0
+S5   spatial       OK  intent=rank  got ISL_MIDDLEANDAMAN=1348.37 want ['ISL_MIDDLEANDAMAN']=1348.37
+S6   spatial       OK  intent=rank  got AN_NIC=87.4 want ['AN_NIC']=87.4
+S7   spatial       OK  intent=rank  got ISL_AVES=1.0 want ['ISL_AVES', 'ISL_CURLEW', 'ISL_NARCONDAM', 'ISL_STEWART']=1.0
+N1   spatial       OK  intent=nearby  got ISL_SOUTHANDAMAN=2936.0 want ['ISL_SOUTHANDAMAN']=2936.0
+N2   spatial       OK  intent=nearby  got ISL_CARNICOBAR=17841.0 want ['ISL_CARNICOBAR']=17841.0
+T1   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T2   temporal      OK  intent=trend  missing/wrong [] extra [] (36/36)
+T3   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T4   temporal      OK  intent=trend  peak August 2023 want August 2023
+T5   temporal      OK  intent=trend  missing/wrong [] extra [] (3/3)
+T6   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T7   temporal      OK  intent=trend  missing/wrong [] extra [] (6/6)
+P1   provenance    OK  intent=provenance  cited D02 p1 value 118.616
+P2   provenance    OK  intent=provenance  cited D06 p2 value 8062.23
+P3   provenance    OK  intent=provenance  cited D10 p5 value 8730.0
+P4   provenance    OK  intent=provenance  cited D13 p11 value 81.88
+P5   provenance    OK  intent=provenance  cited D01 p2 value 1644.3
+P6   provenance    OK  intent=provenance  cited D02 p1 value 6941.03
+C1   cross_source  OK  intent=compare_sources  got 4 want 4
+C2   cross_source  OK  intent=compare_sources  got 4 want 4
+C3   cross_source  OK  intent=compare_sources  got 1 want 1
+L1   lookup        OK  intent=rank  got 8062.23 want 8062.23..8062.23
+L2   lookup        BAD intent=rank  no rows
+L3   lookup        BAD intent=rank  got 8730.0 want 2595.0..2595.0
+L4   lookup        BAD intent=trend  got 47.8 want 84.0..84.0
+L5   lookup        BAD intent=rank  no rows
+
+base_fewshot: answer 0.8 (n=30), macro 0.796, intent 0.8, tool 0.8, valid plans 1.0, grounded 1.0 (n=28) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_dev_base_fewshot.json
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2611.10it/s]
+S1   spatial       OK  intent=rank  got ZN_DIGLIPUR=6941.03 want ['ZN_DIGLIPUR']=6941.03
+S2   spatial       BAD intent=rank  no rows
+S3   spatial       BAD intent=None  no rows
+S4   spatial       OK  intent=rank  got ZN_DIGLIPUR=610.0 want ['ZN_DIGLIPUR']=610.0
+S5   spatial       OK  intent=rank  got ISL_MIDDLEANDAMAN=1348.37 want ['ISL_MIDDLEANDAMAN']=1348.37
+S6   spatial       BAD intent=rank  no rows
+S7   spatial       BAD intent=rank  got ISL_SOUTHANDAMAN=51464.0 want ['ISL_AVES', 'ISL_CURLEW', 'ISL_NARCONDAM', 'ISL_STEWART
+N1   spatial       BAD intent=None  no rows
+N2   spatial       BAD intent=rank  no rows
+T1   temporal      BAD intent=rank  no rows
+T2   temporal      OK  intent=trend  missing/wrong [] extra [] (36/36)
+T3   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T4   temporal      OK  intent=trend  peak August 2023 want August 2023
+T5   temporal      BAD intent=rank  no rows
+T6   temporal      BAD intent=rank  missing/wrong ['2019-20', '2020-21', '2021-22', '2022-23'] extra [] (1/7)
+T7   temporal      BAD intent=rank  no rows
+P1   provenance    OK  intent=provenance  cited D02 p1 value 118.616
+P2   provenance    BAD intent=rank  no rows
+P3   provenance    OK  intent=provenance  cited D10 p5 value 8730.0
+P4   provenance    BAD intent=None  no rows
+P5   provenance    OK  intent=provenance  cited D01 p2 value 1644.3
+P6   provenance    OK  intent=provenance  cited D02 p1 value 6941.03
+C1   cross_source  BAD intent=compare_sources  got 0 want 4
+C2   cross_source  BAD intent=compare_sources  got 0 want 4
+C3   cross_source  BAD intent=compare_sources  got 0 want 1
+L1   lookup        BAD intent=rank  no rows
+L2   lookup        BAD intent=rank  no rows
+L3   lookup        BAD intent=rank  no rows
+L4   lookup        BAD intent=None  no rows
+L5   lookup        BAD intent=None  no rows
+
+qlora_v1_fewshot: answer 0.333 (n=30), macro 0.286, intent 0.533, tool 0.533, valid plans 0.833, grounded 1.0 (n=14) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_dev_qlora_v1_fewshot.json
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2059.62it/s]
+S1   spatial       OK  intent=rank  got ZN_DIGLIPUR=6941.03 want ['ZN_DIGLIPUR']=6941.03
+S2   spatial       BAD intent=rank  got AN_NIC=149.64 want ['AN_NMA']=3212.0
+S3   spatial       OK  intent=rank  got ISL_MIDDLEANDAMAN=8730.0 want ['ISL_MIDDLEANDAMAN']=8730.0
+S4   spatial       BAD intent=compare_sources  got AN=1676.5 want ['ZN_DIGLIPUR']=610.0
+S5   spatial       OK  intent=rank  got ISL_MIDDLEANDAMAN=1348.37 want ['ISL_MIDDLEANDAMAN']=1348.37
+S6   spatial       OK  intent=rank  got AN_NIC=87.4 want ['AN_NIC']=87.4
+S7   spatial       OK  intent=rank  got ISL_AVES=1.0 want ['ISL_AVES', 'ISL_CURLEW', 'ISL_NARCONDAM', 'ISL_STEWART']=1.0
+N1   spatial       OK  intent=nearby  got ISL_SOUTHANDAMAN=2936.0 want ['ISL_SOUTHANDAMAN']=2936.0
+N2   spatial       OK  intent=nearby  got ISL_CARNICOBAR=17841.0 want ['ISL_CARNICOBAR']=17841.0
+T1   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T2   temporal      OK  intent=trend  missing/wrong [] extra [] (36/36)
+T3   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T4   temporal      OK  intent=trend  peak August 2023 want August 2023
+T5   temporal      OK  intent=trend  missing/wrong [] extra [] (3/3)
+T6   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T7   temporal      OK  intent=trend  missing/wrong [] extra [] (6/6)
+P1   provenance    OK  intent=provenance  cited D02 p1 value 118.616
+P2   provenance    OK  intent=provenance  cited D06 p2 value 8062.23
+P3   provenance    OK  intent=provenance  cited D10 p5 value 8730.0
+P4   provenance    OK  intent=provenance  cited D13 p11 value 81.88
+P5   provenance    OK  intent=provenance  cited D01 p2 value 1644.3
+P6   provenance    OK  intent=provenance  cited D02 p1 value 6941.03
+C1   cross_source  OK  intent=compare_sources  got 4 want 4
+C2   cross_source  OK  intent=compare_sources  got 4 want 4
+C3   cross_source  OK  intent=compare_sources  got 1 want 1
+L1   lookup        OK  intent=rank  got 8062.23 want 8062.23..8062.23
+L2   lookup        BAD intent=rank  no rows
+L3   lookup        BAD intent=rank  got 8730.0 want 2595.0..2595.0
+L4   lookup        BAD intent=trend  got 47.8 want 84.0..84.0
+L5   lookup        BAD intent=rank  no rows
+
+hybrid_base_fewshot: answer 0.8 (n=30), macro 0.796, intent 0.8, tool 0.8, valid plans 1.0, grounded 1.0 (n=28) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_dev_hybrid_base_fewshot.json
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2058.16it/s]
+X01  spatial       OK  intent=rank  got ZN_DIGLIPUR=536.1 want ['ZN_DIGLIPUR']=536.1
+X02  spatial       BAD intent=compare_sources  got AN=324.465 want ['AN_NIC']=13752.0
+X03  spatial       OK  intent=rank  got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0
+X04  spatial       BAD intent=compare_sources  no rows
+X05  temporal      BAD intent=trend  no rows
+X06  temporal      OK  intent=trend  missing/wrong [] extra [] (24/24)
+X07  temporal      OK  intent=trend  peak December 2024 want December 2024
+X08  temporal      OK  intent=trend  missing/wrong [] extra [] (4/4)
+X09  provenance    OK  intent=lookup  cited D06 p2 value 87.4
+X10  provenance    BAD intent=lookup  no rows
+X11  provenance    OK  intent=lookup  cited D10 p11 value 2595.0
+X12  cross_source  BAD intent=compare_sources  got 0 want 1
+X13  lookup        OK  intent=lookup  got 21.3635 want 21.3635..21.3635
+X14  lookup        OK  intent=lookup  got 979.0 want 979.0..979.0
+X15  lookup        BAD intent=trend  got 14725.1 want 13752.0..13752.0
+
+base_zeroshot: answer 0.6 (n=15), macro 0.517, intent 0.6, tool 0.8, valid plans 1.0, grounded 1.0 (n=12) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_test_base_zeroshot.json
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 6097.36it/s]
+X01  spatial       OK  intent=rank  got ZN_DIGLIPUR=536.1 want ['ZN_DIGLIPUR']=536.1
+X02  spatial       BAD intent=rank  got AN_NIC=149.64 want ['AN_NIC']=13752.0
+X03  spatial       OK  intent=rank  got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0
+X04  spatial       OK  intent=rank  got ZN_MAYABUNDER=0.2 want ['ZN_MAYABUNDER']=0.2
+X05  temporal      BAD intent=trend  missing/wrong ['2019-20', '2020-21', '2021-22', '2022-23'] extra [] (4/7)
+X06  temporal      OK  intent=trend  missing/wrong [] extra [] (24/24)
+X07  temporal      OK  intent=trend  peak December 2024 want December 2024
+X08  temporal      OK  intent=trend  missing/wrong [] extra [] (4/4)
+X09  provenance    OK  intent=provenance  cited D06 p2 value 87.4
+X10  provenance    OK  intent=provenance  cited D02 p1 value 605.66
+X11  provenance    OK  intent=provenance  cited D10 p11 value 2595.0
+X12  cross_source  OK  intent=compare_sources  got 1 want 1
+X13  lookup        BAD intent=rank  got 11.12 want 21.3635..21.3635
+X14  lookup        BAD intent=rank  got 8730.0 want 979.0..979.0
+X15  lookup        BAD intent=rank  got 55.91 want 13752.0..13752.0
+
+base_fewshot: answer 0.667 (n=15), macro 0.7, intent 0.8, tool 0.8, valid plans 1.0, grounded 1.0 (n=15) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_test_base_fewshot.json
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2146.40it/s]
+X01  spatial       OK  intent=rank  got ZN_DIGLIPUR=536.1 want ['ZN_DIGLIPUR']=536.1
+X02  spatial       BAD intent=rank  no rows
+X03  spatial       OK  intent=rank  got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0
+X04  spatial       BAD intent=rank  got ZN_DIGLIPUR=22.0 want ['ZN_MAYABUNDER']=0.2
+X05  temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+X06  temporal      OK  intent=trend  missing/wrong [] extra [] (24/24)
+X07  temporal      OK  intent=trend  peak December 2024 want December 2024
+X08  temporal      BAD intent=rank  no rows
+X09  provenance    BAD intent=rank  no rows
+X10  provenance    BAD intent=rank  cited D02 p1 value 536.1
+X11  provenance    BAD intent=rank  no rows
+X12  cross_source  BAD intent=compare_sources  got 0 want 1
+X13  lookup        BAD intent=rank  got 11.12 want 21.3635..21.3635
+X14  lookup        BAD intent=rank  no rows
+X15  lookup        BAD intent=None  no rows
+
+qlora_v1_fewshot: answer 0.333 (n=15), macro 0.25, intent 0.533, tool 0.533, valid plans 0.933, grounded 1.0 (n=9) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_test_qlora_v1_fewshot.json
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 3889.62it/s]
+X01  spatial       OK  intent=rank  got ZN_DIGLIPUR=536.1 want ['ZN_DIGLIPUR']=536.1
+X02  spatial       BAD intent=rank  got AN_NIC=149.64 want ['AN_NIC']=13752.0
+X03  spatial       OK  intent=rank  got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0
+X04  spatial       OK  intent=rank  got ZN_MAYABUNDER=0.2 want ['ZN_MAYABUNDER']=0.2
+X05  temporal      BAD intent=trend  missing/wrong ['2019-20', '2020-21', '2021-22', '2022-23'] extra [] (4/7)
+X06  temporal      OK  intent=trend  missing/wrong [] extra [] (24/24)
+X07  temporal      OK  intent=trend  peak December 2024 want December 2024
+X08  temporal      OK  intent=trend  missing/wrong [] extra [] (4/4)
+X09  provenance    OK  intent=provenance  cited D06 p2 value 87.4
+X10  provenance    OK  intent=provenance  cited D02 p1 value 605.66
+X11  provenance    OK  intent=provenance  cited D10 p11 value 2595.0
+X12  cross_source  OK  intent=compare_sources  got 1 want 1
+X13  lookup        BAD intent=rank  got 11.12 want 21.3635..21.3635
+X14  lookup        BAD intent=rank  got 8730.0 want 979.0..979.0
+X15  lookup        BAD intent=rank  got 55.91 want 13752.0..13752.0
+
+hybrid_base_fewshot: answer 0.667 (n=15), macro 0.7, intent 0.8, tool 0.8, valid plans 1.0, grounded 1.0 (n=15) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_test_hybrid_base_fewshot.json

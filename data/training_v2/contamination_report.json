@@ -1,0 +1,36 @@
+{
+ "n_train": 282,
+ "n_valid": 29,
+ "composition": {
+  "v1_island_and_columns": 84,
+  "query_planning": 180,
+  "routing (6 train docs x3)": 18
+ },
+ "query_questions_dropped_as_too_similar": 0,
+ "dropped_examples": [],
+ "max_similarity_kept_vs_heldout": 78.0,
+ "routing_train_documents": [
+  "D08",
+  "D09",
+  "D01",
+  "D03",
+  "D04",
+  "D05"
+ ],
+ "routing_eval_documents": [
+  "D02",
+  "D06",
+  "D07",
+  "D10",
+  "D11",
+  "D12",
+  "D13",
+  "D14",
+  "D15",
+  "D16",
+  "D17",
+  "D18",
+  "D19",
+  "D20"
+ ]
+}

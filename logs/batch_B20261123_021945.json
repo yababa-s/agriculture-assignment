@@ -1,0 +1,101 @@
+{
+  "batch_id": "B20261123_021945",
+  "documents": [
+    {
+      "document_id": "U01",
+      "file": "IslandwiseStatistical2021-22.pdf",
+      "run_id": "c311326a4a84",
+      "agent": "island_profile_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 274,
+      "loaded": 274,
+      "rejected": 0,
+      "llm_calls": 31,
+      "notes": [],
+      "validation": {
+        "input": 274,
+        "accepted": 274,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "U02",
+      "file": "DistrictAtAGlance2024-25.pdf",
+      "run_id": "3a590ffca37e",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 420,
+      "loaded": 376,
+      "rejected": 0,
+      "llm_calls": 173,
+      "notes": [
+        "p4_t0: 4 columns unmapped (col 7: metric 'labour' is not an allowed id)"
+      ],
+      "validation": {
+        "input": 420,
+        "accepted": 420,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 44,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "U03",
+      "file": "AtaGlance2025.pdf",
+      "run_id": "e1ce5d5f7c87",
+      "agent": "bilingual_table_agent",
+      "routed_by": "rule",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 64,
+      "loaded": 64,
+      "rejected": 0,
+      "llm_calls": 38,
+      "notes": [
+        "p1_t0: 3 columns unmapped (col 1: metric 'inr_crore' is not an allowed id)",
+        "p1_t3: 4 columns unmapped (col 1: metric 'gdp' is not an allowed id)",
+        "p2_t0: 1 columns unmapped (col 1: metric 'holdings' is not an allowed id)",
+        "p2_t1: 3 columns unmapped (col 1: metric 'person' is not an allowed id)"
+      ],
+      "validation": {
+        "input": 64,
+        "accepted": 64,
+        "rejected": 0,
+        "warnings": 1,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 1380.1,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v1)"
+}

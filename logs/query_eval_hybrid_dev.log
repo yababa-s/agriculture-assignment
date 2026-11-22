@@ -1,0 +1,32 @@
+S1   spatial       OK  intent=rank  got ZN_DIGLIPUR=6941.03 want ['ZN_DIGLIPUR']=6941.03
+S2   spatial       OK  intent=rank  got AN_NMA=3212.0 want ['AN_NMA']=3212.0
+S3   spatial       OK  intent=rank  got ISL_MIDDLEANDAMAN=8730.0 want ['ISL_MIDDLEANDAMAN']=8730.0
+S4   spatial       OK  intent=rank  got ZN_DIGLIPUR=610.0 want ['ZN_DIGLIPUR']=610.0
+S5   spatial       OK  intent=rank  got ISL_MIDDLEANDAMAN=1348.37 want ['ISL_MIDDLEANDAMAN']=1348.37
+S6   spatial       OK  intent=rank  got AN_NIC=87.4 want ['AN_NIC']=87.4
+S7   spatial       OK  intent=rank  got ISL_AVES=1.0 want ['ISL_AVES', 'ISL_CURLEW', 'ISL_NARCONDAM', 'ISL_STEWART']=1.0
+N1   spatial       OK  intent=nearby  got ISL_SOUTHANDAMAN=2936.0 want ['ISL_SOUTHANDAMAN']=2936.0
+N2   spatial       OK  intent=nearby  got ISL_CARNICOBAR=17841.0 want ['ISL_CARNICOBAR']=17841.0
+T1   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T2   temporal      OK  intent=trend  missing/wrong [] extra [] (36/36)
+T3   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T4   temporal      OK  intent=trend  peak August 2023 want August 2023
+T5   temporal      OK  intent=trend  missing/wrong [] extra [] (3/3)
+T6   temporal      OK  intent=trend  missing/wrong [] extra [] (7/7)
+T7   temporal      OK  intent=trend  missing/wrong [] extra [] (6/6)
+P1   provenance    OK  intent=provenance  cited D02 p1 value 118.616
+P2   provenance    OK  intent=provenance  cited D06 p2 value 8062.23
+P3   provenance    OK  intent=provenance  cited D10 p5 value 8730.0
+P4   provenance    OK  intent=provenance  cited D13 p11 value 81.88
+P5   provenance    OK  intent=provenance  cited D01 p2 value 1644.3
+P6   provenance    OK  intent=provenance  cited D02 p1 value 6941.03
+C1   cross_source  OK  intent=compare_sources  got 4 want 4
+C2   cross_source  OK  intent=compare_sources  got 4 want 4
+C3   cross_source  OK  intent=compare_sources  got 1 want 1
+L1   lookup        OK  intent=lookup  got 8062.23 want 8062.23..8062.23
+L2   lookup        OK  intent=lookup  got 8062.23 want 8062.23..8062.23
+L3   lookup        OK  intent=lookup  got 2595.0 want 2595.0..2595.0
+L4   lookup        OK  intent=lookup  got 84.0 want 84.0..84.0
+L5   lookup        OK  intent=lookup  got 4365.2 want 4365.2..4365.2
+
+hybrid_rules_v2: answer 1.0 (n=30), macro 1.0, intent 1.0, tool 1.0, valid plans 1.0, grounded 1.0 (n=30) -> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/phase3/query_eval_dev_hybrid_rules_v2.json

@@ -1,0 +1,36 @@
+{
+  "batch_id": "B20261123_022002",
+  "documents": [
+    {
+      "document_id": "D02",
+      "file": "47-Area and Production 2025-26.pdf",
+      "run_id": "2ff029df6596",
+      "agent": "matrix_table_agent",
+      "routed_by": "rule",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 2352,
+      "loaded": 2352,
+      "rejected": 0,
+      "llm_calls": 0,
+      "notes": [],
+      "validation": {
+        "input": 2352,
+        "accepted": 2352,
+        "rejected": 0,
+        "warnings": 18,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 603,
+          "sum_mismatch": 7
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 0.7,
+  "model": "none (rules only)"
+}
