@@ -1,0 +1,39 @@
+{
+ "release": "phase3-v1",
+ "release_url": "https://github.com/yababa-s/agriculture-assignment/releases/download/phase3-v1",
+ "artifacts": {
+  "database": {
+   "file": "34_AN_database_v2.zip",
+   "sha256": "8efd83b81a2b306d79e2e765847685ecff51af71e5a849e864548368e46f19cd",
+   "unzip_to": "db",
+   "check": [
+    "db/34_AN_knowledgebase_v2.sqlite"
+   ],
+   "contents": "SQLite knowledge base, schema v2 (geo columns), 32k observations with provenance"
+  },
+  "adapters": {
+   "file": "34_AN_qlora_adapters_v2.zip",
+   "sha256": "f53c95cedfcd00c733cbc0bdf13a9c1d24fe3238617411f0bb46f48c160fc32e",
+   "unzip_to": "adapters",
+   "check": [
+    "adapters/34_AN_qlora_v1/adapters.safetensors",
+    "adapters/34_AN_qlora_v2/adapters.safetensors"
+   ],
+   "contents": "LoRA adapter weights only (v1 and v2), MLX format plus converted PEFT format"
+  },
+  "corpus": {
+   "file": "34_AN_corpus_v1.zip",
+   "sha256": "54bcae473ca3224e917fa13e31a44ea9db8b8d0e9dba6f7d260e9218148dcf54",
+   "unzip_to": "data/raw",
+   "check": [
+    "data/raw/Area and Production/42-Zone-Wise Area and Production of Crops During 2023-24.pdf",
+    "data/raw/Area and Production/47-Area and Production 2025-26.pdf",
+    "data/raw/Basic Statistics/Year 2021-22.pdf"
+   ],
+   "contents": "19 of 20 corpus files (see release/CORPUS_EXCLUDED.txt), paths as in data/manifest.csv",
+   "excluded": [
+    "D14"
+   ]
+  }
+ }
+}

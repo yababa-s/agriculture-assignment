@@ -1,0 +1,9 @@
+# Optional: run the LLM on Linux/Windows/Intel Mac (CPU or CUDA) instead of Apple MLX.
+# Use with LLM_BACKEND=hf. The adapter is converted once with
+#   python scripts/convert_adapter_mlx_to_peft.py adapters/34_AN_qlora_v1
+-r requirements.txt
+torch>=2.3
+transformers>=4.45
+peft>=0.13
+accelerate>=0.34
+safetensors>=0.4

@@ -1,0 +1,43 @@
+[project]
+name = "agriagent"
+version = "3.0.0"
+description = "Agentic extraction pipeline and provenance-tracked agricultural knowledge base for the Andaman & Nicobar Islands (CS F/U 407, Team 34)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT (code); data and model terms: see README > Licences" }
+authors = [{ name = "Team 34: Suyash Tripathi, Abhineet Sharan, Shikhar Singhania" }]
+dynamic = ["dependencies"]
+
+[project.scripts]
+agriagent = "agri.cli:main"
+
+[tool.setuptools]
+packages = ["agri", "agri.agents", "agri.db", "agri.llm", "agri.orchestrator", "agri.query", "agri.tools"]
+
+[tool.setuptools.package-data]
+"agri.db" = ["schema.sql"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "llm: needs a local LLM backend (Apple Silicon mlx or LLM_BACKEND=hf); deselect with -m 'not llm'",
+  "corpus: needs the raw corpus in data/raw (python scripts/fetch_artifacts.py --only corpus)",
+]
+addopts = "-q -m 'not llm'"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 125
+target-version = "py311"
+extend-exclude = [".venv", "data", "logs", "outputs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E731", "B905", "UP017", "E501", "E702", "B007", "B023"]

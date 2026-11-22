@@ -12,3 +12,18 @@ data/raw/
 release/
 data/ocr_cache/
 db/robustness_tmp.sqlite
+# Phase 3
+.cache/
+backups/
+outputs/
+data/geo/src/
+adapters/*/peft/
+db/quickstart_test.sqlite
+db/ci_smoke.sqlite
+db/scheduled_scratch.sqlite
+db/*.before_restore
+db/*.restoring
+.ruff_cache/
+logs/queries/
+*.egg-info/
+data/surprise_p3/

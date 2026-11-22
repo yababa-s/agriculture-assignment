@@ -1,17 +1,34 @@
-# Core
-mlx-lm>=0.32          # local LLM inference + LoRA/QLoRA training on Apple Silicon
-langgraph>=1.2        # orchestration (supervisor/router state graph)
+# AgriAgent (Team 34, Andaman & Nicobar): runtime dependencies.
+# Installs on macOS, Linux and Windows. Apple-only packages carry platform markers,
+# so `pip install -r requirements.txt` never fails on a non-Mac machine.
+# Exact tested versions: requirements.lock (pip install -r requirements.lock).
+
+# --- Orchestration, tracing, evaluation
+langgraph>=1.2
 langchain-core>=1.0
-langsmith>=0.14       # tracing + evaluation runs (needs LANGSMITH_API_KEY)
-agentevals>=0.0.9     # trajectory evaluators
-# Document processing
-pdfplumber>=0.11      # table geometry extraction
-pymupdf>=1.28         # text layer, page rendering
-ocrmac>=1.0           # macOS Vision OCR for images (fallback: none -> marked pending)
-rapidfuzz>=3.14       # fuzzy entity resolution
+langsmith>=0.14           # tracing + evaluation runs (optional: needs LANGSMITH_API_KEY)
+agentevals>=0.0.9         # trajectory evaluators
+
+# --- Local LLM (Apple Silicon only). Other machines: LLM_BACKEND=none (rules) or =hf (requirements-hf.txt)
+mlx-lm>=0.32; sys_platform == "darwin" and platform_machine == "arm64"
+
+# --- Document processing
+pdfplumber>=0.11          # table geometry
+pymupdf>=1.28             # text layer, page rendering, provenance page viewer
+ocrmac>=1.0; sys_platform == "darwin"   # macOS Vision OCR (elsewhere: easyocr via requirements-ocr.txt)
+rapidfuzz>=3.14           # fuzzy entity resolution
 pandas>=2.2
 pydantic>=2.10
+pyyaml>=6.0               # configs/*.yaml
+
+# --- Figures, maps, animations, query app
+matplotlib>=3.9
+plotly>=5.24
+imageio>=2.34
+imageio-ffmpeg>=0.5       # bundles an ffmpeg binary for MP4 animations
+shapely>=2.0
+streamlit>=1.40
+
+# --- Tests and docs
 pytest>=8
 markdown>=3.5
-easyocr>=1.7          # optional: Hindi OCR for scanned pages (pulls in PyTorch)
-certifi              # certificate bundle for EasyOCR's first model download

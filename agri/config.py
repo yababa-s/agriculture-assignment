@@ -24,8 +24,22 @@ _load_dotenv(ROOT / ".env")
 TEAM_ID = os.getenv("TEAM_ID", "34")
 STATE = "AN"  # Andaman & Nicobar Islands
 
-CORPUS_DIR = Path(os.getenv("CORPUS_DIR", str(ROOT.parent / "AI Project Data Corpus")))
-DB_PATH = Path(os.getenv("DB_PATH", str(ROOT / "db" / f"{TEAM_ID}_{STATE}_knowledgebase_v1.sqlite")))
+DB_VERSION = os.getenv("DB_VERSION", "v2")
+
+
+def _path(value: str) -> Path:
+    """Resolve a configured path: absolute as given, relative to the repository root otherwise."""
+    p = Path(value).expanduser()
+    return p if p.is_absolute() else ROOT / p
+
+
+# The corpus is fetched into data/raw by `python scripts/fetch_artifacts.py`.
+CORPUS_DIR = _path(os.getenv("CORPUS_DIR", "data/raw"))
+DB_PATH = _path(os.getenv("DB_PATH", f"db/{TEAM_ID}_{STATE}_knowledgebase_{DB_VERSION}.sqlite"))
+GEO_DIR = ROOT / "data" / "geo"
+FIGURES_DIR = ROOT / "figures"
+BACKUP_DIR = _path(os.getenv("BACKUP_DIR", "backups"))
+LOG_DIR = ROOT / "logs"
 MANIFEST_PATH = ROOT / "data" / "manifest.csv"
 TRACE_DIR = ROOT / "logs" / "traces"
 GOLD_DIR = ROOT / "data" / "gold"
@@ -35,10 +49,24 @@ RESULTS_DIR = ROOT / "eval" / "results"
 # --- LLM -------------------------------------------------------------------
 # Backend "mlx" runs locally on Apple Silicon. "none" disables every LLM call so
 # each agent falls back to its rule-based path (used for ablations).
-LLM_BACKEND = os.getenv("LLM_BACKEND", "mlx")
+def _default_backend() -> str:
+    """mlx on Apple Silicon when mlx-lm is installed, otherwise rules only (no model needed)."""
+    import importlib.util
+    import platform
+    if platform.system() == "Darwin" and platform.machine() == "arm64" and importlib.util.find_spec("mlx_lm"):
+        return "mlx"
+    return "none"
+
+
+LLM_BACKEND = os.getenv("LLM_BACKEND") or _default_backend()
 BASE_MODEL = os.getenv("BASE_MODEL", "mlx-community/Qwen2.5-3B-Instruct-4bit")
+# Full-precision checkpoint of the same model, used by the `hf` backend (transformers + peft).
+HF_BASE_MODEL = os.getenv("HF_BASE_MODEL", "Qwen/Qwen2.5-3B-Instruct")
 # Set ADAPTER_PATH to a LoRA adapter directory to run the fine-tuned model.
 ADAPTER_PATH = os.getenv("ADAPTER_PATH") or None
+# Query planning uses adapter v2 (trained on planning; 0.93 on the untouched test set vs 0.67 for a 3-shot prompt).
+_v2 = ROOT / "adapters" / "34_AN_qlora_v2"
+QUERY_ADAPTER_PATH = os.getenv("QUERY_ADAPTER_PATH") or (str(_v2) if (_v2 / "adapters.safetensors").exists() else None)
 LLM_MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "1500"))
 
 # --- Orchestration ----------------------------------------------------------

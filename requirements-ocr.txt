@@ -1,0 +1,5 @@
+# Optional: Hindi OCR for scanned pages (pulls in PyTorch, ~1 GB). Needed only for scanned
+# bilingual documents; digital PDFs, the database, queries and figures do not need it.
+-r requirements.txt
+easyocr>=1.7
+certifi                   # certificate bundle for EasyOCR's first model download

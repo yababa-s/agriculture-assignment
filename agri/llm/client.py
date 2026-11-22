@@ -45,20 +45,32 @@ class LLM:
         return f"{self.base_model}" + (f" + LoRA({self.adapter_path})" if self.adapter_path else "")
 
     def _load(self):
-        key = (self.base_model, self.adapter_path)
+        key = (self.backend, self.base_model, self.adapter_path)
         with _LOCK:
             if key not in _MODELS:
-                from mlx_lm import load
-                _MODELS[key] = load(self.base_model, adapter_path=self.adapter_path)
+                if self.backend == "hf":
+                    _MODELS[key] = _load_hf(self.adapter_path)
+                elif self.backend == "mlx":
+                    try:
+                        from mlx_lm import load
+                    except ImportError as e:  # not Apple Silicon, or mlx-lm not installed
+                        raise RuntimeError("LLM_BACKEND=mlx needs Apple Silicon with mlx-lm installed. "
+                                           "Use LLM_BACKEND=hf (pip install -r requirements-hf.txt) "
+                                           "or LLM_BACKEND=none (rules only).") from e
+                    _MODELS[key] = load(self.base_model, adapter_path=self.adapter_path)
+                else:
+                    raise RuntimeError(f"unknown LLM_BACKEND={self.backend!r} (use mlx, hf or none)")
             return _MODELS[key]
 
     @traceable(run_type="llm", name="local_llm")
     def chat(self, system: str, user: str, max_tokens: int | None = None) -> str:
         if not self.enabled:
             raise RuntimeError("LLM backend disabled")
+        if self.backend == "hf":
+            return self._chat_hf(system, user, max_tokens)
+        model, tok = self._load()
         from mlx_lm import generate
         from mlx_lm.sample_utils import make_sampler
-        model, tok = self._load()
         msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
         prompt = tok.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
         self.calls += 1
@@ -68,6 +80,20 @@ class LLM:
         self._last_prompt_tokens = len(tok.encode(prompt))
         self._last_completion_tokens = len(tok.encode(out))
         return out
+
+    def _chat_hf(self, system: str, user: str, max_tokens: int | None) -> str:
+        import torch
+        model, tok = self._load()
+        msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
+        prompt = tok.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
+        ids = tok(prompt, return_tensors="pt")["input_ids"].to(model.device)
+        self.calls += 1
+        with _LOCK, torch.no_grad():
+            out = model.generate(ids, max_new_tokens=max_tokens or config.LLM_MAX_TOKENS, do_sample=False)
+        new = out[0, ids.shape[1]:]
+        self._last_prompt_tokens, self._last_completion_tokens = int(ids.shape[1]), int(new.shape[0])
+        return tok.decode(new, skip_special_tokens=True)
+
 
     def json_call(self, system: str, user: str, max_tokens: int | None = None) -> LLMResult:
         t0 = time.time()
@@ -136,3 +162,26 @@ def salvage_list(text: str) -> list | None:
         items.append(obj)
         i = end
     return items or None
+
+
+def _load_hf(adapter_path: str | None):
+    """transformers + peft backend for machines without Apple MLX (CPU, CUDA or MPS)."""
+    try:
+        import torch
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+    except ImportError as e:
+        raise RuntimeError("LLM_BACKEND=hf needs: pip install -r requirements-hf.txt") from e
+    from pathlib import Path
+    device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+    dtype = torch.float32 if device == "cpu" else torch.float16
+    tok = AutoTokenizer.from_pretrained(config.HF_BASE_MODEL)
+    model = AutoModelForCausalLM.from_pretrained(config.HF_BASE_MODEL, dtype=dtype).to(device)
+    if adapter_path:
+        peft_dir = Path(adapter_path) / "peft"
+        if not peft_dir.exists():
+            raise RuntimeError(f"{peft_dir} not found. Convert the MLX adapter first: "
+                               f"python scripts/convert_adapter_mlx_to_peft.py {adapter_path}")
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, str(peft_dir)).to(device)
+    model.eval()
+    return model, tok

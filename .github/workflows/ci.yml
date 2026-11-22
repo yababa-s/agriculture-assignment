@@ -1,0 +1,35 @@
+# Fresh-machine test on every push: clean runner -> install -> fetch artifacts -> tests -> quick start.
+name: ci
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  fresh-clone:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-14, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Fetch database and corpus (checksums verified)
+        run: python scripts/fetch_artifacts.py --only database corpus
+      - name: Tests
+        run: python -m pytest
+      - name: Quick start (no model)
+        run: |
+          python -m agri.cli status
+          python scripts/ask.py --no-llm "Which agri zone produced the most paddy in 2025-26?"
+          python scripts/ask.py --no-llm --show-source --no-open "Which source and page did the 2025-26 coconut production figure for A&N come from?"
+          python scripts/run_pipeline.py --docs D02 --no-llm --db db/ci_smoke.sqlite
+      - name: Lint
+        if: matrix.os == 'ubuntu-latest'
+        run: python -m pip install ruff && python -m ruff check agri scripts app tests reports
