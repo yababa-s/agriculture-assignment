@@ -54,7 +54,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 4,
-   "median_latency_s": 0.06
+   "median_latency_s": 0.05
   },
   "temporal": {
    "n": 4,
@@ -131,7 +131,7 @@
    "correct": false,
    "detail": "got AN_NIC=87.4 want ['AN_NIC']=13752.0",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Production of Coconut by district, 2024-25 (3 districts with data): Nicobar District is highest with 87.4 million nuts (78.0% of the total) [D06 p2 ⚠ unverified].\n  1. Nicobar District: 87.4 million nuts [D06 p2 ⚠ unverified]\n  2. South Andaman District: 18.52 million nuts [D06 p2 ⚠ unverified]\n  3. North & Middle Andaman District: 6.19 million nuts [D06 p2 ⚠ unverified]",
    "plan": {
     "intent": "rank",
@@ -165,7 +165,7 @@
    "correct": true,
    "detail": "got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Poultry by island, 2024-25 (19 islands with data): South Andaman Island is highest with 514,718  (40.1% of the total) [D10 p8].\n  1. South Andaman Island: 514,718  [D10 p8]\n  2. North Andaman Island: 272,475  [D10 p4]\n  3. Middle Andaman Island: 201,256  [D10 p5]\n  4. Little Andaman Island: 127,933  [D10 p10]\n  5. Swaraj Dweep (Havelock): 42,494  [D10 p7]\n  6. Car Nicobar Island: 40,137  [D10 p11]",
    "plan": {
     "intent": "rank",
@@ -199,7 +199,7 @@
    "correct": false,
    "detail": "got ZN_MAYABUNDER=0.1 want ['ZN_MAYABUNDER']=0.2",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Production of Maize by agri zone, 2025-26 (4 agri zones with data): Mayabunder (agri zone) is lowest with 0.1 t (0.3% of the total) [D02 p1].\n  1. Mayabunder (agri zone): 0.1 t [D02 p1]\n  2. Rangat (agri zone): 3.61 t [D02 p1]\n  3. South Andaman (agri zone): 10.58 t [D02 p1]\n  4. Diglipur (agri zone): 22 t [D02 p1]",
    "plan": {
     "intent": "rank",

@@ -74,13 +74,13 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 2,
-   "median_latency_s": 0.05
+   "median_latency_s": 0.06
   }
  },
  "macro_answer_accuracy": 1.0,
  "demo": null,
  "hindi": null,
- "elapsed_s": 5.8,
+ "elapsed_s": 5.7,
  "results": [
   {
    "id": "R01",
@@ -178,7 +178,7 @@
    "correct": true,
    "detail": "got out_of_scope: I could not match this to the data (nothing in the question ",
    "grounded": null,
-   "latency_s": 3.8,
+   "latency_s": 3.78,
    "answer": "I could not match this to the data (nothing in the question names a measure, crop or place). I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these numbers comes",
    "plan": {
     "intent": "out_of_scope"
@@ -224,7 +224,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (24/24)",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Retail price of Tomato, A&N retail price survey (DES): 75 INR/kg in January 2024 -> 120 INR/kg in December 2025 (+60.0% over 24 periods). Peak 125 in July 2024; low 60 in March 2024. Sources: D13.\n  January 2024: 75 INR/kg [D13 p1]\n  February 2024: 75 INR/kg [D13 p2]\n  March 2024: 60 INR/kg [D13 p3]\n  April 2024: 72.5 INR/kg [D13 p4]\n  May 2024: 75 INR/kg [D13 p5]\n  June 2024: 110 INR/kg [D13 p6]\n",
    "plan": {
     "intent": "trend",
@@ -326,7 +326,7 @@
    "correct": true,
    "detail": "items ['onion', 'potato'] want ['potato', 'onion']",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Retail price of Potato, A&N retail price survey (DES), March 2025 = 42.5 INR/kg. It comes from Fooditems2025.pdf (Directorate of Economics & Statistics, A&N Administration), page 3, table p3_t0, row \"Potato\", column \"March 2025\", printed as \"42.50\"; extracted by price_table_agent in run c8c4d6813b2f.\nAlso reported by 1 other document(s):\n  D13 p4 (p4_t0): 42.5 INR/kg\n\nRetail price of Onion, A&N re",
    "plan": {
     "intent": "lookup",
@@ -428,8 +428,8 @@
    "correct": true,
    "detail": "got out_of_scope: I could not match this to the data (nothing in the question ",
    "grounded": null,
-   "latency_s": 1.45,
-   "answer": "I could not match this to the data (nothing in the question names a measure, crop or place ). I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these numbers come",
+   "latency_s": 1.37,
+   "answer": "I could not match this to the data (nothing in the question names a measure, crop or place). I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these numbers comes",
    "plan": {
     "intent": "out_of_scope"
    },

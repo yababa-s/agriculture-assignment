@@ -12,7 +12,7 @@
   "tool_selection_accuracy": 1.0,
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
-  "n_grounded_checked": 14,
+  "n_grounded_checked": 15,
   "median_latency_s": 0.05
  },
  "by_type": {
@@ -53,7 +53,7 @@
    "tool_selection_accuracy": 1.0,
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
-   "n_grounded_checked": 3,
+   "n_grounded_checked": 4,
    "median_latency_s": 0.77
   },
   "temporal": {
@@ -79,7 +79,7 @@
   "n_grounded_checked": 1,
   "median_latency_s": 0.05
  },
- "elapsed_s": 6.1,
+ "elapsed_s": 6.2,
  "results": [
   {
    "id": "X01",
@@ -131,7 +131,7 @@
    "correct": true,
    "detail": "got AN_NIC=13752.0 want ['AN_NIC']=13752.0",
    "grounded": true,
-   "latency_s": 3.93,
+   "latency_s": 3.98,
    "answer": "Area under crop of Coconut by district, 2024-25 (3 districts with data): Nicobar District is highest with 13,752 ha (76.8% of the total) [D06 p2].\n  1. Nicobar District: 13,752 ha [D06 p2]\n  2. South Andaman District: 2,825 ha [D06 p2]\n  3. North & Middle Andaman District: 1,325 ha [D06 p2]",
    "plan": {
     "intent": "rank",
@@ -165,7 +165,7 @@
    "correct": true,
    "detail": "got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Poultry by island, 2024-25 (19 islands with data): South Andaman Island is highest with 514,718  (40.1% of the total) [D10 p8].\n  1. South Andaman Island: 514,718  [D10 p8]\n  2. North Andaman Island: 272,475  [D10 p4]\n  3. Middle Andaman Island: 201,256  [D10 p5]\n  4. Little Andaman Island: 127,933  [D10 p10]\n  5. Swaraj Dweep (Havelock): 42,494  [D10 p7]\n  6. Car Nicobar Island: 40,137  [D10 p11]",
    "plan": {
     "intent": "rank",
@@ -197,13 +197,13 @@
    "tool": "rank_locations",
    "tool_ok": true,
    "correct": false,
-   "detail": "no rows",
-   "grounded": null,
+   "detail": "got ZN_DIGLIPUR=22.0 want ['ZN_MAYABUNDER']=0.2",
+   "grounded": true,
    "latency_s": 1.48,
-   "answer": "No data in the knowledge base for Yield / productivity of Maize in 2025-26.",
+   "answer": "Production of Maize by agri zone, 2025-26 (4 agri zones with data): Diglipur (agri zone) is highest with 22 t (60.6% of the total) [D02 p1].\n  1. Diglipur (agri zone): 22 t [D02 p1]\n  2. South Andaman (agri zone): 10.58 t [D02 p1]\n  3. Rangat (agri zone): 3.61 t [D02 p1]\n  4. Mayabunder (agri zone): 0.1 t [D02 p1]",
    "plan": {
     "intent": "rank",
-    "metric": "yield",
+    "metric": "production",
     "commodity": "maize",
     "location": null,
     "level": "agri_zone",
@@ -369,7 +369,7 @@
    "correct": true,
    "detail": "cited D06 p2 value 87.4",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Production of Coconut, Nicobar District, 2024-25 = 87.4 million nuts. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Coconut (M/ Nuts)\", column \"Production (MT) | fudksckj Nicobar\", printed as \"87.4\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "provenance",

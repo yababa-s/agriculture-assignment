@@ -11,6 +11,7 @@ Checks (each prints counts and examples; results -> eval/results/phase3/db_audit
   H. labels     row/column labels or dims that still contain undecoded Kruti Dev text
   I. mapping    the same printed row label mapped to different commodities in different documents
   J. places     observations attached to the combined 'Andaman' location outside the land-use tables
+  K. collapse   different printed rows stored as one fact (same measure, item, place, period and dims, other label)
 
   python scripts/audit_db.py [--db PATH]
 """
@@ -154,6 +155,14 @@ def main() -> None:
     # J. combined location
     out["J_andaman_combined"] = q(c, "SELECT metric_id, COUNT(*) n FROM observation WHERE location_id='AN_ANDAMAN' GROUP BY 1")
 
+    # K. different printed rows collapsed into one fact
+    out["K_collapsed_rows"] = q(c, """SELECT document_id, metric_id, commodity_id, location_id, period_label, dims,
+                                          GROUP_CONCAT(DISTINCT row_label) labels, COUNT(DISTINCT row_label) k,
+                                          MIN(value) vmin, MAX(value) vmax FROM observation
+                                   WHERE validation != 'error' AND value IS NOT NULL
+                                   GROUP BY document_id, metric_id, commodity_id, location_id, period_label, dims
+                                   HAVING k > 1 AND vmax - vmin > 0.01 * ABS(vmax)""")
+
     path = config.RESULTS_DIR / "phase3" / "db_audit.json"
     path.write_text(json.dumps(out, indent=1, default=str, ensure_ascii=False))
     print("A units: metric/item with several units:", len(mixed), "| series whose unit changes:", len(series_change))
@@ -167,6 +176,7 @@ def main() -> None:
     print("H labels with Kruti Dev residue:", len(resid))
     print("I printed labels mapped to several items:", len(lm))
     print("J rows at the combined 'Andaman' location:", out["J_andaman_combined"])
+    print("K different printed rows stored as one fact:", len(out["K_collapsed_rows"]))
     print("->", path)
 
 

@@ -147,19 +147,66 @@ def standardise(conn, rows: list[dict]) -> list[dict]:
     return rows
 
 
+# dims keys: annotations that never split a fact; parts that add up to the place's figure; the rest is a breakdown
+_IGNORE_DIMS = {"group", "source_census", "series", "row"}
+_ADDITIVE_DIMS = {"listed_under"}            # an island listed in two tehsils: 'Middle Andaman (part)' twice
+_TOTAL_VALUES = {("channel", "as on")}       # KCC 'as on' = cards in force (the stock); 'During' = issued that year
+
+
+def facet(r: dict) -> dict:
+    """The qualifiers that make a row a part of a fact (not the fact itself)."""
+    import json as _json
+    d = _json.loads(r.get("dims") or "{}")
+    return {k: v for k, v in d.items() if k not in _IGNORE_DIMS | _ADDITIVE_DIMS | {"item", "variety"}}
+
+
+def _is_total(f: dict) -> bool:
+    return all((k, v) in _TOTAL_VALUES or str(v).strip().lower() == "total" for k, v in f.items())
+
+
+def _merge_additive(rows: list[dict]) -> list[dict]:
+    """Add up the printed parts of one place (same fact, document and qualifiers, different 'listed_under')."""
+    import json as _json
+    groups: dict[tuple, list[dict]] = {}
+    out = []
+    for r in rows:
+        d = _json.loads(r.get("dims") or "{}")
+        if not _ADDITIVE_DIMS & set(d):
+            out.append(r)
+            continue
+        rest = _json.dumps({k: v for k, v in d.items() if k not in _ADDITIVE_DIMS}, sort_keys=True)
+        groups.setdefault((r["metric_id"], r["commodity_id"], r["location_id"], r["period_label"], r["document_id"],
+                           rest), []).append(r)
+    for g in groups.values():
+        m = dict(g[0])
+        if len(g) > 1:
+            m["value"] = sum(x["value"] for x in g)
+            m["value_std"] = sum(x["value_std"] for x in g)
+            m["value_raw"] = " + ".join(str(x["value_raw"]) for x in g)
+            m["row_label"] = f"{m['row_label']} (sum of {len(g)} printed parts)"
+        out.append(m)
+    return out
+
+
 def _fetch(conn, extra: str, params: dict, allow_items: bool = False, allow_variety: bool = False) -> tuple[str, list[dict]]:
     sql = _BASE_SQL + extra
     if allow_items:       # measures published only as a breakdown (e.g. tractors: in department / with PRIs / private)
         sql = sql.replace("AND json_extract(o.dims, '$.item') IS NULL", "")
     if allow_variety:     # items printed only by variety (rice: Ponni / Boiled Common / Raw Common; paddy: HYV / traditional)
         sql = sql.replace("AND json_extract(o.dims, '$.variety') IS NULL", "")
-    return sql, standardise(conn, [dict(r) for r in conn.execute(sql, params)])
+    rows = _merge_additive(standardise(conn, [dict(r) for r in conn.execute(sql, params)]))
+    if not allow_items:   # a row qualified as one part (tractors 'In Department', fish 'marine') is not the fact itself
+        rows = [r for r in rows if not facet(r) or _is_total(facet(r))]
+    return sql, rows
 
 
 def part_of(r: dict, kind: str) -> str:
     """The printed variety or breakdown item of a row (English part of a bilingual label)."""
     import json as _json
-    raw = str(_json.loads(r.get("dims") or "{}").get(kind, "")).strip(" -")
+    d = _json.loads(r.get("dims") or "{}")
+    raw = str(d.get(kind, "")).strip(" -")
+    if not raw and kind == "item":
+        raw = " / ".join(str(v) for v in facet(r).values())
     from agri.tools.krutidev import split_bilingual_label
     return (split_bilingual_label(raw)[1] or raw).strip(" -") or "(unlabelled)"
 

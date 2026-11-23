@@ -34,7 +34,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 5,
-   "median_latency_s": 0.06
+   "median_latency_s": 0.05
   },
   "provenance": {
    "n": 6,
@@ -86,7 +86,7 @@
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
   "n_grounded_checked": 2,
-  "median_latency_s": 0.06
+  "median_latency_s": 0.05
  },
  "elapsed_s": 1.6,
  "results": [
@@ -820,7 +820,7 @@
    "correct": true,
    "detail": "cited D02 p1 value 6941.03",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Production of Paddy (Rice), Diglipur (agri zone), 2025-26 = 6,941 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Paddy\", column \"Diglipur | Prod.\", printed as \"6941.03\"; extracted by matrix_table_agent in run f2f174073993.",
    "plan": {
     "intent": "provenance",
@@ -922,7 +922,7 @@
    "correct": true,
    "detail": "got 1 want 1",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Area under crop of Arecanut, Andaman & Nicobar Islands: 1 period(s) are reported by 2+ documents; 1 agree within 1%.\n  2023-24: D01 p2 = 4,744 ha (spread 0.0%)\n  2023-24: D05 p1 = 4,744 ha (spread 0.0%)\n  2023-24: D06 p1 = 4,744 ha (spread 0.0%)",
    "plan": {
     "intent": "compare_sources",
@@ -956,7 +956,7 @@
    "correct": true,
    "detail": "got 8062.23 want 8062.23..8062.23",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Production (MT) | nf{k.k v.Meku South Andaman\", printed as \"8062.23\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "lookup",
@@ -990,7 +990,7 @@
    "correct": true,
    "detail": "got 8062.23 want 8062.23..8062.23",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Production (MT) | nf{k.k v.Meku South Andaman\", printed as \"8062.23\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "lookup",
@@ -1024,7 +1024,7 @@
    "correct": true,
    "detail": "got 2595.0 want 2595.0..2595.0",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Farmers / cultivators, Car Nicobar Island, 2024-25 = 2,595 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 11, table profile:ISL_CARNICOBAR, row \"Farmers-2595\", column \"farmers_count\", printed as \"2595\"; extracted by island_profile_agent in run 1ba23995df60.",
    "plan": {
     "intent": "lookup",

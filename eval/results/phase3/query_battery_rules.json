@@ -462,7 +462,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Fish landed, Katchal Island, 2023-24 = 34 t. It comes from IslandwiseStatistical2023-24.pdf (Directorate of Economics & Statistics, A&N Administration), page 13, table profile:ISL_KATCHAL, row \"Fish landed(MT) : Marine-34\", column \"fish_landed\", printed as \"34\"; extracted by island_profile_agent in run 20ee8c3a2fcf."
+   "answer": "Fish landed, Katchal Island, 2023-24: reported only as a breakdown (no total row): marine: 34 t [D09 p13]."
   },
   {
    "q": "which island lands the most fish",
@@ -483,7 +483,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Fish landed by island, 2024-25 (5 islands with data): Shaheed Dweep (Neil) is highest with 858 t (32.5% of the total) [D10 p9].\n  1. Shaheed Dweep (Neil): 858 t [D10 p9]\n  2. North Andaman Island: 650 t [D10 p4]\n  3. South Andaman Island: 646 t [D10 p8]\n  4. Little Andaman Island: 429.62 t [D10 p10]\n  5. Car Nicobar Island: 58 t [D10 p11]\n  ⚠ Sources disagree for South Andaman Island: used 646 t ["
+   "answer": "(No single figure is printed; this ranks the item 'marine'; also printed: freshwater.)\nFish landed by island, 2024-25 (5 islands with data): South Andaman Island is highest with 31,829 t (94.1% of the total) [D10 p8].\n  1. South Andaman Island: 31,829 t [D10 p8]\n  2. Shaheed Dweep (Neil): 858 t [D10 p9]\n  3. North Andaman Island: 650 t [D10 p4]\n  4. Little Andaman Island: 429.62 t [D10 p10]\n  5. C"
   },
   {
    "q": "how many tractors are there in andaman and nicobar",
@@ -588,7 +588,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Fertilizer consumption, South Andaman Island, 2024-25 = 0.01 t. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 8, table profile:ISL_SOUTHANDAMAN, row \"vermi compost-.008\", column \"fertilizer_consumption\", printed as \".008\"; extracted by island_profile_agent in run 1ba23995df60.\nAlso reported by 1 other document(s):\n  D10 p8 (profile"
+   "answer": "Fertilizer consumption, South Andaman Island, 2024-25: reported only as a breakdown (no total row): organic_vermicompost: 0.01 t [D10 p8]; phosphatic: 6.9 t [D10 p8]; potassic: 7.6 t [D10 p8]."
   },
   {
    "q": "fertiliser consumption trend in andaman",
@@ -672,7 +672,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Kisan Credit Cards, Nicobar District, 2022-23 = 0 . It comes from 37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Nicobar District\", column \"Kisan Credit Card | During 2022- 23\", printed as \"0\"; extracted by matrix_table_agent in run c99ce1a268ac.\nAlso reported by 1 other document(s):\n  D07 p2 (p2_t"
+   "answer": "Kisan Credit Cards, Nicobar District, 2022-23 = 3 . It comes from 37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Nicobar District\", column \"Kisan Credit Card | as on 2022-23\", printed as \"3\"; extracted by matrix_table_agent in run c99ce1a268ac."
   },
   {
    "q": "number of KCC holders in andaman",
@@ -693,7 +693,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Kisan Credit Cards, Andaman & Nicobar Islands, 2022-23 = 0 . It comes from 37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"TOTAL (A & N ISLANDS)\", column \"Kisan Credit Card | During 2022- 23\", printed as \"0\"; extracted by matrix_table_agent in run c99ce1a268ac.\nAlso reported by 1 other document(s):\n"
+   "answer": "Kisan Credit Cards, Andaman & Nicobar Islands, 2022-23 = 2,842 . It comes from 37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"TOTAL (A & N ISLANDS)\", column \"Kisan Credit Card | as on 2022-23\", printed as \"2842\"; extracted by matrix_table_agent in run c99ce1a268ac."
   },
   {
    "q": "how many organic farms are there",
@@ -903,7 +903,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "No data in the knowledge base for Agricultural electricity connections at Baratang Island."
+   "answer": "No data in the knowledge base for Agricultural electricity connections at Baratang Island. It is published by: island (9 places), for 2022-23 to 2024-25."
   },
   {
    "q": "how many pesticide units were distributed",
@@ -945,7 +945,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Land use / land cover area, Nicobar District, 2015-16 = 2.99 sq km. It comes from Andaman Nicobar LULC 2015-16 data.pdf (Bhuvan, NRSC/ISRO), page 1, table p1_t0, row \"Crop land\", column \"NICOBAR\", printed as \"2.99\"; extracted by lulc_agent in run 061ea4b90440.\nAlso reported by 1 other document(s):\n  D17 p1 (p1_t0): 53.38 sq km\n  D17 p1 (p1_t0): 6.93 sq km\n  D17 p1 (p1_t0): 1.83 sq km\n  D17 p1 (p1_"
+   "answer": "Land use / land cover area, Nicobar District, 2015-16: reported only as a breakdown (no total row): Agriculture / Crop land: 2.99 sq km [D17 p1]; Agriculture / Plantation: 53.38 sq km [D17 p1]; Barren/unculturable/ Wastelands / Sandy Area: 6.93 sq km [D17 p1]; Rural: 1.83 sq km [D17 p1]; Urban: 11.49 sq km [D17 p1]; Forest / Deciduous: 75.34 sq km [D17 p1]; Forest / Evergreen/ Semi evergreen: 1,31"
   },
   {
    "q": "how many operational land holdings are there",
@@ -966,7 +966,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Operational holdings, Andaman & Nicobar Islands, 2015-16 = 2,722 . It comes from agri census 2015-16.png (Directorate of Economics & Statistics, A&N Administration), page 1, table ocr_table, row \"Below 0.5\", column \"holdings_count:individual\", printed as \"2722\"; extracted by image_table_agent in run ea4750f069d4.\nAlso reported by 1 other document(s):\n  D16 p1 (ocr_table): 425 \n  D16 p1 (ocr_table)"
+   "answer": "Operational holdings, Andaman & Nicobar Islands, 2015-16 = 11,954 . It comes from agri census 2015-16.png (Directorate of Economics & Statistics, A&N Administration), page 1, table ocr_table, row \"Total\", column \"holdings_count:total\", printed as \"11954\"; extracted by image_table_agent in run ea4750f069d4."
   },
   {
    "q": "area of operational holdings trend",
@@ -987,7 +987,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Area operated, Andaman & Nicobar Islands: 21,846 ha in 2005-06 -> 11,590 ha in 2023-24 (-46.9% over 4 periods). Peak 21,856 in 2010-11; low 11,590 in 2023-24. Sources: D05, D06.\n  2005-06: 21,846 ha [D06 p4]\n  2010-11: 21,856 ha [D06 p4]\n  2015-16: 21,220 ha [D06 p4]\n  2023-24: 11,590 ha [D05 p4]\n  ⚠ Sources disagree for 2015-16: used 21,220 ha [D06 p4]; also printed 814.19 [D16 p1], 147.95 [D16 p"
+   "answer": "Area operated, Andaman & Nicobar Islands: 21,846 ha in 2005-06 -> 11,590 ha in 2023-24 (-46.9% over 4 periods). Peak 21,856 in 2010-11; low 11,590 in 2023-24. Sources: D05, D06.\n  2005-06: 21,846 ha [D06 p4]\n  2010-11: 21,856 ha [D06 p4]\n  2015-16: 21,220 ha [D06 p4]\n  2023-24: 11,590 ha [D05 p4]"
   },
   {
    "q": "what was the scheme outlay in 2022-23",
@@ -1008,7 +1008,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Scheme outlay (budget), Andaman & Nicobar Islands, 2022-23 = 1,785 INR lakh. It comes from subsidies 2024-25.pdf (Department of Agriculture, A&N Administration), page 1, table outlay_and_expenditure, row \"Outlay\", column \"2022-23\", printed as \"1785.00\"; extracted by narrative_agent in run 1a029571e4ec.\nAlso reported by 1 other document(s):\n  D15 p5 (outlay_and_expenditure): 1,584 INR lakh\n  D15 p8"
+   "answer": "Scheme outlay (budget), Andaman & Nicobar Islands, 2022-23: reported only as a breakdown (no total row): Assistance to farmers under High Yielding Programme: 1,785 INR lakh [D15 p1]; Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture: 1,584 INR lakh [D15 p5]; Training & Extension Programme (IT & Demonstration): 768.5 INR lakh [D15 p8]; Direction & Administration: "
   },
   {
    "q": "how much was spent on agriculture schemes in 2022-23",
@@ -1029,7 +1029,7 @@
     "confident": true
    },
    "planner": "rules",
-   "answer": "Scheme expenditure, Andaman & Nicobar Islands, 2022-23 = 1,473 INR lakh. It comes from subsidies 2024-25.pdf (Department of Agriculture, A&N Administration), page 1, table outlay_and_expenditure, row \"Expenditure\", column \"2022-23\", printed as \"1472.90\"; extracted by narrative_agent in run 1a029571e4ec.\nAlso reported by 1 other document(s):\n  D15 p5 (outlay_and_expenditure): 1,549 INR lakh\n  D15 p"
+   "answer": "Scheme expenditure, Andaman & Nicobar Islands, 2022-23: reported only as a breakdown (no total row): Assistance to farmers for promotion of Horticulture Crops and High Value Agriculture: 1,549 INR lakh [D15 p5]; Assistance to farmers under High Yielding Programme: 1,473 INR lakh [D15 p1]; Training & Extension Programme (IT & Demonstration): 736.61 INR lakh [D15 p8]; Direction & Administration: 898"
   },
   {
    "q": "cost of cultivation of paddy in nicobar district",
@@ -1913,12 +1913,12 @@
   {
    "q": "who is the prime minister of india",
    "ok": true,
-   "why": "not refused: I could not match this to the data (the question does not say which crop or item",
+   "why": "not refused: Which measure do you mean? Please name a measure or a crop. For India the knowle",
    "plan": {
     "intent": "out_of_scope"
    },
    "planner": "rules",
-   "answer": "I could not match this to the data (the question does not say which crop or item). I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these numbers comes from. Try"
+   "answer": "Which measure do you mean? Please name a measure or a crop. For India the knowledge base has: . For example: \"which zone produces the most paddy?\", \"which island has the most farmers?\", \"which district has the most area under cultivation?\""
   },
   {
    "q": "why is paddy production falling",

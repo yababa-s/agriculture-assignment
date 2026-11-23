@@ -67,6 +67,8 @@ The question "which island has the most area under agriculture" failed in a live
 |---|---|---|
 | Coverage battery, rules planner | 64/96 | 97/97 |
 | Coverage battery, deployed hybrid | — | 97/97 |
+| Generated matrix, 1,093 questions (every measure × level × form), rules | 1,064 (+95 dead-end "No data") | 1,093 (7 explained empty) |
+| Generated matrix, deployed hybrid | — | 1,093 (7 explained empty) |
 | District sums that do not add up (audit D) | 60 | 1 |
 | Areas larger than their island or the UT (audit C) | 17 | 0 |
 | In-document conflicting values (audit F) | 322 | 103 (price bulletins; resolved at query time and flagged) |
@@ -75,7 +77,7 @@ The question "which island has the most area under agriculture" failed in a live
 | Query dev / test, deployed hybrid | 1.00 / 0.93 | 1.00 / 0.93 |
 | Robustness dev / test, deployed hybrid | 1.00 / 0.87 (first run) | 1.00 / 1.00 |
 
-The battery was used while fixing, so it is a dev set. No change was made by looking at the test sets. Test X11 (Car Nicobar Island farmers) now passes because shared place names resolve to the level that has data for the measure. The post-fix runs are in `query_eval_*_rules_post_audit.json` and `query_eval_*_hybrid_rules_v2.json`.
+The battery and the matrix were used while fixing, so they are dev sets. The matrix was added after the question "which zone has the most area under agriculture" returned a bare "No data": total cultivated area is not published by agri zone. Answers now fall back to the nearest level, place or year that has the figure, and say so. No change was made by looking at the test sets. Test X11 (Car Nicobar Island farmers) now passes because shared place names resolve to the level that has data for the measure. The post-fix runs are in `query_eval_*_rules_post_audit.json` and `query_eval_*_hybrid_rules_v2.json`.
 
 ## 4. Fresh files never seen before (`eval/results/phase3/surprise_p3.json`)
 

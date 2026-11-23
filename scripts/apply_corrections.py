@@ -18,6 +18,8 @@ Rules (each one was traced to a concrete extraction defect or a publisher error,
   R12 place     a district-wise value whose column header was not read (blank) was stored at the UT -> rejected
   R13 unit      an area stored in sq km that is larger than the whole UT (8,249 sq km) cannot be sq km: the land-use
                 tables print hectares (824,900 ha = 8,249 sq km) -> unit set to ha
+  R14 item      land-utilisation rows 'Total Cropped Area', 'Total Food Crops', 'Total Non Food Crops' were all stored
+                as the plain total of the table -> each kept as its own item
   R10 item      'Total (A+B)' (fruits including citrus) was stored as the citrus total -> marked as a separate total
 
 Rejected rows stay in the database with validation='error' and a note; query tools ignore them.
@@ -96,6 +98,11 @@ def main() -> None:
         if r["unit_id"] == "sq_km" and r["value"] is not None and r["value"] > UT_AREA_SQ_KM * 1.01:
             change(r["obs_id"], "R13", "unit_id", "ha", f"{r['value']} sq km is larger than the whole UT "
                                                          f"({UT_AREA_SQ_KM} sq km); the table prints hectares")
+        # R14 several different land-utilisation totals stored as the one plain value
+        if r["metric_id"] == "land_use_area" and "item" not in dims and label:
+            dims["item"] = label
+            change(r["obs_id"], "R14", "dims", json.dumps(dims, sort_keys=True, ensure_ascii=False),
+                   f"'{label}' is one line of the land-utilisation table, not the table total")
         # R3 wrong metric for the block
         if r["metric_id"] == "fertilizer_consumption" and ("seedling" in group or "pesticide" in group):
             reject(r["obs_id"], "R3", f"row from the '{dims.get('group')}' block stored as fertilizer consumption")

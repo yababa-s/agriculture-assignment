@@ -643,7 +643,7 @@ def build(out: Path, template: Path) -> Path:
         "corrected. (3) Field F1 cannot catch a correct number stored under the wrong unit, place or item, so a corpus audit "
         "(`audit_db.py`: unit, bounds, sums, jumps, conflicts) was run over all 32,151 rows. It found, for example, district "
         "area printed in hectares but stored as sq km (100× too large), a shifted district column in the machinery tables, "
-        "and seedling rows filed as fertilizer. Thirteen logged rules (`apply_corrections.py`, 1,336 changes, 329 rows "
+        "and seedling rows filed as fertilizer. Fourteen logged rules (`apply_corrections.py`, 1,384 changes, 329 rows "
         "rejected) fixed them; field F1 is unchanged at 0.999. Mismatched district sums fell from 60 to 1. Where the price "
         "bulletins print one month twice with different values, the query agent keeps the value consistent with the "
         "neighbouring months and says so in the answer (details in docs/data_quality.md).", align="justify")
@@ -660,8 +660,11 @@ def build(out: Path, template: Path) -> Path:
         "**Limits of this implementation.** (i) The agents are specialised to the layouts we saw. A new price layout falls "
         "back to LLM column mapping, which reaches 0.64–0.7 accuracy. (ii) Chart-only atlas pages (D18) and raster maps are "
         "not extracted. (iii) The geospatial layer uses approximate point locations (±5 km) for zones and islands. (iv) The "
-        "rule planner covers the question patterns we anticipated: 0.80 on unseen paraphrases. A 97-question coverage "
-        "battery over every measure, level and time form (used for development, so not held out) now passes 97/97. (v) The system runs one "
+        "rule planner covers the question patterns we anticipated: 0.80 on unseen paraphrases. A generated matrix of "
+        "1,093 questions (every measure × level × question form, checked automatically) first exposed 29 failures and "
+        "95 dead-end answers, e.g. total cultivated area asked by agri zone, which is not published. When a figure "
+        "is not published as asked, the agent now answers at the nearest level, place or year that has it and says so. "
+        "The matrix was used for development, so it is not held out. (v) The system runs one "
         "document at a time on one machine, with no incremental scheduled download from the portals, which offer no APIs.",
         align="justify")
     doc.para(

@@ -4,7 +4,7 @@
  "artifacts": {
   "database": {
    "file": "34_AN_database_v2.zip",
-   "sha256": "c03adebd5a9c0eaa743f9117092a5cdc464c593f1a3735c6b0bff4afdbe23eed",
+   "sha256": "539398ea5dfe8ffd20a9c59dfaf68065cd91c12cf6f8664591d27feca81d89a5",
    "unzip_to": "db",
    "check": [
     "db/34_AN_knowledgebase_v2.sqlite"

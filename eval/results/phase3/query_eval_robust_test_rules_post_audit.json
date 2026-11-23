@@ -24,7 +24,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 2,
-   "median_latency_s": 0.05
+   "median_latency_s": 0.06
   },
   "lookup": {
    "n": 4,
@@ -519,7 +519,7 @@
    "correct": true,
    "detail": "items ['potato', 'tomato'] want ['tomato', 'potato']",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Retail price of Tomato, A&N retail price survey (DES): 75 INR/kg in January 2024 -> 115 INR/kg in December 2024 (+53.3% over 12 periods). Peak 125 in July 2024; low 60 in March 2024. Sources: D13.\n  January 2024: 75 INR/kg [D13 p1]\n  February 2024: 75 INR/kg [D13 p2]\n  March 2024: 60 INR/kg [D13 p3]\n  April 2024: 72.5 INR/kg [D13 p4]\n  May 2024: 75 INR/kg [D13 p5]\n  June 2024: 110 INR/kg [D13 p6]\n",
    "plan": {
     "intent": "trend",

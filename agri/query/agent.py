@@ -42,14 +42,15 @@ METRIC_SYNONYMS = {
     "cultivated land": "area_under_cultivation", "land under cultivation": "area_under_cultivation",
     "area under farming": "area_under_cultivation", "area under crops": "area_under_cultivation",
     "land is farmed": "area_under_cultivation", "land is cultivated": "area_under_cultivation",
-    "net sown area": "area_under_cultivation", "cropped area": "area_under_cultivation",
+    "net sown area": "land_use_area", "net area sown": "land_use_area", "cropped area": "land_use_area",
     "area under": "area_cultivated", "area": "area_cultivated", "hectare": "area_cultivated", "क्षेत्रफल": "area_cultivated",
     "production": "production", "produce": "production", "output": "production", "उत्पादन": "production",
     "harvest": "production",
     "yield": "yield", "productivity": "yield", "उपज": "yield",
     "farmers": "farmers_count", "cultivators": "farmers_count", "किसान": "farmers_count",
     "organic farms": "organic_farm_count", "organic": "organic_farm_count",
-    "non-organic farms": "non_organic_farm_count", "non organic": "non_organic_farm_count",
+    "non organic farms": "non_organic_farm_count", "non-organic farms": "non_organic_farm_count",
+    "nonorganic": "non_organic_farm_count", "non organic": "non_organic_farm_count", "conventional farms": "non_organic_farm_count",
     "population": "population", "households": "households", "livestock": "livestock_count",
     "poultry": "poultry_count", "fish landed": "fish_landed", "fish catch": "fish_landed",
     "forest": "forest_area", "geographical area": "geographical_area",
@@ -57,7 +58,7 @@ METRIC_SYNONYMS = {
     "kisan credit": "kcc_count", "kcc": "kcc_count", "godowns": "godown_count", "check dams": "check_dam_count",
     "fertilizer": "fertilizer_consumption", "fertiliser": "fertilizer_consumption",
     "seedlings": "seedling_distributed", "vermi": "vermi_bed_count", "depots": "agri_depot_count",
-    "land use": "lulc_area", "land cover": "lulc_area", "lulc": "lulc_area",
+    "land cover": "lulc_area", "lulc": "lulc_area",
     "cost of cultivation": "cost_of_cultivation", "holdings": "holdings_count",
     "scheme outlay": "scheme_outlay", "budget": "scheme_outlay", "expenditure": "scheme_expenditure",
     # everyday wording found with the coverage battery (data/gold/queries_battery.json)
@@ -83,8 +84,22 @@ METRIC_SYNONYMS = {
     "holdings area": "holdings_area", "area of operational holdings": "holdings_area", "area of holdings": "holdings_area",
     "area under holdings": "holdings_area", "area of land holdings": "holdings_area", "operational holdings": "holdings_count",
     "land holdings": "holdings_count",
+    "land use": "land_use_area", "land utilisation": "land_use_area", "land utilization": "land_use_area",
+    "fallow": "land_use_area", "barren": "land_use_area", "cultivable waste": "land_use_area", "pasture": "land_use_area",
+    "grazing land": "land_use_area", "culturable land": "land_use_area", "cultivable land": "land_use_area",
+    "area sown more than once": "land_use_area", "total cropped area": "land_use_area", "gross cropped area": "land_use_area",
+    "non agricultural use": "land_use_area", "reporting area": "land_use_area",
+    "land use land cover": "lulc_area", "land use / land cover": "lulc_area", "satellite": "lulc_area",
     "cost": "retail_price", "dozen": "retail_price", "per kg": "retail_price", "per litre": "retail_price",
     "costly": "retail_price", "pricey": "retail_price",
+}
+# Word cues that support a measure chosen by the model when no listed synonym matched ("land under coconut").
+METRIC_CUES = {
+    "area_cultivated": r"\b(land|area|hectares?|ha|acres?|planted|sown|acreage|under)\b",
+    "production": r"\b(produc\w*|output|harvest\w*|tonnes?|tons?|grown|grow\w*|crop)\b",
+    "yield": r"\b(yield|productivity|per hectare|per ha)\b",
+    "retail_price": r"\b(price\w*|cost\w*|rate|expensive|cheap\w*|rupees?|rs|inr|market)\b",
+    "cost_of_cultivation": r"\b(cost of cultivation|cultivation cost|cost to grow|input cost)\b",
 }
 # Everyday words used only when no measure is named explicitly ("has rice farming gone down?").
 WEAK_METRIC_WORDS = {"farming": "production", "grown": "production", "grow": "production", "cultivat": "area_cultivated",
@@ -428,6 +443,37 @@ def ground(p: Plan, q: str, R: Resolver) -> tuple[Plan | None, str]:
     if p.intent == "nearby" and not metric_named and not named:
         p.metric, p.commodity = None, None      # "islands within 30 km of X": places only
         return p, ""
+    if not metric_named and not named:
+        # "which zone is the best / has the most crops": a place or level but no measure and no item. Any measure
+        # here would be a guess (the model picked geographical area and total cultivated area), so ask instead.
+        hits = R.scan("location", qn)
+        if hits and not (p.level and p.intent == "rank"):
+            # a named place: every level that carries this name (Car Nicobar = zone, island and tehsil)
+            base = hits[0][0]
+            locs = {i for a, ids in R.alias.get("location", {}).items() if a == base or a.startswith(base + " ")
+                    for i in ids}
+            where = R.loc_name.get(sorted(locs, key=lambda x: -len(R.loc_metrics.get(x, ())))[0], base)
+        else:
+            lvl = p.level or (R.level.get(p.location) if p.location else None)
+            locs = {loc for loc, v in R.level.items() if v == lvl} if lvl else set()
+            where = {"agri_zone": "agri zones", "district": "districts", "island": "islands"}.get(lvl, "the UT")
+            if not locs:
+                locs = {"AN"}
+        have = sorted({R.metric_name.get(m, m) for loc in locs for m in R.loc_metrics.get(loc, ())} - {None})
+        return None, ("ask: " + f"Which measure do you mean? Please name a measure or a crop. For {where} the knowledge base has: "
+                      + "; ".join(have[:14]) + ". For example: \"which zone produces the most paddy?\", "
+                      "\"which island has the most farmers?\", \"which district has the most area under cultivation?\"")
+    cue = METRIC_CUES.get(p.metric)
+    if not metric_named and named and cue and re.search(cue, qn):
+        metric_named = True                     # the model's measure is supported by a word in the question
+    if not metric_named and named:
+        # an item but no measure ("which zone is best for paddy"): use the item's main measure, never a model guess
+        com = p.commodity or named[0]
+        has = R.com_metrics.get(com, set())
+        price_ctx = re.search(r"price|rate|cost|expensive|cheap|costly|market|retail|₹|\brs\b|inr", qn)
+        p.metric = ("retail_price" if (price_ctx or "production" not in has) and "retail_price" in has else
+                    "production" if "production" in has else sorted(has)[0] if has else p.metric)
+        p.commodity = com
     if p.commodity is None and p.metric == "area_cultivated" and not named:
         # no crop named: "area under agriculture / farmland" = total cultivated land; plain "largest area" = size
         agri = re.search(r"agri|farm|cultivat|crop|sown|grow|plant|under|cropped|tilled|हेक्टेयर|खेती", qn)
@@ -573,6 +619,164 @@ class QueryAgent:
         gp, why = ground(rule_plan(question, self.R), question, self.R)
         return (gp, "rules", "") if gp else (None, "rules", f"refused: {why}")
 
+    # ---------------------------------------------------------- fallbacks when the exact request has no data
+    def availability(self, metric: str | None, commodity: str | None) -> dict:
+        """Which levels, places and periods hold this measure (used to explain or redirect an empty answer)."""
+        if not metric:
+            return {"levels": {}, "periods": []}
+        rows = self.conn.execute(
+            "SELECT l.level, COUNT(DISTINCT o.location_id) n FROM observation o JOIN location l USING(location_id) "
+            "WHERE o.metric_id=? AND o.commodity_id IS ? AND o.value IS NOT NULL AND o.validation != 'error' "
+            "GROUP BY l.level", (metric, commodity)).fetchall()
+        per = [r[0] for r in self.conn.execute(
+            "SELECT DISTINCT period_label FROM observation WHERE metric_id=? AND commodity_id IS ? AND value IS NOT NULL "
+            "AND validation != 'error' ORDER BY period_start", (metric, commodity))]
+        return {"levels": {r[0]: r[1] for r in rows}, "periods": per}
+
+    def _lvl(self, level: str) -> str:
+        return {"agri_zone": "agri zone", "ut": "UT"}.get(level, level)
+
+    def run(self, p: Plan) -> tuple[T.ToolResult, Plan, str]:
+        """Execute the plan; when it returns nothing, try the closest request that the data can answer and say so.
+        Order: another level (rank), the parent place (lookup / trend), production for yield, the latest period."""
+        res = self.execute(p)
+        if res.rows or p.intent == "nearby":
+            return res, p, ""
+        R, what = self.R, self.R.metric_name.get(p.metric, p.metric or "")
+        av = self.availability(p.metric, p.commodity)
+        # yield is printed only for the UT (2023-24): rank / compare places on production instead
+        if p.metric == "yield" and p.intent == "rank" and set(av["levels"]) <= {"ut"}:
+            q = Plan(**{**asdict(p), "metric": "production"})
+            r2, q2, n2 = self.run(q)
+            if r2.rows:
+                return r2, q2, ("Yield is published only as a UT figure, so places cannot be compared on yield; "
+                                "ranking by production instead. " + n2).strip()
+        if p.intent == "rank":
+            sub = {k: v for k, v in av["levels"].items() if k not in ("ut", "market") and v >= 2}
+            if p.level and p.level not in sub and sub:
+                pref = {"agri_zone": ["district", "island"], "island": ["district", "agri_zone"],
+                        "tehsil": ["island", "district", "agri_zone"], "district": ["agri_zone", "island"]}
+                new = next((x for x in pref.get(p.level, []) if x in sub), max(sub, key=sub.get))
+                q = Plan(**{**asdict(p), "level": new})
+                r2 = self.execute(q)
+                if r2.rows:
+                    return r2, q, (f"{what} is not published by {self._lvl(p.level)}; the sources give it by "
+                                   f"{', '.join(self._lvl(x) for x in sub)}. Showing it by {self._lvl(new)}.")
+            if p.period and av["periods"] and p.period not in av["periods"]:
+                q = Plan(**{**asdict(p), "period": None})
+                r2, q2, n2 = self.run(q)
+                if r2.rows:
+                    return r2, q2, (f"No {what} figure for {p.period}; the sources cover {av['periods'][0]} to "
+                                    f"{av['periods'][-1]}. Showing the latest. " + n2).strip()
+        if p.intent in ("lookup", "provenance", "trend", "compare_sources") and p.location:
+            # the place has no such figure: use the place it belongs to (zone -> district -> UT)
+            loc, seen = p.location, set()
+            while loc and loc not in seen:
+                seen.add(loc)
+                parent = self.conn.execute("SELECT parent_id FROM location WHERE location_id=?", (loc,)).fetchone()
+                loc = parent[0] if parent else None
+                if loc and p.metric in R.loc_metrics.get(loc, ()):
+                    for per in ([p.period, None] if p.period else [None]):
+                        q = Plan(**{**asdict(p), "location": loc, "period": per})
+                        r2 = self.execute(q)
+                        if r2.rows:
+                            return r2, q, (f"{what} is not published for {R.loc_name.get(p.location, p.location)}"
+                                           + (f" in {p.period}" if p.period and per is None else "")
+                                           + f"; showing {R.loc_name.get(loc, loc)}, which contains it"
+                                           + (", latest available year" if p.period and per is None else "") + ".")
+            if p.intent in ("lookup", "provenance") and p.period and av["periods"]:
+                q = Plan(**{**asdict(p), "period": None})
+                r2 = self.execute(q)
+                if r2.rows:
+                    return r2, q, (f"No {what} figure for {p.period} here; the sources cover {av['periods'][0]} to "
+                                   f"{av['periods'][-1]}. Showing the latest.")
+        # published only for smaller places (islands): add them up for the place asked about, and say so
+        if p.intent in ("lookup", "provenance", "trend", "compare_sources") and p.location and p.metric:
+            r2, note = self.rollup(p)
+            if r2 is not None:
+                return r2, Plan(**{**asdict(p), "intent": "rank", "level": r2.summary["level"], "location": None}), note
+        # published only for the UT: a ranking by district / zone / island cannot be made; give the UT figure
+        if p.intent == "rank" and set(av["levels"]) <= {"ut"} and av["levels"]:
+            q = Plan(**{**asdict(p), "intent": "lookup", "location": "AN", "level": None})
+            r2 = self.execute(q)
+            if r2.rows:
+                return r2, q, (f"{what} is published only for the whole UT, not by "
+                               f"{self._lvl(p.level or 'district')}; here is the UT figure.")
+        return res, p, ""
+
+    def descendants(self, loc: str) -> set[str]:
+        kids = {r[0]: r[1] for r in self.conn.execute("SELECT location_id, parent_id FROM location")}
+        out, frontier = set(), {loc}
+        while frontier:
+            frontier = {k for k, par in kids.items() if par in frontier} - out
+            out |= frontier
+        return out
+
+    def rollup(self, p: Plan) -> tuple[T.ToolResult | None, str]:
+        """Sum the smaller places inside p.location that report the measure (e.g. livestock per island -> UT)."""
+        if p.metric in PRICE_METRICS or p.metric == "yield" or p.metric == "cost_of_cultivation":
+            return None, ""                       # not additive
+        av = self.availability(p.metric, p.commodity)
+        name = self.R.loc_name.get(p.location, p.location)
+        base = re.sub(r"\s*\((agri zone)\)|\s+(island|tehsil|district)$", "", name.lower()).strip()
+        namesakes = [p.location] + sorted({i for a, ids in self.R.alias.get("location", {}).items()
+                                           if a in (base, base + " tehsil", base + " island", base + " district")
+                                           for i in ids} - {p.location})
+        for place in namesakes:
+            inside = self.descendants(place)
+            if not inside:
+                continue
+            for level in ("district", "agri_zone", "island"):
+                if level not in av["levels"]:
+                    continue
+                rows, res = [], None
+                for per in ([p.period] if p.period else []) + [x for x in reversed(av["periods"]) if x != p.period]:
+                    res = T.rank_locations(self.conn, p.metric, p.commodity, per, level, top_k=100, order="desc")
+                    rows = [r for r in res.rows if r["location_id"] in inside]
+                    if rows:
+                        break
+                if rows:
+                    return self._rollup_result(p, place, level, res, rows)
+        return None, ""
+
+    def _rollup_result(self, p: Plan, place: str, level: str, res: T.ToolResult,
+                       rows: list[dict]) -> tuple[T.ToolResult, str]:
+        """Rows of the smaller places inside `place`, with their total and an explicit note."""
+        inside = self.descendants(place)
+        total = sum(r["value_std"] for r in rows)
+        for r in rows:
+            r["share_pct"] = round(100 * r["value_std"] / total, 1) if total else None
+        res.rows, res.summary["n_locations"] = rows, len(rows)
+        n_all = sum(1 for loc in inside if self.R.level.get(loc) == level)
+        unit = self.R.unit_symbol.get(rows[0].get("unit_std"), rows[0].get("unit_std") or "")
+        unit = {"MT (tonne)": "t", "number": "", "count": ""}.get(unit, unit)
+        what = self.R.metric_name.get(p.metric, p.metric)
+        name = self.R.loc_name.get(place, place)
+        asked = self.R.loc_name.get(p.location, p.location)
+        note = ((f"{asked} has no such figure; using {name}. " if place != p.location else "")
+                + f"{what} is not published as one figure for {name}; it is published by {self._lvl(level)}. "
+                f"Total of the {len(rows)} {self._lvl(level)}s that report it ({res.summary['period']}): "
+                f"{_fmt(total)} {unit}".rstrip() + "."
+                + (f" {n_all - len(rows)} other {self._lvl(level)}s in {name} report no figure and are not included."
+                   if n_all > len(rows) else ""))
+        if p.intent == "trend":
+            note += " Only this period can be added up reliably, so no trend is computed."
+        if p.period and res.summary.get("period") != p.period:
+            note += f" No figure for {p.period}; this is the latest year with one."
+        return res, note
+
+    def explain_empty(self, p: Plan) -> str:
+        """Say what the knowledge base does hold for this measure, so 'No data' is never a dead end."""
+        av = self.availability(p.metric, p.commodity)
+        if not av["levels"]:
+            if p.commodity and p.metric:
+                has = sorted(self.R.metric_name.get(m, m) for m in self.R.com_metrics.get(p.commodity, ()))
+                return (f" The sources do not report this measure for {self.R.com_name.get(p.commodity, p.commodity)}"
+                        + (f"; they do report: {', '.join(has)}." if has else "."))
+            return ""
+        lv = ", ".join(f"{self._lvl(k)} ({v} place{'s' if v > 1 else ''})" for k, v in av["levels"].items())
+        return f" It is published by: {lv}, for {av['periods'][0]} to {av['periods'][-1]}."
+
     def execute(self, p: Plan) -> T.ToolResult:
         c = self.conn
         if p.intent == "rank":
@@ -604,15 +808,21 @@ class QueryAgent:
         if p is not None and len(items) >= 2 and p.intent in ("lookup", "trend", "provenance") and p.metric not in NON_COMMODITY:
             return self._ask_each(question, p, planner, raw, items[:3], t0, qid, sc)
         if p is None and raw.startswith("refused"):
-            ans = Answer(question, "out_of_scope", planner, {"intent": "out_of_scope"}, "none", {}, "",
-                         f"I could not match this to the data ({raw.split('|')[0].replace('refused: ', '')}). " + HELP)
+            reason = raw.split('|')[0].replace('refused: ', '').strip()
+            msg = reason[5:] if reason.startswith("ask: ") else f"I could not match this to the data ({reason}). " + HELP
+            ans = Answer(question, "out_of_scope", planner, {"intent": "out_of_scope"}, "none", {}, "", msg)
         elif p is None:
             ans = Answer(question, "unknown", planner, {}, "", {}, "", "Sorry, I could not turn this question into a "
                          "query. Try naming a crop or metric, a place and a year.", error=f"invalid plan: {raw[:200]}")
         else:
             try:
-                res = self.execute(p)
+                res, p, note = self.run(p)
+                focus_parts(res, question)
                 text, cites = compose(p, res, self.R)
+                if not res.rows:
+                    text += self.explain_empty(p)
+                elif note:
+                    text = "Note: " + note + "\n" + text
                 if sc.kind == "why":
                     text = sc.message + "\n" + text
                 ans = Answer(question, INTENTS[p.intent], planner, asdict(p), res.tool, res.args, res.sql.strip(), text,
@@ -630,8 +840,12 @@ class QueryAgent:
         for it in items:
             q = Plan(**{**asdict(p), "commodity": it})
             try:
-                res = self.execute(q)
+                res, q, note = self.run(q)
                 t, c = compose(q, res, self.R)
+                if not res.rows:
+                    t += self.explain_empty(q)
+                elif note:
+                    t = "Note: " + note + "\n" + t
                 texts.append(t)
                 rows += res.rows
                 cites += c
@@ -673,6 +887,20 @@ def _cite_txt(r: dict) -> str:
     return f"[{r['document_id']} p{r['page']}{flag}]"
 
 
+_PART_STOP = {"land", "area", "the", "and", "other", "than", "not", "for", "total", "under", "of", "in", "what", "how",
+              "much", "is", "was", "are", "a", "by", "with"}
+
+
+def focus_parts(res: T.ToolResult, question: str) -> None:
+    """A breakdown answer ('fallow land' in the land-utilisation table) lists the parts the question names first."""
+    if not res.rows or "part" not in res.rows[0]:
+        return
+    words = {w for w in re.findall(r"[a-z]+", question.lower()) if len(w) > 3 and w not in _PART_STOP}
+    hit = [r for r in res.rows if words & set(re.findall(r"[a-z]+", r["part"].lower()))]
+    if hit:
+        res.rows = hit + [r for r in res.rows if r not in hit]
+
+
 def _disagree(rows: list[dict], unit: str, by: str, limit: int = 4) -> list[str]:
     """One line per fact whose printed sources disagree: which value was used and what else was printed."""
     out = []
@@ -694,7 +922,8 @@ def compose(p: Plan, res: T.ToolResult, R: Resolver) -> tuple[str, list[dict]]:
     what = R.metric_name.get(p.metric, p.metric or "") + (f" of {R.com_name.get(p.commodity, p.commodity)}" if p.commodity else "")
     if not rows:
         return (f"No data in the knowledge base for {what}"
-                + (f" at {R.loc_name.get(p.location, p.location)}" if p.location else "")
+                + (f" by {p.level.replace('agri_zone', 'agri zone')}" if p.intent == "rank" and p.level else "")
+                + (f" at {R.loc_name.get(p.location, p.location)}" if p.location and p.intent != "rank" else "")
                 + (f" in {res.args.get('period') or p.period}" if (res.args.get('period') or p.period) else "") + "."), []
     for r in rows:                      # show every number in the metric's standard unit (citation keeps the printed text)
         if r.get("value_std") is not None and r.get("unit_std"):
@@ -718,7 +947,7 @@ def compose(p: Plan, res: T.ToolResult, R: Resolver) -> tuple[str, list[dict]]:
         s = res.summary
         loc = R.loc_name.get(p.location, p.location)
         lines = [f"{what}, {loc}: {_fmt(s['first'][1])} {unit} in {s['first'][0]} -> {_fmt(s['last'][1])} {unit} in "
-                 f"{s['last'][0]} ({s['change_pct']:+}% over {s['n_periods']} periods). Peak {_fmt(s['peak'][1])} in "
+                 f"{s['last'][0]} ({(format(s['change_pct'], '+') + '%') if s.get('change_pct') is not None else 'change n/a'} over {s['n_periods']} periods). Peak {_fmt(s['peak'][1])} in "
                  f"{s['peak'][0]}; low {_fmt(s['low'][1])} in {s['low'][0]}. Sources: {', '.join(s['documents'])}."]
         lines += [f"  {r['period_label']}: {_fmt(r['value'])} {unit} {_cite_txt(r)}" for r in rows]
         if s.get("part"):

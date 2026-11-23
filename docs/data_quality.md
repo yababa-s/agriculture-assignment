@@ -26,13 +26,14 @@ errors give confident wrong answers, so Phase 3 adds three layers:
 | E yield | yield ≠ production / area by more than 10% | 0 | 0 |
 | F conflicts | one fact printed with different values in one document | 322 | 103 (all in monthly price bulletins, handled at query time) |
 | H labels | labels with undecoded Kruti Dev residue | 1,148 | 1,148 (cosmetic: Hindi half of bilingual labels; the English half is used) |
+| K collapse | different printed rows stored as one fact | (added later) | 0 |
 
 Most of the 52 remaining B jumps are real changes printed by the source; they are not extraction errors. The
 fertiliser block in *Basic Statistics 2024-25* is one example: Nitrogenous falls from 137 t to 6.88 t while
 Potassic rises to 3,265.5 t. We checked these against the PDF text and they are printed that way. The answers
 cite the page, so a reader can check them.
 
-## 2. Corrections (13 rules, 1,336 logged changes, 329 rows rejected)
+## 2. Corrections (14 rules, 1,384 logged changes, 329 rows rejected)
 
 | Rule | Defect found | Example | Rows |
 |---|---|---|---:|
@@ -48,6 +49,7 @@ cite the page, so a reader can check them.
 | R10 | composite total stored as one crop | "Total (A+B)" (fruits including citrus) stored as citrus: Diglipur citrus 1,466 ha instead of 174 ha | 24 |
 | R11 | district columns shifted | machinery tables (D04–D06): the "N & M Andaman" column was stored as Nicobar and the "Nicobar" column as the whole UT | 60 |
 | R12 | district column with an unread header stored at the UT | D03 seedlings, seed and fertiliser by district | 18 |
+| R14 | three different land-utilisation totals stored as the one table total | "Total Cropped Area", "Total Food Crops" and "Total Non Food Crops" collided | 48 |
 | R13 | area impossible in sq km | the land-use table prints hectares (824,900 ha = 8,249 sq km) but was stored as sq km, so the district area read 373,600 sq km | 16 |
 
 After corrections, field-level extraction F1 is unchanged (macro 0.999, `field_eval_v2_corrected.json`): the
@@ -76,7 +78,56 @@ rules change units, places and items, not printed values. A backup of the pre-co
   - "Car Nicobar" is a zone for crops and an island for farmers;
   - "chilli" is dry chilli for production and green chilli for prices.
 
-## 4. Coverage battery
+- **Qualifiers.** Some rows carry a qualifier. Each kind is handled by rule, never by picking whichever row
+  comes first:
+  - annotations (table group, census source) are ignored;
+  - an island printed in two parts ("Middle Andaman (part)" under Mayabunder and under Rangat) is summed;
+  - total-like values are the figure itself: holder type "total" with size class "Total" gives 11,954 holdings,
+    not the "Below 0.5 ha" row; KCC "as on" (cards in force) is used rather than "During the year";
+  - any other qualifier (tractor channels, N/P/K, freshwater / marine fish, schemes, land-cover classes) is shown
+    as a breakdown.
+- **No dead ends.** When the exact request has no figure, the agent answers the closest request the data supports
+  and starts the answer with a "Note:" that says what changed:
+  - **another level:** total cultivated area and farmers are not published by agri zone, so the answer is by
+    district;
+  - **the place that contains it:** farmers in Diglipur zone come from North & Middle Andaman district;
+  - **the sum of the smaller places:** livestock is published per island, so the UT figure is the total of the 18
+    islands that report it, and the note says how many islands report nothing;
+  - **the UT figure:** holdings and scheme budgets are UT-only;
+  - **production for yield:** yield is printed only for the UT;
+  - **the latest year with data.**
+
+  If nothing is close, the answer says at which levels and in which years the measure exists.
+- **No guessed measures.** If a question names no measure, the model may not supply one:
+  - with an item named ("which zone is best for paddy"), the item's main measure is used (production, or price
+    for market items);
+  - with nothing named ("which zone is the best", "tell me about Car Nicobar"), the agent asks which measure,
+    and lists the measures held for that place or level.
+
+## 4. Generated query matrix (`scripts/query_matrix.py`)
+
+The hand-written sets missed the zone-level failures, so the matrix is generated from the database. It covers
+every measure (crop and price measures with five items each) × every level (zone, district, island) × every
+form:
+- rank: most, least, "by";
+- lookup for seven places, plus one with a year;
+- trend;
+- provenance;
+- eight vague questions.
+
+That makes 1,093 questions. Each answer is checked automatically for crashes, a wrong measure or item, a bare
+"No data" when the measure exists, a level or place changed without a note, and impossible values (area larger
+than the UT, negative counts).
+
+First run: 1,064/1,093. The 29 failures were:
+- 9 crashes (a trend with a single period);
+- 20 wrong measures ("non organic farms" read as organic farms).
+
+95 further answers were empty but explained. All were fixed by the fallbacks above. Final run with the rules
+planner: 1,093/1,093, with 7 explained empty answers left. These are satellite land-cover questions for places
+the 2015-16 survey does not cover separately.
+
+## 5. Coverage battery
 
 `data/gold/queries_battery.json` holds 97 questions. They cover:
 - every measure in the database;

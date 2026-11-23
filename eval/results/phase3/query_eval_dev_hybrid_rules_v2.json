@@ -86,7 +86,7 @@
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
   "n_grounded_checked": 2,
-  "median_latency_s": 0.05
+  "median_latency_s": 0.06
  },
  "elapsed_s": 1.6,
  "results": [
@@ -446,7 +446,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (36/36)",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Retail price of Onion, A&N retail price survey (DES): 50 INR/kg in January 2023 -> 52.5 INR/kg in December 2025 (+5.0% over 36 periods). Peak 112.5 in December 2024; low 38.75 in May 2023. Sources: D11, D13.\n  January 2023: 50 INR/kg [D13 p1]\n  February 2023: 42.5 INR/kg [D11 p15]\n  March 2023: 42 INR/kg [D13 p3]\n  April 2023: 39.38 INR/kg [D13 p4]\n  May 2023: 38.75 INR/kg [D13 p5]\n  June 2023: 40",
    "plan": {
     "intent": "trend",
@@ -480,7 +480,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (7/7)",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Area under crop of Paddy (Rice), Andaman & Nicobar Islands: 5,701 ha in 2019-20 -> 3,114 ha in 2025-26 (-45.4% over 7 periods). Peak 6,256 in 2020-21; low 3,114 in 2025-26. Sources: D02, D03, D04, D05, D06.\n  2019-20: 5,701 ha [D03 p1]\n  2020-21: 6,256 ha [D04 p1]\n  2021-22: 5,479 ha [D05 p1]\n  2022-23: 4,990 ha [D06 p1]\n  2023-24: 4,557 ha [D06 p1]\n  2024-25: 4,365 ha [D06 p1]\n  2025-26: 3,114 ha",
    "plan": {
     "intent": "trend",
@@ -514,7 +514,7 @@
    "correct": true,
    "detail": "peak August 2023 want August 2023",
    "grounded": true,
-   "latency_s": 0.06,
+   "latency_s": 0.05,
    "answer": "Retail price of Tomato, A&N retail price survey (DES): 71.25 INR/kg in January 2023 -> 120 INR/kg in December 2025 (+68.4% over 36 periods). Peak 181.25 in August 2023; low 60 in February 2023. Sources: D11, D13.\n  January 2023: 71.25 INR/kg [D13 p1]\n  February 2023: 60 INR/kg [D11 p15]\n  March 2023: 62 INR/kg [D13 p3]\n  April 2023: 65 INR/kg [D13 p4]\n  May 2023: 70 INR/kg [D13 p5]\n  June 2023: 89",
    "plan": {
     "intent": "trend",
@@ -922,7 +922,7 @@
    "correct": true,
    "detail": "got 1 want 1",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Area under crop of Arecanut, Andaman & Nicobar Islands: 1 period(s) are reported by 2+ documents; 1 agree within 1%.\n  2023-24: D01 p2 = 4,744 ha (spread 0.0%)\n  2023-24: D05 p1 = 4,744 ha (spread 0.0%)\n  2023-24: D06 p1 = 4,744 ha (spread 0.0%)",
    "plan": {
     "intent": "compare_sources",
@@ -956,7 +956,7 @@
    "correct": true,
    "detail": "got 8062.23 want 8062.23..8062.23",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Production (MT) | nf{k.k v.Meku South Andaman\", printed as \"8062.23\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "lookup",
@@ -990,7 +990,7 @@
    "correct": true,
    "detail": "got 8062.23 want 8062.23..8062.23",
    "grounded": true,
-   "latency_s": 0.05,
+   "latency_s": 0.06,
    "answer": "Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Production (MT) | nf{k.k v.Meku South Andaman\", printed as \"8062.23\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "lookup",

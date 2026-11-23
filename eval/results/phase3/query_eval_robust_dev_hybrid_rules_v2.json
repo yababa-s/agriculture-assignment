@@ -54,7 +54,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 1,
-   "median_latency_s": 3.94
+   "median_latency_s": 3.89
   },
   "spatial": {
    "n": 2,
@@ -496,7 +496,7 @@
    "correct": true,
    "detail": "cited D02 p1 value 8940.38",
    "grounded": true,
-   "latency_s": 3.94,
+   "latency_s": 3.89,
    "answer": "Production of Arecanut, South Andaman District, 2025-26 = 8,940 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Arecanut\", column \"South Andaman District | Prod.\", printed as \"8940.38\"; extracted by matrix_table_agent in run f2f174073993.",
    "plan": {
     "intent": "provenance",
