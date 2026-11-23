@@ -620,7 +620,13 @@ def build(out: Path, template: Path) -> Path:
         ["Layout: footer read as rows (fixed in v2)", 4, "image agent, D16 (v1)", "phone number 232476 stored as holdings area"],
         ["Value / qualifier", et.get("value", 0), "island agent, D10", "North Andaman fish landed 650 t: inland and marine split wrongly"],
         ["Location name", 0, "all agents", "zone vs district for 'South Andaman' handled by the level hint"],
-        ["Unit", 0, "all agents", "none on held-out regions; units come from column headers"],
+        ["Unit (corpus audit, fixed)", 20, "land-use and cultivated-area tables",
+         "district area printed in ha stored as sq km: 373,600 'sq km' for N&M Andaman"],
+        ["Place (corpus audit, fixed)", 78, "machinery tables D04-D06, D03",
+         "'N & M Andaman' column stored as Nicobar after a one-column shift"],
+        ["Item or measure (corpus audit, fixed)", 211, "D02, D03-D06",
+         "'Total (A+B)' stored as citrus; seedling rows stored as fertilizer"],
+        ["Printed values disagree", 103, "price bulletins D11-D13", "eggs Sep 2025: 30.00 (p9) vs 90.00 (p10)"],
         ["Hallucination (model)", 157, "corpus run (gated)", "model outputs rejected by the groundedness gate before loading"],
         ["Query planning", sum(1 for r in (J(P3 / 'query_eval_test_rules.json') or {'results': []})["results"] if not r["correct"]),
          "rule planner, test set", "'land under coconut' mapped to production, not area"],
@@ -633,8 +639,14 @@ def build(out: Path, template: Path) -> Path:
         "stored the cell as *unparseable*. The v2 agent crops the empty cell, upscales it 4×, reads '2', and records the repair "
         "in the trace (`ocr_missing_cell → reocr_upscaled_crop`). (2) D11 page 24, the December 2023 statement, prints the "
         "November 2023 onion price as 57.50, while page 23 and two later publications print 81.88. The extraction is faithful "
-        "to both pages, `v_conflict` flags the pair, and the query agent cites the latest publication. Errors in the source "
-        "publications are kept and flagged, not silently corrected.", align="justify")
+        "to both pages and `v_conflict` flags the pair. Errors in the source publications are kept and flagged, not silently "
+        "corrected. (3) Field F1 cannot catch a correct number stored under the wrong unit, place or item, so a corpus audit "
+        "(`audit_db.py`: unit, bounds, sums, jumps, conflicts) was run over all 32,151 rows. It found, for example, district "
+        "area printed in hectares but stored as sq km (100× too large), a shifted district column in the machinery tables, "
+        "and seedling rows filed as fertilizer. Thirteen logged rules (`apply_corrections.py`, 1,336 changes, 329 rows "
+        "rejected) fixed them; field F1 is unchanged at 0.999. Mismatched district sums fell from 60 to 1. Where the price "
+        "bulletins print one month twice with different values, the query agent keeps the value consistent with the "
+        "neighbouring months and says so in the answer (details in docs/data_quality.md).", align="justify")
 
     # ------------------------------------------------------------------ 7-9
     doc.h1("7. Discussion and Limitations")
@@ -648,7 +660,8 @@ def build(out: Path, template: Path) -> Path:
         "**Limits of this implementation.** (i) The agents are specialised to the layouts we saw. A new price layout falls "
         "back to LLM column mapping, which reaches 0.64–0.7 accuracy. (ii) Chart-only atlas pages (D18) and raster maps are "
         "not extracted. (iii) The geospatial layer uses approximate point locations (±5 km) for zones and islands. (iv) The "
-        "rule planner covers the question patterns we anticipated: 0.80 on unseen paraphrases. (v) The system runs one "
+        "rule planner covers the question patterns we anticipated: 0.80 on unseen paraphrases. A 97-question coverage "
+        "battery over every measure, level and time form (used for development, so not held out) now passes 97/97. (v) The system runs one "
         "document at a time on one machine, with no incremental scheduled download from the portals, which offer no APIs.",
         align="justify")
     doc.para(

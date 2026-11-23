@@ -59,6 +59,24 @@ The first query agent had no way to decline a question: every input became a que
 
 The two hybrid misses on the test set (number words such as "two years"; comparing two items' prices for a year) were fixed afterwards and are not re-measured on fresh data. Dev and the original test sets did not regress (hybrid: 1.00 and 0.93).
 
+### 3c. Coverage battery and data-quality audit (23 Nov 2026)
+
+The question "which island has the most area under agriculture" failed in a live trial. A 97-question coverage battery was then written (`data/gold/queries_battery.json`, `scripts/query_battery.py`) and a corpus audit was run (`scripts/audit_db.py`). The battery covers every measure, level, time form, everyday wording, Hindi and off-topic questions. Both are described in [data_quality.md](data_quality.md).
+
+| | Before | After |
+|---|---|---|
+| Coverage battery, rules planner | 64/96 | 97/97 |
+| Coverage battery, deployed hybrid | — | 97/97 |
+| District sums that do not add up (audit D) | 60 | 1 |
+| Areas larger than their island or the UT (audit C) | 17 | 0 |
+| In-document conflicting values (audit F) | 322 | 103 (price bulletins; resolved at query time and flagged) |
+| Field-level macro F1 (held-out regions) | 0.999 | 0.999 |
+| Query dev / test, rules (test frozen first run 0.80) | 1.00 / 0.80 | 1.00 / 0.87 |
+| Query dev / test, deployed hybrid | 1.00 / 0.93 | 1.00 / 0.93 |
+| Robustness dev / test, deployed hybrid | 1.00 / 0.87 (first run) | 1.00 / 1.00 |
+
+The battery was used while fixing, so it is a dev set. No change was made by looking at the test sets. Test X11 (Car Nicobar Island farmers) now passes because shared place names resolve to the level that has data for the measure. The post-fix runs are in `query_eval_*_rules_post_audit.json` and `query_eval_*_hybrid_rules_v2.json`.
+
 ## 4. Fresh files never seen before (`eval/results/phase3/surprise_p3.json`)
 
 Three DES files fetched on 23 Nov 2026 and run blind. 15 random records per file were checked by hand.
@@ -74,4 +92,6 @@ Known layouts transfer; new compendium layouts do not. Non-agricultural rows are
 ## 5. Errors in the source publications (kept and flagged, not corrected)
 
 * **D10** (Island-wise Statistical Outline 2024-25), p. 9: Shaheed Dweep *Farmers-516*. This is Swaraj Dweep's figure; the 2022-23 and 2023-24 editions print 317.
-* **D11** (price statements 2023): November-2023 onion is 81.88 on p. 23 and 57.50 on p. 24. D12 and D13 print 81.88. `v_conflict` lists the pair.
+* **D11** (price statements 2023): November-2023 onion is 81.88 on p. 23 and 57.50 on p. 24. D12 and D13 print 81.88. `v_conflict` lists the pair. The query agent uses 57.50, the value consistent with October and December 2023, and its answer names both values.
+* **D13** (price statements 2025): eggs in September 2025 are 30.00 on p. 9 and 90.00 on p. 10. The months around it are 84–108, so answers use 90 and flag 30.
+* **D06** (Basic Statistics 2024-25), p. 3: fertilizer use in 2024-25 is Nitrogenous 6.88 t and Potassic 3,265.5 t, against 137 t and 32 t a year earlier. This is printed so (checked against the PDF text) and is kept.
