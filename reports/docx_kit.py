@@ -56,8 +56,12 @@ class Doc:
                 r.italic = True
             else:
                 r = p.add_run(part)
-            if size and not part.startswith("`"):
-                r.font.size = Pt(size)
+            if not part.startswith("`"):
+                r.font.name = "Calibri"
+                r._r.get_or_add_rPr().get_or_add_rFonts().set(qn("w:eastAsia"), "Calibri")
+                r.font.size = Pt(size or 11)
+                if not part.startswith("**"):
+                    r.bold = False
             if color:
                 r.font.color.rgb = RGBColor.from_string(color)
         return p
@@ -164,9 +168,27 @@ class Doc:
             for j, v in enumerate(row):
                 self._cell(t.cell(i, j), "" if v is None else str(v), size, bold=bold_last and i == len(rows))
         if widths_cm:
+            total = sum(widths_cm)
+            if total > 16.0:                       # A4 with 1-inch margins = 15.92 cm of text width
+                widths_cm = [w * 15.9 / total for w in widths_cm]
             for row in t.rows:
                 for j, w in enumerate(widths_cm):
                     row.cells[j].width = Cm(w)
+            tblPr = t._tbl.tblPr
+            for tag in ("w:tblW", "w:tblLayout"):
+                old = tblPr.find(qn(tag))
+                if old is not None:
+                    tblPr.remove(old)
+            tw = OxmlElement("w:tblW")
+            tw.set(qn("w:w"), str(int(sum(widths_cm) * 567)))
+            tw.set(qn("w:type"), "dxa")
+            tblPr.append(tw)
+            lay = OxmlElement("w:tblLayout")
+            lay.set(qn("w:type"), "fixed")
+            tblPr.append(lay)
+            grid = t._tbl.tblGrid
+            for gc, w in zip(grid.findall(qn("w:gridCol")), widths_cm):
+                gc.set(qn("w:w"), str(int(w * 567)))
         tr = t.rows[0]._tr
         trPr = tr.get_or_add_trPr()
         th = OxmlElement("w:tblHeader")
