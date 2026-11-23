@@ -1,6 +1,10 @@
-"""Build the Phase 3 presentation (34_AN_PRESENTATION_v1.pptx) from the course template.
+"""Build the Phase 3 talk (34_AN_PRESENTATION_v1.pptx): a custom 16:9 deck designed for the Phase 3 rubric.
 
-  python reports/build_slides.py [--template PATH] [--out reports/out/34_AN_PRESENTATION_v1.pptx]
+T1 one message per slide, headline titles with numbers, slide 2 = hand-over plan;
+T2 architecture, orchestration, models, schema with justification and alternatives;
+T3 live 10-query slide (run live) with coverage; T4 geospatial animations (slides 6, 17, 18).
+
+  python reports/build_slides.py [--out reports/out/34_AN_PRESENTATION_v1.pptx]
 """
 from __future__ import annotations
 
@@ -12,396 +16,550 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-import matplotlib  # noqa: E402
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-from pptx import Presentation  # noqa: E402
-
 from agri import config  # noqa: E402
 from reports.build_report import Data, f2, f3  # noqa: E402
-from reports.pptx_kit import by_name, fill_table, fit_movie, fit_picture, presenter, remove, set_lines  # noqa: E402
+from reports.deck_kit import CORAL, INK, LINE, MEMBER, MUTED, PADDY, PALM, SEA, TEAL, TINT, TINT2, WHITE, Slide, new_prs  # noqa: E402
 
-FIG, ANIM, OUT = config.FIGURES_DIR, config.FIGURES_DIR / "anim", ROOT / "reports" / "out"
-TEAM = json.loads((ROOT / "reports" / "team.json").read_text())
-TEMPLATE = Path.home() / "Desktop" / "Phase 3 requirements" / "TEAMID_STATE_PRESENTATION_template_institute.pptx"
+FIG, ANIM = config.FIGURES_DIR, config.FIGURES_DIR / "anim"
 GEN = FIG / "slides"
-HEADLINES = {3: 'Three questions: can agents extract, does LoRA help, can it answer live?', 4: 'No tool we tested decodes Kruti Dev or keeps cell-level provenance', 5: '20 files, 6 modalities, 3 districts, 31 islands, 2011 to 2026', 6: 'Seven agents, one per source group, each with its own tools', 7: 'A supervisor routes each file; validator feedback drives retries', 8: 'A local 3B model with LoRA decides meaning; code writes every number', 9: '32,151 numbers, each traceable to its page and cell', 10: '699 hand-transcribed facts and 45 queries, none used in training', 12: 'Fine-tuning beats prompting: island F1 0.59 → 0.94, queries 0.67 → 0.93', 13: '20 of 20 files processed with no manual step, at zero cost', 16: 'Most errors are OCR on scans; 2 errors are in the sources themselves', 17: 'All three questions answered: F1 0.999, +0.67 from LoRA, 10/10 live'}
+TEAM = json.loads((ROOT / "reports" / "team.json").read_text())
 
 
 def poster_frame(mp4: Path) -> Path:
+    import imageio
     out = GEN / f"{mp4.stem}_poster.png"
     GEN.mkdir(parents=True, exist_ok=True)
-    import imageio
-    r = imageio.get_reader(str(mp4))
-    last = None
-    for f in r:
-        last = f
-    imageio.imwrite(out, last)
+    imageio.imwrite(out, imageio.get_reader(str(mp4)).get_data(0))
     return out
 
 
+def problem_images() -> tuple[Path, str]:
+    """Crop of the bilingual table as printed + the raw text a PDF extractor returns for it."""
+    import pymupdf
+    GEN.mkdir(parents=True, exist_ok=True)
+    page = pymupdf.open(config.CORPUS_DIR / "Basic Statistics/Year 2024-25.pdf")[1]
+    out = GEN / "problem_crop.png"
+    page.get_pixmap(matrix=pymupdf.Matrix(3, 3), clip=pymupdf.Rect(80, 85, 560, 225)).save(out)
+    raw = " ".join(page.get_text("text", clip=pymupdf.Rect(80, 150, 330, 210)).split())[:120]
+    return out, raw
+
+
 def short_answer(a) -> str:
-    """One-line answer with its citation, from the agent's structured result."""
     r0 = a.rows[0] if a.rows else {}
     cite = f"[{r0.get('document_id')} p{r0.get('page')}]" if r0.get("document_id") else ""
     fmt = lambda v: f"{v:,.0f}" if abs(v) >= 100 else f"{v:g}"  # noqa: E731
     if a.tool == "rank_locations":
-        return f"{r0['location'].replace(' (agri zone)', '')}: {fmt(r0['value'])} {cite}"
+        return f"{r0['location'].replace(' (agri zone)', ' zone')}: {fmt(r0['value'])} {cite}"
     if a.tool == "nearby":
-        return f"{r0['location']}: {fmt(r0['value'])} ({r0['distance_km']} km) {cite}"
+        return f"{r0['location']}: {fmt(r0['value'])} farmers, {r0['distance_km']} km {cite}"
     if a.tool == "time_series":
         s_ = a.summary
-        return f"{fmt(s_['first'][1])} → {fmt(s_['last'][1])} ({s_['change_pct']:+}%), peak {s_['peak'][0]}"
+        return f"{fmt(s_['first'][1])} → {fmt(s_['last'][1])} ({s_['change_pct']:+.0f}%), peak {s_['peak'][0]}"
     if a.tool == "trace_value":
-        return f"{fmt(r0['value'])} ← {r0['document_id']} p{r0['page']}, cell '{r0['value_raw']}'"
+        return f"{fmt(r0['value'])} ← {r0['document_id']} p{r0['page']}, cell “{r0['value_raw']}”"
     if a.tool == "compare_sources":
-        return f"{a.summary['periods_agreeing_within_1pct']}/{a.summary['periods_with_2plus_sources']} multi-source years agree"
+        return f"{a.summary['periods_agreeing_within_1pct']} of {a.summary['periods_with_2plus_sources']} multi-source years agree"
     return a.text.split("\n")[0][:60]
 
 
-def problem_panel() -> Path:
-    """Slide 3 visual: what the raw sources look like (bilingual Kruti Dev page, raw text layer, screenshot)."""
-    import pymupdf
-    GEN.mkdir(parents=True, exist_ok=True)
-    d = pymupdf.open(config.CORPUS_DIR / "Basic Statistics/Year 2024-25.pdf")
-    page = d[1]
-    clip = pymupdf.Rect(80, 80, 560, 330)
-    pix = page.get_pixmap(matrix=pymupdf.Matrix(2.2, 2.2), clip=clip)
-    p1 = GEN / "problem_page.png"
-    pix.save(p1)
-    raw = page.get_text("text", clip=clip).replace("\n", " ")[:260]
-    fig = plt.figure(figsize=(6.6, 5.2))
-    a = fig.add_axes([0.0, 0.42, 1.0, 0.58])
-    a.imshow(plt.imread(p1))
-    a.axis("off")
-    a.set_title("What the PDF shows (DES Basic Statistics 2024-25, p. 2)", fontsize=10, loc="left")
-    b = fig.add_axes([0.0, 0.0, 1.0, 0.38])
-    b.axis("off")
-    b.text(0, 0.95, "What a standard PDF extractor returns (Kruti Dev legacy font):", fontsize=9.5, fontweight="bold", va="top")
-    import textwrap
-    b.text(0, 0.78, "\n".join(textwrap.wrap(raw, 80)[:5]), fontsize=8.5, family="monospace", va="top", color="#B03A2E")
-    from matplotlib import font_manager
-    deva = next((f.fname for f in font_manager.fontManager.ttflist if "Devanagari" in f.name or "Kohinoor" in f.name), None)
-    fp = font_manager.FontProperties(fname=deva) if deva else None
-    b.text(0, 0.12, "After our decoder:  नारियल Coconut · सुपारी Arecanut · काजू Cashewnut", fontsize=9.5, va="top",
-           color="#1F6F3F", fontproperties=fp)
-    out = GEN / "problem_panel.png"
-    fig.savefig(out, dpi=200, bbox_inches="tight")
-    plt.close(fig)
-    return out
-
-
-def recall_panel(D) -> Path:
-    b = D.llm["base"]["island_extraction"]["per_metric_recall"]
-    a = D.llm["qlora_v1"]["island_extraction"]["per_metric_recall"]
-    keys = sorted(b, key=lambda k: a.get(k, 0) - b.get(k, 0), reverse=True)[:12]
-    fig, ax = plt.subplots(figsize=(5.9, 5.2))
-    y = range(len(keys))
-    ax.barh([i + 0.2 for i in y], [b[k] for k in keys], 0.4, color="#BBBBBB", label="base")
-    ax.barh([i - 0.2 for i in y], [a.get(k, 0) for k in keys], 0.4, color="#009E73", label="+ LoRA adapter")
-    ax.set_yticks(list(y))
-    ax.set_yticklabels([k.replace("_", " ") for k in keys], fontsize=8.5)
-    ax.invert_yaxis()
-    ax.set_xlim(0, 1.05)
-    ax.set_xlabel("recall per metric (held-out D10, 31 islands)")
-    ax.legend(fontsize=8.5, loc="lower right")
-    ax.set_title("Example: what the adapter learned", loc="left", fontsize=11, fontweight="bold")
-    out = GEN / "recall_panel.png"
-    fig.savefig(out, dpi=200, bbox_inches="tight")
-    plt.close(fig)
-    return out
-
-
-def build(out: Path, template: Path) -> Path:
+def build(out: Path) -> Path:
     D = Data()
     fe, m = D.field, D.field["macro"]
-    prs = Presentation(str(template))
-    S = prs.slides
-    n0, n1, n2 = [x["name"] for x in TEAM["members"]]
-    P = {0: f"Presenter: {n1} · Source Lead", 1: f"Presenter: {n0} · Model Lead", 2: f"Presenter: {n2} · Data Engineering Lead",
-         3: f"Presenter: {n0} · Evaluation Lead"}
     base, fs, v1, v2 = D.llm["base"], D.llm["base_fewshot2"], D.llm["qlora_v1"], D.llm["qlora_v2"]
-    isl = lambda e: e["island_extraction"]["after_groundedness_gate"]["f1"] if e else None  # noqa: E731
-    col = lambda e: e["column_mapping"]["column_accuracy"] if e else None  # noqa: E731
-    demo = json.loads((config.RESULTS_DIR / "phase3" / ("query_eval_dev_hybrid_rules_v2.json" if (config.RESULTS_DIR / "phase3" / "query_eval_dev_hybrid_rules_v2.json").exists() else "query_eval_dev_rules.json")).read_text())
+    isl = lambda e: e["island_extraction"]["after_groundedness_gate"]["f1"]  # noqa: E731
+    col = lambda e: e["column_mapping"]["column_accuracy"]  # noqa: E731
+    qa = D.qa
+    demo = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_dev_hybrid_rules_v2.json").read_text())
     demo_rows = [r for r in demo["results"] if r["demo"]]
     demo_ok = sum(r["correct"] for r in demo_rows)
-    q_test = D.qa("test", "hybrid_rules_v2") or D.qa("test", "rules")
-    notes = {}
+    n0, n1, n2 = [x["name"] for x in TEAM["members"]]
+    prs = new_prs()
+    n = 0
 
-    # 1 title
-    s = S[0]
-    set_lines(by_name(s, "Text 4"), ["From scattered PDFs to cited answers: an agentic agriculture knowledge base for A&N Islands"])
-    set_lines(by_name(s, "Text 1"), [f"{n0} · {n1} · {n2}", f"Team {TEAM['team_id']} · State: Andaman & Nicobar Islands · CS F/U 407 Artificial Intelligence · 25 November 2026"])
-    notes[1] = f"{n1}: introduce the team and the one-line message."
-    # 2 outline
-    s = S[1]
-    fill_table(by_name(s, "Table 0"), [
-        ["Motivation, sources and study area", "3–6", n1, "Source Lead", "Source discovery, manifest, Kruti Dev decoder, geo layer", "3"],
-        ["Architecture, agents and models", "7–9", n0, "Model Lead", "Orchestrator, agents, LoRA adapters v1/v2", "3"],
-        ["Database and knowledge base", "10", n2, "Data Engineering Lead", "Schema v2, normaliser, validator, provenance", "1.5"],
-        ["Evaluation and fine-tuning", "11–13", n0, "Evaluation Lead", "Gold sets, field/LLM evaluation, LangSmith", "3"],
-        ["Automation and live queries", "14–15", n2, "Data Engineering Lead", "Query tools, CLI/app, reproducibility", "3"],
-        ["Insights, limitations, conclusion", "16–18", n1, "Source Lead", "Spatio-temporal analysis, maps", "2"]], size=11)
-    presenter(s, P[0])
-    notes[2] = "Hand-overs: Abhineet → Suyash at slide 7 → Shikhar at 10 → Suyash at 11 → Shikhar at 14 → Abhineet at 16. Total 15.5 min."
-    # 3 motivation
-    s = S[2]
-    set_lines(by_name(s, "Text 0"), ["A&N farm data: 20 PDFs, 5 publishers, Hindi hidden in a legacy font"])
-    remove(by_name(s, "Text 4"))
-    fit_picture(s, by_name(s, "Visual placeholder"), problem_panel())
-    set_lines(by_name(s, "Text 5"), [
-        "**Who needs it:** agriculture and planning analysts, researchers, extension staff",
-        "**Their questions:** which zone grows most paddy? how did prices move? where does this number come from?",
-        "**What is hard:** 3 geographies (district, zone, island); ruled tables with rotated headers; Hindi in Kruti Dev; screenshots; prose memoranda",
-        "**Why agents:** each format needs different tools; an LLM decides what headers mean, code keeps every number exact and cited"], size=15)
-    presenter(s, P[0])
-    # 4 objectives
-    s = S[3]
-    set_lines(by_name(s, "Text 5"), ["Can an agentic pipeline extract every number from A&N agriculture files with field F1 ≥ 0.95 and a page citation?"], size=14)
-    set_lines(by_name(s, "Text 8"), ["Does LoRA adaptation of a local 3B model beat the base model and a few-shot prompt on held-out documents?"], size=14)
-    set_lines(by_name(s, "Text 11"), ["Can the knowledge base answer spatial, temporal and provenance questions live, in English and Hindi?"], size=14)
-    set_lines(by_name(s, "Text 12"), ["**Contributions:** [1] supervisor + 7 specialist agents over 20 files, 6 modalities  [2] measured LoRA gain "
-                                     f"(island F1 {f2(isl(base))} → {f2(isl(v1))}) and a multi-task adapter that repairs forgetting  "
-                                     f"[3] provenance KB of {D.n_obs:,} numbers + geo layer + query agent  [4] three spatio-temporal findings"], size=14)
-    presenter(s, P[0])
-    # 5 related work
-    s = S[4]
+    def slide(bg=WHITE):
+        nonlocal n
+        n += 1
+        return Slide(prs, bg)
+
+    # ================================================================ 1 title
+    s = slide(SEA)
+    s.text(0.7, 0.75, 6.6, 0.4, ["CS F/U 407 ARTIFICIAL INTELLIGENCE  ·  TEAM 34  ·  PHASE 3"], size=13, color="8FD0DA", bold=True, fit=False)
+    s.text(0.7, 1.3, 6.9, 2.3, ["From scattered PDFs to cited answers"], size=46, color=WHITE, face="Georgia", bold=True, smin=36, spacing=1.0)
+    s.text(0.7, 3.55, 6.6, 1.0, ["An agentic, provenance-tracked agriculture knowledge base for the Andaman & Nicobar Islands"],
+           size=20, color="CFE6EA", smin=16)
+    yy = 4.85
+    for nm, role in ((n0, "Model + Evaluation Lead"), (n1, "Source Lead"), (n2, "Data Engineering Lead")):
+        s.circle(0.68, yy - 0.01, 0.4, MEMBER[nm], "".join(w[0] for w in nm.split()), size=12)
+        s.text(1.15, yy - 0.02, 5.5, 0.42, [f"**{nm}**  ·  {role}"], size=15, color=WHITE, fit=False)
+        yy += 0.5
+    s.rect(7.75, 0.55, 5.0, 6.4, WHITE, radius=0.15)
+    s.image(FIG / "poster" / "p_study_map.png", 0, 0, fit_box=(7.9, 0.7, 4.7, 6.1))
+    s.text(0.7, 6.75, 6.5, 0.35, ["25 November 2026  ·  github.com/yababa-s/agriculture-assignment"], size=12, color="8FB3BC", fit=False)
+    s.notes(f"{n1}: We are team 34; we built an agentic knowledge base for Andaman & Nicobar agriculture in which every number "
+            "can be traced to the page it came from. (20 s)")
+
+    # ================================================================ 2 plan / hand-overs
+    s = slide()
+    s.title("Six parts, three speakers, fifteen minutes")
+    parts = [("0:00", "Problem, sources, study area", "1–6", n1, "Source Lead"),
+             ("3:30", "Architecture, agents, models", "7–9", n0, "Model Lead"),
+             ("6:00", "Knowledge base", "10", n2, "Data Eng. Lead"),
+             ("7:00", "Evaluation and fine-tuning", "11–14", n0, "Evaluation Lead"),
+             ("10:00", "Automation and live demo", "15–16", n2, "Data Eng. Lead"),
+             ("12:30", "Insights, limits, conclusion", "17–22", n1, "Source Lead")]
+    x, cw = 0.6, 1.95
+    for t0, part, sl, who, role in parts:
+        c = MEMBER[who]
+        s.rect(x, 1.85, cw, 3.7, TINT)
+        s.text(x + 0.15, 2.0, cw - 0.3, 0.5, [t0], size=24, color=c, face="Georgia", bold=True, fit=False)
+        s.text(x + 0.15, 2.6, cw - 0.3, 1.2, [part], size=16, color=INK, bold=True, smin=13)
+        s.text(x + 0.15, 3.85, cw - 0.3, 0.4, [f"slides {sl}"], size=13, color=MUTED, fit=False)
+        s.circle(x + 0.15, 4.45, 0.42, c, "".join(w[0] for w in who.split()), size=12)
+        s.text(x + 0.62, 4.38, cw - 0.7, 0.95, [f"**{who.split()[0]}**", role], size=13, color=INK, smin=10, para_gap=0.1)
+        x += cw + 0.08
+    s.text(0.6, 5.85, 12.1, 0.9, ["Six hand-overs in slide order, 15:00 in total. The live demonstration (slide 16) runs on the presenting "
+                                   "laptop, never as a recording."], size=15, color=MUTED)
+    s.footer(n, n1)
+    s.notes("Hand-overs: Abhineet (1–6) → Suyash (7–9) → Shikhar (10) → Suyash (11–14) → Shikhar (15–16) → Abhineet (17–22).")
+
+    # ================================================================ 3 problem
+    s = slide()
+    s.title("A&N farm data: 20 PDFs, 5 publishers, Hindi hidden in a legacy font")
+    crop, raw = problem_images()
+    s.rect(0.6, 1.6, 7.3, 5.2, TINT)
+    s.text(0.85, 1.72, 6.8, 0.4, ["What the PDF shows (DES Basic Statistics 2024-25, p. 2)"], size=13, color=MUTED, bold=True, fit=False)
+    s.image(crop, 0, 0, fit_box=(0.85, 2.12, 6.8, 2.5))
+    s.text(0.85, 4.72, 6.8, 0.35, ["What a PDF extractor returns:"], size=13, color=MUTED, bold=True, fit=False)
+    s.text(0.85, 5.05, 6.8, 0.75, [raw], size=13, color=CORAL, smin=11)
+    s.text(0.85, 5.95, 6.8, 0.7, ["After our decoder:  नारियल Coconut · सुपारी Arecanut · काजू Cashewnut"], size=15, color=PALM,
+           bold=True, fit=False)
+    yy = 1.6
+    for v, lab in (("20", "files · 6 modalities · 2 scripts"), ("3", "geographies: district, zone, island"),
+                   ("0", "portals that cite where a number comes from")):
+        s.stat(8.2, yy, 4.55, 1.12, v, lab, color=SEA, vsize=36, lsize=14)
+        yy += 1.24
+    s.text(8.2, 5.4, 4.55, 1.4, ["**Who asks:** analysts, researchers, extension staff. Which zone grows most paddy? How did prices "
+                                 "move? Where does this number come from?"], size=14, color=INK)
+    s.footer(n, n1)
+    s.notes("The red text is what any PDF library returns for these Hindi labels: they are stored in the Kruti Dev font. "
+            "Three geographies and no citations make the data hard to use. (60 s)")
+
+    # ================================================================ 4 questions
+    s = slide()
+    s.title("Three questions: can agents extract, does LoRA help, can it answer live?")
+    rqs = [("RQ1", "Extraction", "Can an agentic pipeline extract every number from A&N files with field F1 ≥ 0.95 and a page citation?", TEAL),
+           ("RQ2", "Adaptation", "Does LoRA on a local 3B model beat the base model and a few-shot prompt on held-out documents?", PADDY),
+           ("RQ3", "Answering", "Can the knowledge base answer spatial, temporal and provenance questions live, in English and Hindi?", PALM)]
+    x = 0.6
+    for code, head, q, c in rqs:
+        s.rect(x, 1.65, 3.95, 3.3, TINT)
+        s.circle(x + 0.25, 1.85, 0.75, c, code, size=15)
+        s.text(x + 1.15, 1.95, 2.6, 0.5, [head], size=20, color=INK, face="Georgia", bold=True, fit=False)
+        s.text(x + 0.25, 2.8, 3.45, 2.0, [q], size=16, color=INK, smin=13)
+        x += 4.1
+    s.text(0.6, 5.25, 12.1, 0.4, ["Contributions"], size=16, color=SEA, bold=True, fit=False)
+    x, yc = 0.6, 5.75
+    for c_ in ("7 specialist agents over 20 files", f"LoRA gain over prompting: +{isl(v1) - isl(fs):.2f} F1",
+               f"provenance KB of {D.n_obs:,} numbers + maps", "3 spatio-temporal findings"):
+        from reports.deck_kit import _font
+        wpill = _font("Arial", True, 13).getlength(c_) / 720 + 0.36
+        if x + wpill > 12.73:
+            x, yc = 0.6, yc + 0.55
+        x += s.pill(x, yc, c_, fill=SEA, size=13, h=0.42) + 0.15
+    s.footer(n, n1)
+    s.notes("Each question is answered with a number on slide 20. (40 s)")
+
+    # ================================================================ 5 related work
+    s = slide()
+    s.title("No tool we tested decodes Kruti Dev or keeps cell-level provenance")
     t = D.tools
-    def score(tool, case):
-        e = t.get(tool)
-        if not e:
-            return "—"
+
+    def sc(tool, case):
+        e = t.get(tool) or {}
         c = next((v for k, v in e.items() if k.startswith(case) and isinstance(v, dict)), None)
-        return f"{c['correct']}/{c['of']}" if c and "correct" in c else "n/a"
-    fill_table(by_name(s, "Table 0"), [
-        ["pdfplumber / PyMuPDF", "No (vector text only)", "No (Kruti Dev → gibberish)", "No", f"Yes: Kruti Dev {score('pdfplumber', 'C3')} and {score('pymupdf', 'C3')}"],
-        ["Docling (layout + TableFormer)", "Partly", "No", "No", f"Yes: raster grid {score('docling', 'C1')}, Kruti Dev {score('docling', 'C3')}"],
-        ["LLM agents (ReAct, LangGraph)", "via tools", "model-dependent", "only if designed in", "Yes: base 3B routing 0.40 alone"],
-        ["Text-to-SQL (Spider, DIN-SQL)", "—", "—", "No", "Not used: free SQL fragile at 3B"],
-        ["This work", "Yes (OCR + re-OCR)", "Yes (decoder + LLM)", "Yes: page + cell", f"F1 {f3(m['f1'])} (n={fe['n_gold_total']})"]], size=11)
-    set_lines(by_name(s, "Text 3"), ["**Gap:** methods exist for table structure and for agents, but none decode legacy-font Hindi or keep cell-level "
-                                    "provenance (implementation gap); OCR recall on photos remains a method limit."], size=14)
-    presenter(s, P[0])
-    # 6 study area
-    s = S[5]
-    remove(by_name(s, "Text 4"))
-    box = by_name(s, "Visual placeholder")
+        return f"{c['correct']}/{c['of']}" if c else "—"
+    rows = [["Approach", "Scanned / raster tables", "Hindi (Kruti Dev)", "Cell provenance", "Our test on the hardest pages"],
+            ["pdfplumber", "✗", "✗", "✗", f"raster grid {sc('pdfplumber', 'C1')} · Kruti Dev {sc('pdfplumber', 'C3')}"],
+            ["PyMuPDF", "✗", "✗", "✗", f"rotated headers {sc('pymupdf', 'C2')} · Kruti Dev {sc('pymupdf', 'C3')}"],
+            ["Docling (layout + TableFormer)", "~", "✗", "✗", f"raster grid {sc('docling', 'C1')} · Kruti Dev {sc('docling', 'C3')}"],
+            ["LLM agents (ReAct, LangGraph)", "via tools", "model-dependent", "only if designed", "base 3B routes 0.40 of files alone"],
+            ["Text-to-SQL (Spider, DIN-SQL)", "—", "—", "✗", "not used: free SQL is fragile at 3B"],
+            ["AgriAgent (this work)", "✓", "✓", "✓", f"{sc('ours', 'C1')} · {sc('ours', 'C2')} · {sc('ours', 'C3')} · F1 {f3(m['f1'])}"]]
+    s.table(0.6, 1.65, 12.1, rows, [3.1, 2.0, 1.9, 1.9, 3.2], size=14, row_h=0.55, bold_col0=True, highlight_last=True)
+    s.rect(0.6, 5.85, 12.1, 0.95, TINT2)
+    s.text(0.8, 5.9, 11.7, 0.85, ["**Gap.** Methods exist for table structure and for agents. None decodes legacy fonts or exports "
+                                   "provenance (an implementation gap); OCR recall on photos remains a method limit."], size=15, color=INK)
+    s.footer(n, n1)
+    s.notes("We measured these tools ourselves on our four hardest page types; the last row is our system. (50 s)")
+
+    # ================================================================ 6 study area (animation)
+    s = slide()
+    s.title("20 files, 6 modalities, 3 districts, 31 islands, 2011 to 2026")
     a3 = ANIM / "anim3_island_farmers.mp4"
-    if a3.exists():
-        fit_movie(s, box, a3, FIG / "fig1_study_area.png")
-    else:
-        fit_picture(s, box, FIG / "fig1_study_area.png")
-    for nm, val in (("Text 6", "20"), ("Text 9", "6"), ("Text 12", "2"), ("Text 15", "3")):
-        set_lines(by_name(s, nm), [val])
-    set_lines(by_name(s, "Text 7"), ["files from 5 publishers"])
-    set_lines(by_name(s, "Text 10"), ["modalities"])
-    set_lines(by_name(s, "Text 13"), ["languages (EN, HI)"])
-    set_lines(by_name(s, "Text 16"), ["districts · 8 zones · 31 islands"])
-    set_lines(by_name(s, "Text 17"), ["Years: crops 2019-20 → 2025-26; prices monthly 2019 → 2025; census 2011, 2015-16",
-                                       f"{D.pages} pages → {D.n_obs:,} observations with citations",
-                                       "Licences: 15 files no stated terms (academic use only), NRSC/Bhuvan non-commercial, D14 not redistributed"], size=13)
-    presenter(s, P[0])
-    notes[6] = "Click the map to play: farmers by island 2022-23 → 2024-25. Survey of India boundary in the inset of Figure 1."
-    # 7 source-agent mapping
-    s = S[6]
-    fill_table(by_name(s, "Table 0"), [
-        ["Zone/district crop tables", "PDF / English", "matrix_table", "pdfplumber grid, rotated headers, LLM header fallback", "Done"],
-        ["DES Basic Statistics", "PDF, Kruti Dev / Hindi+English", "bilingual_table", "Kruti Dev decoder, LLM column mapping", "Done"],
-        ["Monthly price statements", "PDF / English", "price_table", "statement parser, year checks", "Done"],
-        ["Island profiles", "PDF prose / EN+HI", "island_profile", "line selector, LLM + groundedness gate", "Done"],
-        ["Scheme memoranda, MoFPI", "PDF narrative", "narrative", "segmenter, LLM facts", "Partial"],
-        ["Census screenshot", "PNG", "image_table", "Vision OCR, grid, re-OCR", "Done"],
-        ["LULC statistics / maps", "PDF tables, raster", "lulc / skip", "table parser; rasters out of scope", "Partial"]], size=11)
-    presenter(s, P[1])
-    # 8 architecture
-    s = S[7]
-    remove(by_name(s, "Text 4"))
-    fit_picture(s, by_name(s, "Visual placeholder"), FIG / "fig2_architecture.png")
-    set_lines(by_name(s, "Text 5"), [
-        "**Pattern:** supervisor/router in a LangGraph state graph",
-        "**Why:** each source group needs different tools; a 3B model cannot hold all of them in one prompt",
-        "**Rejected:** one generalist agent; fixed sequential pipeline; per-page sub-agents (more calls, no gain)",
-        "**Retries and failures:** validator feedback → re-run (≤ 2); model outputs failing the evidence gate are dropped",
-        "**Completion:** loaded | partial | needs_review | failed | skipped, per file; one bad file never stops a batch"], size=12)
-    presenter(s, P[1])
-    # 9 models
-    s = S[8]
-    set_lines(by_name(s, "Text 3"), [
-        "**Base model:** Qwen2.5-3B-Instruct, 4-bit MLX, local (Qwen Research License: research use, adapters only shared)",
-        "**Adapter:** LoRA r = 8, scale 20, 16 layers, all projections, lr 1e-4; v1 250 it., v2 450 it.",
-        "**Training data:** v1 84 examples (D08, D09 islands; D01, D03–D05 columns); v2 +180 query plans +18 routing; eval documents never used",
-        "**Model vs code:** model = routing when ambiguous, header meaning, island facts, query intent; code = every number, unit, id, SQL",
-        "**Alternatives:** 7B (no room to fine-tune in 24 GB), API models (documents would leave the machine)"], size=12)
-    remove(by_name(s, "Text 5"))
-    fit_picture(s, by_name(s, "Visual placeholder"), recall_panel(D))
-    presenter(s, P[1])
-    # 10 KB
-    s = S[9]
-    remove(by_name(s, "Text 4"))
-    vps = [x for x in s.shapes if x.name == "Visual placeholder"]
-    fit_picture(s, vps[0], FIG / "fig3_er_diagram.png")
-    remove(by_name(s, "Text 6"))
+    s.rect(0.6, 1.6, 5.4, 5.25, TINT)
+    s.movie(a3, poster_frame(a3), (0.7, 1.68, 5.2, 5.1))
+    for k, (v, lab) in enumerate((("20", "files"), ("6", "modalities"), ("2", "languages"), ("3", "districts"), ("8", "agri zones"),
+                                  ("31", "islands"))):
+        s.stat(6.35 + (k % 3) * 2.15, 1.6 + (k // 3) * 1.42, 2.0, 1.27, v, lab, vsize=34, lsize=14)
+    s.bullets(6.35, 4.6, 6.35, 2.2, [
+        "**Years:** crops 2019-20 → 2025-26 · prices monthly 2019 → 2025 · census 2011, 2015-16",
+        f"**Volume:** {D.pages} pages → {D.n_obs:,} observations, each with a citation",
+        "**Licences:** 15 files without terms → academic use only; NRSC/Bhuvan non-commercial; D14 not redistributed"], size=14)
+    s.footer(n, n1)
+    s.notes("Click the map to play: farmers by island, 2022-23 → 2024-25. (45 s) → hand over to Suyash.")
+
+    # ================================================================ 7 source -> agent
+    s = slide()
+    s.title("Seven agents, one per source group, each with the tools its format needs")
+    yy = 1.62
+    for src, fmt, ag, tools, by in (("Zone & district crop tables", "PDF · English", "matrix_table", "grid parser, rotated headers", "rule"),
+                                    ("DES Basic Statistics", "PDF · Kruti Dev Hindi", "bilingual_table", "Kruti Dev decoder, column mapping", "model + rule"),
+                                    ("Monthly price statements", "PDF · English", "price_table", "statement parser, year checks", "rule"),
+                                    ("Island profiles", "prose · EN + HI", "island_profile", "line selector, evidence gate", "model"),
+                                    ("Scheme memoranda, MoFPI", "narrative PDF", "narrative", "segmenter, fact extraction", "model"),
+                                    ("Agriculture census screenshot", "PNG", "image_table", "Vision OCR, re-read empty cells", "rule"),
+                                    ("LULC statistics / maps", "PDF table · raster", "lulc / skip", "table parser; rasters out of scope", "rule")):
+        s.rect(0.6, yy, 4.0, 0.62, TINT)
+        s.text(0.75, yy + 0.02, 3.8, 0.6, [f"**{src}**  ·  {fmt}"], size=13, color=INK, anchor="m", smin=10)
+        s.arrow(4.65, yy + 0.31, 5.15, yy + 0.31, TEAL, 2)
+        s.pill(5.2, yy + 0.12, ag, fill=SEA, size=13, h=0.4)
+        s.text(7.75, yy + 0.02, 3.6, 0.6, [tools], size=13, color=INK, anchor="m", smin=10)
+        s.pill(11.45, yy + 0.13, by, fill=PADDY if "model" in by else PALM, size=12, h=0.36)
+        yy += 0.72
+    s.footer(n, n0)
+    s.notes("Model = the LLM decides; rule = fixed code. Every decision is logged as by=model or by=rule. (45 s)")
+
+    # ================================================================ 8 architecture (native diagram)
+    s = slide()
+    s.title("A supervisor routes each file; validator feedback drives retries")
+    boxes = [("Sources", "20 files +\nunseen", "FCE9D6"), ("Router", "supervisor:\nrule · fingerprint · LLM", "D6E9F0"),
+             ("7 agents", "tools per\nformat", "DDEFE3"), ("Normaliser\n+ validator", "ids · ranges ·\nrow sums", "D6E9F0"),
+             ("Knowledge base", "SQLite v2\n32,151 rows", "FBEBC4"), ("Query agent", "typed read-only\ntools → answer", "E6DDF2")]
+    bw, gap, x = 1.8, 0.27, 0.6
+    for k, (h_, sub, c) in enumerate(boxes):
+        s.rect(x, 2.1, bw, 1.9, c, line=LINE)
+        s.text(x + 0.08, 2.18, bw - 0.16, 0.85, [h_], size=16, color=INK, bold=True, align="c", anchor="m", smin=12)
+        s.text(x + 0.08, 3.0, bw - 0.16, 0.9, [sub], size=12, color=MUTED, align="c", smin=10)
+        if k < len(boxes) - 1:
+            s.arrow(x + bw + 0.02, 3.05, x + bw + gap - 0.02, 3.05, SEA, 2.5)
+        x += bw + gap
+    s.arrow(0.6 + 3 * (bw + gap) + 0.5, 4.08, 0.6 + 2 * (bw + gap) + 1.2, 4.08, CORAL, 2)
+    s.text(0.6 + 2 * (bw + gap) + 0.9, 4.12, 2.8, 0.35, ["retry with validator feedback (≤ 2)"], size=12, color=CORAL, fit=False)
+    s.rect(2.65, 1.5, 6.4, 0.46, "F6DADD", radius=0.2)
+    s.text(2.65, 1.5, 6.4, 0.46, ["Qwen2.5-3B + LoRA (local): routing · header meaning · facts · query plans"], size=13, color=CORAL,
+           align="c", anchor="m", fit=False)
+    x = 0.6
+    for h_, body in (("Pattern", "Supervisor/router as a LangGraph state graph; every node, tool call and decision traced (JSONL + LangSmith)."),
+                     ("Why", "Each source group needs different tools; a 3B model cannot hold seven tool sets in one prompt."),
+                     ("Alternatives rejected", "One generalist agent (prompt overload) · fixed sequential pipeline (no per-file tools) · "
+                                               "per-page sub-agents (more calls, no gain).")):
+        s.rect(x, 4.7, 3.95, 2.1, TINT2)
+        s.text(x + 0.2, 4.8, 3.6, 0.4, [h_], size=16, color=SEA, bold=True, fit=False)
+        s.text(x + 0.2, 5.25, 3.6, 1.5, [body], size=14, color=INK, smin=11)
+        x += 4.07
+    s.footer(n, n0)
+    s.notes("Walk left to right. A bad file ends as partial/failed/needs_review and never stops the batch. (70 s)")
+
+    # ================================================================ 9 model vs code
+    s = slide()
+    s.title("A local 3B model decides meaning; fixed code writes every number")
+    for x, fill, head, colr, items in ((0.6, "FCEFD2", "The model decides", PADDY,
+                                         ["which agent, for an ambiguous unseen file", "what a column header means",
+                                          "which facts an island profile states", "intent and slots of a question"]),
+                                        (4.75, "DDEFE3", "Code decides", PALM,
+                                         ["every number, unit and id", "evidence check: text must be on the page",
+                                          "all SQL (typed, read-only tools)", "dedup, ranges, row sums"]),
+                                        (8.9, TINT, "Model", SEA,
+                                         ["Qwen2.5-3B-Instruct, 4-bit, on a laptop (no API, ₹0)", "LoRA r = 8 · scale 20 · 16 layers",
+                                          "v1: 84 examples · v2: +198 planning and routing", "training documents only; eval documents never seen"])):
+        s.rect(x, 1.6, 3.83 if x > 8 else 4.0, 3.55, fill)
+        s.text(x + 0.2, 1.7, 3.5, 0.45, [head], size=18, color=colr, face="Georgia", bold=True, fit=False)
+        s.bullets(x + 0.2, 2.25, 3.5, 2.8, items, size=15 if x < 8 else 14, dot=colr)
+    s.text(0.6, 5.35, 12.1, 0.4, ["Alternatives considered"], size=16, color=SEA, bold=True, fit=False)
+    s.bullets(0.6, 5.8, 12.1, 1.0, ["7B model: no room to fine-tune in 24 GB · API models: documents would leave the machine · "
+                                    "free text-to-SQL: numbers could not be audited"], size=14, dot=MUTED)
+    s.footer(n, n0)
+    s.notes("Licence: the Qwen Research License allows research use; only adapter weights are released. (60 s) → hand over to Shikhar.")
+
+    # ================================================================ 10 knowledge base
+    s = slide()
+    s.title(f"{D.n_obs:,} numbers, each traceable to its page and cell")
+    cx, cy = 3.2, 3.85
+    s.rect(cx - 1.25, cy - 0.65, 2.5, 1.3, "FBEBC4", line=LINE)
+    s.text(cx - 1.2, cy - 0.6, 2.4, 1.2, ["**observation**", "value + citation"], size=15, color=INK, align="c", anchor="m", para_gap=0.1)
+    for t_, sub, dx, dy in (("location", "+ lat / lon", -2.25, -1.75), ("commodity", "crops, items", 1.0, -1.75),
+                            ("metric · unit", "base units", -2.25, 1.1), ("document · run · agent", "file, page, cell", 1.0, 1.1)):
+        s.arrow(cx, cy, cx + dx + 0.875, cy + dy + 0.375, LINE, 1.5)
+        s.rect(cx + dx, cy + dy, 1.75, 0.75, "DDEFE3", line=LINE)
+        s.text(cx + dx + 0.05, cy + dy + 0.02, 1.65, 0.72, [f"**{t_}**", sub], size=12, color=INK, align="c", anchor="m", para_gap=0.05)
+    s.rect(cx - 1.25, cy - 0.65, 2.5, 1.3, "FBEBC4", line=LINE)
+    s.text(cx - 1.2, cy - 0.6, 2.4, 1.2, ["**observation**", "value + citation"], size=15, color=INK, align="c", anchor="m", para_gap=0.1)
+    s.text(0.6, 6.05, 5.3, 0.8, ["Views: v_provenance (number → file, page, cell, agent, run) · v_conflict (two sources disagree)"],
+           size=13, color=MUTED)
+    from PIL import Image as _I
     prov = ROOT / "outputs" / "provenance" / "obs_1663_D02_p1.png"
-    if prov.exists():
-        from PIL import Image
-        im = Image.open(prov)
-        w, h = im.size
-        crop = GEN / "prov_crop.png"
-        im.crop((int(w * 0.45), int(h * 0.55), w, int(h * 0.70))).save(crop)
-        fit_picture(s, vps[1], crop)
-    loc_n = D.db.execute("SELECT COUNT(*) FROM location").fetchone()[0]
-    set_lines(by_name(s, "Text 7"), [
-        f"**Records:** {D.n_obs:,} observations · 13 tables · 4 views (v_provenance, v_conflict …)",
-        f"**Normalisation:** {loc_n} places (UT → district → tehsil, 8 zones, 31 islands, lat/lon), alias table EN+HI, typed periods, base units",
-        "**Validation and duplicates:** id, range and row-sum checks; deterministic dedup key; missing ≠ zero",
-        "Above: coconut 2025-26 = 118.616 → D02 p1, cell boxed by `--show-source`"], size=11)
-    presenter(s, P[2])
-    notes[10] = "One row → its document, page, table, row and column; open it live with ask.py --show-source."
-    # 11 eval setup
-    s = S[10]
-    fa = {x["agent"]: x for x in fe["per_agent"]}
-    fill_table(by_name(s, "Table 0"), [
-        ["Matrix · Bilingual · Prices", f"{fa['matrix_table_agent']['n_gold']} · {fa['bilingual_table_agent']['n_gold']} · {fa['price_table_agent']['n_gold']}", "5 per fact", f"{n1}, {n2}"],
-        ["Islands · Narrative · Image · LULC", f"{fa['island_profile_agent']['n_gold']} · {fa['narrative_agent']['n_gold']} · {fa['image_table_agent']['n_gold']} · {fa['lulc_agent']['n_gold']}", "3–5", f"{n0}, {n2}"],
-        ["LLM tasks: islands / columns / routing", "31 / 11 tables / 14", "294 / 74 / 14", n0],
-        ["Queries: dev / untouched test", "30 / 15", "answer + page", n1],
-        ["Total", f"{fe['n_gold_total']} facts + 45 queries", "", ""]], size=11)
-    set_lines(by_name(s, "Text 3"), [
-        "**Metrics:** field P/R/F1 (95% bootstrap CI), provenance accuracy, tool selection (AgentEvals trajectory), task completion, groundedness, intent resolution, query accuracy, automation rate",
-        "**Tools:** LangSmith (datasets, experiments, traces), AgentEvals, Foundry evaluator checklist",
-        "**Skipped and why:** fluency/coherence (answers are templated), content safety (public statistics, no free text about people)",
-        "**Gold:** transcribed by eye from page images of held-out documents; no gold page used in training"], size=12)
-    presenter(s, P[3])
-    # 12 results
-    s = S[11]
-    set_lines(by_name(s, "Text 0"), [f"Macro F1 {f3(m['f1'])} on {fe['n_gold_total']} held-out facts; every correct number cites its page"])
-    remove(by_name(s, "Text 4"))
-    fit_picture(s, by_name(s, "Visual placeholder"), FIG / "fig9_f1_by_agent.png")
+    im = _I.open(prov)
+    w_, h_ = im.size
+    crop = GEN / "prov_crop.png"
+    im.crop((int(w_ * 0.60), int(h_ * 0.585), int(w_ * 0.985), int(h_ * 0.655))).save(crop)
+    s.rect(6.3, 1.6, 6.43, 2.6, TINT)
+    s.text(6.5, 1.66, 6.0, 0.4, ["ask --show-source: coconut 2025-26 → D02 p1, cell boxed"], size=13, color=MUTED, bold=True, fit=False)
+    s.image(crop, 0, 0, fit_box=(6.45, 2.05, 6.13, 2.05))
+    n_loc = D.db.execute("SELECT COUNT(*) FROM location").fetchone()[0]
+    s.bullets(6.35, 4.45, 6.35, 2.4, [f"**{n_loc} places:** UT → district → tehsil, 8 zones, 31 islands, with coordinates",
+                                      "**Alias table** in English and Hindi; typed periods (agri year July–June, month, census)",
+                                      "**Missing ≠ zero**; deterministic dedup key; id, range and row-sum checks"], size=14)
+    s.footer(n, n2)
+    s.notes("One row, one number, one citation. Schema v2 adds coordinates for spatial queries. (80 s) → hand over to Suyash.")
+
+    # ================================================================ 11 evaluation setup
+    s = slide()
+    s.title(f"{fe['n_gold_total']} hand-transcribed facts and 45 queries, none used in training")
+    for k, (v, lab) in enumerate(((str(fe["n_gold_total"]), "facts from held-out pages, transcribed by eye"), ("7", "agents, one region each"),
+                                  ("30 + 15", "queries: dev / untouched test"), ("294 / 74", "LLM tasks: island items / columns"))):
+        s.stat(0.6 + k * 3.07, 1.6, 2.92, 1.45, v, lab, vsize=34, lsize=13, color=[SEA, TEAL, PALM, PADDY][k])
+    for x, head, items in ((0.6, "Metrics", ["field precision / recall / F1 with 95% bootstrap CI", "provenance accuracy (right page, value on it)",
+                                              "tool selection (AgentEvals trajectory), task completion",
+                                              "intent resolution and answer accuracy for queries", "automation rate"]),
+                           (6.75, "Tools and choices", ["LangSmith datasets, experiments, traces; AgentEvals; Foundry evaluator checklist",
+                                                        "skipped: fluency/coherence (templated answers), content safety (public statistics)",
+                                                        f"gold checked by {n1} and {n2}; test queries written after the planner froze"])):
+        s.rect(x, 3.3, 6.0 if x < 1 else 5.98, 3.5, TINT2)
+        s.text(x + 0.2, 3.4, 5.6, 0.4, [head], size=17, color=SEA, bold=True, fit=False)
+        s.bullets(x + 0.2, 3.9, 5.6, 2.85, items, size=14)
+    s.footer(n, n0)
+    s.notes("Held-out means: no page of these documents was used to train or tune anything. (50 s)")
+
+    # ================================================================ 12 extraction results
+    s = slide()
+    s.title(f"Macro F1 {f3(m['f1'])} on {fe['n_gold_total']} held-out facts; every correct number cites its page")
+    short = {"matrix_table_agent": "Matrix", "bilingual_table_agent": "Hindi", "price_table_agent": "Prices",
+             "island_profile_agent": "Islands", "narrative_agent": "Narrative", "image_table_agent": "OCR image", "lulc_agent": "LULC"}
+    s.bar_chart(0.6, 1.6, 7.2, 5.2, [f"{short[x['agent']]}\nn={x['n_gold']}" for x in fe["per_agent"]],
+                {"F1": [x["f1"] for x in fe["per_agent"]]}, [TEAL], number_format="0.000", vmax=1.1, legend=False)
     rob = {c["case"][:2]: c for c in D.robust["cases"]}
-    set_lines(by_name(s, "Text 5"), [
-        f"**Digital pages are solved:** 6 of 7 agents ≥ 0.99 F1; provenance accuracy {f3(m['provenance_accuracy'])}",
-        f"**Gold eval found 2 bugs:** footer phone numbers read as data, OCR dropping lone digits → image agent F1 0.969 → {f3(fa['image_table_agent']['f1'])}",
-        f"**Failure:** scans and photos: photo of a price table recall {f2(rob['T2']['recall'])}, scanned bilingual page {f2(rob['T4']['recall'])}: OCR, not routing",
-        "**Fresh files:** known layout 15/15 correct; new 'at a glance' layouts 5/15 and 0/15 (rows forced into metrics)"], size=12)
-    presenter(s, P[3])
-    # 13 fine-tuning
-    s = S[12]
-    remove(by_name(s, "Text 4"))
-    fit_picture(s, by_name(s, "Visual placeholder"), FIG / "fig10_finetuning_ladder.png")
-    set_lines(by_name(s, "Text 6"), [f"+{isl(v1) - isl(base):.2f}"])
-    set_lines(by_name(s, "Text 7"), ["island F1 vs base (n = 294 items)"])
-    set_lines(by_name(s, "Text 8"), [
-        f"**Ladder (same held-out cases):** base {f2(isl(base))} → 2-shot prompt {f2(isl(fs))} → adapter v1 {f2(isl(v1))}" + (f" → v2 {f2(isl(v2))}" if v2 else ""),
-        f"**Why:** learns the 20-metric catalogue and verbatim evidence; prompt alone cannot (and costs {fs['island_extraction']['latency_s_median']:.0f} s vs {v1['island_extraction']['latency_s_median']:.0f} s)",
-        f"**Cost:** v1 forgot other tasks: routing {f2(base['routing']['accuracy'])} → {f2(v1['routing']['accuracy'])}; v2 multi-task repairs it",
-        "**Training:** 35 min (v1), ~90 min (v2) on an M4 Pro, ₹0"], size=12)
-    presenter(s, P[3])
-    # 14 automation
-    s = S[13]
+    fa = {x["agent"]: x for x in fe["per_agent"]}
+    yy = 1.6
+    for h_, body, c in (("Digital pages are solved", f"6 of 7 agents at F1 ≥ 0.99; provenance accuracy {f3(m['provenance_accuracy'])}.", PALM),
+                        ("The gold found 2 bugs", f"footer phone numbers stored as data; OCR dropped lone digits. Image agent 0.969 → {f3(fa['image_table_agent']['f1'])}.", PADDY),
+                        ("Scans and photos are hard", f"photo of a price table: recall {f2(rob['T2']['recall'])}; scanned Hindi page {f2(rob['T4']['recall'])}. OCR, not routing.", CORAL)):
+        s.rect(8.05, yy, 4.68, 1.65, TINT)
+        s.circle(8.22, yy + 0.18, 0.36, c)
+        s.text(8.7, yy + 0.1, 3.95, 0.45, [h_], size=16, color=INK, bold=True, fit=False)
+        s.text(8.25, yy + 0.6, 4.35, 1.0, [body], size=13, color=INK, smin=11)
+        yy += 1.78
+    s.footer(n, n0)
+    s.notes("Bars: field F1 per agent with the number of gold facts. Fresh files with new layouts are on slide 19. (70 s)")
+
+    # ================================================================ 13 fine-tuning ladder
+    s = slide()
+    s.title(f"Fine-tuning beats prompting: island F1 {f2(isl(fs))} → {f2(isl(v1))}, queries {f2(qa('test', 'base_fewshot'))} → "
+            f"{f2(qa('test', 'qlora_v2_zeroshot'))}")
+    s.bar_chart(0.6, 1.6, 7.6, 5.2, ["Base\nzero-shot", "Base\nfew-shot prompt", "LoRA v1", "LoRA v2"], {
+        "Island extraction F1 (n=294)": [isl(base), isl(fs), isl(v1), isl(v2)],
+        "Column mapping acc. (n=74)": [col(base), col(fs), col(v1), col(v2)],
+        "Query planning acc., test (n=15)": [qa("test", "base_zeroshot"), qa("test", "base_fewshot"), qa("test", "qlora_v1_fewshot"),
+                                             qa("test", "qlora_v2_zeroshot")]}, [PALM, PADDY, TEAL], vmax=1.15, label_size=11)
+    s.stat(8.45, 1.6, 4.28, 1.5, f"+{isl(v1) - isl(fs):.2f}", "island F1 over the best prompt, same held-out cases", color=PALM, vsize=40)
+    s.stat(8.45, 3.25, 4.28, 1.5, f"+{qa('test', 'qlora_v2_zeroshot') - qa('test', 'base_fewshot'):.2f}",
+           "query accuracy, v2 vs few-shot prompt", color=TEAL, vsize=40)
+    s.rect(8.45, 4.9, 4.28, 1.9, "FBE3E6")
+    s.text(8.6, 4.98, 4.0, 0.4, ["The cost"], size=15, color=CORAL, bold=True, fit=False)
+    s.text(8.6, 5.38, 4.0, 1.4, [f"v1 forgot routing ({f2(base['routing']['accuracy'])} → {f2(v1['routing']['accuracy'])}) and query "
+                                 "planning; v2 adds those tasks to training. Training: 35 min (v1), 90 min (v2), ₹0."], size=13, color=INK, smin=11)
+    s.footer(n, n0)
+    s.notes("Same held-out cases for every bar. The prompt also costs 18 s per island against 10 s for the adapter. (70 s)")
+
+    # ================================================================ 14 query planner
+    s = slide()
+    s.title(f"The query agent scores {f2(qa('test', 'hybrid_rules_v2'))} on questions it never saw, always with a citation")
+    labels = [("Rules", "rules"), ("Base", "base_zeroshot"), ("Few-shot", "base_fewshot"), ("LoRA v1", "qlora_v1_fewshot"),
+              ("LoRA v2", "qlora_v2_zeroshot"), ("Deployed\nhybrid", "hybrid_rules_v2")]
+    s.bar_chart(0.6, 1.6, 7.4, 5.2, [lb for lb, _ in labels], {"dev set (n=30)": [qa("dev", k) for _, k in labels],
+                                                               "untouched test set (n=15)": [qa("test", k) for _, k in labels]},
+                ["8CC5CE", SEA], vmax=1.15, label_size=11)
+    yy = 1.65
+    for k, (h_, sub) in enumerate((("Question", "English or Hindi"), ("Plan", "rules, else LoRA v2"), ("Typed tool", "read-only SQL"),
+                                   ("Answer", "+ document, page, cell"))):
+        s.circle(8.3, yy, 0.55, [TEAL, PADDY, PALM, SEA][k], str(k + 1), size=16)
+        s.text(9.0, yy - 0.02, 3.7, 0.6, [f"**{h_}**  ·  {sub}"], size=15, color=INK, anchor="m", fit=False)
+        if k < 3:
+            s.arrow(8.575, yy + 0.58, 8.575, yy + 0.9, MUTED, 1.5)
+        yy += 0.95
+    s.text(8.3, 5.6, 4.43, 1.2, ["Rules were built on the dev set, so their 1.00 there is optimistic; the test bars are the honest numbers."],
+           size=13, color=MUTED, italic=True)
+    s.footer(n, n0)
+    s.notes("Citation groundedness is 1.0 for every planner: numbers always come from SQL; errors are planning errors. (60 s) → Shikhar.")
+
+    # ================================================================ 15 automation & reproducibility
+    s = slide()
     au = D.agent_eval["workflow"]["automation"]
-    for nm, val in (("Text 4", f"{au['automation_rate'] * 100:.0f}%"), ("Text 7", str(au["manual_interventions_in_run"])),
-                    ("Text 10", "≈ 75 s"), ("Text 13", "₹0")):
-        set_lines(by_name(s, nm), [val])
-    set_lines(by_name(s, "Text 5"), [f"inputs fully automatic ({au['inputs_completed_without_manual_intervention']}/{au['inputs_attempted']})"])
-    set_lines(by_name(s, "Text 11"), ["per document (LLM path; < 5 s rules)"])
-    set_lines(by_name(s, "Text 14"), ["cost per document (local model)"])
-    set_lines(by_name(s, "Text 15"), [
-        f"**Run:** {au['llm_calls']} LLM calls · {au['model_outputs_rejected_by_gates']} model outputs rejected by gates · {au['duplicate_rows_skipped']} duplicates skipped · 0 retries needed",
-        "**Remaining manual steps (once per source):** download from portals (no APIs), record URL + licence in the manifest, transcribe gold",
-        "**Barriers to full automation:** no portal APIs or stable links, chart-only atlas pages, raster maps (out of scope), OCR on photos",
-        "**Reproducible:** fresh clone → pip install → fetch (SHA-256) → 50 tests pass → quick start, on macOS / Linux / Windows (CI)"], size=13)
-    presenter(s, P[2])
-    # 15 live demo
-    s = S[14]
-    rows = []
+    s.title("20 of 20 files with no manual step; a fresh clone answers in 10 minutes")
+    for k, (v, lab) in enumerate((("100%", "files fully automatic (20/20)"), ("0", "manual interventions in the run"),
+                                  ("≈ 75 s", "per document, LLM path"), ("₹0", "cost: local model"))):
+        s.stat(0.6 + k * 3.07, 1.6, 2.92, 1.45, v, lab, vsize=36, color=[SEA, TEAL, PALM, PADDY][k])
+    x = 0.6
+    for k, st in enumerate(("git clone", "pip install", "fetch + SHA-256", "50 tests pass", "first answer")):
+        s.rect(x, 3.45, 2.2, 0.8, TINT if k < 4 else "DDEFE3")
+        s.text(x, 3.45, 2.2, 0.8, [st], size=15, color=INK, bold=True, align="c", anchor="m", fit=False)
+        if k < 4:
+            s.arrow(x + 2.22, 3.85, x + 2.45, 3.85, SEA, 2)
+        x += 2.47
+    s.text(0.6, 4.35, 12.1, 0.4, ["Checked by CI on clean Ubuntu, macOS and Windows runners, and by a manual fresh-clone run."], size=13,
+           color=MUTED, fit=False)
+    s.bullets(0.6, 4.95, 6.0, 1.9, [f"**Run:** {au['llm_calls']} LLM calls · {au['model_outputs_rejected_by_gates']} model outputs "
+                                    f"rejected by gates · {au['duplicate_rows_skipped']} duplicates skipped",
+                                    "**Maintenance:** backup / restore, add-source, licence check, scheduled health check"], size=14)
+    s.bullets(6.75, 4.95, 5.98, 1.9, ["**Still manual (once per source):** download (no portal APIs), manifest row, gold transcription",
+                                      "**Barriers:** chart-only pages, raster maps, OCR on photos"], size=14)
+    s.footer(n, n2)
+    s.notes("Everything runs offline once fetched. (45 s)")
+
+    # ================================================================ 16 live demo
+    s = slide()
+    s.title(f"Live: 10 questions, {demo_ok} of 10 correct in rehearsal")
     from agri.query.agent import QueryAgent
-    qa = QueryAgent(config.DB_PATH, planner="rules")
+    qa_ = QueryAgent(config.DB_PATH, planner="rules")
+    rows = [["#", "Question", "Type", "Answer (with citation)"]]
     for r in demo_rows:
-        rows.append([r["id"], r["question"][:62], r["type"].replace("_", "-").title(), short_answer(qa.ask(r["question"])),
-                     "✓" if r["correct"] else "✗"])
-    fill_table(by_name(s, "Table 0"), rows, size=10)
-    set_lines(by_name(s, "Text 0"), [f"Live demonstration: 10 queries ({demo_ok}/10 correct in rehearsal)"])
-    presenter(s, P[2])
-    notes[15] = ("Run live in the terminal: `python scripts/ask.py --demo`, then `--show-source` on P1 to open D02 p1 with the cell boxed. "
-                 "Then the app's Map tab. Never play a recording.")
-    # 16 insight
-    s = S[15]
-    set_lines(by_name(s, "Text 0"), ["North & Middle Andaman: paddy −41% while arecanut area +32% (2021-22 → 2025-26)"])
-    remove(by_name(s, "Text 4"))
+        rows.append([r["id"], r["question"], r["type"].replace("_", "-"), short_answer(qa_.ask(r["question"]))])
+    s.table(0.6, 1.55, 12.1, rows, [0.55, 5.6, 1.35, 4.6], size=11, row_h=0.43)
+    s.rect(0.6, 6.42, 6.6, 0.45, SEA, radius=0.1)
+    s.text(0.72, 6.42, 6.4, 0.45, ["$ python scripts/ask.py --demo     then  --show-source on P1"], size=13, color=WHITE, anchor="m",
+           fit=False)
+    s.pill(7.4, 6.47, "● LIVE, never a recording", fill=CORAL, size=12, h=0.36)
+    s.footer(n, n2)
+    s.notes("Run in the terminal at 20 pt: python scripts/ask.py --demo. Then the provenance question with --show-source to open "
+            "D02 p1 with the cell boxed. Offer one question from the examiners. (2:30) → hand over to Abhineet.")
+
+    # ================================================================ 17 insight 1 (geo animation)
+    s = slide()
+    s.title("North & Middle Andaman: paddy −41% while arecanut area grew +32%")
     a1 = ANIM / "anim1_paddy_districts.mp4"
-    if a1.exists():
-        fit_movie(s, by_name(s, "Visual placeholder"), a1, FIG / "fig4_paddy_vs_arecanut_map.png")
-    else:
-        fit_picture(s, by_name(s, "Visual placeholder"), FIG / "fig4_paddy_vs_arecanut_map.png")
-    set_lines(by_name(s, "Text 5"), [
-        "**What it shows:** UT paddy 16,404 → 9,712 t; N&M Andaman is 98% of the fall; its arecanut area 2,527 → 3,338 ha; r = −0.83 (n = 5 years)",
-        "**Also:** Port Blair vegetable prices peak Nov–Dec (onion +39% in Dec), tomato in Aug; 60% of farmers on 2 islands",
-        "**Caveat:** correlation, not cause; 2025-26 from the Agriculture Department, earlier years from DES (agree to 0.01% where they overlap)"], size=12)
-    presenter(s, P[0])
-    notes[16] = "Click to play the district animation 2021-22 → 2025-26."
-    # 17 errors
-    s = S[16]
-    fill_table(by_name(s, "Table 0"), [
-        ["OCR (scans, photos)", "~1,400 cells", "photo of price table: 36/346 read"],
-        ["Layout (footer as data)", "4 (fixed)", "phone number 232476 as holdings area"],
-        ["Out-of-schema rows (new layout)", "23 / 30 sampled", "LPG connections → fertiliser"],
-        ["Hallucination", "157 (gated)", "evidence not on page → dropped"],
-        ["Source errors (publisher)", "2", "Shaheed farmers = Swaraj's 516; onion Nov-23 81.88 vs 57.50"]], size=10)
-    set_lines(by_name(s, "Text 3"), [
-        "**Method limits:** OCR loses isolated digits; 3B models are reliable only on narrow decisions; 5 yearly points cannot show causes",
-        "**Implementation limits:** agents tied to seen layouts; no chart digitisation; approximate island points (±5 km); rule planner 0.80 on paraphrases",
-        "**Threats to validity:** small gold (699 facts, 15 test queries); same-team annotation (from page images, before scoring); silver training labels; easy digital pages"], size=12)
-    presenter(s, P[0])
-    # 18 conclusion
-    s = S[17]
-    set_lines(by_name(s, "Text 3"), [
-        f"**RQ1:** yes for digital files: macro F1 {f3(m['f1'])} (n = {fe['n_gold_total']}), provenance {f3(m['provenance_accuracy'])}, automation 20/20; scans remain hard (recall 0.10–0.52)",
-        f"**RQ2:** yes, on the trained tasks: island F1 {f2(isl(base))} → {f2(isl(fs))} (prompt) → {f2(isl(v1))} (adapter); columns {f2(col(base))} → {f2(col(v1))}; multi-task v2 needed to avoid forgetting",
-        f"**RQ3:** yes: {demo_ok}/10 live queries (≥ 2 spatial, ≥ 2 temporal, 2 provenance + Hindi); {f2(q_test)} on untouched paraphrases",
-        "**Next:** layout-aware Indic OCR for scans; an agent for 'at a glance' compendia; chart digitisation; scheduled refresh when portals publish stable links"], size=15)
-    presenter(s, P[0])
-    # 19 team
-    s = S[18]
-    for k, (nm_name, nm_role, nm_body) in enumerate((("Text 4", "Text 5", "Text 6"), ("Text 8", "Text 9", "Text 10"), ("Text 12", "Text 13", "Text 14"))):
-        mbr = TEAM["members"][k]
-        set_lines(by_name(s, nm_name), [mbr["name"]])
-        set_lines(by_name(s, nm_role), [mbr["role"]])
-        set_lines(by_name(s, nm_body), [f"**Built:** {mbr['built']}", f"**Report:** {mbr['report']}", f"**Poster:** {mbr['poster']}",
-                                        f"**Manual/video:** {mbr['manual']}"], size=9.5)
-    # 20 refs
-    s = S[19]
-    set_lines(by_name(s, "Text 3"), [
-        "[1] E. J. Hu et al., \"LoRA: Low-rank adaptation of large language models,\" ICLR, 2022.",
-        "[2] T. Dettmers et al., \"QLoRA: Efficient finetuning of quantized LLMs,\" NeurIPS, 2023.",
-        "[3] S. Yao et al., \"ReAct: Synergizing reasoning and acting in language models,\" ICLR, 2023.",
-        "[4] A. Nassar et al., \"TableFormer: Table structure understanding with transformers,\" CVPR, 2022.",
-        "[5] C. Auer et al., \"Docling technical report,\" arXiv:2408.09869, 2024.",
-        "[6] Qwen Team, \"Qwen2.5 technical report,\" arXiv:2412.15115, 2024.",
-        "[7] M. Pourreza and D. Rafiei, \"DIN-SQL: Decomposed in-context learning of text-to-SQL,\" NeurIPS, 2023.",
-        "[8] DES A&N Administration, Basic Statistics; Island-wise Statistical Outline; price statements, 2023–2025.",
-        "[9] DataMeet, Census 2011 / Survey of India boundaries, github.com/datameet/maps."], size=13)
-    presenter(s, f"Presenter: {n1}")
-    # 21 thanks
-    s = S[20]
-    set_lines(by_name(s, "Text 1"), [f"Repository: {TEAM['repo']} (tag {TEAM['tag']})  ·  Contact: {TEAM['contact']}"])
-    for idx, title in HEADLINES.items():
-        set_lines(by_name(S[idx], "Text 0"), [title])
-    for i, slide in enumerate(S, 1):
-        if i in notes:
-            slide.notes_slide.notes_text_frame.text = notes[i]
+    s.rect(0.6, 1.6, 7.4, 5.25, TINT)
+    s.movie(a1, poster_frame(a1), (0.7, 1.68, 7.2, 5.1))
+    for k, (v, lab, c) in enumerate((("−41%", "N&M paddy output, 2021-22 → 2025-26", CORAL), ("+32%", "N&M arecanut area, same years", PALM),
+                                     ("98%", "of the UT's paddy decline is in N&M", SEA), ("r = −0.83", "paddy vs arecanut, n = 5 years", PADDY))):
+        s.stat(8.25 + (k % 2) * 2.27, 1.6 + (k // 2) * 1.55, 2.18, 1.42, v, lab, color=c, vsize=30, lsize=12)
+    s.rect(8.25, 4.8, 4.48, 2.05, TINT2)
+    s.text(8.45, 4.88, 4.1, 1.9, ["**Caveat.** Correlation, not cause. 2025-26 comes from the Agriculture Department, earlier years "
+                                  "from DES; where both report a year they agree to 0.01%."], size=13, color=INK, smin=11)
+    s.footer(n, n1)
+    s.notes("Click to play: paddy by district, year by year. Data: D03–D06, D02. (70 s)")
+
+    # ================================================================ 18 insights 2-3
+    s = slide()
+    s.title("Vegetable prices peak in Nov–Dec; 60% of farmers live on two islands")
+    a2 = ANIM / "anim2_price_calendar.mp4"
+    s.rect(0.6, 1.6, 7.6, 3.55, TINT)
+    s.movie(a2, poster_frame(a2), (0.68, 1.66, 7.44, 3.43))
+    s.text(0.6, 5.25, 7.6, 1.6, ["**Port Blair, 2023–25 (n = 36 months × 10 items):** onion +39% above its mean in December, tomato "
+                                 "+45% in August; eggs barely move (CV 0.08 vs 0.30). Supply is thinnest in the monsoon and in winter."],
+           size=14, color=INK)
+    s.rect(8.4, 1.6, 4.33, 5.25, TINT)
+    s.image(FIG / "fig7_islands_farmers.png", 0, 0, fit_box=(8.5, 1.68, 4.13, 4.3))
+    s.text(8.5, 6.0, 4.13, 0.85, ["Middle (8,730) + North Andaman (6,192) = 60% of 24,954 farmers (n = 16 islands)"], size=13, color=INK, smin=11)
+    s.footer(n, n1)
+    s.notes("Click the heatmap to watch it fill month by month. (45 s)")
+
+    # ================================================================ 19 errors
+    s = slide()
+    s.title("Most errors are OCR on scans; two errors are in the source documents themselves")
+    n_ocr = sum(c["known_values"] - c["correct"] for c in D.robust["cases"] if c.get("known_values"))
+    rows = [["Error type", "Count", "Example"],
+            ["OCR: cells not read on scans/photos", f"{n_ocr:,}", "photo of a price table: 36 of 346 values read"],
+            ["Layout: footer read as data (fixed)", "4", "phone number 232476 stored as holdings area"],
+            ["New layout: row forced into a metric", "23 / 30", "LPG connections mapped to fertiliser (fresh files)"],
+            ["Model output not on the page", "157", "rejected by the evidence gate before loading"],
+            ["Source error (publisher)", "2", "Shaheed farmers = Swaraj's 516; onion Nov-23 81.88 vs 57.50"]]
+    s.table(0.6, 1.6, 7.6, rows, [3.0, 1.0, 3.6], size=12, row_h=0.62, bold_col0=True)
+    for k, (h_, body, c) in enumerate((("Method limits", "OCR loses lone digits; 3B models are reliable only on narrow decisions; five yearly points cannot show causes.", CORAL),
+                                       ("Our limits", "agents tied to layouts we saw (new 'at a glance' layouts: 0–5 of 15 right); no chart digitisation; island points ±5 km.", PADDY),
+                                       ("Threats to validity", "small gold (699 facts, 15 test queries); same-team annotation from page images; easy digital pages.", TEAL))):
+        yy = 1.6 + k * 1.75
+        s.rect(8.4, yy, 4.33, 1.62, TINT)
+        s.circle(8.55, yy + 0.15, 0.32, c)
+        s.text(8.97, yy + 0.08, 3.7, 0.45, [h_], size=15, color=INK, bold=True, fit=False)
+        s.text(8.55, yy + 0.55, 4.05, 1.05, [body], size=13, color=INK, smin=10.5)
+    s.footer(n, n1)
+    s.notes("Errors in the publications are kept and flagged (v_conflict), not silently corrected. (50 s)")
+
+    # ================================================================ 20 conclusion (dark)
+    s = slide(SEA)
+    s.title("All three questions answered, with numbers")
+    yy = 1.65
+    for code, t_, c in (("RQ1", f"Yes for digital files: macro F1 {f3(m['f1'])} (n = {fe['n_gold_total']}), provenance {f3(m['provenance_accuracy'])}, "
+                                "20/20 automatic. Scans: recall 0.10–0.52; new layouts 0–5 of 15.", TEAL),
+                        ("RQ2", f"Yes on trained tasks: island F1 {f2(isl(base))} → {f2(isl(fs))} (prompt) → {f2(isl(v1))} (LoRA); queries "
+                                f"{f2(qa('test', 'base_fewshot'))} → {f2(qa('test', 'qlora_v2_zeroshot'))}. Multi-task training avoids forgetting.", PADDY),
+                        ("RQ3", f"Yes: {demo_ok}/10 live (3 spatial, 3 temporal, 2 provenance, Hindi); {f2(qa('test', 'hybrid_rules_v2'))} on unseen phrasings.", PALM)):
+        s.circle(0.6, yy + 0.05, 0.8, c, code, size=15)
+        s.text(1.65, yy, 11.0, 1.0, [t_], size=17, color=WHITE, anchor="m", smin=13)
+        yy += 1.2
+    s.text(0.6, 5.4, 12.1, 0.4, ["Next"], size=17, color="8FD0DA", bold=True, fit=False)
+    s.text(0.6, 5.85, 12.1, 0.9, ["Layout-aware Indic OCR for scans · an agent for 'at a glance' compendia · chart digitisation · "
+                                   "scheduled refresh once portals publish stable links"], size=16, color="CFE6EA")
+    s.footer(n, n1)
+    s.notes("(40 s) Then all three come forward for the contributions slide.")
+
+    # ================================================================ 21 team
+    s = slide()
+    s.title("Who built what")
+    x = 0.6
+    for mbr in TEAM["members"]:
+        s.rect(x, 1.6, 3.95, 5.25, TINT)
+        s.circle(x + 0.25, 1.8, 0.75, MEMBER[mbr["name"]], "".join(w[0] for w in mbr["name"].split()), size=18)
+        s.text(x + 1.15, 1.8, 2.7, 0.8, [f"**{mbr['name']}**", mbr["role"]], size=15, color=INK, para_gap=0.1, smin=12)
+        s.text(x + 0.25, 2.75, 3.5, 2.15, [mbr["built"]], size=13, color=INK, smin=10.5)
+        pres = {n0: "slides 7–9, 11–14", n1: "slides 1–6, 17–22", n2: "slides 10, 15–16 (live demo)"}[mbr["name"]]
+        s.text(x + 0.25, 5.0, 3.5, 1.8, [f"**Presents:** {pres}", f"**Report:** {mbr['report']}", f"**Poster:** {mbr['poster']}",
+                                          f"**Manual / video:** {mbr['manual']}"], size=12, color=INK, smin=10, para_gap=0.2)
+        x += 4.07
+    s.footer(n)
+
+    # ================================================================ 22 thanks + refs
+    s = slide(SEA)
+    s.text(0.6, 0.8, 7.4, 1.2, ["Thank you · Questions"], size=44, color=WHITE, face="Georgia", bold=True, fit=False)
+    s.text(0.6, 2.0, 7.4, 0.5, [f"{TEAM['repo']}  ·  tag {TEAM['tag']}"], size=15, color="8FD0DA", fit=False)
+    s.text(0.6, 3.0, 7.4, 3.9, ["[1] E. J. Hu et al., LoRA, ICLR 2022", "[2] T. Dettmers et al., QLoRA, NeurIPS 2023",
+                                "[3] S. Yao et al., ReAct, ICLR 2023", "[4] A. Nassar et al., TableFormer, CVPR 2022",
+                                "[5] C. Auer et al., Docling technical report, 2024", "[6] Qwen Team, Qwen2.5 technical report, 2024",
+                                "[7] M. Pourreza, D. Rafiei, DIN-SQL, NeurIPS 2023", "[8] DES A&N Administration, statistics 2021–2025",
+                                "[9] DataMeet, Census 2011 / Survey of India boundaries"], size=13, color="CFE6EA", para_gap=0.25)
+    s.rect(9.0, 1.3, 3.6, 3.6, WHITE, radius=0.15)
+    s.image(FIG / "poster" / "qr_repo.png", 0, 0, fit_box=(9.2, 1.5, 3.2, 3.2))
+    s.text(9.0, 5.0, 3.6, 0.4, ["Repository and results"], size=13, color="8FD0DA", align="c", fit=False)
+    s.footer(n)
+
     out.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(out))
+    write_notes(prs)
     return out
+
+
+def write_notes(prs) -> None:
+    """Speaker notes per slide (kept out of the .pptx so Keynote can open it)."""
+    from reports import deck_kit
+    lines = ["# Speaker notes: 34_AN_PRESENTATION_v1.pptx", "",
+             "Generated by `reports/build_slides.py`. Slide titles are the messages; notes say what to add aloud and when to hand over.", ""]
+    titles = []
+    for sl in prs.slides:
+        t = [sh.text_frame.text for sh in sl.shapes if sh.has_text_frame and sh.text_frame.text.strip()]
+        titles.append(t[0] if t else "")
+    import re as _re
+    by_slide = {k: _re.sub(r"\s*\((?:\d+:\d+|\d+ s)\)", "", v) for k, v in deck_kit.NOTES}
+    lines += ["Timing (15:00): slides 1–6 Abhineet 3:30 · 7–9 Suyash 2:30 · 10 Shikhar 1:00 · 11–14 Suyash 3:00 · "
+              "15–16 Shikhar 2:30 (demo 2:00) · 17–22 Abhineet 2:30.", ""]
+    for i, t in enumerate(titles, 1):
+        lines += [f"## Slide {i}: {t.splitlines()[0][:90]}", "", by_slide.get(i, "(no note)"), ""]
+    (ROOT / "docs" / "speaker_notes.md").write_text("\n".join(lines))
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--template", type=Path, default=TEMPLATE)
-    ap.add_argument("--out", type=Path, default=OUT / "34_AN_PRESENTATION_v1.pptx")
+    ap.add_argument("--out", type=Path, default=ROOT / "reports" / "out" / "34_AN_PRESENTATION_v1.pptx")
     a = ap.parse_args()
-    print(build(a.out, a.template))
+    print(build(a.out))
 
 
 if __name__ == "__main__":

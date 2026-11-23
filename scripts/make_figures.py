@@ -317,6 +317,11 @@ def _writer(path: Path, fps: int):
     return animation.FFMpegWriter(fps=fps, bitrate=3000) if path.suffix == ".mp4" else animation.PillowWriter(fps=fps)
 
 
+def seq(n: int, fps: int) -> list[int]:
+    """Frame order: the finished picture first (so a paused slide or PDF shows it), then the build-up, then a hold."""
+    return [n - 1] * max(1, int(1.5 * fps)) + list(range(n)) + [n - 1] * max(1, 2 * fps)
+
+
 def save_anim(anim, name: str, fps: int):
     ANIM.mkdir(parents=True, exist_ok=True)
     for ext in (".mp4", ".gif"):
@@ -356,7 +361,7 @@ def anim_paddy_districts():
         bx.text(i, tot[-1] + 600, f"{tot[-1]:,.0f}", ha="center", fontweight="bold")
         fig.texts.clear()
         fig.text(0.01, 0.01, SRC_NOTE, fontsize=6.5, color=C["muted"])
-    anim = animation.FuncAnimation(fig, frame, frames=len(years), interval=1200)
+    anim = animation.FuncAnimation(fig, frame, frames=seq(len(years), 1), interval=1200)
     save_anim(anim, "anim1_paddy_districts", fps=1)
 
 
@@ -375,11 +380,12 @@ def anim_price_calendar():
     fig.text(0.01, 0.01, "Data: DES price statements D11–D13, Port Blair retail survey.", fontsize=7, color=C["muted"])
 
     def frame(j):
+        shown[:] = np.nan
         shown[:, : j + 1] = idx[:, : j + 1]
         im.set_data(shown)
         title.set_text(f"Port Blair retail prices · {months[j][:7]}")
         return (im,)
-    anim = animation.FuncAnimation(fig, frame, frames=len(months), interval=250)
+    anim = animation.FuncAnimation(fig, frame, frames=seq(len(months), 4), interval=250)
     save_anim(anim, "anim2_price_calendar", fps=4)
 
 
@@ -401,7 +407,7 @@ def anim_islands():
                 ax.text(xy[lid][0] + 0.15, xy[lid][1], f"{v:,.0f}", fontsize=8, va="center")
         ax.set_title(f"Farmers by island · {y}\nUT total {sum(data[y].values()):,.0f} (n = {len(data[y])} islands)",
                      loc="left", fontsize=13, fontweight="bold")
-    anim = animation.FuncAnimation(fig, frame, frames=len(years), interval=1500)
+    anim = animation.FuncAnimation(fig, frame, frames=seq(len(years), 1), interval=1500)
     fig.text(0.01, 0.01, SRC_NOTE, fontsize=6, color=C["muted"])
     save_anim(anim, "anim3_island_farmers", fps=1)
 

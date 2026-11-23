@@ -5,33 +5,27 @@ whether the live queries run **live** (a recording scores 0 for T3).
 
 ## A. Presentation: who says what (matches slide 2)
 
-| Slides | Presenter | Time | Say (one message per slide) |
-|---|---|---|---|
-| 1–2 | Abhineet | 0:45 | Title. "Three of us; this is who presents what." Point at the slide-2 table. |
-| 3 | Abhineet | 1:00 | "Twenty PDFs from five publishers. Look at the red text: this is what a PDF extractor returns for the Hindi, because it is stored in the Kruti Dev font. Users want comparisons across places, trends, and the source of every number." |
-| 4 | Abhineet | 0:40 | Three research questions, each answered with a number on slide 18. |
-| 5 | Abhineet | 0:50 | "We tested the tools ourselves: Docling 0/8 on Kruti Dev, pdfplumber 0/6 on raster grids. Gap: no tool decodes legacy fonts or keeps cell-level provenance." |
-| 6 | Abhineet | 0:45 | Click to play the island animation. "3 districts, 8 zones, 31 islands; 15 files have no stated licence, so they are flagged academic use only; D14 is not redistributed." → hand over to Suyash |
-| 7 | Suyash | 0:50 | "One agent per source group, and each one has the tools its format needs." |
-| 8 | Suyash | 1:10 | "Supervisor/router in LangGraph. We rejected a single generalist agent because a 3B model cannot hold seven tool sets in one prompt. A validator failure triggers a retry, and a model output whose evidence is not on the page is dropped." |
-| 9 | Suyash | 1:00 | "Qwen2.5-3B runs locally, so no document leaves the machine. The chart shows recall per metric: for 'farmers' the base model gets 0.12 and the adapter 1.0. The model decides meaning; code writes every number." → Shikhar |
-| 10 | Shikhar | 1:30 | "Every number is one row with its file, page, table, row, column, printed text, agent and run. Below is the cell the system opens for 'coconut 2025-26'. Missing is kept apart from zero, and re-runs are idempotent." → Suyash |
-| 11 | Suyash | 0:50 | "Gold transcribed from page images of held-out pages: 699 facts and 45 queries. The test queries were written after the planner was frozen." |
-| 12 | Suyash | 1:10 | "Macro F1 0.999 on digital pages. The gold evaluation found two bugs, footer phone numbers and dropped digits, and we fixed them. Scans and photos are the weak spot: recall 0.10–0.52." |
-| 13 | Suyash | 1:10 | "Same held-out cases: base 0.27, 3-shot prompt 0.59, adapter 0.94. For queries the prompt gives 0.67 and adapter v2 0.93. The cost: v1 forgot routing, which is why v2 is multi-task." → Shikhar |
-| 14 | Shikhar | 0:45 | "20/20 files automatic; ₹0; fresh clone to answer in 10 minutes on any OS, checked in CI." |
-| 15 | Shikhar | 2:30 | **LIVE.** Run `python scripts/ask.py --demo` in a terminal at 20 pt font. Then `python scripts/ask.py --show-source "Which source and page did the 2025-26 coconut production figure for A&N come from?"`, which opens the page. If time allows, take one question from the examiners. → Abhineet |
-| 16 | Abhineet | 1:10 | Click to play the paddy animation. "N&M Andaman paddy −41% while arecanut +32%; r = −0.83 over 5 years. A correlation, not a cause." |
-| 17 | Abhineet | 0:50 | "Errors with counts. Two errors are in the source documents themselves. Method limits vs our limits." |
-| 18 | Abhineet | 0:40 | Answer RQ1–RQ3 with numbers; next steps. |
-| 19–21 | all | 0:20 | Contributions; thank you. |
+The deck is `reports/out/34_AN_PRESENTATION_v1.pptx`: a 16:9 deck with 22 slides, built by `reports/build_slides.py`, which opens in
+PowerPoint and Keynote. Notes for each slide are in [speaker_notes.md](speaker_notes.md). They are kept out of the
+.pptx because Keynote cannot import the notes master that python-pptx generates.
 
-Total ≈ 15:40. **Demo machine checklist:**
+| Slides | Presenter | Time | Content |
+|---|---|---|---|
+| 1–6 | Abhineet | 0:00–3:30 | title, talk plan, problem (Kruti Dev example), research questions, related work and gap, study area (click to play the island animation) |
+| 7–9 | Suyash | 3:30–6:00 | source → agent mapping, architecture (pattern, why, rejected alternatives), model vs code and the adapter |
+| 10 | Shikhar | 6:00–7:00 | knowledge base and provenance (the cell boxed on the page) |
+| 11–14 | Suyash | 7:00–10:00 | evaluation setup, F1 by agent, fine-tuning vs prompting, query planners |
+| 15–16 | Shikhar | 10:00–12:30 | automation and reproducibility; **live demo, 2:00, in a terminal** |
+| 17–22 | Abhineet | 12:30–15:00 | paddy-to-arecanut animation, prices and islands animation, errors and limits, conclusion, team, thanks |
+
+Demo machine checklist:
 * run `python -m agri.cli status` before starting;
-* warm the model once with `python scripts/ask.py --planner model "test"`;
-* terminal font ≥ 20 pt;
-* Wi-Fi off is fine, because everything is local;
-* a second laptop with the same environment as backup, still running live.
+* warm up the model once with `python scripts/ask.py --planner model "test"`;
+* terminal font at 20 pt or more;
+* Wi-Fi off is fine, because everything runs locally;
+* bring a second laptop with the same environment as a backup, still running live.
+
+The videos on slides 6, 17 and 18 open on their final frame and play the build-up when clicked.
 
 ## B. Poster pitch: 2 minutes, hand over at your own sections
 
