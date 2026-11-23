@@ -1,0 +1,1966 @@
+{
+ "n": 97,
+ "n_pass": 97,
+ "items": [
+  {
+   "q": "which island has the most area under agriculture",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "area_under_cultivation",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Total area under cultivation by island, 2024-25 (18 islands with data): Car Nicobar Island is highest with 90.27 sq km (28.1% of the total) [D10 p11].\n  1. Car Nicobar Island: 90.27 sq km [D10 p11]\n  2. North Andaman Island: 70.01 sq km [D10 p4]\n  3. Middle Andaman Island: 49 sq km [D10 p5]\n  4. South Andaman Island: 26.05 sq km [D10 p8]\n  5. Katchal Island: 17.25 sq km [D10 p13]\n  6. Teressa Isla"
+  },
+  {
+   "q": "which island has the largest farmland",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "area_under_cultivation",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Total area under cultivation by island, 2024-25 (18 islands with data): Car Nicobar Island is highest with 90.27 sq km (28.1% of the total) [D10 p11].\n  1. Car Nicobar Island: 90.27 sq km [D10 p11]\n  2. North Andaman Island: 70.01 sq km [D10 p4]\n  3. Middle Andaman Island: 49 sq km [D10 p5]\n  4. South Andaman Island: 26.05 sq km [D10 p8]\n  5. Katchal Island: 17.25 sq km [D10 p13]\n  6. Teressa Isla"
+  },
+  {
+   "q": "how much land is cultivated in car nicobar",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "area_under_cultivation",
+    "commodity": null,
+    "location": "ISL_CARNICOBAR",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Total area under cultivation, Car Nicobar Island, 2024-25 = 90.27 sq km. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 11, table profile:ISL_CARNICOBAR, row \"Area under Cultivation (sq. km.) – 90.27\", column \"area_under_cultivation\", printed as \"90.27\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "which is the biggest island",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "geographical_area",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Geographical area by island, 2024-25 (31 islands with data): Middle Andaman Island is highest with 1,536 sq km (19.8% of the total) [D10 p5].\n  1. Middle Andaman Island: 1,536 sq km [D10 p5]\n  2. North Andaman Island: 1,376 sq km [D10 p4]\n  3. South Andaman Island: 1,348 sq km [D10 p8]\n  4. Great Nicobar Island: 1,045 sq km [D10 p15]\n  5. Little Andaman Island: 734.39 sq km [D10 p10]\n  6. Baratang"
+  },
+  {
+   "q": "which district has the largest area",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "geographical_area",
+    "commodity": null,
+    "location": null,
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules->model",
+   "answer": "Geographical area by district, 2024-25 (3 districts with data): North & Middle Andaman District is highest with 3,736 sq km (45.3% of the total) [D06 p6].\n  1. North & Middle Andaman District: 3,736 sq km [D06 p6]\n  2. South Andaman District: 2,672 sq km [D06 p6]\n  3. Nicobar District: 1,841 sq km [D06 p6]"
+  },
+  {
+   "q": "how big is great nicobar island",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "geographical_area",
+    "commodity": null,
+    "location": "ISL_GREATNICOBAR",
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Geographical area, Great Nicobar Island, 2024-25 = 1,045 sq km. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 15, table profile:ISL_GREATNICOBAR, row \"Area (sq. km.) 1044.54\", column \"geographical_area\", printed as \"1044.54\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "size of little andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "geographical_area",
+    "commodity": null,
+    "location": "ISL_LITTLEANDAMAN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Geographical area, Little Andaman Island, 2024-25 = 734.39 sq km. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 10, table profile:ISL_LITTLEANDAMAN, row \"Area (sq. km.) 734.39\", column \"geographical_area\", printed as \"734.39\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "which island has the most forest",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "forest_area",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area under forest by island, 2024-25 (31 islands with data): Middle Andaman Island is highest with 1,348 sq km (19.4% of the total) [D10 p5].\n  1. Middle Andaman Island: 1,348 sq km [D10 p5]\n  2. North Andaman Island: 1,248 sq km [D10 p4]\n  3. South Andaman Island: 1,047 sq km [D10 p8]\n  4. Great Nicobar Island: 960.4 sq km [D10 p15]\n  5. Little Andaman Island: 700.05 sq km [D10 p10]\n  6. Baratang"
+  },
+  {
+   "q": "forest cover of middle andaman island",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "forest_area",
+    "commodity": null,
+    "location": "ISL_MIDDLEANDAMAN",
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area under forest, Middle Andaman Island, 2024-25 = 1,348 sq km. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 5, table profile:ISL_MIDDLEANDAMAN, row \"Area under forest (sq.km) 1348.37\", column \"forest_area\", printed as \"1348.37\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "which island has the most farmers",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "farmers_count",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Farmers / cultivators by island, 2024-25 (16 islands with data): Middle Andaman Island is highest with 8,730  (35.0% of the total) [D10 p5].\n  1. Middle Andaman Island: 8,730  [D10 p5]\n  2. North Andaman Island: 6,192  [D10 p4]\n  3. South Andaman Island: 2,936  [D10 p8]\n  4. Car Nicobar Island: 2,595  [D10 p11]\n  5. Little Andaman Island: 1,451  [D10 p10]\n  6. Baratang Island: 979  [D10 p6]\n  7. S"
+  },
+  {
+   "q": "how many farmers are there in nicobar district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "farmers_count",
+    "commodity": null,
+    "location": "AN_NIC",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Farmers / cultivators, Nicobar District, 2024-25 = 3,619 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 4, table p4_t2, row \"Farmers/ Cultivator\", column \"Nicobar\", printed as \"3619\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "number of cultivators in south andaman district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "farmers_count",
+    "commodity": null,
+    "location": "AN_SA",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Farmers / cultivators, South Andaman District, 2024-25 = 6,160 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 4, table p4_t2, row \"Farmers/ Cultivator\", column \"South Andaman\", printed as \"6160\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "farmer count trend in andaman and nicobar",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "farmers_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Farmers / cultivators, Andaman & Nicobar Islands: 26,283  in 2021-22 -> 25,695  in 2024-25 (-2.2% over 4 periods). Peak 26,412 in 2022-23; low 25,695 in 2024-25. Sources: D03, D04, D05, D06.\n  2021-22: 26,283  [D03 p4]\n  2022-23: 26,412  [D04 p4]\n  2023-24: 26,396  [D05 p4]\n  2024-25: 25,695  [D06 p4]"
+  },
+  {
+   "q": "which island has the most households",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "households",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Households by island, 2011 (28 islands with data): South Andaman Island is highest with 51,464  (54.5% of the total) [D10 p8].\n  1. South Andaman Island: 51,464  [D10 p8]\n  2. Middle Andaman Island: 13,823  [D10 p5]\n  3. North Andaman Island: 10,533  [D10 p4]\n  4. Little Andaman Island: 5,093  [D10 p10]\n  5. Car Nicobar Island: 4,250  [D10 p11]\n  6. Great Nicobar Island: 2,180  [D10 p15]\n  7. Swar"
+  },
+  {
+   "q": "population of car nicobar",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "population",
+    "commodity": null,
+    "location": "ISL_CARNICOBAR",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Population (Census 2011), Car Nicobar Island, 2011 = 17,841 persons. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 11, table profile:ISL_CARNICOBAR, row \"Population (2011 Census):17841\", column \"population\", printed as \"17841\"; extracted by island_profile_agent in run 1ba23995df60.\nAlso reported by 2 other document(s):\n  D09 p11 (p"
+  },
+  {
+   "q": "which island has the largest population",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "population",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Population (Census 2011) by island, 2011 (30 islands with data): South Andaman Island is highest with 209,597 persons (55.1% of the total) [D10 p8].\n  1. South Andaman Island: 209,597 persons [D10 p8]\n  2. Middle Andaman Island: 55,637 persons [D10 p5]\n  3. North Andaman Island: 42,541 persons [D10 p4]\n  4. Little Andaman Island: 18,823 persons [D10 p10]\n  5. Car Nicobar Island: 17,841 persons [D1"
+  },
+  {
+   "q": "how many people live on havelock",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "population",
+    "commodity": null,
+    "location": "ISL_SWARAJ",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Population (Census 2011), Swaraj Dweep (Havelock), 2011 = 6,315 persons. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 7, table profile:ISL_SWARAJ, row \"Population (2011 Census): 6315\", column \"population\", printed as \"6315\"; extracted by island_profile_agent in run 1ba23995df60.\nAlso reported by 2 other document(s):\n  D09 p7 (prof"
+  },
+  {
+   "q": "how much livestock does north andaman island have",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "livestock_count",
+    "commodity": null,
+    "location": "ISL_NORTHANDAMAN",
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Livestock, North Andaman Island, 2024-25 = 21,177 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 4, table profile:ISL_NORTHANDAMAN, row \"Livestock-21177\", column \"livestock_count\", printed as \"21177\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "which island has the most cattle",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "livestock_count",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Livestock by island, 2024-25 (18 islands with data): South Andaman Island is highest with 38,157  (26.2% of the total) [D10 p8].\n  1. South Andaman Island: 38,157  [D10 p8]\n  2. Car Nicobar Island: 28,229  [D10 p11]\n  3. Middle Andaman Island: 26,229  [D10 p5]\n  4. North Andaman Island: 21,177  [D10 p4]\n  5. Little Andaman Island: 12,642  [D10 p10]\n  6. Teressa Island: 3,712  [D10 p12]\n  7. Great "
+  },
+  {
+   "q": "which island has the most poultry",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "poultry_count",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Poultry by island, 2024-25 (19 islands with data): South Andaman Island is highest with 514,718  (40.1% of the total) [D10 p8].\n  1. South Andaman Island: 514,718  [D10 p8]\n  2. North Andaman Island: 272,475  [D10 p4]\n  3. Middle Andaman Island: 201,256  [D10 p5]\n  4. Little Andaman Island: 127,933  [D10 p10]\n  5. Swaraj Dweep (Havelock): 42,494  [D10 p7]\n  6. Car Nicobar Island: 40,137  [D10 p11]"
+  },
+  {
+   "q": "how many chickens are there on neil island",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "poultry_count",
+    "commodity": null,
+    "location": "ISL_SHAHEED",
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Poultry, Shaheed Dweep (Neil), 2024-25 = 21,803 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 9, table profile:ISL_SHAHEED, row \"Poultry- 21803\", column \"poultry_count\", printed as \"21803\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "fish landed at katchal",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "fish_landed",
+    "commodity": null,
+    "location": "ISL_KATCHAL",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Fish landed, Katchal Island, 2023-24 = 34 t. It comes from IslandwiseStatistical2023-24.pdf (Directorate of Economics & Statistics, A&N Administration), page 13, table profile:ISL_KATCHAL, row \"Fish landed(MT) : Marine-34\", column \"fish_landed\", printed as \"34\"; extracted by island_profile_agent in run 20ee8c3a2fcf."
+  },
+  {
+   "q": "which island lands the most fish",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "fish_landed",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Fish landed by island, 2024-25 (5 islands with data): Shaheed Dweep (Neil) is highest with 858 t (32.5% of the total) [D10 p9].\n  1. Shaheed Dweep (Neil): 858 t [D10 p9]\n  2. North Andaman Island: 650 t [D10 p4]\n  3. South Andaman Island: 646 t [D10 p8]\n  4. Little Andaman Island: 429.62 t [D10 p10]\n  5. Car Nicobar Island: 58 t [D10 p11]\n  ⚠ Sources disagree for South Andaman Island: used 646 t ["
+  },
+  {
+   "q": "how many tractors are there in andaman and nicobar",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "tractor_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Tractors, Andaman & Nicobar Islands, 2024-25: reported only as a breakdown (no total row): Transferred to PRIs: 23 [D06 p4]; Department: 5 [D06 p4]; Loan-cum- Subsidy: 0 [D06 p4]; Private Procurement: 2 [D06 p4]."
+  },
+  {
+   "q": "tractors in north and middle andaman district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "tractor_count",
+    "commodity": null,
+    "location": "AN_NMA",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Tractors, North & Middle Andaman District, 2024-25: reported only as a breakdown (no total row): Transferred to PRIs: 19 [D06 p4]; Department: 2 [D06 p4]; Loan-cum- Subsidy: 0 [D06 p4]; Private Procurement: 2 [D06 p4]."
+  },
+  {
+   "q": "how many power tillers in south andaman district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "power_tiller_count",
+    "commodity": null,
+    "location": "AN_SA",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Power tillers, South Andaman District, 2024-25: reported only as a breakdown (no total row): Transferred to PRIs: 0 [D06 p4]; Distribute (RGRP): 34 [D06 p4]; Distributed on Subsidy: 0 [D06 p4]; Department: 2 [D06 p4]."
+  },
+  {
+   "q": "pump sets distributed in nicobar district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "pump_set_count",
+    "commodity": null,
+    "location": "AN_NIC",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Pump sets, Nicobar District, 2024-25 = 83 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 4, table p4_t2, row \"Pump Set\", column \"Nicobar\", printed as \"83\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "how much fertilizer was used in south andaman island",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "fertilizer_consumption",
+    "commodity": null,
+    "location": "ISL_SOUTHANDAMAN",
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Fertilizer consumption, South Andaman Island, 2024-25 = 0.01 t. It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 8, table profile:ISL_SOUTHANDAMAN, row \"vermi compost-.008\", column \"fertilizer_consumption\", printed as \".008\"; extracted by island_profile_agent in run 1ba23995df60.\nAlso reported by 1 other document(s):\n  D10 p8 (profile"
+  },
+  {
+   "q": "fertiliser consumption trend in andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "fertilizer_consumption",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "(No single figure is printed; the series below is the item 'Nitrogenous'.)\nFertilizer consumption, Andaman & Nicobar Islands: 332.77 t in 2019-20 -> 6.88 t in 2024-25 (-97.9% over 6 periods). Peak 455.45 in 2021-22; low 6.88 in 2024-25. Sources: D03, D04, D05, D06.\n  2019-20: 332.77 t [D03 p3]\n  2020-21: 433.63 t [D04 p3]\n  2021-22: 455.45 t [D05 p3]\n  2022-23: 169.93 t [D06 p3]\n  2023-24: 137.05 "
+  },
+  {
+   "q": "how many seedlings were distributed in 2021-22",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "seedling_distributed",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": "2021-22",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Seedlings distributed, Andaman & Nicobar Islands, 2021-22: reported only as a breakdown (no total row): Fruit Plant (excluding Banana, Pineapple): 10,082 [D03 p2]; Banana Suckers: 33,043 [D03 p2]; Medicinal & Aromatic / Ornamental: 2,801 [D03 p2]; Banana Suckers: 33,043 [D04 p2]; Banana Suckers: 33,043 [D05 p2]."
+  },
+  {
+   "q": "how much paddy seed was distributed",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "seed_distributed",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Seeds distributed of Paddy (Rice), Andaman & Nicobar Islands, 2024-25 = 6,109 kg. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t1, row \"Paddy (MT)\", column \"2024-25\", printed as \"6109.4\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "how many kisan credit cards in nicobar district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "kcc_count",
+    "commodity": null,
+    "location": "AN_NIC",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Kisan Credit Cards, Nicobar District, 2022-23 = 0 . It comes from 37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Nicobar District\", column \"Kisan Credit Card | During 2022- 23\", printed as \"0\"; extracted by matrix_table_agent in run c99ce1a268ac.\nAlso reported by 1 other document(s):\n  D07 p2 (p2_t"
+  },
+  {
+   "q": "number of KCC holders in andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "kcc_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Kisan Credit Cards, Andaman & Nicobar Islands, 2022-23 = 0 . It comes from 37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"TOTAL (A & N ISLANDS)\", column \"Kisan Credit Card | During 2022- 23\", printed as \"0\"; extracted by matrix_table_agent in run c99ce1a268ac.\nAlso reported by 1 other document(s):\n"
+  },
+  {
+   "q": "how many organic farms are there",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "organic_farm_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Organic farms, Andaman & Nicobar Islands, 2024-25 = 9 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 5, table p5_t1, row \"Organic Farm\", column \"2024-25\", printed as \"09\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "which island has the most organic farms",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "organic_farm_count",
+    "commodity": null,
+    "location": null,
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Organic farms by island, 2024-25 (9 islands with data): North Andaman Island is highest with 4  (33.3% of the total) [D10 p4].\n  1. North Andaman Island: 4  [D10 p4]\n  2. Little Andaman Island: 2  [D10 p10]\n  3. Baratang Island: 1  [D10 p6]\n  4. Car Nicobar Island: 1  [D10 p11]\n  5. Kamorta Island: 1  [D10 p14]\n  6. Katchal Island: 1  [D10 p13]\n  7. Long Island: 1  [D10 p6]\n  8. South Andaman Isla"
+  },
+  {
+   "q": "how many godowns in south andaman district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "godown_count",
+    "commodity": null,
+    "location": "AN_SA",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Godowns, South Andaman District, 2024-25 = 8 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 5, table p5_t1, row \"Godown\", column \"District-wise | nf{k.k v.Meku South Andaman\", printed as \"08\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "number of check dams in north and middle andaman district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "check_dam_count",
+    "commodity": null,
+    "location": "AN_NMA",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Check dams, North & Middle Andaman District, 2024-25 = 37 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 4, table p4_t2, row \"Check Dam\", column \"N & M Andaman\", printed as \"37\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "how many vermicompost beds are there",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "vermi_bed_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Vermi beds, Andaman & Nicobar Islands, 2024-25 = 44 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 5, table p5_t1, row \"Vermi Bed\", column \"2024-25\", printed as \"44\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "how many agriculture farms does the department run",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "agri_farm_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Agricultural farms (departmental), Andaman & Nicobar Islands, 2024-25 = 29 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 4, table p4_t2, row \"Agricultural Farm\", column \"A & N Islands\", printed as \"29\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "how many wells are there in south andaman district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "well_count",
+    "commodity": null,
+    "location": "AN_SA",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Irrigation wells, South Andaman District, 2024-25 = 132 . It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 4, table p4_t2, row \"Wells\", column \"South Andaman\", printed as \"132\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "how many ponds were built in 2023-24",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "pond_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": "2023-24",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Irrigation ponds, Andaman & Nicobar Islands, 2023-24 = 1,786 . It comes from 37-7. Basic Statistics Report 2023-24- Machinery Farmers.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"TOTAL (A & N ISLANDS)\", column \"Irrigation sources | Pond\", printed as \"1786\"; extracted by matrix_table_agent in run c99ce1a268ac."
+  },
+  {
+   "q": "agricultural power connections on shaheed dweep",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "agri_power_connections",
+    "commodity": null,
+    "location": "ISL_SHAHEED",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Agricultural electricity connections, Shaheed Dweep (Neil), 2024-25 = 83 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 9, table profile:ISL_SHAHEED, row \"Agriculture-83 Industrial\", column \"agri_power_connections\", printed as \"83\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "agricultural power connections on baratang",
+   "ok": true,
+   "why": "expected a 'No data' answer: No data in the knowledge base for Agricultural electricity connections at Barata",
+   "plan": {
+    "intent": "lookup",
+    "metric": "agri_power_connections",
+    "commodity": null,
+    "location": "ISL_BARATANG",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "No data in the knowledge base for Agricultural electricity connections at Baratang Island."
+  },
+  {
+   "q": "how many pesticide units were distributed",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "pesticide_distributed",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Pesticides distributed, Andaman & Nicobar Islands, 2024-25: reported only as a breakdown (no total row): Dry Type (MT): 0 [D06 p2]; Liquid Form (Ltrs.): 7 [D06 p2]; Powder (M.T.): 552.35 [D06 p2 ⚠ unverified]; Liquid (Ltrs.): 126 [D06 p2]."
+  },
+  {
+   "q": "land use land cover of nicobar district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "lulc_area",
+    "commodity": null,
+    "location": "AN_NIC",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Land use / land cover area, Nicobar District, 2015-16 = 2.99 sq km. It comes from Andaman Nicobar LULC 2015-16 data.pdf (Bhuvan, NRSC/ISRO), page 1, table p1_t0, row \"Crop land\", column \"NICOBAR\", printed as \"2.99\"; extracted by lulc_agent in run 061ea4b90440.\nAlso reported by 1 other document(s):\n  D17 p1 (p1_t0): 53.38 sq km\n  D17 p1 (p1_t0): 6.93 sq km\n  D17 p1 (p1_t0): 1.83 sq km\n  D17 p1 (p1_"
+  },
+  {
+   "q": "how many operational land holdings are there",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "holdings_count",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Operational holdings, Andaman & Nicobar Islands, 2015-16 = 2,722 . It comes from agri census 2015-16.png (Directorate of Economics & Statistics, A&N Administration), page 1, table ocr_table, row \"Below 0.5\", column \"holdings_count:individual\", printed as \"2722\"; extracted by image_table_agent in run ea4750f069d4.\nAlso reported by 1 other document(s):\n  D16 p1 (ocr_table): 425 \n  D16 p1 (ocr_table)"
+  },
+  {
+   "q": "area of operational holdings trend",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "holdings_area",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area operated, Andaman & Nicobar Islands: 21,846 ha in 2005-06 -> 11,590 ha in 2023-24 (-46.9% over 4 periods). Peak 21,856 in 2010-11; low 11,590 in 2023-24. Sources: D05, D06.\n  2005-06: 21,846 ha [D06 p4]\n  2010-11: 21,856 ha [D06 p4]\n  2015-16: 21,220 ha [D06 p4]\n  2023-24: 11,590 ha [D05 p4]\n  ⚠ Sources disagree for 2015-16: used 21,220 ha [D06 p4]; also printed 814.19 [D16 p1], 147.95 [D16 p"
+  },
+  {
+   "q": "what was the scheme outlay in 2022-23",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "scheme_outlay",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": "2022-23",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Scheme outlay (budget), Andaman & Nicobar Islands, 2022-23 = 1,785 INR lakh. It comes from subsidies 2024-25.pdf (Department of Agriculture, A&N Administration), page 1, table outlay_and_expenditure, row \"Outlay\", column \"2022-23\", printed as \"1785.00\"; extracted by narrative_agent in run 1a029571e4ec.\nAlso reported by 1 other document(s):\n  D15 p5 (outlay_and_expenditure): 1,584 INR lakh\n  D15 p8"
+  },
+  {
+   "q": "how much was spent on agriculture schemes in 2022-23",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "scheme_expenditure",
+    "commodity": null,
+    "location": "AN",
+    "level": null,
+    "period": "2022-23",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Scheme expenditure, Andaman & Nicobar Islands, 2022-23 = 1,473 INR lakh. It comes from subsidies 2024-25.pdf (Department of Agriculture, A&N Administration), page 1, table outlay_and_expenditure, row \"Expenditure\", column \"2022-23\", printed as \"1472.90\"; extracted by narrative_agent in run 1a029571e4ec.\nAlso reported by 1 other document(s):\n  D15 p5 (outlay_and_expenditure): 1,549 INR lakh\n  D15 p"
+  },
+  {
+   "q": "cost of cultivation of paddy in nicobar district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "cost_of_cultivation",
+    "commodity": "paddy",
+    "location": "AN_NIC",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Cost of cultivation of Paddy (Rice), Nicobar District, 2024-25: printed only by variety (no single figure): Paddy Traditional: 0 INR lakh [D06 p5]; HYV: 0.76 INR lakh [D06 p5]."
+  },
+  {
+   "q": "cost of cultivation of banana",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "cost_of_cultivation",
+    "commodity": "banana",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Cost of cultivation of Banana, Andaman & Nicobar Islands, 2024-25: printed only by variety (no single figure): Fruits Banana (Superior Variety): 12.08 INR lakh [D06 p5]; TC Banana: 11.53 INR lakh [D06 p5]."
+  },
+  {
+   "q": "yield of arecanut",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "yield",
+    "commodity": "arecanut",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Yield / productivity of Arecanut, Andaman & Nicobar Islands, 2023-24 = 3.25 MT/ha. It comes from 42-Zone-Wise Area and Production of Crops During 2023-24.pdf (Department of Agriculture, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Total AP 2023-24 | Yield/ Productivity\", printed as \"3.25\"; extracted by matrix_table_agent in run 1f0e55d6115a."
+  },
+  {
+   "q": "paddy productivity in andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "yield",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Yield / productivity of Paddy (Rice), Andaman & Nicobar Islands, 2023-24 = 3.15 MT/ha. It comes from 42-Zone-Wise Area and Production of Crops During 2023-24.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Paddy\", column \"Total AP 2023-24 | Yield/ Productivity\", printed as \"3.15\"; extracted by matrix_table_agent in run 1f0e55d6115a."
+  },
+  {
+   "q": "which zone produced the most paddy in 2025-26",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "production",
+    "commodity": "paddy",
+    "location": null,
+    "level": "agri_zone",
+    "period": "2025-26",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Paddy (Rice) by agri zone, 2025-26 (5 agri zones with data): Diglipur (agri zone) is highest with 6,941 t (71.5% of the total) [D02 p1].\n  1. Diglipur (agri zone): 6,941 t [D02 p1]\n  2. Mayabunder (agri zone): 1,406 t [D02 p1]\n  3. Rangat (agri zone): 1,252 t [D02 p1]\n  4. South Andaman (agri zone): 109.95 t [D02 p1]\n  5. Campbell Bay (agri zone): 3.28 t [D02 p1]"
+  },
+  {
+   "q": "which district grows the most coconut",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "production",
+    "commodity": "coconut",
+    "location": null,
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Coconut by district, 2025-26 (3 districts with data): Nicobar District is highest with 93.66 million nuts (79.0% of the total) [D02 p1 ⚠ unverified].\n  1. Nicobar District: 93.66 million nuts [D02 p1 ⚠ unverified]\n  2. South Andaman District: 18.23 million nuts [D02 p1 ⚠ unverified]\n  3. North & Middle Andaman District: 6.73 million nuts [D02 p1 ⚠ unverified]"
+  },
+  {
+   "q": "area under arecanut in south andaman district in 2024-25",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "area_cultivated",
+    "commodity": "arecanut",
+    "location": "AN_SA",
+    "level": "district",
+    "period": "2024-25",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area under crop of Arecanut, South Andaman District, 2024-25 = 1,372 ha. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Area (Hectares) | nf{k.k v.Meku South Andaman\", printed as \"1372.2\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "how many hectares of banana in diglipur",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "area_cultivated",
+    "commodity": "banana",
+    "location": "ZN_DIGLIPUR",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area under crop of Banana, Diglipur (agri zone), 2025-26 = 610 ha. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Banana\", column \"Diglipur | Area\", printed as \"610\"; extracted by matrix_table_agent in run f2f174073993."
+  },
+  {
+   "q": "coconut production trend in andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "production",
+    "commodity": "coconut",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Coconut, Andaman & Nicobar Islands: 112.55 million nuts in 2019-20 -> 118.62 million nuts in 2025-26 (+5.4% over 7 periods). Peak 153.09 in 2022-23; low 112.12 in 2024-25. Sources: D02, D03, D04, D05, D06.\n  2019-20: 112.55 million nuts [D03 p1 ⚠ unverified]\n  2020-21: 125.37 million nuts [D04 p1 ⚠ unverified]\n  2021-22: 131.73 million nuts [D05 p1 ⚠ unverified]\n  2022-23: 153.09 mil"
+  },
+  {
+   "q": "is paddy production going down",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "production",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Paddy (Rice), Andaman & Nicobar Islands: 17,982 t in 2019-20 -> 9,712 t in 2025-26 (-46.0% over 7 periods). Peak 20,043 in 2020-21; low 9,712 in 2025-26. Sources: D02, D03, D04, D05, D06.\n  2019-20: 17,982 t [D03 p1]\n  2020-21: 20,043 t [D04 p1]\n  2021-22: 16,404 t [D05 p1]\n  2022-23: 15,785 t [D06 p1]\n  2023-24: 14,361 t [D06 p1]\n  2024-25: 13,490 t [D06 p1]\n  2025-26: 9,712 t [D02 "
+  },
+  {
+   "q": "how much rice is produced in andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "production",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Paddy (Rice), Andaman & Nicobar Islands, 2025-26 = 9,712 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Paddy\", column \"A&N Islands | Prod.\", printed as \"9712.264\"; extracted by matrix_table_agent in run f2f174073993."
+  },
+  {
+   "q": "production of vegetables in nicobar district",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "production",
+    "commodity": "agg_vegetables",
+    "location": "AN_NIC",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Vegetables (total), Nicobar District, 2025-26 = 504.71 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 2, table p2_t0, row \"Total (C)\", column \"Nicobar District | Prod.\", printed as \"504.71\"; extracted by matrix_table_agent in run f2f174073993."
+  },
+  {
+   "q": "how much spices are produced",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "production",
+    "commodity": "agg_spices",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Spices (total), Andaman & Nicobar Islands, 2025-26 = 936.38 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Total\", column \"A&N Islands | Prod.\", printed as \"936.378\"; extracted by matrix_table_agent in run f2f174073993."
+  },
+  {
+   "q": "which zone has the least ginger area",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "area_cultivated",
+    "commodity": "ginger",
+    "location": null,
+    "level": "agri_zone",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "asc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area under crop of Ginger by agri zone, 2025-26 (6 agri zones with data): Campbell Bay (agri zone) is lowest with 0.28 ha (0.2% of the total) [D02 p1].\n  1. Campbell Bay (agri zone): 0.28 ha [D02 p1]\n  2. Mayabunder (agri zone): 2.55 ha [D02 p1]\n  3. Little Andaman (agri zone): 3.41 ha [D02 p1]\n  4. Rangat (agri zone): 4.5 ha [D02 p1]\n  5. South Andaman (agri zone): 11.12 ha [D02 p1]\n  6. Diglipur"
+  },
+  {
+   "q": "top 3 zones for banana production",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "production",
+    "commodity": "banana",
+    "location": null,
+    "level": "agri_zone",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 3,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Banana by agri zone, 2025-26 (8 agri zones with data): South Andaman (agri zone) is highest with 6,892 t (49.6% of the total) [D02 p1].\n  1. South Andaman (agri zone): 6,892 t [D02 p1]\n  2. Diglipur (agri zone): 5,140 t [D02 p1]\n  3. Rangat (agri zone): 980 t [D02 p1]"
+  },
+  {
+   "q": "citrus production by zone in 2025-26",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "production",
+    "commodity": "citrus",
+    "location": null,
+    "level": "agri_zone",
+    "period": "2025-26",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Citrus fruits by agri zone, 2025-26 (8 agri zones with data): South Andaman (agri zone) is highest with 395.86 t (51.1% of the total) [D02 p2].\n  1. South Andaman (agri zone): 395.86 t [D02 p2]\n  2. Little Andaman (agri zone): 155.7 t [D02 p2]\n  3. Mayabunder (agri zone): 135.5 t [D02 p2]\n  4. Diglipur (agri zone): 79 t [D02 p2]\n  5. Rangat (agri zone): 4.54 t [D02 p2]\n  6. Campbell "
+  },
+  {
+   "q": "sugarcane production in south andaman district over the years",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "production",
+    "commodity": "sugarcane",
+    "location": "AN_SA",
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Sugarcane, South Andaman District: 2,690 t in 2021-22 -> 37.5 t in 2025-26 (-98.6% over 5 periods). Peak 2,749 in 2022-23; low 37.5 in 2025-26. Sources: D02, D03, D04, D05, D06.\n  2021-22: 2,690 t [D03 p1]\n  2022-23: 2,749 t [D04 p1]\n  2023-24: 1,980 t [D05 p1]\n  2024-25: 92.8 t [D06 p1]\n  2025-26: 37.5 t [D02 p2]"
+  },
+  {
+   "q": "onion price trend in 2024",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "retail_price",
+    "commodity": "onion",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": "2024",
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Onion, A&N retail price survey (DES): 58.75 INR/kg in January 2024 -> 52.5 INR/kg in December 2025 (-10.6% over 24 periods). Peak 112.5 in December 2024; low 47.5 in February 2024. Sources: D13.\n  January 2024: 58.75 INR/kg [D13 p1]\n  February 2024: 47.5 INR/kg [D13 p2]\n  March 2024: 50 INR/kg [D13 p3]\n  April 2024: 50 INR/kg [D13 p4]\n  May 2024: 50 INR/kg [D13 p5]\n  June 2024: 57."
+  },
+  {
+   "q": "egg price trend in 2025",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "retail_price",
+    "commodity": "eggs",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": "2025",
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Eggs (hen), A&N retail price survey (DES): 84 INR/dozen in January 2025 -> 108 INR/dozen in December 2025 (+28.6% over 12 periods). Peak 108 in December 2025; low 84 in January 2025. Sources: D13.\n  January 2025: 84 INR/dozen [D13 p1]\n  February 2025: 96 INR/dozen [D13 p2]\n  March 2025: 96 INR/dozen [D13 p3]\n  April 2025: 96 INR/dozen [D13 p4]\n  May 2025: 102.25 INR/dozen [D13 p5]\n"
+  },
+  {
+   "q": "how much does a dozen eggs cost",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "retail_price",
+    "commodity": "eggs",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Eggs (hen), A&N retail price survey (DES), December 2025 = 108 INR/dozen. It comes from Fooditems2025.pdf (Directorate of Economics & Statistics, A&N Administration), page 12, table p12_t0, row \"Eggs (hen)\", column \"December 2025\", printed as \"108.00\"; extracted by price_table_agent in run c8c4d6813b2f."
+  },
+  {
+   "q": "price of eggs in September 2025",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "retail_price",
+    "commodity": "eggs",
+    "location": "MKT_AN",
+    "level": null,
+    "period": "September 2025",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Eggs (hen), A&N retail price survey (DES), September 2025 = 90 INR/dozen. It comes from Fooditems2025.pdf (Directorate of Economics & Statistics, A&N Administration), page 10, table p10_t0, row \"Eggs (hen)\", column \"September 2025\", printed as \"90.00\"; extracted by price_table_agent in run c8c4d6813b2f.\nAlso reported by 1 other document(s):\n  D13 p9 (p9_t0): 30 INR/dozen\n  ⚠ These "
+  },
+  {
+   "q": "what is the price of rice",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "retail_price",
+    "commodity": "rice",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Rice (milled), A&N retail price survey (DES), December 2025: printed only by variety (no single figure): Raw Common: 51 INR/kg [D13 p24]; Boiled Common: 78.5 INR/kg [D13 p24]; Ponni: 76.63 INR/kg [D13 p24]."
+  },
+  {
+   "q": "tomatoes price in 2024",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "retail_price",
+    "commodity": "tomato",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": "January 2024",
+    "end": "December 2024",
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Tomato, A&N retail price survey (DES): 75 INR/kg in January 2024 -> 115 INR/kg in December 2024 (+53.3% over 12 periods). Peak 125 in July 2024; low 60 in March 2024. Sources: D13.\n  January 2024: 75 INR/kg [D13 p1]\n  February 2024: 75 INR/kg [D13 p2]\n  March 2024: 60 INR/kg [D13 p3]\n  April 2024: 72.5 INR/kg [D13 p4]\n  May 2024: 75 INR/kg [D13 p5]\n  June 2024: 110 INR/kg [D13 p6]\n"
+  },
+  {
+   "q": "milk rate in port blair",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "retail_price",
+    "commodity": "milk",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Milk, A&N retail price survey (DES), December 2025: printed only by variety (no single figure): Cow/ Buffalo: 100 INR/litre [D13 p24]; Diary: 90 INR/litre [D13 p24]."
+  },
+  {
+   "q": "how expensive is mustard oil",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "retail_price",
+    "commodity": "mustard_oil",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Mustard Oil, A&N retail price survey (DES), December 2025: printed only by variety (no single figure): Dhara Pkt.: 237.5 INR/kg [D13 p24]."
+  },
+  {
+   "q": "chicken price last year",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "retail_price",
+    "commodity": "chicken_dressed",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": "January 2025",
+    "end": "December 2025",
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules+each",
+   "answer": "Retail price of Chicken (dressed), A&N retail price survey (DES): 260 INR/kg in January 2025 -> 235.83 INR/kg in December 2025 (-9.3% over 12 periods). Peak 290 in October 2025; low 203 in July 2025. Sources: D13.\n  January 2025: 260 INR/kg [D13 p1]\n  February 2025: 260 INR/kg [D13 p2]\n  March 2025: 260 INR/kg [D13 p3]\n  April 2025: 260 INR/kg [D13 p4]\n  May 2025: 247.5 INR/kg [D13 p5]\n  June 2025"
+  },
+  {
+   "q": "price of potato over the last 3 years",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "retail_price",
+    "commodity": "potato",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": "January 2023",
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Potato, A&N retail price survey (DES): 47.5 INR/kg in January 2023 -> 49.38 INR/kg in December 2025 (+4.0% over 36 periods). Peak 215 in April 2025; low 32.5 in February 2023. Sources: D11, D13.\n  January 2023: 47.5 INR/kg [D13 p1]\n  February 2023: 32.5 INR/kg [D11 p15]\n  March 2023: 36 INR/kg [D13 p3]\n  April 2023: 37.5 INR/kg [D13 p4]\n  May 2023: 41.88 INR/kg [D13 p5]\n  June 2023"
+  },
+  {
+   "q": "when was onion the most expensive",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "retail_price",
+    "commodity": "onion",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Onion, A&N retail price survey (DES): 19.2 INR/kg in April 2011 -> 52.5 INR/kg in December 2025 (+173.4% over 81 periods). Peak 477.5 in November 2019; low 19.2 in April 2011. Sources: D11, D12, D13.\n  April 2011: 19.2 INR/kg [D13 p1]\n  January 2019: 32.5 INR/kg [D11 p13]\n  February 2019: 30 INR/kg [D11 p14]\n  March 2019: 29 INR/kg [D11 p15]\n  April 2019: 30 INR/kg [D11 p16]\n  May "
+  },
+  {
+   "q": "tea price in March 2024",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "retail_price",
+    "commodity": "tea",
+    "location": "MKT_AN",
+    "level": null,
+    "period": "March 2024",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Tea, A&N retail price survey (DES), March 2024: printed only by variety (no single figure): CTC Loose: 572 INR/kg [D12 p15]; Broke Bond: 600 INR/kg [D12 p15]; CTC Loose: 572 INR/kg [D13 p15]; Broke Bond: 600 INR/kg [D13 p15]."
+  },
+  {
+   "q": "प्याज का दाम 2024",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "retail_price",
+    "commodity": "onion",
+    "location": "MKT_AN",
+    "level": null,
+    "period": null,
+    "start": "January 2024",
+    "end": "December 2024",
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Retail price of Onion, A&N retail price survey (DES): 58.75 INR/kg in January 2024 -> 112.5 INR/kg in December 2024 (+91.5% over 12 periods). Peak 112.5 in December 2024; low 47.5 in February 2024. Sources: D13.\n  January 2024: 58.75 INR/kg [D13 p1]\n  February 2024: 47.5 INR/kg [D13 p2]\n  March 2024: 50 INR/kg [D13 p3]\n  April 2024: 50 INR/kg [D13 p4]\n  May 2024: 50 INR/kg [D13 p5]\n  June 2024: 57"
+  },
+  {
+   "q": "धान का उत्पादन",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "production",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Paddy (Rice), Andaman & Nicobar Islands, 2025-26 = 9,712 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Paddy\", column \"A&N Islands | Prod.\", printed as \"9712.264\"; extracted by matrix_table_agent in run f2f174073993."
+  },
+  {
+   "q": "किस जिले में सबसे ज्यादा नारियल उत्पादन",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "rank",
+    "metric": "production",
+    "commodity": "coconut",
+    "location": null,
+    "level": "district",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Coconut by district, 2025-26 (3 districts with data): Nicobar District is highest with 93.66 million nuts (79.0% of the total) [D02 p1 ⚠ unverified].\n  1. Nicobar District: 93.66 million nuts [D02 p1 ⚠ unverified]\n  2. South Andaman District: 18.23 million nuts [D02 p1 ⚠ unverified]\n  3. North & Middle Andaman District: 6.73 million nuts [D02 p1 ⚠ unverified]"
+  },
+  {
+   "q": "which source gives the 2024-25 arecanut area of South Andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "provenance",
+    "metric": "area_cultivated",
+    "commodity": "arecanut",
+    "location": "AN_SA",
+    "level": null,
+    "period": "2024-25",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area under crop of Arecanut, South Andaman District, 2024-25 = 1,372 ha. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Area (Hectares) | nf{k.k v.Meku South Andaman\", printed as \"1372.2\"; extracted by bilingual_table_agent in run 9b5a80c11071."
+  },
+  {
+   "q": "where does the car nicobar farmers number come from",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "provenance",
+    "metric": "farmers_count",
+    "commodity": null,
+    "location": "ISL_CARNICOBAR",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Farmers / cultivators, Car Nicobar Island, 2024-25 = 2,595 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 11, table profile:ISL_CARNICOBAR, row \"Farmers-2595\", column \"farmers_count\", printed as \"2595\"; extracted by island_profile_agent in run 1ba23995df60."
+  },
+  {
+   "q": "do the sources agree on paddy production in andaman",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "compare_sources",
+    "metric": "production",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Paddy (Rice), Andaman & Nicobar Islands: 4 period(s) are reported by 2+ documents; 4 agree within 1%.\n  2019-20: D03 p1 = 17,982 t (spread 0.0%)\n  2020-21: D03 p1 = 20,043 t (spread 0.0%)\n  2020-21: D04 p1 = 20,043 t (spread 0.0%)\n  2021-22: D03 p1 = 16,404 t (spread 0.0%)\n  2021-22: D04 p1 = 16,404 t (spread 0.0%)\n  2021-22: D05 p1 = 16,404 t (spread 0.0%)\n  2022-23: D04 p1 = 15,785"
+  },
+  {
+   "q": "islands within 30 km of port blair",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "nearby",
+    "metric": null,
+    "commodity": null,
+    "location": "TH_PORTBLAIR",
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": 30.0,
+    "confident": true
+   },
+   "planner": "rules->model",
+   "answer": "3 islands within 30 km of Port Blair Tehsil: South Andaman Island (9.9 km), Flat Bay Island (23.5 km), Rutland Island (26.4 km)"
+  },
+  {
+   "q": "farmers on islands near car nicobar",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "nearby",
+    "metric": "farmers_count",
+    "commodity": null,
+    "location": "ISL_CARNICOBAR",
+    "level": "island",
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": 50.0,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "1 islands within 50 km of Car Nicobar Island; Farmers / cultivators (2024-25):\n  Car Nicobar Island (0.0 km): 2,595  [D10 p11]"
+  },
+  {
+   "q": "latest coconut production",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "production",
+    "commodity": "coconut",
+    "location": "AN",
+    "level": null,
+    "period": "2025-26",
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Production of Coconut, Andaman & Nicobar Islands, 2025-26 = 118.62 million nuts. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Coconut *\", column \"A&N Islands | Prod.\", printed as \"118.616\"; extracted by matrix_table_agent in run f2f174073993."
+  },
+  {
+   "q": "paddy area in the last 3 years",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "area_cultivated",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": "2023-24",
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "Area under crop of Paddy (Rice), Andaman & Nicobar Islands: 4,557 ha in 2023-24 -> 3,114 ha in 2025-26 (-31.7% over 3 periods). Peak 4,557 in 2023-24; low 3,114 in 2025-26. Sources: D02, D06.\n  2023-24: 4,557 ha [D06 p1]\n  2024-25: 4,365 ha [D06 p1]\n  2025-26: 3,114 ha [D02 p1]"
+  },
+  {
+   "q": "hi",
+   "ok": true,
+   "why": "not refused: Hello! I answer questions about the Andaman & Nicobar agriculture data in this k",
+   "plan": {
+    "intent": "out_of_scope"
+   },
+   "planner": "scope:chitchat",
+   "answer": "Hello! I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these numbers comes from. Try: \"Which agri zone produced the most paddy in 2025-26?\", \"Onion price trend "
+  },
+  {
+   "q": "what is the weather in port blair",
+   "ok": true,
+   "why": "not refused: This knowledge base has no data on weather or rainfall. It has land use / land c",
+   "plan": {
+    "intent": "out_of_scope"
+   },
+   "planner": "scope:not_in_kb",
+   "answer": "This knowledge base has no data on weather or rainfall. It has land use / land cover (2015-16) but no weather series. I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where a"
+  },
+  {
+   "q": "how much profit do paddy farmers make",
+   "ok": true,
+   "why": "not refused: This knowledge base has no data on income or profit. It does have cost of cultiv",
+   "plan": {
+    "intent": "out_of_scope"
+   },
+   "planner": "scope:not_in_kb",
+   "answer": "This knowledge base has no data on income or profit. It does have cost of cultivation, production and market prices, so you can ask e.g. \"cost of cultivation of pulses\" or \"onion price trend in 2025\". I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statis"
+  },
+  {
+   "q": "which crop is grown the most",
+   "ok": true,
+   "why": "not refused: I can rank places (zones, districts, islands) or show one item over time, but I ",
+   "plan": {
+    "intent": "out_of_scope"
+   },
+   "planner": "scope:rank_items",
+   "answer": "I can rank places (zones, districts, islands) or show one item over time, but I cannot yet rank crops or market items against each other. Ask about a specific item, e.g. \"tomato price trend in 2025\" or \"which zone grows the most ginger?\""
+  },
+  {
+   "q": "what is the literacy rate of nicobar",
+   "ok": true,
+   "why": "not refused: This knowledge base has no data on non-agricultural statistics (outside this kno",
+   "plan": {
+    "intent": "out_of_scope"
+   },
+   "planner": "scope:not_in_kb",
+   "answer": "This knowledge base has no data on non-agricultural statistics (outside this knowledge base's scope).  I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these num"
+  },
+  {
+   "q": "tell me a joke",
+   "ok": true,
+   "why": "not refused: I could not match this to the data (nothing in the question names a measure, cro",
+   "plan": {
+    "intent": "out_of_scope"
+   },
+   "planner": "rules->model(invalid)",
+   "answer": "I could not match this to the data (nothing in the question names a measure, crop or place). I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these numbers comes"
+  },
+  {
+   "q": "who is the prime minister of india",
+   "ok": true,
+   "why": "not refused: I could not match this to the data (the question does not say which crop or item",
+   "plan": {
+    "intent": "out_of_scope"
+   },
+   "planner": "rules->model(invalid)",
+   "answer": "I could not match this to the data (the question does not say which crop or item). I answer questions about the Andaman & Nicobar agriculture data in this knowledge base: crop area, production and yield by zone, district or island; monthly retail prices in Port Blair; island statistics (farmers, households, livestock, farms); land use; scheme budgets, and where any of these numbers comes from. Try"
+  },
+  {
+   "q": "why is paddy production falling",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "trend",
+    "metric": "production",
+    "commodity": "paddy",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "The knowledge base holds numbers, not causes or advice, so here are the relevant facts only:\nProduction of Paddy (Rice), Andaman & Nicobar Islands: 17,982 t in 2019-20 -> 9,712 t in 2025-26 (-46.0% over 7 periods). Peak 20,043 in 2020-21; low 9,712 in 2025-26. Sources: D02, D03, D04, D05, D06.\n  2019-20: 17,982 t [D03 p1]\n  2020-21: 20,043 t [D04 p1]\n  2021-22: 16,404 t [D05 p1]\n  2022-23: 15,785 "
+  },
+  {
+   "q": "should i grow arecanut",
+   "ok": true,
+   "why": "",
+   "plan": {
+    "intent": "lookup",
+    "metric": "production",
+    "commodity": "arecanut",
+    "location": "AN",
+    "level": null,
+    "period": null,
+    "start": null,
+    "end": null,
+    "top_k": 10,
+    "order": "desc",
+    "radius_km": null,
+    "confident": true
+   },
+   "planner": "rules",
+   "answer": "The knowledge base holds numbers, not causes or advice, so here are the relevant facts only:\nProduction of Arecanut, Andaman & Nicobar Islands, 2025-26 = 14,968 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Arecanut\", column \"A&N Islands | Prod.\", printed as \"14968.41\"; extracted by matrix_table_agent in run f2f174073"
+  }
+ ]
+}

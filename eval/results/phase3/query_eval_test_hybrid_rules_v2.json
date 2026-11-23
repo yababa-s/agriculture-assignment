@@ -13,7 +13,7 @@
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
   "n_grounded_checked": 14,
-  "median_latency_s": 0.01
+  "median_latency_s": 0.05
  },
  "by_type": {
   "cross_source": {
@@ -24,7 +24,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 1,
-   "median_latency_s": 0.02
+   "median_latency_s": 0.05
   },
   "lookup": {
    "n": 3,
@@ -34,7 +34,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 3,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.05
   },
   "provenance": {
    "n": 3,
@@ -44,7 +44,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 3,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.05
   },
   "spatial": {
    "n": 4,
@@ -54,7 +54,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 3,
-   "median_latency_s": 0.73
+   "median_latency_s": 0.77
   },
   "temporal": {
    "n": 4,
@@ -64,7 +64,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 4,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.06
   }
  },
  "macro_answer_accuracy": 0.95,
@@ -77,9 +77,9 @@
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
   "n_grounded_checked": 1,
-  "median_latency_s": 0.01
+  "median_latency_s": 0.05
  },
- "elapsed_s": 6.9,
+ "elapsed_s": 6.1,
  "results": [
   {
    "id": "X01",
@@ -97,7 +97,7 @@
    "correct": true,
    "detail": "got ZN_DIGLIPUR=536.1 want ['ZN_DIGLIPUR']=536.1",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Ginger by agri zone, 2025-26 (6 agri zones with data): Diglipur (agri zone) is highest with 536.1 t (88.5% of the total) [D02 p1].\n  1. Diglipur (agri zone): 536.1 t [D02 p1]\n  2. South Andaman (agri zone): 31.23 t [D02 p1]\n  3. Little Andaman (agri zone): 16.55 t [D02 p1]\n  4. Rangat (agri zone): 12.1 t [D02 p1]\n  5. Mayabunder (agri zone): 9.5 t [D02 p1]\n  6. Campbell Bay (agri zon",
    "plan": {
     "intent": "rank",
@@ -131,7 +131,7 @@
    "correct": true,
    "detail": "got AN_NIC=13752.0 want ['AN_NIC']=13752.0",
    "grounded": true,
-   "latency_s": 3.85,
+   "latency_s": 3.93,
    "answer": "Area under crop of Coconut by district, 2024-25 (3 districts with data): Nicobar District is highest with 13,752 ha (76.8% of the total) [D06 p2].\n  1. Nicobar District: 13,752 ha [D06 p2]\n  2. South Andaman District: 2,825 ha [D06 p2]\n  3. North & Middle Andaman District: 1,325 ha [D06 p2]",
    "plan": {
     "intent": "rank",
@@ -165,7 +165,7 @@
    "correct": true,
    "detail": "got ISL_SOUTHANDAMAN=514718.0 want ['ISL_SOUTHANDAMAN']=514718.0",
    "grounded": true,
-   "latency_s": 0.02,
+   "latency_s": 0.06,
    "answer": "Poultry by island, 2024-25 (19 islands with data): South Andaman Island is highest with 514,718  (40.1% of the total) [D10 p8].\n  1. South Andaman Island: 514,718  [D10 p8]\n  2. North Andaman Island: 272,475  [D10 p4]\n  3. Middle Andaman Island: 201,256  [D10 p5]\n  4. Little Andaman Island: 127,933  [D10 p10]\n  5. Swaraj Dweep (Havelock): 42,494  [D10 p7]\n  6. Car Nicobar Island: 40,137  [D10 p11]",
    "plan": {
     "intent": "rank",
@@ -199,7 +199,7 @@
    "correct": false,
    "detail": "no rows",
    "grounded": null,
-   "latency_s": 1.44,
+   "latency_s": 1.48,
    "answer": "No data in the knowledge base for Yield / productivity of Maize in 2025-26.",
    "plan": {
     "intent": "rank",
@@ -233,7 +233,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (7/7)",
    "grounded": true,
-   "latency_s": 0.02,
+   "latency_s": 0.05,
    "answer": "Area under crop of Arecanut, Andaman & Nicobar Islands: 4,336 ha in 2019-20 -> 4,966 ha in 2025-26 (+14.5% over 7 periods). Peak 4,966 in 2025-26; low 4,018 in 2020-21. Sources: D02, D03, D04, D05, D06.\n  2019-20: 4,336 ha [D03 p1]\n  2020-21: 4,018 ha [D04 p1]\n  2021-22: 4,125 ha [D05 p1]\n  2022-23: 4,180 ha [D06 p1]\n  2023-24: 4,744 ha [D06 p1]\n  2024-25: 4,757 ha [D06 p1]\n  2025-26: 4,966 ha [D0",
    "plan": {
     "intent": "trend",
@@ -267,7 +267,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (24/24)",
    "grounded": true,
-   "latency_s": 0.02,
+   "latency_s": 0.06,
    "answer": "Retail price of Potato, A&N retail price survey (DES): 40 INR/kg in January 2024 -> 49.38 INR/kg in December 2025 (+23.5% over 24 periods). Peak 215 in April 2025; low 40 in January 2024. Sources: D13.\n  January 2024: 40 INR/kg [D13 p1]\n  February 2024: 47.5 INR/kg [D13 p2]\n  March 2024: 50 INR/kg [D13 p3]\n  April 2024: 61.25 INR/kg [D13 p4]\n  May 2024: 60 INR/kg [D13 p5]\n  June 2024: 60 INR/kg [D",
    "plan": {
     "intent": "trend",
@@ -301,8 +301,8 @@
    "correct": true,
    "detail": "peak December 2024 want December 2024",
    "grounded": true,
-   "latency_s": 0.01,
-   "answer": "Retail price of Onion, A&N retail price survey (DES): 50 INR/kg in January 2023 -> 52.5 INR/kg in December 2025 (+5.0% over 36 periods). Peak 112.5 in December 2024; low 38.75 in May 2023. Sources: D13.\n  January 2023: 50 INR/kg [D13 p1]\n  February 2023: 50 INR/kg [D13 p2]\n  March 2023: 42 INR/kg [D13 p3]\n  April 2023: 39.38 INR/kg [D13 p4]\n  May 2023: 38.75 INR/kg [D13 p5]\n  June 2023: 40.5 INR/k",
+   "latency_s": 0.06,
+   "answer": "Retail price of Onion, A&N retail price survey (DES): 50 INR/kg in January 2023 -> 52.5 INR/kg in December 2025 (+5.0% over 36 periods). Peak 112.5 in December 2024; low 38.75 in May 2023. Sources: D11, D13.\n  January 2023: 50 INR/kg [D13 p1]\n  February 2023: 42.5 INR/kg [D11 p15]\n  March 2023: 42 INR/kg [D13 p3]\n  April 2023: 39.38 INR/kg [D13 p4]\n  May 2023: 38.75 INR/kg [D13 p5]\n  June 2023: 40",
    "plan": {
     "intent": "trend",
     "metric": "retail_price",
@@ -335,7 +335,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (4/4)",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Banana, Andaman & Nicobar Islands: 17,864 t in 2021-22 -> 13,048 t in 2024-25 (-27.0% over 4 periods). Peak 17,864 in 2021-22; low 13,048 in 2024-25. Sources: D01, D03, D04, D06.\n  2021-22: 17,864 t [D03 p2]\n  2022-23: 17,399 t [D04 p2]\n  2023-24: 16,046 t [D01 p2]\n  2024-25: 13,048 t [D06 p2]",
    "plan": {
     "intent": "trend",
@@ -369,7 +369,7 @@
    "correct": true,
    "detail": "cited D06 p2 value 87.4",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Coconut, Nicobar District, 2024-25 = 87.4 million nuts. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Coconut (M/ Nuts)\", column \"Production (MT) | fudksckj Nicobar\", printed as \"87.4\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "provenance",
@@ -403,7 +403,7 @@
    "correct": true,
    "detail": "cited D02 p1 value 605.66",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Ginger, Andaman & Nicobar Islands, 2025-26 = 605.66 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Ginger\", column \"A&N Islands | Prod.\", printed as \"605.66\"; extracted by matrix_table_agent in run f2f174073993.",
    "plan": {
     "intent": "lookup",
@@ -427,7 +427,7 @@
    "lang": "en",
    "demo": false,
    "question": "Where did the 2024-25 Car Nicobar Island farmer count come from?",
-   "planner_used": "rules->model",
+   "planner_used": "rules",
    "valid_plan": true,
    "intent_pred": "provenance",
    "intent_gold": "provenance",
@@ -437,14 +437,14 @@
    "correct": true,
    "detail": "cited D10 p11 value 2595.0",
    "grounded": true,
-   "latency_s": 1.48,
+   "latency_s": 0.05,
    "answer": "Farmers / cultivators, Car Nicobar Island, 2024-25 = 2,595 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 11, table profile:ISL_CARNICOBAR, row \"Farmers-2595\", column \"farmers_count\", printed as \"2595\"; extracted by island_profile_agent in run 1ba23995df60.",
    "plan": {
     "intent": "provenance",
     "metric": "farmers_count",
     "commodity": null,
     "location": "ISL_CARNICOBAR",
-    "level": null,
+    "level": "island",
     "period": "2024-25",
     "start": null,
     "end": null,
@@ -471,7 +471,7 @@
    "correct": true,
    "detail": "got 1 want 1",
    "grounded": true,
-   "latency_s": 0.02,
+   "latency_s": 0.05,
    "answer": "Area under crop of Banana, Andaman & Nicobar Islands: 1 period(s) are reported by 2+ documents; 1 agree within 1%.\n  2021-22: D03 p2 = 1,761 ha (spread 0.0%)\n  2022-23: D04 p2 = 1,716 ha (spread 0.0%)\n  2023-24: D01 p2 = 1,644 ha (spread 0.0%)\n  2023-24: D05 p2 = 1,644 ha (spread 0.0%)\n  2024-25: D06 p2 = 1,578 ha (spread 0.0%)\n  2025-26: D02 p1 = 1,676 ha (spread 0.0%)",
    "plan": {
     "intent": "compare_sources",
@@ -505,7 +505,7 @@
    "correct": true,
    "detail": "got 21.3635 want 21.3635..21.3635",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Black Pepper, Andaman & Nicobar Islands, 2025-26 = 21.36 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Black pepper\", column \"A&N Islands | Prod.\", printed as \"21.3635\"; extracted by matrix_table_agent in run f2f174073993.",
    "plan": {
     "intent": "lookup",
@@ -539,7 +539,7 @@
    "correct": true,
    "detail": "got 979.0 want 979.0..979.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Farmers / cultivators, Baratang Island, 2024-25 = 979 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 6, table profile:ISL_BARATANG, row \"Farmers-979\", column \"farmers_count\", printed as \"979\"; extracted by island_profile_agent in run 1ba23995df60.",
    "plan": {
     "intent": "lookup",
@@ -573,7 +573,7 @@
    "correct": true,
    "detail": "got 13752.0 want 13752.0..13752.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under crop of Coconut, Nicobar District, 2024-25 = 13,752 ha. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Coconut (M/ Nuts)\", column \"Area (Hectares) | fudksckj Nicobar\", printed as \"13752\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "lookup",

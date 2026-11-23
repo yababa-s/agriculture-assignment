@@ -13,7 +13,7 @@
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
   "n_grounded_checked": 30,
-  "median_latency_s": 0.01
+  "median_latency_s": 0.05
  },
  "by_type": {
   "cross_source": {
@@ -24,7 +24,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 3,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.05
   },
   "lookup": {
    "n": 5,
@@ -34,7 +34,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 5,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.05
   },
   "provenance": {
    "n": 6,
@@ -44,7 +44,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 6,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.05
   },
   "spatial": {
    "n": 9,
@@ -54,7 +54,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 9,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.05
   },
   "temporal": {
    "n": 7,
@@ -64,7 +64,7 @@
    "valid_plan_rate": 1.0,
    "citation_groundedness": 1.0,
    "n_grounded_checked": 7,
-   "median_latency_s": 0.01
+   "median_latency_s": 0.05
   }
  },
  "macro_answer_accuracy": 1.0,
@@ -76,7 +76,7 @@
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
   "n_grounded_checked": 10,
-  "median_latency_s": 0.01
+  "median_latency_s": 0.05
  },
  "hindi": {
   "n": 2,
@@ -86,9 +86,9 @@
   "valid_plan_rate": 1.0,
   "citation_groundedness": 1.0,
   "n_grounded_checked": 2,
-  "median_latency_s": 0.01
+  "median_latency_s": 0.05
  },
- "elapsed_s": 0.4,
+ "elapsed_s": 1.6,
  "results": [
   {
    "id": "S1",
@@ -106,7 +106,7 @@
    "correct": true,
    "detail": "got ZN_DIGLIPUR=6941.03 want ['ZN_DIGLIPUR']=6941.03",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Paddy (Rice) by agri zone, 2025-26 (5 agri zones with data): Diglipur (agri zone) is highest with 6,941 t (71.5% of the total) [D02 p1].\n  1. Diglipur (agri zone): 6,941 t [D02 p1]\n  2. Mayabunder (agri zone): 1,406 t [D02 p1]\n  3. Rangat (agri zone): 1,252 t [D02 p1]\n  4. South Andaman (agri zone): 109.95 t [D02 p1]\n  5. Campbell Bay (agri zone): 3.28 t [D02 p1]",
    "plan": {
     "intent": "rank",
@@ -140,7 +140,7 @@
    "correct": true,
    "detail": "got AN_NMA=3212.0 want ['AN_NMA']=3212.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under crop of Arecanut by district, 2024-25 (3 districts with data): North & Middle Andaman District is highest with 3,212 ha (67.2% of the total) [D06 p2].\n  1. North & Middle Andaman District: 3,212 ha [D06 p2]\n  2. South Andaman District: 1,372 ha [D06 p2]\n  3. Nicobar District: 196.8 ha [D06 p2]",
    "plan": {
     "intent": "rank",
@@ -174,7 +174,7 @@
    "correct": true,
    "detail": "got ISL_MIDDLEANDAMAN=8730.0 want ['ISL_MIDDLEANDAMAN']=8730.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Farmers / cultivators by island, 2024-25 (16 islands with data): Middle Andaman Island is highest with 8,730  (35.0% of the total) [D10 p5].\n  1. Middle Andaman Island: 8,730  [D10 p5]\n  2. North Andaman Island: 6,192  [D10 p4]\n  3. South Andaman Island: 2,936  [D10 p8]\n  4. Car Nicobar Island: 2,595  [D10 p11]\n  5. Little Andaman Island: 1,451  [D10 p10]",
    "plan": {
     "intent": "rank",
@@ -208,7 +208,7 @@
    "correct": true,
    "detail": "got ZN_DIGLIPUR=610.0 want ['ZN_DIGLIPUR']=610.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under crop of Banana by agri zone, 2025-26 (8 agri zones with data): Diglipur (agri zone) is highest with 610 ha (36.4% of the total) [D02 p1].\n  1. Diglipur (agri zone): 610 ha [D02 p1]\n  2. South Andaman (agri zone): 399.5 ha [D02 p1]\n  3. Nancowry / Kamorta (agri zone): 340 ha [D02 p1]\n  4. Mayabunder (agri zone): 120 ha [D02 p1]\n  5. Rangat (agri zone): 106.2 ha [D02 p1]\n  6. Campbell Bay",
    "plan": {
     "intent": "rank",
@@ -242,7 +242,7 @@
    "correct": true,
    "detail": "got ISL_MIDDLEANDAMAN=1348.37 want ['ISL_MIDDLEANDAMAN']=1348.37",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under forest by island, 2024-25 (31 islands with data): Middle Andaman Island is highest with 1,348 sq km (19.4% of the total) [D10 p5].\n  1. Middle Andaman Island: 1,348 sq km [D10 p5]\n  2. North Andaman Island: 1,248 sq km [D10 p4]\n  3. South Andaman Island: 1,047 sq km [D10 p8]\n  4. Great Nicobar Island: 960.4 sq km [D10 p15]\n  5. Little Andaman Island: 700.05 sq km [D10 p10]\n  6. Baratang",
    "plan": {
     "intent": "rank",
@@ -276,7 +276,7 @@
    "correct": true,
    "detail": "got AN_NIC=87.4 want ['AN_NIC']=87.4",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Coconut by district, 2024-25 (3 districts with data): Nicobar District is highest with 87.4 million nuts (78.0% of the total) [D06 p2 ⚠ unverified].\n  1. Nicobar District: 87.4 million nuts [D06 p2 ⚠ unverified]\n  2. South Andaman District: 18.52 million nuts [D06 p2 ⚠ unverified]\n  3. North & Middle Andaman District: 6.19 million nuts [D06 p2 ⚠ unverified]",
    "plan": {
     "intent": "rank",
@@ -310,7 +310,7 @@
    "correct": true,
    "detail": "got ISL_AVES=1.0 want ['ISL_AVES', 'ISL_CURLEW', 'ISL_NARCONDAM', 'ISL_STEWART']=1.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Households by island, 2011 (28 islands with data): Aves Island is lowest with 1  (0.0% of the total) [D10 p4].\n  1. Aves Island: 1  [D10 p4]\n  2. Curlew Island: 1  [D10 p3]\n  3. Narcondam Island: 1  [D10 p3]\n  4. Stewart Island: 1  [D10 p3]\n  5. Flat Bay Island: 2  [D10 p7]\n  6. North Passage Island: 2  [D10 p6]\n  7. Interview Island: 4  [D10 p4]\n  8. Tillangchong Island: 4  [D10 p14]\n  9. East Is",
    "plan": {
     "intent": "rank",
@@ -344,7 +344,7 @@
    "correct": true,
    "detail": "got ISL_SOUTHANDAMAN=2936.0 want ['ISL_SOUTHANDAMAN']=2936.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "8 islands within 60 km of Port Blair Tehsil; Farmers / cultivators (2024-25):\n  South Andaman Island (9.9 km): 2,936  [D10 p8]\n  Baratang Island (48.3 km): 979  [D10 p6]\n  Shaheed Dweep (Neil) (36.2 km): 516  [D10 p9]\n  Swaraj Dweep (Havelock) (43.7 km): 516  [D10 p7]",
    "plan": {
     "intent": "nearby",
@@ -378,13 +378,13 @@
    "correct": true,
    "detail": "got ISL_CARNICOBAR=17841.0 want ['ISL_CARNICOBAR']=17841.0",
    "grounded": true,
-   "latency_s": 0.01,
-   "answer": "5 islands within 150 km of Car Nicobar (agri zone); Population (Census 2011) (2011):\n  Car Nicobar Island (4.4 km): 17,841 persons [D10 p11]\n  Kamorta Island (139.5 km): 3,688 persons [D10 p14]\n  Teressa Island (106.1 km): 1,934 persons [D10 p12]\n  Chowra Island (84.0 km): 1,270 persons [D10 p12]\n  Tillangchong Island (116.1 km): 38 persons [D10 p14]",
+   "latency_s": 0.05,
+   "answer": "5 islands within 150 km of Car Nicobar Island; Population (Census 2011) (2011):\n  Car Nicobar Island (0.0 km): 17,841 persons [D10 p11]\n  Kamorta Island (142.0 km): 3,688 persons [D10 p14]\n  Teressa Island (107.6 km): 1,934 persons [D10 p12]\n  Chowra Island (85.4 km): 1,270 persons [D10 p12]\n  Tillangchong Island (119.5 km): 38 persons [D10 p14]",
    "plan": {
     "intent": "nearby",
     "metric": "population",
     "commodity": null,
-    "location": "ZN_CARNICOBAR",
+    "location": "ISL_CARNICOBAR",
     "level": "island",
     "period": null,
     "start": null,
@@ -412,7 +412,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (7/7)",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Paddy (Rice), Andaman & Nicobar Islands: 17,982 t in 2019-20 -> 9,712 t in 2025-26 (-46.0% over 7 periods). Peak 20,043 in 2020-21; low 9,712 in 2025-26. Sources: D02, D03, D04, D05, D06.\n  2019-20: 17,982 t [D03 p1]\n  2020-21: 20,043 t [D04 p1]\n  2021-22: 16,404 t [D05 p1]\n  2022-23: 15,785 t [D06 p1]\n  2023-24: 14,361 t [D06 p1]\n  2024-25: 13,490 t [D06 p1]\n  2025-26: 9,712 t [D02 ",
    "plan": {
     "intent": "trend",
@@ -446,8 +446,8 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (36/36)",
    "grounded": true,
-   "latency_s": 0.01,
-   "answer": "Retail price of Onion, A&N retail price survey (DES): 50 INR/kg in January 2023 -> 52.5 INR/kg in December 2025 (+5.0% over 36 periods). Peak 112.5 in December 2024; low 38.75 in May 2023. Sources: D13.\n  January 2023: 50 INR/kg [D13 p1]\n  February 2023: 50 INR/kg [D13 p2]\n  March 2023: 42 INR/kg [D13 p3]\n  April 2023: 39.38 INR/kg [D13 p4]\n  May 2023: 38.75 INR/kg [D13 p5]\n  June 2023: 40.5 INR/k",
+   "latency_s": 0.06,
+   "answer": "Retail price of Onion, A&N retail price survey (DES): 50 INR/kg in January 2023 -> 52.5 INR/kg in December 2025 (+5.0% over 36 periods). Peak 112.5 in December 2024; low 38.75 in May 2023. Sources: D11, D13.\n  January 2023: 50 INR/kg [D13 p1]\n  February 2023: 42.5 INR/kg [D11 p15]\n  March 2023: 42 INR/kg [D13 p3]\n  April 2023: 39.38 INR/kg [D13 p4]\n  May 2023: 38.75 INR/kg [D13 p5]\n  June 2023: 40",
    "plan": {
     "intent": "trend",
     "metric": "retail_price",
@@ -480,7 +480,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (7/7)",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.06,
    "answer": "Area under crop of Paddy (Rice), Andaman & Nicobar Islands: 5,701 ha in 2019-20 -> 3,114 ha in 2025-26 (-45.4% over 7 periods). Peak 6,256 in 2020-21; low 3,114 in 2025-26. Sources: D02, D03, D04, D05, D06.\n  2019-20: 5,701 ha [D03 p1]\n  2020-21: 6,256 ha [D04 p1]\n  2021-22: 5,479 ha [D05 p1]\n  2022-23: 4,990 ha [D06 p1]\n  2023-24: 4,557 ha [D06 p1]\n  2024-25: 4,365 ha [D06 p1]\n  2025-26: 3,114 ha",
    "plan": {
     "intent": "trend",
@@ -514,8 +514,8 @@
    "correct": true,
    "detail": "peak August 2023 want August 2023",
    "grounded": true,
-   "latency_s": 0.01,
-   "answer": "Retail price of Tomato, A&N retail price survey (DES): 71.25 INR/kg in January 2023 -> 120 INR/kg in December 2025 (+68.4% over 36 periods). Peak 181.25 in August 2023; low 60 in October 2023. Sources: D13.\n  January 2023: 71.25 INR/kg [D13 p1]\n  February 2023: 71.25 INR/kg [D13 p2]\n  March 2023: 62 INR/kg [D13 p3]\n  April 2023: 65 INR/kg [D13 p4]\n  May 2023: 70 INR/kg [D13 p5]\n  June 2023: 89 INR",
+   "latency_s": 0.06,
+   "answer": "Retail price of Tomato, A&N retail price survey (DES): 71.25 INR/kg in January 2023 -> 120 INR/kg in December 2025 (+68.4% over 36 periods). Peak 181.25 in August 2023; low 60 in February 2023. Sources: D11, D13.\n  January 2023: 71.25 INR/kg [D13 p1]\n  February 2023: 60 INR/kg [D11 p15]\n  March 2023: 62 INR/kg [D13 p3]\n  April 2023: 65 INR/kg [D13 p4]\n  May 2023: 70 INR/kg [D13 p5]\n  June 2023: 89",
    "plan": {
     "intent": "trend",
     "metric": "retail_price",
@@ -548,7 +548,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (3/3)",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Farmers / cultivators, North Andaman Island: 6,152  in 2022-23 -> 6,192  in 2024-25 (+0.7% over 3 periods). Peak 6,192 in 2024-25; low 6,152 in 2022-23. Sources: D07, D08, D10.\n  2022-23: 6,152  [D08 p4]\n  2023-24: 6,152  [D07 p1]\n  2024-25: 6,192  [D10 p4]",
    "plan": {
     "intent": "trend",
@@ -582,7 +582,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (7/7)",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Coconut, Andaman & Nicobar Islands: 112.55 million nuts in 2019-20 -> 118.62 million nuts in 2025-26 (+5.4% over 7 periods). Peak 153.09 in 2022-23; low 112.12 in 2024-25. Sources: D02, D03, D04, D05, D06.\n  2019-20: 112.55 million nuts [D03 p1 ⚠ unverified]\n  2020-21: 125.37 million nuts [D04 p1 ⚠ unverified]\n  2021-22: 131.73 million nuts [D05 p1 ⚠ unverified]\n  2022-23: 153.09 mil",
    "plan": {
     "intent": "trend",
@@ -616,7 +616,7 @@
    "correct": true,
    "detail": "missing/wrong [] extra [] (6/6)",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Paddy (Rice), Andaman & Nicobar Islands: 17,982 t in 2019-20 -> 13,490 t in 2024-25 (-25.0% over 6 periods). Peak 20,043 in 2020-21; low 13,490 in 2024-25. Sources: D03, D04, D05, D06.\n  2019-20: 17,982 t [D03 p1]\n  2020-21: 20,043 t [D04 p1]\n  2021-22: 16,404 t [D05 p1]\n  2022-23: 15,785 t [D06 p1]\n  2023-24: 14,361 t [D06 p1]\n  2024-25: 13,490 t [D06 p1]",
    "plan": {
     "intent": "trend",
@@ -650,7 +650,7 @@
    "correct": true,
    "detail": "cited D02 p1 value 118.616",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Coconut, Andaman & Nicobar Islands, 2025-26 = 118.62 million nuts. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Coconut *\", column \"A&N Islands | Prod.\", printed as \"118.616\"; extracted by matrix_table_agent in run f2f174073993.",
    "plan": {
     "intent": "provenance",
@@ -684,7 +684,7 @@
    "correct": true,
    "detail": "cited D06 p2 value 8062.23",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Production (MT) | nf{k.k v.Meku South Andaman\", printed as \"8062.23\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "provenance",
@@ -718,7 +718,7 @@
    "correct": true,
    "detail": "cited D10 p5 value 8730.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Farmers / cultivators, Middle Andaman Island, 2024-25 = 8,730 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 5, table profile:ISL_MIDDLEANDAMAN, row \"Farmers-8730\", column \"farmers_count\", printed as \"8730\"; extracted by island_profile_agent in run 1ba23995df60.",
    "plan": {
     "intent": "provenance",
@@ -750,10 +750,10 @@
    "tool": "trace_value",
    "tool_ok": true,
    "correct": true,
-   "detail": "cited D13 p11 value 81.88",
+   "detail": "cited D11 p24 value 57.5",
    "grounded": true,
-   "latency_s": 0.01,
-   "answer": "Retail price of Onion, A&N retail price survey (DES), November 2023 = 81.88 INR/kg. It comes from Fooditems2025.pdf (Directorate of Economics & Statistics, A&N Administration), page 11, table p11_t0, row \"Onion\", column \"November 2023\", printed as \"81.88\"; extracted by price_table_agent in run c8c4d6813b2f.\nAlso reported by 2 other document(s):\n  D12 p11 (p11_t0): 81.88 INR/kg\n  D11 p23 (p23_t0): ",
+   "latency_s": 0.06,
+   "answer": "Retail price of Onion, A&N retail price survey (DES), November 2023 = 57.5 INR/kg. It comes from Fooditems2023.pdf (Directorate of Economics & Statistics, A&N Administration), page 24, table p24_t0, row \"Onion\", column \"November 2023\", printed as \"57.50\"; extracted by price_table_agent in run 899ba9c4523e.\nAlso reported by 3 other document(s):\n  D13 p11 (p11_t0): 81.88 INR/kg\n  D12 p11 (p11_t0): 8",
    "plan": {
     "intent": "provenance",
     "metric": "retail_price",
@@ -786,7 +786,7 @@
    "correct": true,
    "detail": "cited D01 p2 value 1644.3",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under crop of Banana, Andaman & Nicobar Islands, 2023-24 = 1,644 ha. It comes from 42-Zone-Wise Area and Production of Crops During 2023-24.pdf (Department of Agriculture, A&N Administration), page 2, table p2_t0, row \"Banana\", column \"Total AP 2023-24 | Area\", printed as \"1644.30\"; extracted by matrix_table_agent in run 1f0e55d6115a.\nAlso reported by 1 other document(s):\n  D05 p2 (p2_t0): 1,",
    "plan": {
     "intent": "provenance",
@@ -820,7 +820,7 @@
    "correct": true,
    "detail": "cited D02 p1 value 6941.03",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Paddy (Rice), Diglipur (agri zone), 2025-26 = 6,941 t. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row \"Paddy\", column \"Diglipur | Prod.\", printed as \"6941.03\"; extracted by matrix_table_agent in run f2f174073993.",
    "plan": {
     "intent": "provenance",
@@ -854,7 +854,7 @@
    "correct": true,
    "detail": "got 4 want 4",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under crop of Paddy (Rice), Andaman & Nicobar Islands: 4 period(s) are reported by 2+ documents; 4 agree within 1%.\n  2019-20: D03 p1 = 5,701 ha (spread 0.0%)\n  2020-21: D03 p1 = 6,256 ha (spread 0.0%)\n  2020-21: D04 p1 = 6,256 ha (spread 0.0%)\n  2021-22: D03 p1 = 5,479 ha (spread 0.0%)\n  2021-22: D04 p1 = 5,479 ha (spread 0.0%)\n  2021-22: D05 p1 = 5,479 ha (spread 0.0%)\n  2022-23: D04 p1 = 4",
    "plan": {
     "intent": "compare_sources",
@@ -888,7 +888,7 @@
    "correct": true,
    "detail": "got 4 want 4",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Coconut, Andaman & Nicobar Islands: 4 period(s) are reported by 2+ documents; 4 agree within 1%.\n  2019-20: D03 p1 = 112.55 million nuts (spread 0.0%)\n  2020-21: D03 p1 = 125.37 million nuts (spread 0.0%)\n  2020-21: D04 p1 = 125.37 million nuts (spread 0.0%)\n  2021-22: D03 p1 = 131.73 million nuts (spread 0.0%)\n  2021-22: D04 p1 = 131.73 million nuts (spread 0.0%)\n  2021-22: D05 p1 =",
    "plan": {
     "intent": "compare_sources",
@@ -922,7 +922,7 @@
    "correct": true,
    "detail": "got 1 want 1",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under crop of Arecanut, Andaman & Nicobar Islands: 1 period(s) are reported by 2+ documents; 1 agree within 1%.\n  2023-24: D01 p2 = 4,744 ha (spread 0.0%)\n  2023-24: D05 p1 = 4,744 ha (spread 0.0%)\n  2023-24: D06 p1 = 4,744 ha (spread 0.0%)",
    "plan": {
     "intent": "compare_sources",
@@ -956,7 +956,7 @@
    "correct": true,
    "detail": "got 8062.23 want 8062.23..8062.23",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Production (MT) | nf{k.k v.Meku South Andaman\", printed as \"8062.23\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "lookup",
@@ -990,7 +990,7 @@
    "correct": true,
    "detail": "got 8062.23 want 8062.23..8062.23",
    "grounded": true,
-   "latency_s": 0.02,
+   "latency_s": 0.05,
    "answer": "Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row \"Arecanut\", column \"Production (MT) | nf{k.k v.Meku South Andaman\", printed as \"8062.23\"; extracted by bilingual_table_agent in run 9b5a80c11071.",
    "plan": {
     "intent": "lookup",
@@ -1024,7 +1024,7 @@
    "correct": true,
    "detail": "got 2595.0 want 2595.0..2595.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Farmers / cultivators, Car Nicobar Island, 2024-25 = 2,595 . It comes from IslandwiseStatistical2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 11, table profile:ISL_CARNICOBAR, row \"Farmers-2595\", column \"farmers_count\", printed as \"2595\"; extracted by island_profile_agent in run 1ba23995df60.",
    "plan": {
     "intent": "lookup",
@@ -1058,7 +1058,7 @@
    "correct": true,
    "detail": "got 84.0 want 84.0..84.0",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Retail price of Eggs (hen), A&N retail price survey (DES), March 2024 = 84 INR/dozen. It comes from Fooditems2025.pdf (Directorate of Economics & Statistics, A&N Administration), page 3, table p3_t0, row \"Eggs (hen)\", column \"March 2024\", printed as \"84.00\"; extracted by price_table_agent in run c8c4d6813b2f.\nAlso reported by 1 other document(s):\n  D12 p3 (p3_t0): 84 INR/dozen\n  D12 p4 (p4_t0): 84",
    "plan": {
     "intent": "lookup",
@@ -1092,7 +1092,7 @@
    "correct": true,
    "detail": "got 4365.2 want 4365.2..4365.2",
    "grounded": true,
-   "latency_s": 0.01,
+   "latency_s": 0.05,
    "answer": "Area under crop of Paddy (Rice), Andaman & Nicobar Islands, 2024-25 = 4,365 ha. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 1, table p1_t0, row \"Paddy\", column \"Area (Hectares) | 2024-25\", printed as \"4365.2\"; extracted by bilingual_table_agent in run 9b5a80c11071.\nAlso reported by 1 other document(s):\n  D06 p1 (p1_t1): 4,365 ha",
    "plan": {
     "intent": "lookup",
