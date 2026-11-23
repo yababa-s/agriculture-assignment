@@ -1,0 +1,2603 @@
+{
+ "A_units": {
+  "metric_item_with_several_units": [
+   {
+    "metric_id": "area_under_cultivation",
+    "commodity_id": null,
+    "units": "ha,sq_km",
+    "n": 70
+   },
+   {
+    "metric_id": "geographical_area",
+    "commodity_id": null,
+    "units": "ha,sq_km",
+    "n": 109
+   }
+  ],
+  "series_with_unit_change": [
+   {
+    "metric_id": "area_under_cultivation",
+    "commodity_id": null,
+    "location_id": "AN",
+    "units": "ha,sq_km"
+   },
+   {
+    "metric_id": "area_under_cultivation",
+    "commodity_id": null,
+    "location_id": "AN_NIC",
+    "units": "ha,sq_km"
+   },
+   {
+    "metric_id": "area_under_cultivation",
+    "commodity_id": null,
+    "location_id": "AN_NMA",
+    "units": "ha,sq_km"
+   },
+   {
+    "metric_id": "area_under_cultivation",
+    "commodity_id": null,
+    "location_id": "AN_SA",
+    "units": "ha,sq_km"
+   }
+  ]
+ },
+ "B_jumps_10x": [
+  {
+   "series": [
+    "seedling_distributed",
+    "arecanut",
+    "AN"
+   ],
+   "from": [
+    "2022-23",
+    14360.0,
+    "count",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    279.0,
+    "count",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "paddy",
+    "AN"
+   ],
+   "from": [
+    "2019-20",
+    19.95,
+    "kg",
+    "D03",
+    2
+   ],
+   "to": [
+    "2020-21",
+    6504.0,
+    "kg",
+    "D03",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "agg_vegetables",
+    "AN"
+   ],
+   "from": [
+    "2022-23",
+    739.05,
+    "kg",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    19.63,
+    "kg",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "agg_vegetables",
+    "AN"
+   ],
+   "from": [
+    "2023-24",
+    19.63,
+    "kg",
+    "D05",
+    2
+   ],
+   "to": [
+    "2024-25",
+    1250.4,
+    "kg",
+    "D06",
+    2
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "mussaenda",
+    "AN"
+   ],
+   "from": [
+    "2019-20",
+    0.23,
+    "ha",
+    "D03",
+    3
+   ],
+   "to": [
+    "2020-21",
+    5.6,
+    "ha",
+    "D03",
+    3
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "agg_cereals",
+    "AN_NIC"
+   ],
+   "from": [
+    "2021-22",
+    10.1,
+    "ha",
+    "D03",
+    1
+   ],
+   "to": [
+    "2022-23",
+    1.0,
+    "ha",
+    "D04",
+    1
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "green_gram",
+    "AN_SA"
+   ],
+   "from": [
+    "2022-23",
+    5.9,
+    "ha",
+    "D04",
+    1
+   ],
+   "to": [
+    "2023-24",
+    0.32,
+    "ha",
+    "D05",
+    1
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "agg_pulses",
+    "AN_SA"
+   ],
+   "from": [
+    "2022-23",
+    7.1,
+    "ha",
+    "D04",
+    1
+   ],
+   "to": [
+    "2023-24",
+    0.4,
+    "ha",
+    "D05",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "sugarcane",
+    "AN_SA"
+   ],
+   "from": [
+    "2023-24",
+    1980.42,
+    "mt",
+    "D05",
+    1
+   ],
+   "to": [
+    "2024-25",
+    92.8,
+    "mt",
+    "D06",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "chilli_dry",
+    "AN_NMA"
+   ],
+   "from": [
+    "2021-22",
+    163.22,
+    "mt",
+    "D03",
+    1
+   ],
+   "to": [
+    "2022-23",
+    5.14,
+    "mt",
+    "D04",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "chilli_dry",
+    "AN_NMA"
+   ],
+   "from": [
+    "2022-23",
+    5.14,
+    "mt",
+    "D04",
+    1
+   ],
+   "to": [
+    "2023-24",
+    111.59,
+    "mt",
+    "D05",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "chilli_dry",
+    "AN_NIC"
+   ],
+   "from": [
+    "2023-24",
+    16.0,
+    "mt",
+    "D05",
+    1
+   ],
+   "to": [
+    "2024-25",
+    1.23,
+    "mt",
+    "D06",
+    1
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "nutmeg",
+    "AN_NIC"
+   ],
+   "from": [
+    "2024-25",
+    0.67,
+    "ha",
+    "D06",
+    1
+   ],
+   "to": [
+    "2025-26",
+    7.36,
+    "ha",
+    "D02",
+    1
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "citrus",
+    "AN_NIC"
+   ],
+   "from": [
+    "2022-23",
+    1.6,
+    "ha",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    70.85,
+    "ha",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "citrus",
+    "AN_NIC"
+   ],
+   "from": [
+    "2022-23",
+    3.4,
+    "mt",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    59.5,
+    "mt",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "coconut",
+    "AN_NIC"
+   ],
+   "from": [
+    "2021-22",
+    3960.0,
+    "count",
+    "D03",
+    2
+   ],
+   "to": [
+    "2022-23",
+    129.0,
+    "count",
+    "D04",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "agg_vegetables",
+    "AN_NIC"
+   ],
+   "from": [
+    "2023-24",
+    1687.0,
+    "count",
+    "D05",
+    2
+   ],
+   "to": [
+    "2024-25",
+    22.0,
+    "count",
+    "D06",
+    2
+   ]
+  },
+  {
+   "series": [
+    "vermi_bed_count",
+    null,
+    "ISL_NORTHANDAMAN"
+   ],
+   "from": [
+    "2022-23",
+    4.0,
+    "count",
+    "D08",
+    4
+   ],
+   "to": [
+    "2023-24",
+    46.0,
+    "count",
+    "D09",
+    4
+   ]
+  },
+  {
+   "series": [
+    "fertilizer_consumption",
+    null,
+    "ISL_NORTHANDAMAN"
+   ],
+   "from": [
+    "2022-23",
+    0.779,
+    "mt",
+    "D08",
+    4
+   ],
+   "to": [
+    "2023-24",
+    7.914,
+    "mt",
+    "D09",
+    4
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    null,
+    "ISL_MIDDLEANDAMAN"
+   ],
+   "from": [
+    "2022-23",
+    2115.0,
+    "count",
+    "D08",
+    5
+   ],
+   "to": [
+    "2023-24",
+    40267.0,
+    "count",
+    "D09",
+    5
+   ]
+  },
+  {
+   "series": [
+    "agri_power_connections",
+    null,
+    "ISL_MIDDLEANDAMAN"
+   ],
+   "from": [
+    "2023-24",
+    92.0,
+    "count",
+    "D09",
+    5
+   ],
+   "to": [
+    "2024-25",
+    9.0,
+    "count",
+    "D10",
+    5
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    null,
+    "ISL_BARATANG"
+   ],
+   "from": [
+    "2022-23",
+    11.0,
+    "count",
+    "D08",
+    6
+   ],
+   "to": [
+    "2023-24",
+    19600.0,
+    "count",
+    "D09",
+    6
+   ]
+  },
+  {
+   "series": [
+    "area_under_cultivation",
+    null,
+    "ISL_BARATANG"
+   ],
+   "from": [
+    "2022-23",
+    3.83,
+    "sq_km",
+    "D08",
+    6
+   ],
+   "to": [
+    "2023-24",
+    49.95,
+    "sq_km",
+    "D09",
+    6
+   ]
+  },
+  {
+   "series": [
+    "fertilizer_consumption",
+    null,
+    "ISL_SOUTHANDAMAN"
+   ],
+   "from": [
+    "2022-23",
+    351.25,
+    "mt",
+    "D08",
+    8
+   ],
+   "to": [
+    "2023-24",
+    6.9,
+    "mt",
+    "D09",
+    8
+   ]
+  },
+  {
+   "series": [
+    "fertilizer_consumption",
+    null,
+    "ISL_SOUTHANDAMAN"
+   ],
+   "from": [
+    "2023-24",
+    6.9,
+    "mt",
+    "D09",
+    8
+   ],
+   "to": [
+    "2024-25",
+    0.008,
+    "mt",
+    "D10",
+    8
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    null,
+    "ISL_SHAHEED"
+   ],
+   "from": [
+    "2022-23",
+    12131.0,
+    "count",
+    "D08",
+    9
+   ],
+   "to": [
+    "2023-24",
+    38.0,
+    "count",
+    "D09",
+    9
+   ]
+  },
+  {
+   "series": [
+    "fertilizer_consumption",
+    null,
+    "ISL_SHAHEED"
+   ],
+   "from": [
+    "2022-23",
+    40.0,
+    "mt",
+    "D08",
+    9
+   ],
+   "to": [
+    "2023-24",
+    0.15,
+    "mt",
+    "D09",
+    9
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    null,
+    "ISL_KAMORTA"
+   ],
+   "from": [
+    "2022-23",
+    127.0,
+    "count",
+    "D08",
+    14
+   ],
+   "to": [
+    "2023-24",
+    2131.0,
+    "count",
+    "D09",
+    14
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "arecanut",
+    "AN_SA"
+   ],
+   "from": [
+    "2022-23",
+    14360.0,
+    "count",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    279.0,
+    "count",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "agg_vegetables",
+    "AN_SA"
+   ],
+   "from": [
+    "2022-23",
+    20800.0,
+    "count",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    850.0,
+    "count",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "agg_fruits",
+    "AN_NMA"
+   ],
+   "from": [
+    "2022-23",
+    786.0,
+    "count",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    10635.0,
+    "count",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "agg_fruits",
+    "AN_NMA"
+   ],
+   "from": [
+    "2023-24",
+    10635.0,
+    "count",
+    "D05",
+    2
+   ],
+   "to": [
+    "2024-25",
+    395.0,
+    "count",
+    "D06",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "pineapple",
+    "AN_SA"
+   ],
+   "from": [
+    "2022-23",
+    11920.0,
+    "count",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    75.0,
+    "count",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "pineapple",
+    "AN_SA"
+   ],
+   "from": [
+    "2023-24",
+    75.0,
+    "count",
+    "D05",
+    2
+   ],
+   "to": [
+    "2024-25",
+    5318.0,
+    "count",
+    "D06",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seedling_distributed",
+    "pineapple",
+    "AN_NMA"
+   ],
+   "from": [
+    "2022-23",
+    310.0,
+    "count",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    3771.0,
+    "count",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "paddy",
+    "AN_SA"
+   ],
+   "from": [
+    "2022-23",
+    2.7,
+    "kg",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    1700.0,
+    "kg",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "paddy",
+    "AN_SA"
+   ],
+   "from": [
+    "2023-24",
+    1700.0,
+    "kg",
+    "D05",
+    2
+   ],
+   "to": [
+    "2024-25",
+    1.0,
+    "kg",
+    "D06",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "agg_vegetables",
+    "AN_SA"
+   ],
+   "from": [
+    "2022-23",
+    519.1,
+    "kg",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    3.7,
+    "kg",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "agg_vegetables",
+    "AN_SA"
+   ],
+   "from": [
+    "2023-24",
+    3.7,
+    "kg",
+    "D05",
+    2
+   ],
+   "to": [
+    "2024-25",
+    133.37,
+    "kg",
+    "D06",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "agg_vegetables",
+    "AN_NMA"
+   ],
+   "from": [
+    "2022-23",
+    208.55,
+    "kg",
+    "D04",
+    2
+   ],
+   "to": [
+    "2023-24",
+    5.775,
+    "kg",
+    "D05",
+    2
+   ]
+  },
+  {
+   "series": [
+    "seed_distributed",
+    "agg_vegetables",
+    "AN_NMA"
+   ],
+   "from": [
+    "2023-24",
+    5.775,
+    "kg",
+    "D05",
+    2
+   ],
+   "to": [
+    "2024-25",
+    1113.5,
+    "kg",
+    "D06",
+    2
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "chilli_dry",
+    "ZN_MAYABUNDER"
+   ],
+   "from": [
+    "2023-24",
+    6.05,
+    "ha",
+    "D01",
+    1
+   ],
+   "to": [
+    "2025-26",
+    0.2,
+    "ha",
+    "D02",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "chilli_dry",
+    "ZN_MAYABUNDER"
+   ],
+   "from": [
+    "2023-24",
+    19.75,
+    "mt",
+    "D01",
+    1
+   ],
+   "to": [
+    "2025-26",
+    0.3,
+    "mt",
+    "D02",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "banana",
+    "ZN_LITTLEANDAMAN"
+   ],
+   "from": [
+    "2023-24",
+    1416.0,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    121.0,
+    "mt",
+    "D02",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "papaya",
+    "ZN_LITTLEANDAMAN"
+   ],
+   "from": [
+    "2023-24",
+    340.0,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    20.8,
+    "mt",
+    "D02",
+    1
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "lemon",
+    "ZN_RANGAT"
+   ],
+   "from": [
+    "2023-24",
+    37.49,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    0.75,
+    "mt",
+    "D02",
+    2
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "mausambi",
+    "ZN_RANGAT"
+   ],
+   "from": [
+    "2023-24",
+    18.52,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    1.5,
+    "mt",
+    "D02",
+    2
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "citrus",
+    "ZN_RANGAT"
+   ],
+   "from": [
+    "2023-24",
+    151.35,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    4.54,
+    "mt",
+    "D02",
+    2
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "citrus",
+    "ZN_NANCOWRY"
+   ],
+   "from": [
+    "2023-24",
+    22.4,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    0.3,
+    "mt",
+    "D02",
+    2
+   ]
+  },
+  {
+   "series": [
+    "area_cultivated",
+    "citrus",
+    "ZN_CAMPBELLBAY"
+   ],
+   "from": [
+    "2023-24",
+    30.35,
+    "ha",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    2.5,
+    "ha",
+    "D02",
+    2
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "sugarcane",
+    "ZN_SOUTHANDAMAN"
+   ],
+   "from": [
+    "2023-24",
+    1932.12,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    25.751,
+    "mt",
+    "D02",
+    2
+   ]
+  },
+  {
+   "series": [
+    "production",
+    "colocasia",
+    "ZN_LITTLEANDAMAN"
+   ],
+   "from": [
+    "2023-24",
+    86.3,
+    "mt",
+    "D01",
+    2
+   ],
+   "to": [
+    "2025-26",
+    5.32,
+    "mt",
+    "D02",
+    2
+   ]
+  }
+ ],
+ "C_bounds": {
+  "negative": [],
+  "percent_over_100": [],
+  "part_larger_than_island": [],
+  "area_larger_than_ut": []
+ },
+ "D_sums": [
+  {
+   "key": [
+    "area_cultivated",
+    "citrus",
+    "2024-25",
+    "D06"
+   ],
+   "parent": "AN",
+   "parent_value": 364.9,
+   "children_sum": 150.7,
+   "n_children": 2,
+   "diff_pct": -58.7
+  }
+ ],
+ "E_yield": [],
+ "F_conflicts": {
+  "within_document": [
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "okra",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 107.5,
+    "pb": 15,
+    "vb": 110.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "bitter_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 140.0,
+    "pb": 15,
+    "vb": 130.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "brinjal",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 150.0,
+    "pb": 15,
+    "vb": 125.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cowpea",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 75.0,
+    "pb": 15,
+    "vb": 85.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "bottle_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 80.0,
+    "pb": 15,
+    "vb": 85.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "radish_leaves",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 120.0,
+    "pb": 15,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "tomato",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 71.25,
+    "pb": 15,
+    "vb": 60.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cucumber",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 97.5,
+    "pb": 15,
+    "vb": 105.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "drumstick",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 275.0,
+    "pb": 15,
+    "vb": 200.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cauliflower",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 142.5,
+    "pb": 15,
+    "vb": 100.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "snake_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 95.0,
+    "pb": 15,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cabbage",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 90.0,
+    "pb": 15,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "carrot",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 95.0,
+    "pb": 15,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "green_chilli",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 190.0,
+    "pb": 15,
+    "vb": 155.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "curry_leaf",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 20.0,
+    "pb": 15,
+    "vb": 25.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "coriander_leaves",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 40.0,
+    "pb": 15,
+    "vb": 37.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "beans",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 140.0,
+    "pb": 15,
+    "vb": 120.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "ginger",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 160.0,
+    "pb": 15,
+    "vb": 170.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "plantain_green",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 62.5,
+    "pb": 15,
+    "vb": 70.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "colocasia",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 80.0,
+    "pb": 15,
+    "vb": 100.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "pumpkin",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 70.0,
+    "pb": 15,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "ivy_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 117.5,
+    "pb": 15,
+    "vb": 100.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "beetroot",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 95.0,
+    "pb": 15,
+    "vb": 90.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "green_pea",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 320.0,
+    "pb": 15,
+    "vb": 225.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "potato",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 47.5,
+    "pb": 15,
+    "vb": 32.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "onion",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 50.0,
+    "pb": 15,
+    "vb": 42.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "sapota",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 160.0,
+    "pb": 15,
+    "vb": 130.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "mango",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 400.0,
+    "pb": 15,
+    "vb": 325.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "guava",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 245.0,
+    "pb": 15,
+    "vb": 180.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "grape",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 400.0,
+    "pb": 15,
+    "vb": 350.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "apple",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 290.0,
+    "pb": 15,
+    "vb": 270.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "papaya",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 110.0,
+    "pb": 15,
+    "vb": 100.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "pineapple",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 145.0,
+    "pb": 15,
+    "vb": 130.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "orange",
+    "location_id": "MKT_AN",
+    "period_label": "February 2023",
+    "document_id": "D11",
+    "pa": 14,
+    "va": 140.0,
+    "pb": 15,
+    "vb": 130.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "okra",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 160.0,
+    "pb": 24,
+    "vb": 130.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "bitter_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 157.5,
+    "pb": 24,
+    "vb": 180.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "brinjal",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 165.0,
+    "pb": 24,
+    "vb": 160.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cowpea",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 122.5,
+    "pb": 24,
+    "vb": 95.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "bottle_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 112.5,
+    "pb": 24,
+    "vb": 95.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "radish_leaves",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 160.0,
+    "pb": 24,
+    "vb": 130.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "tomato",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 82.5,
+    "pb": 24,
+    "vb": 60.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cucumber",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 85.0,
+    "pb": 24,
+    "vb": 120.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "drumstick",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 175.0,
+    "pb": 24,
+    "vb": 170.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cauliflower",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 130.0,
+    "pb": 24,
+    "vb": 150.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "snake_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 95.0,
+    "pb": 24,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "carrot",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 112.5,
+    "pb": 24,
+    "vb": 120.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "green_chilli",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 192.5,
+    "pb": 24,
+    "vb": 280.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "sweet_potato",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 100.0,
+    "pb": 24,
+    "vb": 110.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "ginger",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 277.5,
+    "pb": 24,
+    "vb": 170.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "plantain_green",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 90.0,
+    "pb": 24,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "pumpkin",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 67.5,
+    "pb": 24,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "ridge_gourd",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 115.0,
+    "pb": 24,
+    "vb": 100.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "tapioca",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 90.0,
+    "pb": 24,
+    "vb": 70.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "beetroot",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 77.5,
+    "pb": 24,
+    "vb": 100.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "green_pea",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 220.0,
+    "pb": 24,
+    "vb": 190.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "onion",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 81.88,
+    "pb": 24,
+    "vb": 57.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "garlic",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 263.75,
+    "pb": 24,
+    "vb": 240.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "banana_china",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 65.0,
+    "pb": 24,
+    "vb": 60.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "banana_champa",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 90.0,
+    "pb": 24,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "sapota",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 175.0,
+    "pb": 24,
+    "vb": 160.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "mango",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 250.0,
+    "pb": 24,
+    "vb": 325.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "guava",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 250.0,
+    "pb": 24,
+    "vb": 200.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "grape",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 550.0,
+    "pb": 24,
+    "vb": 450.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "papaya",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 120.0,
+    "pb": 24,
+    "vb": 110.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "pineapple",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 155.0,
+    "pb": 24,
+    "vb": 150.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "orange",
+    "location_id": "MKT_AN",
+    "period_label": "November 2023",
+    "document_id": "D11",
+    "pa": 23,
+    "va": 237.5,
+    "pb": 24,
+    "vb": 280.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "chicken_poultry",
+    "location_id": "MKT_AN",
+    "period_label": "December 2024",
+    "document_id": "D13",
+    "pa": 1,
+    "va": 180.0,
+    "pb": 12,
+    "vb": 200.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "eggs",
+    "location_id": "MKT_AN",
+    "period_label": "December 2024",
+    "document_id": "D13",
+    "pa": 1,
+    "va": 84.0,
+    "pb": 12,
+    "vb": 96.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "eggs",
+    "location_id": "MKT_AN",
+    "period_label": "September 2025",
+    "document_id": "D13",
+    "pa": 9,
+    "va": 30.0,
+    "pb": 10,
+    "vb": 90.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "rice",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 71.0,
+    "pb": 17,
+    "vb": 78.25
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "rice",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 64.5,
+    "pb": 17,
+    "vb": 70.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "rice",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 64.5,
+    "pb": 17,
+    "vb": 70.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "jowar",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 62.67,
+    "pb": 17,
+    "vb": 79.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "maize",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 107.67,
+    "pb": 17,
+    "vb": 161.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "ragi",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 50.33,
+    "pb": 17,
+    "vb": 61.25
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "atta",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 67.0,
+    "pb": 17,
+    "vb": 71.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "suji",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 59.0,
+    "pb": 17,
+    "vb": 60.75
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "arhar",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 226.5,
+    "pb": 17,
+    "vb": 198.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "green_gram",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 140.0,
+    "pb": 17,
+    "vb": 152.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "masur",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 117.5,
+    "pb": 17,
+    "vb": 105.75
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "black_gram",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 148.0,
+    "pb": 17,
+    "vb": 177.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "gram",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 181.25,
+    "pb": 17,
+    "vb": 143.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "gram",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 181.25,
+    "pb": 17,
+    "vb": 143.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "besan",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 101.5,
+    "pb": 17,
+    "vb": 121.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "groundnut_oil",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 210.0,
+    "pb": 17,
+    "vb": 200.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "gingelly_oil",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 500.0,
+    "pb": 17,
+    "vb": 536.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "mustard_oil",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 235.0,
+    "pb": 17,
+    "vb": 185.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "vanaspati",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 180.0,
+    "pb": 17,
+    "vb": 155.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "milk",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 80.0,
+    "pb": 17,
+    "vb": 100.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "milk",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 78.0,
+    "pb": 17,
+    "vb": 80.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "butter",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 275.0,
+    "pb": 17,
+    "vb": 320.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "salt",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 35.0,
+    "pb": 17,
+    "vb": 50.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "turmeric_powder",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 36.0,
+    "pb": 17,
+    "vb": 46.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "chilli_powder",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 85.0,
+    "pb": 17,
+    "vb": 74.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "coriander_powder",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 46.0,
+    "pb": 17,
+    "vb": 38.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "black_pepper",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 80.0,
+    "pb": 17,
+    "vb": 99.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "cumin",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 66.0,
+    "pb": 17,
+    "vb": 138.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "sugar",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 54.0,
+    "pb": 17,
+    "vb": 56.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "tea",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 240.0,
+    "pb": 17,
+    "vb": 600.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "coffee",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 175.0,
+    "pb": 17,
+    "vb": 192.5
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "coffee",
+    "location_id": "MKT_AN",
+    "period_label": "April 2025",
+    "document_id": "D13",
+    "pa": 16,
+    "va": 170.0,
+    "pb": 17,
+    "vb": 175.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "wheat",
+    "location_id": "MKT_AN",
+    "period_label": "August 2025",
+    "document_id": "D13",
+    "pa": 20,
+    "va": 41.5,
+    "pb": 21,
+    "vb": 9.0
+   },
+   {
+    "metric_id": "retail_price",
+    "commodity_id": "wheat",
+    "location_id": "MKT_AN",
+    "period_label": "October 2025",
+    "document_id": "D13",
+    "pa": 22,
+    "va": 9.0,
+    "pb": 23,
+    "vb": 15.7
+   }
+  ],
+  "across_documents_count": 319,
+  "across_documents_examples": [
+   {
+    "metric_id": "production",
+    "commodity_id": "black_gram",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 1,
+    "value_a": 159.69,
+    "doc_b": "D05",
+    "page_b": 1,
+    "value_b": 169.756,
+    "pct_diff": 6.3
+   },
+   {
+    "metric_id": "production",
+    "commodity_id": "agg_pulses",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 1,
+    "value_a": 276.46,
+    "doc_b": "D05",
+    "page_b": 1,
+    "value_b": 286.526,
+    "pct_diff": 3.64
+   },
+   {
+    "metric_id": "production",
+    "commodity_id": "agg_pulses",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 1,
+    "value_a": 276.46,
+    "doc_b": "D05",
+    "page_b": 1,
+    "value_b": 286.526,
+    "pct_diff": 3.64
+   },
+   {
+    "metric_id": "production",
+    "commodity_id": "agg_pulses",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 1,
+    "value_a": 276.46,
+    "doc_b": "D06",
+    "page_b": 1,
+    "value_b": 286.526,
+    "pct_diff": 3.64
+   },
+   {
+    "metric_id": "area_cultivated",
+    "commodity_id": "agg_fruits",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 2,
+    "value_a": 2916.57,
+    "doc_b": "D05",
+    "page_b": 1,
+    "value_b": 3540.92,
+    "pct_diff": 21.41
+   },
+   {
+    "metric_id": "area_cultivated",
+    "commodity_id": "agg_fruits",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 2,
+    "value_a": 2916.57,
+    "doc_b": "D05",
+    "page_b": 2,
+    "value_b": 3540.92,
+    "pct_diff": 21.41
+   },
+   {
+    "metric_id": "area_cultivated",
+    "commodity_id": "agg_fruits",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 2,
+    "value_a": 2916.57,
+    "doc_b": "D06",
+    "page_b": 1,
+    "value_b": 3540.92,
+    "pct_diff": 21.41
+   },
+   {
+    "metric_id": "production",
+    "commodity_id": "agg_fruits",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 2,
+    "value_a": 23493.36,
+    "doc_b": "D05",
+    "page_b": 1,
+    "value_b": 24951.25,
+    "pct_diff": 6.21
+   },
+   {
+    "metric_id": "production",
+    "commodity_id": "agg_fruits",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 2,
+    "value_a": 23493.36,
+    "doc_b": "D05",
+    "page_b": 2,
+    "value_b": 24951.25,
+    "pct_diff": 6.21
+   },
+   {
+    "metric_id": "production",
+    "commodity_id": "agg_fruits",
+    "location_id": "AN",
+    "period_label": "2023-24",
+    "dims": "{}",
+    "doc_a": "D01",
+    "page_a": 2,
+    "value_a": 23493.36,
+    "doc_b": "D06",
+    "page_b": 1,
+    "value_b": 24951.25,
+    "pct_diff": 6.21
+   },
+   {
+    "metric_id": "seedling_distributed",
+    "commodity_id": "coconut",
+    "location_id": "AN",
+    "period_label": "2021-22",
+    "dims": "{}",
+    "doc_a": "D03",
+    "page_a": 2,
+    "value_a": 4815.0,
+    "doc_b": "D04",
+    "page_b": 2,
+    "value_b": 11406.0,
+    "pct_diff": 136.88
+   },
+   {
+    "metric_id": "seedling_distributed",
+    "commodity_id": "coconut",
+    "location_id": "AN",
+    "period_label": "2021-22",
+    "dims": "{}",
+    "doc_a": "D03",
+    "page_a": 2,
+    "value_a": 4815.0,
+    "doc_b": "D05",
+    "page_b": 2,
+    "value_b": 11406.0,
+    "pct_diff": 136.88
+   },
+   {
+    "metric_id": "seedling_distributed",
+    "commodity_id": "pineapple",
+    "location_id": "AN",
+    "period_label": "2021-22",
+    "dims": "{}",
+    "doc_a": "D03",
+    "page_a": 2,
+    "value_a": 14100.0,
+    "doc_b": "D04",
+    "page_b": 2,
+    "value_b": 20797.0,
+    "pct_diff": 47.5
+   },
+   {
+    "metric_id": "seedling_distributed",
+    "commodity_id": "pineapple",
+    "location_id": "AN",
+    "period_label": "2021-22",
+    "dims": "{}",
+    "doc_a": "D03",
+    "page_a": 2,
+    "value_a": 14100.0,
+    "doc_b": "D05",
+    "page_b": 2,
+    "value_b": 20797.0,
+    "pct_diff": 47.5
+   },
+   {
+    "metric_id": "seedling_distributed",
+    "commodity_id": null,
+    "location_id": "AN",
+    "period_label": "2021-22",
+    "dims": "{\"group\": \"Seedlings (Nos.)\", \"item\": \"Banana Suckers\"}",
+    "doc_a": "D03",
+    "page_a": 2,
+    "value_a": 27965.0,
+    "doc_b": "D04",
+    "page_b": 2,
+    "value_b": 33043.0,
+    "pct_diff": 18.16
+   }
+  ]
+ },
+ "G_periods": {
+  "census_metrics_not_2011": []
+ },
+ "H_label_residue": {
+  "count": 1148,
+  "examples": [
+   {
+    "document_id": "D03",
+    "row_label": "dUn ewy Qly Root Crops",
+    "col_label": "Area (Hectares) | 2019-20",
+    "dims": "{\"item\": \"dUn ewy Qly Root Crops\"}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "dUn ewy Qly Root Crops",
+    "col_label": "Area (Hectares) | 2020-21",
+    "dims": "{\"item\": \"dUn ewy Qly Root Crops\"}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "dUn ewy Qly Root Crops",
+    "col_label": "Area (Hectares) | 2021-22",
+    "dims": "{\"item\": \"dUn ewy Qly Root Crops\"}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "dUn ewy Qly Root Crops",
+    "col_label": "Production (MT) | 2019-20",
+    "dims": "{\"item\": \"dUn ewy Qly Root Crops\"}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "dUn ewy Qly Root Crops",
+    "col_label": "Production (MT) | 2020-21",
+    "dims": "{\"item\": \"dUn ewy Qly Root Crops\"}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "dUn ewy Qly Root Crops",
+    "col_label": "Production (MT) | 2021-22",
+    "dims": "{\"item\": \"dUn ewy Qly Root Crops\"}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "Paddy",
+    "col_label": "Area (Hectares) | nf{k.k v.Meku South Andaman",
+    "dims": "{}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "Paddy",
+    "col_label": "Area (Hectares) | m- vkSj e- v.Meku N & M Andaman",
+    "dims": "{}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "Paddy",
+    "col_label": "Area (Hectares) | v-a rFkk fu- }hilewg A & N Islands",
+    "dims": "{}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "Paddy",
+    "col_label": "Production (MT) | nf{k.k v.Meku South Andaman",
+    "dims": "{}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "Paddy",
+    "col_label": "Production (MT) | m- vkSj e- v.Meku N & M Andaman",
+    "dims": "{}"
+   },
+   {
+    "document_id": "D03",
+    "row_label": "Paddy",
+    "col_label": "Production (MT) | va- rFkk fu- }hilewg A & N Islands",
+    "dims": "{}"
+   }
+  ]
+ },
+ "I_label_to_items": [
+  {
+   "lbl": "total",
+   "items": "agg_pulses,agg_oilseeds,agg_spices,agg_fruits,citrus,agg_root_crops,agg_cereals,agg_plantation,agg_flowers",
+   "k": 9
+  }
+ ],
+ "J_andaman_combined": [
+  {
+   "metric_id": "lulc_area",
+   "n": 15
+  }
+ ]
+}
