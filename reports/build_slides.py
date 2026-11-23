@@ -120,7 +120,7 @@ def build(out: Path) -> Path:
     s.text(0.6, 5.85, 12.1, 0.9, ["Six hand-overs in slide order, 15:00 in total. The live demonstration (slide 16) runs on the presenting "
                                    "laptop, never as a recording."], size=15, color=MUTED)
     s.footer(n, n1)
-    s.notes("Hand-overs: Abhineet (1–6) → Suyash (7–9) → Shikhar (10) → Suyash (11–14) → Shikhar (15–16) → Abhineet (17–22).")
+    s.notes("Hand-overs: Shikhar (1–6) → Suyash (7–9) → Abhineet (10) → Suyash (11–14) → Abhineet (15–16) → Shikhar (17–22).")
 
     # ================================================================ 3 problem
     s = slide()
@@ -279,7 +279,7 @@ def build(out: Path) -> Path:
     s.bullets(0.6, 5.8, 12.1, 1.0, ["7B model: no room to fine-tune in 24 GB · API models: documents would leave the machine · "
                                     "free text-to-SQL: numbers could not be audited"], size=14, dot=MUTED)
     s.footer(n, n0)
-    s.notes("Licence: the Qwen Research License allows research use; only adapter weights are released. (60 s) → hand over to Shikhar.")
+    s.notes("Licence: the Qwen Research License allows research use; only adapter weights are released. (60 s) → hand over to Abhineet.")
 
     # ================================================================ 10 knowledge base
     s = slide()
@@ -389,7 +389,7 @@ def build(out: Path) -> Path:
     s.text(8.3, 5.6, 4.43, 1.2, ["Rules were built on the dev set, so their 1.00 there is optimistic; the test bars are the honest numbers."],
            size=13, color=MUTED, italic=True)
     s.footer(n, n0)
-    s.notes("Citation groundedness is 1.0 for every planner: numbers always come from SQL; errors are planning errors. (60 s) → Shikhar.")
+    s.notes("Citation groundedness is 1.0 for every planner: numbers always come from SQL; errors are planning errors. (60 s) → Abhineet.")
 
     # ================================================================ 15 automation & reproducibility
     s = slide()
@@ -430,7 +430,7 @@ def build(out: Path) -> Path:
     s.pill(7.4, 6.47, "● LIVE, never a recording", fill=CORAL, size=12, h=0.36)
     s.footer(n, n2)
     s.notes("Run in the terminal at 20 pt: python scripts/ask.py --demo. Then the provenance question with --show-source to open "
-            "D02 p1 with the cell boxed. Offer one question from the examiners. (2:30) → hand over to Abhineet.")
+            "D02 p1 with the cell boxed. Offer one question from the examiners. (2:30) → hand over to Shikhar.")
 
     # ================================================================ 17 insight 1 (geo animation)
     s = slide()
@@ -548,8 +548,8 @@ def write_notes(prs) -> None:
         titles.append(t[0] if t else "")
     import re as _re
     by_slide = {k: _re.sub(r"\s*\((?:\d+:\d+|\d+ s)\)", "", v) for k, v in deck_kit.NOTES}
-    lines += ["Timing (15:00): slides 1–6 Abhineet 3:30 · 7–9 Suyash 2:30 · 10 Shikhar 1:00 · 11–14 Suyash 3:00 · "
-              "15–16 Shikhar 2:30 (demo 2:00) · 17–22 Abhineet 2:30.", ""]
+    lines += ["Timing (15:00): slides 1–6 Shikhar 3:30 · 7–9 Suyash 2:30 · 10 Abhineet 1:00 · 11–14 Suyash 3:00 · "
+              "15–16 Abhineet 2:30 (demo 2:00) · 17–22 Shikhar 2:30.", ""]
     for i, t in enumerate(titles, 1):
         lines += [f"## Slide {i}: {t.splitlines()[0][:90]}", "", by_slide.get(i, "(no note)"), ""]
     (ROOT / "docs" / "speaker_notes.md").write_text("\n".join(lines))

@@ -164,8 +164,8 @@ logs, and licence checks. In short: `python -m agri.cli add-source …` → `run
 | Name | ID | Role |
 |---|---|---|
 | Suyash Tripathi | 2025A7PS0663P | Model Lead + Evaluation Lead |
-| Abhineet Sharan | 2025A7PS0643P | Source Lead |
-| Shikhar Singhania | 2024A7PS0561P | Data Engineering Lead |
+| Shikhar Singhania | 2024A7PS0561P | Source Lead |
+| Abhineet Sharan | 2025A7PS0643P | Data Engineering Lead |
 
 Who built what: [CONTRIBUTIONS.md](CONTRIBUTIONS.md). Progress log: [docs/progress_log.md](docs/progress_log.md).
 
