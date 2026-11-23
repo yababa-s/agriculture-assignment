@@ -93,10 +93,10 @@ def arch():
         ax.add_patch(FancyArrowPatch((x, 2.7), (x + 0.32, 2.7), arrowstyle="-|>", mutation_scale=30, color="#444444", lw=2.5))
     ax.add_patch(FancyArrowPatch((7.1, 1.35), (5.1, 1.35), arrowstyle="-|>", mutation_scale=25, color="#D55E00", lw=2.5,
                                  connectionstyle="arc3,rad=0.35"))
-    ax.text(6.1, 0.35, "retry with validator feedback", ha="center", fontsize=FS - 4, color="#D55E00")
-    ax.add_patch(FancyBboxPatch((2.2, 4.25), 7.8, 0.65, boxstyle="round,pad=0.03", fc="#F9D9D9", ec="#B03A2E"))
-    ax.text(6.0, 4.57, "Qwen2.5-3B (local) + LoRA: routing · headers · facts · queries", ha="center", va="center",
-            fontsize=FS - 4, color="#B03A2E")
+    ax.text(6.1, 0.75, "retry with validator feedback", ha="center", fontsize=FS - 4, color="#D55E00")
+    ax.add_patch(FancyBboxPatch((0.1, 4.25), 12.0, 0.65, boxstyle="round,pad=0.03", fc="#F9D9D9", ec="#B03A2E"))
+    ax.text(6.1, 4.57, "Local LLM (Qwen2.5-3B + LoRA): routing · headers · facts · query plans", ha="center",
+            va="center", fontsize=FS - 4, color="#B03A2E")
     return save(fig, "p_arch")
 
 
@@ -294,8 +294,9 @@ def build(out: Path, template: Path) -> Path:
         r = Inches(6.2) / pic.height
         pic.height, pic.width = Inches(6.2), int(pic.width * r)
     # 9
-    set_lines(by_name(s, "Text 80"), ["**Method limit:** OCR misses digits on scans/photos (recall 0.10–0.52).",
-                                      "**Our limit:** new 'at a glance' layouts mis-mapped. **Next:** Indic layout OCR."], size=24)
+    set_lines(by_name(s, "Text 80"), ["**Method limit:** OCR misses digits on scans and photos (recall 0.10–0.52).",
+                                      "**Our limit:** new 'at a glance' layouts are mis-mapped (0–5 of 15 right).",
+                                      "**Next:** layout-aware Indic OCR; an agent for compendia."], size=24)
     by_name(s, "Text 80").height = Inches(2.0)
     # 10
     mm = TEAM["members"]

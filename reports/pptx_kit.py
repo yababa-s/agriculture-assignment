@@ -51,8 +51,7 @@ def set_lines(shape, lines: list[str], size: float | None = None, color: str | N
             r = etree.SubElement(p, qn("a:r"))
             rpr = copy.deepcopy(r_tmpl[k]) if r_tmpl[k] is not None else etree.Element(qn("a:rPr"))
             rpr.set("lang", "en-IN")
-            if part.startswith("**") or (bold_first and i == 0):
-                rpr.set("b", "1")
+            rpr.set("b", "1" if (part.startswith("**") or (bold_first and i == 0)) else "0")
             if size:
                 rpr.set("sz", str(int(size * 100)))
             if color:
