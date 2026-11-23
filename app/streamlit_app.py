@@ -95,9 +95,9 @@ with tab_ask:
             df = pd.DataFrame(ans.rows)
             cols = [c for c in ("location", "period_label", "value", "unit_id", "document_id", "page", "table_ref",
                                 "row_label", "col_label", "value_raw", "distance_km", "n_sources") if c in df]
-            st.dataframe(df[cols], use_container_width=True, hide_index=True)
+            st.dataframe(df[cols], width="stretch", hide_index=True)
             if ans.tool == "time_series" and len(df) > 1:
-                st.plotly_chart(px.line(df, x="period_label", y="value", markers=True, title=q), use_container_width=True)
+                st.plotly_chart(px.line(df, x="period_label", y="value", markers=True, title=q), width="stretch")
         with st.expander("Plan, tool arguments and SQL"):
             st.json({"plan": ans.plan, "args": ans.args})
             st.code(ans.sql, language="sql")
@@ -134,8 +134,8 @@ with tab_map:
                                 range_color=(0, df["value"].max()))
             frame_an(fig)
             fig.update_layout(height=650, margin={"l": 0, "r": 0, "t": 30, "b": 0})
-            st.plotly_chart(fig, use_container_width=True)
-            st.dataframe(df.pivot(index="name", columns="period_label", values="value"), use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
+            st.dataframe(df.pivot(index="name", columns="period_label", values="value"), width="stretch")
     else:
         mets = {"farmers_count": "Farmers", "organic_farm_count": "Organic farms", "poultry_count": "Poultry",
                 "area_under_cultivation": "Area under cultivation (sq km)", "population": "Population (2011)"}
@@ -152,7 +152,7 @@ with tab_map:
                                     colorscale=[[0, "#cfe3f1"], [0.5, "#f6e3c0"], [1, "#cdebdc"]], hoverinfo="skip"))
         frame_an(fig)
         fig.update_layout(height=700, margin={"l": 0, "r": 0, "t": 30, "b": 0})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 # ------------------------------------------------------------------ Explore
 with tab_explore:
@@ -161,7 +161,7 @@ with tab_explore:
     d = st.selectbox("Document", docs["document_id"], format_func=lambda x: f"{x} · {docs.set_index('document_id').loc[x, 'file_name']}")
     df = sql("""SELECT obs_id, metric_id, commodity_id, location_id, period_label, value, unit_id, value_raw, page, table_ref,
                 row_label, col_label, agent_id, validation FROM observation WHERE document_id=? LIMIT 5000""", (d,))
-    st.dataframe(df, use_container_width=True, hide_index=True)
+    st.dataframe(df, width="stretch", hide_index=True)
     st.caption(f"{len(df):,} rows (first 5,000). Conflicts between sources: see the v_conflict view.")
 
 # ------------------------------------------------------------------ Evaluation
@@ -173,7 +173,7 @@ with tab_eval:
         st.subheader("Field-level extraction (held-out pages, hand-transcribed gold)")
         t = pd.DataFrame(e["per_agent"])[["agent", "document_id", "n_gold", "n_extracted", "precision", "recall", "f1",
                                           "provenance_accuracy"]]
-        st.dataframe(t, use_container_width=True, hide_index=True)
+        st.dataframe(t, width="stretch", hide_index=True)
         st.write(f"Macro-average F1 **{e['macro']['f1']}** over {e['n_gold_total']} gold facts.")
     rows = []
     for p in sorted(res.glob("query_eval_*.json")):
@@ -183,4 +183,4 @@ with tab_eval:
                      "valid plans": e["overall"]["valid_plan_rate"], "median latency (s)": e["overall"]["median_latency_s"]})
     if rows:
         st.subheader("Query agent")
-        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)

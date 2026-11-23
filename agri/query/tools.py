@@ -47,7 +47,8 @@ def connect_ro(path: Path | str = config.DB_PATH) -> sqlite3.Connection:
     p = Path(path)
     if not p.exists():
         raise FileNotFoundError(f"database not found: {p}. Run: python scripts/fetch_artifacts.py --only database")
-    conn = sqlite3.connect(f"file:{p}?mode=ro", uri=True)
+    # read-only, so one connection may safely serve several threads (the web app answers each question on a new thread)
+    conn = sqlite3.connect(f"file:{p}?mode=ro", uri=True, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     return conn
 
