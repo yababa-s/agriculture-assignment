@@ -1,0 +1,167 @@
+{
+ "description": "Robustness DEV set (14): the ad-hoc questions that exposed the out-of-scope, everyday-wording, relative-time, multi-item and breakdown failures; used while building the fixes.",
+ "queries": [
+  {
+   "id": "D01",
+   "question": "hi my name is Suyash",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D02",
+   "question": "is agriculture a profitable venture in andaman",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D03",
+   "question": "has rice farming gone down in andaman?",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='production' AND o.commodity_id='paddy' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D04",
+   "question": "what's the costliest vegetable in port blair",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D05",
+   "question": "compare paddy and arecanut area in north and middle andaman",
+   "type": "compare",
+   "intent": "lookup",
+   "check": "items",
+   "gold_sql": "SELECT 1",
+   "expect": {
+    "items": [
+     "paddy",
+     "arecanut"
+    ]
+   },
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D06",
+   "question": "why is paddy production falling",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='production' AND o.commodity_id='paddy' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D07",
+   "question": "tell me about onion prices last year",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='onion' AND o.location_id='MKT_AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start>='2025-01-01' AND o.period_start<='2025-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D08",
+   "question": "how many tractors are there in nicobar district",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "about",
+   "gold_sql": "SELECT 1",
+   "expect": {
+    "metric": "tractor_count",
+    "location": "AN_NIC"
+   },
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D09",
+   "question": "where is the most paddy grown?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='production' AND o.commodity_id='paddy' AND l.level='district' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY 2 DESC",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D10",
+   "question": "how much coconut does nicobar produce",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='coconut' AND o.location_id='AN_NIC' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D11",
+   "question": "which island has the most farmers",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND l.level='island' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY 2 DESC",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D12",
+   "question": "banana production trend",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='production' AND o.commodity_id='banana' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D13",
+   "question": "what's the weather in port blair",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "D14",
+   "question": "where did you get the arecanut numbers for south andaman",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='production' AND o.commodity_id='arecanut' AND o.location_id='AN_SA' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  }
+ ]
+}

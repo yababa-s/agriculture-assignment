@@ -48,6 +48,17 @@ Dev set: 30 questions (9 spatial, 7 temporal, 6 provenance, 3 cross-source, 5 lo
 
 The 10 live demonstration queries are marked `demo` in `data/gold/queries.json`; expected answers are in [demo_queries.md](demo_queries.md). This evaluation covers the Foundry *Intent Resolution* evaluator that Phase 2 deferred.
 
+### 3b. Robustness (`--set robust_dev` / `--set robust_test`)
+
+The first query agent had no way to decline a question: every input became a query, so "hi my name is …" returned a farmer count. The scope layer (`agri/query/scope.py` plus plan grounding) refuses chit-chat and concepts the knowledge base does not hold, explains unsupported ranking of crops, answers "why / should I" questions with facts only, and maps everyday wording and relative time.
+
+| Set | Rules | Deployed hybrid |
+|---|---|---|
+| robustness dev (n = 14, used to build the fixes) | 1.00 | 1.00 |
+| **robustness test (n = 15, written afterwards, run once)** | **0.73** | **0.87** |
+
+The two hybrid misses on the test set (number words such as "two years"; comparing two items' prices for a year) were fixed afterwards and are not re-measured on fresh data. Dev and the original test sets did not regress (hybrid: 1.00 and 0.93).
+
 ## 4. Fresh files never seen before (`eval/results/phase3/surprise_p3.json`)
 
 Three DES files fetched on 23 Nov 2026 and run blind. 15 random records per file were checked by hand.

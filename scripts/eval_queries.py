@@ -24,7 +24,9 @@ from agri import config  # noqa: E402
 from agri.query.agent import QueryAgent  # noqa: E402
 
 TOOL_OF = {"rank": "rank_locations", "nearby": "nearby", "trend": "time_series", "provenance": "trace_value",
-           "compare_sources": "compare_sources", "lookup": "trace_value"}
+           "compare_sources": "compare_sources", "lookup": "trace_value", "out_of_scope": "none"}
+SETS = {"dev": "queries.json", "test": "queries_test.json", "robust_dev": "queries_robust_dev.json",
+        "robust_test": "queries_robust_test.json"}
 OUT = config.RESULTS_DIR / "phase3"
 
 
@@ -35,6 +37,19 @@ def close(a: float | None, lo: float, hi: float | None = None, tol: float = 0.00
 
 def check(item: dict, ans, gold: list[tuple]) -> tuple[bool, str]:
     rows, ck = ans.rows, item["check"]
+    exp = item.get("expect", {})
+    if ck == "refuse":
+        return ans.query_type == "out_of_scope", f"got {ans.query_type}: {ans.text[:60]}"
+    if ans.query_type == "out_of_scope":
+        return False, "refused an answerable question"
+    if ck == "items":
+        got = {r.get("commodity_id") for r in rows}
+        return set(exp["items"]) <= got, f"items {sorted(x for x in got if x)} want {exp['items']}"
+    if ck == "about":
+        r0 = rows[0] if rows else {}
+        ok = bool(rows) and all(r0.get({"commodity": "commodity_id", "location": "location_id", "metric": "metric_id"}[k]) == v
+                                for k, v in exp.items())
+        return ok, f"first row {r0.get('metric_id')}/{r0.get('commodity_id')}/{r0.get('location_id')} want {exp}"
     if not gold:
         return False, "empty gold"
     if not rows and ck != "agree":
@@ -83,7 +98,7 @@ def main() -> None:
     ap.add_argument("--adapter", default=None)
     ap.add_argument("--zero-shot", action="store_true", help="model planner without the in-prompt examples")
     ap.add_argument("--only-demo", action="store_true")
-    ap.add_argument("--set", choices=["dev", "test"], default="dev",
+    ap.add_argument("--set", choices=list(SETS), default="dev",
                     help="dev = queries.json (30, used while building the rule planner); test = queries_test.json (15, never used)")
     ap.add_argument("--db", default=str(config.DB_PATH))
     a = ap.parse_args()
@@ -94,21 +109,22 @@ def main() -> None:
         llm = LLM(adapter_path=a.adapter)
     agent = QueryAgent(a.db, llm=llm, planner=a.planner, few_shot=not a.zero_shot)
     gold_conn = agent.conn
-    gold_file = "queries.json" if a.set == "dev" else "queries_test.json"
+    gold_file = SETS[a.set]
     items = json.loads((config.ROOT / "data" / "gold" / gold_file).read_text())["queries"]
     if a.only_demo:
         items = [x for x in items if x["demo"]]
     results = []
     t0 = time.time()
     for it in items:
-        gold = [tuple(r) for r in gold_conn.execute(it["gold_sql"]).fetchall()]
+        gold = [tuple(r) for r in gold_conn.execute(it["gold_sql"]).fetchall()] if it["check"] not in ("refuse", "items", "about") else [(1,)]
         ans = agent.ask(it["question"])
         ok, why = check(it, ans, gold)
         intent = ans.plan.get("intent") if ans.plan else None
         results.append({
             "id": it["id"], "type": it["type"], "lang": it["lang"], "demo": it["demo"], "question": it["question"],
             "planner_used": ans.planner, "valid_plan": bool(ans.plan), "intent_pred": intent, "intent_gold": it["intent"],
-            "intent_ok": intent == it["intent"], "tool": ans.tool, "tool_ok": ans.tool == TOOL_OF[it["intent"]],
+            "intent_ok": intent == it["intent"] or (it["check"] == "items" and ans.tool == "per_item"),
+            "tool": ans.tool, "tool_ok": ans.tool == TOOL_OF[it["intent"]] or (it["check"] == "items" and ans.tool == "per_item"),
             "correct": ok, "detail": why, "grounded": grounded(gold_conn, ans.citations[0] if ans.citations else None),
             "latency_s": ans.latency_s, "answer": ans.text[:400], "plan": ans.plan, "error": ans.error})
         print(f"{it['id']:<4} {it['type']:<13} {'OK ' if ok else 'BAD'} intent={intent}  {why[:90]}", flush=True)

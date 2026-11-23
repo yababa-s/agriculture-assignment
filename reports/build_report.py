@@ -210,7 +210,7 @@ def build(out: Path, template: Path) -> Path:
         align="justify")
     doc.figure(FIG / "fig1_study_area.png", "Study area: the three districts of A&N (Census 2011 boundaries digitised from Survey "
                "of India maps, via DataMeet), the eight agriculture-zone headquarters and the 31 islands with profiles. Inset: "
-               "India with the Survey of India boundary. Record counts are from knowledge base v2 (23 Nov 2026).", 11.5)
+               "India with the Survey of India boundary. Record counts are from knowledge base v2 (23 Nov 2026).", 9.0)
     doc.h2("3.2 Source inventory and corpus")
     m_by = {}
     for r in D.manifest:
@@ -323,7 +323,7 @@ def build(out: Path, template: Path) -> Path:
         f"(the highest kept: 78; report in `data/training_v2/contamination_report.json`).", align="justify")
     doc.h2("4.4 Database schema and knowledge base")
     doc.figure(FIG / "fig3_er_diagram.png", "Entity-relationship diagram of knowledge base v2. `observation` is the single fact "
-               "table; red fields were added in Phase 3 (geospatial layer).", 16.0)
+               "table; red fields were added in Phase 3 (geospatial layer).", 13.0)
     loc_n = dict(D.db.execute("SELECT level, COUNT(*) FROM location GROUP BY level").fetchall())
     doc.para(
         f"We use a star schema in SQLite. Each extracted number is one row of `observation` ({D.n_obs:,} rows from "
@@ -431,7 +431,7 @@ def build(out: Path, template: Path) -> Path:
         f"F1 to {f3(fa['image_table_agent']['f1'])}. Task completion below 1 for the bilingual agent means columns that were "
         f"deliberately skipped, not wrong values. Figure 5 plots F1 with its interval.", align="justify")
     doc.figure(FIG / "fig9_f1_by_agent.png", "Field-level F1 by agent on held-out regions, with 95% bootstrap intervals and n "
-               "per agent.", 14.0)
+               "per agent.", 11.5)
     rob = D.robust["cases"] if D.robust else []
     rrows = [[c["case"], c["agent"].replace("_agent", ""), "yes" if c["routed_ok"] else "no", c.get("known_values", "—"),
               f2(c.get("precision")), f2(c.get("recall"))] for c in rob if c.get("precision") is not None]
@@ -473,7 +473,7 @@ def build(out: Path, template: Path) -> Path:
     doc.table("Base model vs adapter on the same held-out cases (raw model output: no rule fallback, no retries).",
               ["Agent / task", "n", "Base", "Adapter", "Δ", "Comment"], r5, [5.2, 1.0, 1.5, 1.6, 1.5, 5.4], size=8)
     doc.figure(FIG / "fig10_finetuning_ladder.png", "The fine-tuning ladder on the same held-out cases: base zero-shot, base "
-               "with a 2-shot prompt (training examples), adapter v1 and adapter v2.", 13.5)
+               "with a 2-shot prompt (training examples), adapter v1 and adapter v2.", 11.5)
     doc.para(
         f"Fine-tuning is clearly worth it for island extraction. The base model gets F1 {f2(isl(base))}, a 2-shot prompt "
         f"{f2(isl(fs))}, and the adapter {f2(isl(v1))}, with groundedness rising from "
@@ -543,7 +543,42 @@ def build(out: Path, template: Path) -> Path:
         "resolve a metric and item explicitly, and otherwise calls adapter v2. Its confidence criterion was defined after "
         "the first test run, so its test score is also slightly optimistic; adapter v2 alone has no such dependence. "
         "Figure 6 shows the same comparison.", align="justify")
-    doc.figure(FIG / "fig11_query_accuracy.png", "Query answer accuracy by planner on the dev and untouched test sets.", 13.5)
+    doc.figure(FIG / "fig11_query_accuracy.png", "Query answer accuracy by planner on the dev and untouched test sets.", 11.5)
+    rr = {k: J(P3 / f"query_eval_{k}.json") for k in ("robust_dev_rules_v3", "robust_test_rules_v3", "robust_dev_hybrid_v3",
+                                                        "robust_test_hybrid_v3")}
+    if all(rr.values()):
+        def refused_ok(e):
+            r = [x for x in e["results"] if x["intent_gold"] == "out_of_scope"]
+            return f"{sum(x['correct'] for x in r)}/{len(r)}"
+        def inscope_ok(e):
+            r = [x for x in e["results"] if x["intent_gold"] != "out_of_scope"]
+            return f"{sum(x['correct'] for x in r)}/{len(r)}"
+        doc.table("Robustness: off-topic, unanswerable and everyday-wording questions. Dev (n = 14) was used to build "
+                  "the scope checks; test (n = 15) was written afterwards and run once.",
+                  ["Set", "Planner", "Should be refused: refused", "Answerable: correct", "Overall"],
+                  [["robustness dev", "rules", refused_ok(rr["robust_dev_rules_v3"]), inscope_ok(rr["robust_dev_rules_v3"]),
+                    f2(rr["robust_dev_rules_v3"]["overall"]["answer_accuracy"])],
+                   ["robustness dev", "deployed hybrid", refused_ok(rr["robust_dev_hybrid_v3"]), inscope_ok(rr["robust_dev_hybrid_v3"]),
+                    f2(rr["robust_dev_hybrid_v3"]["overall"]["answer_accuracy"])],
+                   ["robustness test", "rules", refused_ok(rr["robust_test_rules_v3"]), inscope_ok(rr["robust_test_rules_v3"]),
+                    f2(rr["robust_test_rules_v3"]["overall"]["answer_accuracy"])],
+                   ["robustness test", "deployed hybrid", refused_ok(rr["robust_test_hybrid_v3"]), inscope_ok(rr["robust_test_hybrid_v3"]),
+                    f2(rr["robust_test_hybrid_v3"]["overall"]["answer_accuracy"])]],
+                  [3.2, 3.0, 3.4, 3.2, 2.2], size=8.5, label="6d")
+        doc.para(
+            "The first version had no way to decline a question. Every input was forced into a query, so a greeting "
+            "returned a farmer count and \"is agriculture profitable?\" returned an arhar price. 8 of the 14 robustness-dev "
+            "questions were wrong or only partly answered. A scope layer now refuses chit-chat and concepts the knowledge "
+            "base does not hold (income, weather, soil), explains that crops cannot yet be ranked against each other, and "
+            "answers \"why / should I\" questions with facts only. Every plan must be grounded in words of the question: "
+            "a crop, measure or place the model adds on its own is dropped, and if nothing grounded remains the question is "
+            "refused. Everyday words (\"rice farming\" means paddy) and relative time (\"last year\") are mapped explicitly. "
+            "On the untouched robustness test the deployed planner scores "
+            f"{f2(rr['robust_test_hybrid_v3']['overall']['answer_accuracy'])} (rules alone "
+            f"{f2(rr['robust_test_rules_v3']['overall']['answer_accuracy'])}). The two remaining test failures (number words "
+            "such as \"two years\"; comparing two items' prices for a year) were fixed afterwards, so they are not re-measured "
+            "on fresh data. Rewording alone is covered; question types outside the six intents (ratios, multi-hop "
+            "questions, causes) remain out of scope.", align="justify")
 
     doc.h2("6.5 Spatio-temporal relationships")
     doc.figure(FIG / "fig4_paddy_vs_arecanut_map.png", "Relationship 1. Map: change in paddy production by district, "
@@ -566,7 +601,7 @@ def build(out: Path, template: Path) -> Path:
         "onion). Supply to the islands is weakest during the south-west monsoon and in winter. *Caveat:* there is one market, "
         "and its prices partly reflect mainland shocks.", align="justify")
     doc.figure(FIG / "fig7_islands_farmers.png", "Relationship 3. Farmers by island in 2024-25 (bubbles and fill), with "
-               "farmers per km² cultivated for the larger islands (n = 16 islands, D10).", 9.5)
+               "farmers per km² cultivated for the larger islands (n = 16 islands, D10).", 8.0)
     doc.para(
         "**R3: farmers are concentrated on two islands.** Of 24,954 farmers recorded on 16 islands in 2024-25, Middle Andaman "
         "(8,730) and North Andaman (6,192) hold 60%. Farmers per km² cultivated range from 88 on North Andaman to 178 on "
@@ -589,6 +624,7 @@ def build(out: Path, template: Path) -> Path:
         ["Hallucination (model)", 157, "corpus run (gated)", "model outputs rejected by the groundedness gate before loading"],
         ["Query planning", sum(1 for r in (J(P3 / 'query_eval_test_rules.json') or {'results': []})["results"] if not r["correct"]),
          "rule planner, test set", "'land under coconut' mapped to production, not area"],
+        ["Off-topic question answered (fixed)", 8, "robustness dev, before scope layer", "'hi my name is …' answered with a farmer count"],
         ["Source error (publisher)", 2, "D10, D11", "Shaheed Dweep farmers 516 = Swaraj's figure; Nov-2023 onion 81.88 vs 57.50 on two pages"],
     ] + ([[k, v, "fresh files", ""] for k, v in surprise_err.items()] if surprise_err else []),
         [3.6, 1.2, 3.0, 8.2], size=8, label="6c")

@@ -25,6 +25,7 @@ from rapidfuzz import fuzz, process
 
 from agri import config
 from agri.query import tools as T
+from agri.query.scope import HELP, RELATIVE_TIME, classify
 
 INTENTS = {"rank": "spatial", "nearby": "spatial", "trend": "temporal", "provenance": "provenance",
            "compare_sources": "cross_source", "lookup": "lookup"}
@@ -38,6 +39,7 @@ METRIC_SYNONYMS = {
     "area under cultivation": "area_under_cultivation", "cultivated area": "area_under_cultivation",
     "area under": "area_cultivated", "area": "area_cultivated", "hectare": "area_cultivated", "क्षेत्रफल": "area_cultivated",
     "production": "production", "produce": "production", "output": "production", "उत्पादन": "production",
+    "harvest": "production",
     "yield": "yield", "productivity": "yield", "उपज": "yield",
     "farmers": "farmers_count", "cultivators": "farmers_count", "किसान": "farmers_count",
     "organic farms": "organic_farm_count", "organic": "organic_farm_count",
@@ -53,6 +55,9 @@ METRIC_SYNONYMS = {
     "cost of cultivation": "cost_of_cultivation", "holdings": "holdings_count",
     "scheme outlay": "scheme_outlay", "budget": "scheme_outlay", "expenditure": "scheme_expenditure",
 }
+# Everyday words used only when no measure is named explicitly ("has rice farming gone down?").
+WEAK_METRIC_WORDS = {"farming": "production", "grown": "production", "grow": "production", "cultivat": "area_cultivated",
+                     "how much": "production", "how many farmers": "farmers_count"}
 LEVEL_WORDS = {"zone": "agri_zone", "zones": "agri_zone", "agri zone": "agri_zone", "district": "district",
                "districts": "district", "island": "island", "islands": "island", "tehsil": "tehsil",
                "tehsils": "tehsil", "जिला": "district", "जिले": "district", "द्वीप": "island"}
@@ -136,6 +141,7 @@ class Resolver:
         self.level = {r["location_id"]: r["level"] for r in conn.execute("SELECT location_id, level FROM location")}
         self.loc_name = {r["location_id"]: r["name"] for r in conn.execute("SELECT location_id, name FROM location")}
         self.com_name = {r["commodity_id"]: r["name"] for r in conn.execute("SELECT commodity_id, name FROM commodity")}
+        self.conn = conn
         self.metric_name = {r["metric_id"]: r["name"] for r in conn.execute("SELECT metric_id, name FROM metric")}
         self.unit_symbol = {r["unit_id"]: r["symbol"] for r in conn.execute("SELECT unit_id, symbol FROM unit")}
         self.observed_commodities = {r[0] for r in conn.execute("SELECT DISTINCT commodity_id FROM observation")}
@@ -153,9 +159,29 @@ class Resolver:
         hits.sort(key=lambda h: -len(h[0]))
         return hits
 
+    def commodities_in(self, q: str) -> list[str]:
+        """Every observed item named in q (longest alias first, no overlaps); 'rice' means the paddy crop
+        unless the question is about prices."""
+        hits, taken = [], []
+        for a, i in self.scan("commodity", q):
+            if i not in self.observed_commodities or i in hits:
+                continue
+            span = [m.span() for m in re.finditer(r"(?<![\w])" + re.escape(a) + r"(?![\w])", q)]
+            if any(s0 < t1 and t0 < s1 for s0, s1 in span for t0, t1 in taken):
+                continue
+            taken += span
+            hits.append((min(x[0] for x in span) if span else 10**6, i))
+        hits = [i for _, i in sorted(hits)]          # in the order the question names them
+        price_ctx = re.search(r"price|rate|cost|expensive|cheap|per kg|market|retail|₹|rs\.?\b|inr", q)
+        if not price_ctx:
+            hits = ["paddy" if h == "rice" else h for h in hits]
+            if re.search(r"(?<![\w])(rice|chawal|चावल)(?![\w])", q) and "paddy" not in hits:
+                hits.insert(0, "paddy")
+        return list(dict.fromkeys(hits))
+
     def commodity_in(self, q: str) -> str | None:
-        hits = [h for h in self.scan("commodity", q) if h[1] in self.observed_commodities]
-        return hits[0][1] if hits else None
+        hits = self.commodities_in(q)
+        return hits[0] if hits else None
 
     def location_in(self, q: str, level_hint: str | None) -> str | None:
         hits = self.scan("location", q)
@@ -169,6 +195,9 @@ class Resolver:
                 return pref[0]
         order = ["district", "island", "agri_zone", "tehsil", "ut", "market"]
         return sorted(cands, key=lambda c: order.index(self.level[c]) if self.level.get(c) in order else 9)[0]
+
+    def latest_label(self, metric: str, commodity: str | None, location: str | None) -> str | None:
+        return T.latest_period(self.conn, metric, commodity, None, location)
 
     # -- single value (model plans)
     def resolve(self, etype: str, value: str | None, level_hint: str | None = None) -> str | None:
@@ -208,6 +237,12 @@ def rule_plan(question: str, R: Resolver) -> Plan:
             metric = METRIC_SYNONYMS[k]
             break
     metric_explicit = metric is not None
+    if metric is None:
+        for k in sorted(WEAK_METRIC_WORDS, key=len, reverse=True):
+            if k in q:
+                metric = WEAK_METRIC_WORDS[k]
+                metric_explicit = True
+                break
     commodity = R.commodity_in(q)
     location = R.location_in(q, None)
     if any(w in q for w in ("which source", "which document", "which page", "come from", "came from", "provenance",
@@ -222,7 +257,10 @@ def rule_plan(question: str, R: Resolver) -> Plan:
     elif (len(periods) >= 2 or any(w in q for w in ("trend", "over time", "over the years", "across years", "change",
                                                      "changed", "every year", "each year", "monthly", "month by month",
                                                      "year by year", "series", "since", "rise", "fall", "decline",
-                                                     "increase", "decrease", "peak", "बदला", "रुझान"))):
+                                                     "increase", "decrease", "peak", "बदला", "रुझान", "gone down",
+                                                     "gone up", "going down", "going up", "growing", "shrinking",
+                                                     "falling", "dropped", "drop", "rising", "history", "over the last",
+                                                     "past few", "last few", "years"))):
         intent = "trend"
     elif any(w in q for w in RANK_WORDS) or (level and not (location and R.level.get(location) == level)):
         intent = "rank"
@@ -238,12 +276,20 @@ def rule_plan(question: str, R: Resolver) -> Plan:
         location = "MKT_AN" if metric in PRICE_METRICS else "AN"
     if metric in PRICE_METRICS and intent != "nearby":
         location = "MKT_AN"
+    if location == "AN_ANDAMAN" and metric != "lulc_area":
+        location = "AN"          # "Andaman" alone means the territory; the LULC tables alone report the two districts together
     p = Plan(intent=intent, metric=metric, commodity=commodity, location=location, level=level,
              confident=metric_explicit and (commodity is not None or metric in NON_COMMODITY))
     if intent == "trend":
         p.start, p.end = (periods[0], periods[-1]) if len(periods) >= 2 else (periods[0] if periods else None, None)
     else:
         p.period = periods[0] if periods else None
+    apply_relative_time(p, q, R)
+    if p.metric in PRICE_METRICS and p.period and re.fullmatch(r"(19|20)\d\d", p.period):
+        yr = p.period                         # prices are monthly: a bare year means January-December of that year
+        p.intent = "trend" if p.intent in ("lookup", "rank") else p.intent
+        if p.intent == "trend":
+            p.period, p.start, p.end = None, f"January {yr}", f"December {yr}"
     m = re.search(r"\btop\s+(\d+)", q)
     if m:
         p.top_k = int(m.group(1))
@@ -257,6 +303,58 @@ def rule_plan(question: str, R: Resolver) -> Plan:
     if intent == "nearby" and not p.level:
         p.level = "island"
     return p
+
+
+def apply_relative_time(p: Plan, q: str, R: Resolver) -> None:
+    """'last year', 'this year', 'last 3 years', 'latest', 'recent' -> concrete periods from the data."""
+    for w, d in (("two", "2"), ("three", "3"), ("four", "4"), ("five", "5"), ("six", "6"), ("couple of", "2")):
+        q = re.sub(rf"\b{w}\s+(years?)\b", rf"{d} \1", q)
+    m = RELATIVE_TIME.search(q)
+    if not m or p.period or p.start:
+        return
+    latest = R.latest_label(p.metric, p.commodity, p.location)
+    if not latest:
+        return
+    yr = int(re.search(r"(19|20)\d\d", latest).group(0))
+    monthly = p.metric in PRICE_METRICS
+    if m.group(2):                                        # last N years
+        n_ = int(m.group(2))
+        p.intent = "trend" if p.intent in ("lookup", "provenance") else p.intent
+        p.start = f"January {yr - n_ + 1}" if monthly else f"{yr - n_ + 1}-{str(yr - n_ + 2)[-2:]}"
+    elif re.search(r"last year|previous year|this year", m.group(0), re.I) and monthly:
+        p.intent = "trend" if p.intent in ("lookup",) else p.intent
+        if p.intent == "trend":
+            p.start, p.end = f"January {yr}", f"December {yr}"
+        else:
+            p.period = latest
+    elif p.intent != "trend":
+        p.period = latest
+
+
+def ground(p: Plan, q: str, R: Resolver) -> tuple[Plan | None, str]:
+    """Keep only what the question supports. Returns (plan, note) or (None, reason) when nothing grounded is left."""
+    qn = _norm(q)
+    named = R.commodities_in(qn)
+    first_word = (_norm(R.metric_name.get(p.metric, "")).split() or [""])[0]
+    metric_named = any(re.search(r"(?<![\w])" + re.escape(k), qn) for k in list(METRIC_SYNONYMS) + list(WEAK_METRIC_WORDS)) or \
+        (len(first_word) > 3 and first_word in qn)
+    place_named = R.location_in(qn, None) is not None or any(re.search(r"(?<![\w])" + re.escape(w) + r"(?![\w])", qn)
+                                                            for w in LEVEL_WORDS) or \
+        re.search(r"\b(ut|union territory|a&n|andaman|nicobar|islands?|port blair)\b", qn) is not None
+    if p.commodity and p.commodity not in named:
+        p.commodity = named[0] if named else None
+    if not metric_named and not named and not place_named:
+        return None, "nothing in the question names a measure, crop or place"
+    if p.commodity is None and p.metric not in NON_COMMODITY and p.metric != "lulc_area":
+        if named:
+            p.commodity = named[0]
+        else:
+            return None, "the question does not say which crop or item"
+    if p.location and p.location not in ("AN", "MKT_AN") and R.location_in(qn, p.level) is None:
+        p.location = "MKT_AN" if p.metric in PRICE_METRICS else "AN"
+    if p.location == "AN_ANDAMAN" and p.metric != "lulc_area":
+        p.location = "AN"
+    return p, ""
 
 
 def _crop_commodities(R: Resolver) -> set[str]:
@@ -355,10 +453,16 @@ class QueryAgent:
         if self.planner == "hybrid":
             rp = rule_plan(question, self.R)
             if rp.confident or self.llm is None or not self.llm.enabled:
-                return rp, "rules", ""
+                gp, why = ground(rp, question, self.R)
+                return (gp, "rules", "") if gp else (None, "rules", f"refused: {why}")
             raw, text = model_plan(question, self.llm, self.few_shot)
             p = plan_from_model(raw, self.R, question) if raw else None
-            return (p, "rules->model", text) if p else (rp, "rules->model(invalid)->rules", text)
+            if p:
+                apply_relative_time(p, _norm(question), self.R)
+                gp, why = ground(p, question, self.R)
+                return (gp, "rules->model", text) if gp else (None, "rules->model", f"refused: {why} | {text}")
+            gp, why = ground(rp, question, self.R)
+            return (gp, "rules->model(invalid)->rules", text) if gp else (None, "rules->model(invalid)", f"refused: {why}")
         use_model = self.planner in ("auto", "model") and self.llm is not None and self.llm.enabled
         if use_model:
             raw, text = model_plan(question, self.llm, self.few_shot)
@@ -368,7 +472,8 @@ class QueryAgent:
             if self.planner == "model":
                 return None, "model(invalid)", text
             return rule_plan(question, self.R), "model->rules", text
-        return rule_plan(question, self.R), "rules", ""
+        gp, why = ground(rule_plan(question, self.R), question, self.R)
+        return (gp, "rules", "") if gp else (None, "rules", f"refused: {why}")
 
     def execute(self, p: Plan) -> T.ToolResult:
         c = self.conn
@@ -388,20 +493,54 @@ class QueryAgent:
     def ask(self, question: str) -> Answer:
         t0 = time.time()
         qid = uuid.uuid4().hex[:10]
+        sc = classify(question, len([c for c in self.R.commodities_in(_norm(question)) if not c.startswith("agg_")]))
+        if sc.kind in ("chitchat", "not_in_kb", "rank_items"):
+            ans = Answer(question, "out_of_scope", f"scope:{sc.kind}", {"intent": "out_of_scope"}, "none", {}, "", sc.message)
+            ans.latency_s, ans.query_id = round(time.time() - t0, 2), qid
+            self._log(ans, "")
+            return ans
         p, planner, raw = self.plan(question)
-        if p is None:
+        items = self.R.commodities_in(_norm(question))
+        if p is not None and len(items) >= 2 and p.intent in ("lookup", "trend", "provenance") and p.metric not in NON_COMMODITY:
+            return self._ask_each(question, p, planner, raw, items[:3], t0, qid, sc)
+        if p is None and raw.startswith("refused"):
+            ans = Answer(question, "out_of_scope", planner, {"intent": "out_of_scope"}, "none", {}, "",
+                         f"I could not match this to the data ({raw.split('|')[0].replace('refused: ', '')}). " + HELP)
+        elif p is None:
             ans = Answer(question, "unknown", planner, {}, "", {}, "", "Sorry, I could not turn this question into a "
                          "query. Try naming a crop or metric, a place and a year.", error=f"invalid plan: {raw[:200]}")
         else:
             try:
                 res = self.execute(p)
                 text, cites = compose(p, res, self.R)
+                if sc.kind == "why":
+                    text = sc.message + "\n" + text
                 ans = Answer(question, INTENTS[p.intent], planner, asdict(p), res.tool, res.args, res.sql.strip(), text,
                              res.rows, res.summary, cites)
             except Exception as e:  # noqa: BLE001 - reported to the user, logged
                 ans = Answer(question, INTENTS[p.intent], planner, asdict(p), "", {}, "", f"Query failed: {e}", error=str(e))
         ans.latency_s = round(time.time() - t0, 2)
         ans.query_id = qid
+        self._log(ans, raw)
+        return ans
+
+    def _ask_each(self, question, p, planner, raw, items, t0, qid, sc) -> Answer:
+        """Side-by-side answer when the question names two or three items (e.g. 'compare paddy and arecanut area')."""
+        texts, rows, cites = [], [], []
+        for it in items:
+            q = Plan(**{**asdict(p), "commodity": it})
+            try:
+                res = self.execute(q)
+                t, c = compose(q, res, self.R)
+                texts.append(t)
+                rows += res.rows
+                cites += c
+            except Exception as e:  # noqa: BLE001
+                texts.append(f"{it}: query failed ({e})")
+        text = ("\n\n".join(texts) if sc.kind != "why" else sc.message + "\n" + "\n\n".join(texts))
+        ans = Answer(question, INTENTS[p.intent], planner + "+each", asdict(p), "per_item", {"items": items}, "", text,
+                     rows, {}, cites)
+        ans.latency_s, ans.query_id = round(time.time() - t0, 2), qid
         self._log(ans, raw)
         return ans
 
@@ -459,6 +598,21 @@ def compose(p: Plan, res: T.ToolResult, R: Resolver) -> tuple[str, list[dict]]:
                  f"{s['peak'][0]}; low {_fmt(s['low'][1])} in {s['low'][0]}. Sources: {', '.join(s['documents'])}."]
         lines += [f"  {r['period_label']}: {_fmt(r['value'])} {unit} {_cite_txt(r)}" for r in rows]
         return "\n".join(lines), [_cite(r) for r in rows]
+    if res.tool == "trace_value" and res.summary.get("breakdown"):
+        r0 = rows[0]
+        loc = R.loc_name.get(r0["location_id"], r0["location_id"])
+        seen, parts = set(), []
+        for r in rows:
+            raw_item = json.loads(r["dims"]).get("item", "").strip(" -")
+            from agri.tools.krutidev import split_bilingual_label
+            item = (split_bilingual_label(raw_item)[1] or raw_item).strip(" -")
+            key = (r["document_id"], item)
+            if key in seen:
+                continue
+            seen.add(key)
+            parts.append(f"{item}: {_fmt(r['value'])} {_cite_txt(r)}")
+        return (f"{what}, {loc}, {r0['period_label']}: reported only as a breakdown (no total row), "
+                + "; ".join(parts[:10]) + "."), [_cite(r) for r in rows]
     if res.tool == "trace_value":
         r0 = rows[0]
         loc = R.loc_name.get(r0["location_id"], r0["location_id"])

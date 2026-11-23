@@ -1,0 +1,186 @@
+{
+ "description": "Robustness TEST set (15): written after the fixes were finished and never used to change the system. 6 should be refused (chit-chat, data not held, authorship); 9 are in-scope questions in everyday wording, including 'should I...' questions that must be answered with facts only and two-item comparisons.",
+ "queries": [
+  {
+   "id": "R01",
+   "question": "hello, what can you do?",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R02",
+   "question": "what is the average income of a farmer in Car Nicobar?",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R03",
+   "question": "should I grow ginger in Diglipur?",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "about",
+   "gold_sql": "SELECT 1",
+   "expect": {
+    "commodity": "ginger",
+    "location": "ZN_DIGLIPUR"
+   },
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R04",
+   "question": "Tell me a joke",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R05",
+   "question": "what was the rainfall in 2023?",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R06",
+   "question": "how has tomato been priced over the past two years",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='retail_price' AND o.commodity_id='tomato' AND o.location_id='MKT_AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL AND o.period_start>='2024-01-01' AND o.period_start<='2025-12-31' GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R07",
+   "question": "is coconut area in the UT going up?",
+   "type": "temporal",
+   "intent": "trend",
+   "check": "series",
+   "gold_sql": "SELECT o.period_label, MIN(o.value), MAX(o.value) FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='coconut' AND o.location_id='AN' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.period_label ORDER BY MIN(o.period_start)",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R08",
+   "question": "how many farmers live on Baratang?",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='farmers_count' AND o.commodity_id IS NULL AND o.location_id='ISL_BARATANG' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R09",
+   "question": "potato vs onion price in March 2025",
+   "type": "compare",
+   "intent": "lookup",
+   "check": "items",
+   "gold_sql": "SELECT 1",
+   "expect": {
+    "items": [
+     "potato",
+     "onion"
+    ]
+   },
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R10",
+   "question": "paddy yield in andaman",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "value",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='yield' AND o.commodity_id='paddy' AND o.location_id='AN' AND o.period_label='2023-24' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R11",
+   "question": "which zone harvested the most banana in 2025-26?",
+   "type": "spatial",
+   "intent": "rank",
+   "check": "top1",
+   "gold_sql": "SELECT o.location_id, MAX(o.value) FROM observation o JOIN location l ON l.location_id=o.location_id WHERE o.metric_id='production' AND o.commodity_id='banana' AND l.level='agri_zone' AND o.period_label='2025-26' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL GROUP BY o.location_id ORDER BY 2 DESC",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R12",
+   "question": "who wrote this system?",
+   "type": "out_of_scope",
+   "intent": "out_of_scope",
+   "check": "refuse",
+   "gold_sql": "SELECT 1",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R13",
+   "question": "give me the source for South Andaman's 2024-25 coconut area",
+   "type": "provenance",
+   "intent": "provenance",
+   "check": "provenance",
+   "gold_sql": "SELECT o.document_id, o.page, o.value FROM observation o WHERE o.metric_id='area_cultivated' AND o.commodity_id='coconut' AND o.location_id='AN_SA' AND o.period_label='2024-25' AND json_extract(o.dims,'$.item') IS NULL AND json_extract(o.dims,'$.variety') IS NULL AND o.value IS NOT NULL",
+   "expect": {},
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R14",
+   "question": "is it worth growing arecanut in north and middle andaman",
+   "type": "lookup",
+   "intent": "lookup",
+   "check": "about",
+   "gold_sql": "SELECT 1",
+   "expect": {
+    "commodity": "arecanut",
+    "location": "AN_NMA"
+   },
+   "demo": false,
+   "lang": "en"
+  },
+  {
+   "id": "R15",
+   "question": "compare tomato and potato prices in 2024",
+   "type": "compare",
+   "intent": "lookup",
+   "check": "items",
+   "gold_sql": "SELECT 1",
+   "expect": {
+    "items": [
+     "tomato",
+     "potato"
+    ]
+   },
+   "demo": false,
+   "lang": "en"
+  }
+ ]
+}

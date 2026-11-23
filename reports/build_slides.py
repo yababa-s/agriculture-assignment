@@ -386,8 +386,10 @@ def build(out: Path) -> Path:
         if k < 3:
             s.arrow(8.575, yy + 0.58, 8.575, yy + 0.9, MUTED, 1.5)
         yy += 0.95
-    s.text(8.3, 5.6, 4.43, 1.2, ["Rules were built on the dev set, so their 1.00 there is optimistic; the test bars are the honest numbers."],
-           size=13, color=MUTED, italic=True)
+    rt = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_robust_test_hybrid_v3.json").read_text())["overall"]
+    s.text(8.3, 5.45, 4.43, 1.4, [f"**Off-topic or unanswerable?** Refused, not guessed: {f2(rt['answer_accuracy'])} on an untouched "
+                                  "robustness set (n = 15). Dev bars for rules are optimistic (built on dev)."],
+           size=13, color=MUTED)
     s.footer(n, n0)
     s.notes("Citation groundedness is 1.0 for every planner: numbers always come from SQL; errors are planning errors. (60 s) → Abhineet.")
 

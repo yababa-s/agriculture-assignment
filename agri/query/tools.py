@@ -80,8 +80,10 @@ def pick_one(rows: list[dict], key: tuple[str, ...]) -> list[dict]:
     return out
 
 
-def _fetch(conn, extra: str, params: dict) -> tuple[str, list[dict]]:
+def _fetch(conn, extra: str, params: dict, allow_items: bool = False) -> tuple[str, list[dict]]:
     sql = _BASE_SQL + extra
+    if allow_items:       # measures published only as a breakdown (e.g. tractors: in department / with PRIs / private)
+        sql = sql.replace("AND json_extract(o.dims, '$.item') IS NULL", "")
     return sql, [dict(r) for r in conn.execute(sql, params)]
 
 
@@ -146,11 +148,16 @@ def time_series(conn, metric: str, commodity: str | None, location: str, start: 
 def trace_value(conn, metric: str, commodity: str | None, location: str, period: str | None) -> ToolResult:
     """PROVENANCE: every document, page and cell that reports this fact."""
     period = period or latest_period(conn, metric, commodity, None, location)
-    sql, rows = _fetch(conn, "AND o.location_id = :location AND o.period_label = :period",
-                       {"metric": metric, "commodity": commodity, "location": location, "period": period})
-    rows.sort(key=_rank_key)
+    params = {"metric": metric, "commodity": commodity, "location": location, "period": period}
+    extra = "AND o.location_id = :location AND o.period_label = :period"
+    sql, rows = _fetch(conn, extra, params)
+    breakdown = False
+    if not rows:
+        sql, rows = _fetch(conn, extra, params, allow_items=True)
+        breakdown = bool(rows)
+    rows.sort(key=_rank_key) if not breakdown else rows.sort(key=lambda r: (r["document_id"], r["obs_id"]))
     return ToolResult("trace_value", {"metric": metric, "commodity": commodity, "location": location, "period": period},
-                      sql, rows, {"n_sources": len({r['document_id'] for r in rows}), "period": period})
+                      sql, rows, {"n_sources": len({r['document_id'] for r in rows}), "period": period, "breakdown": breakdown})
 
 
 def compare_sources(conn, metric: str, commodity: str | None, location: str, period: str | None = None) -> ToolResult:
