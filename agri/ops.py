@@ -44,7 +44,7 @@ def backup(db: Path = config.DB_PATH, dest_dir: Path = config.BACKUP_DIR) -> Pat
     with raw.open("rb") as fi, gzip.open(gz, "wb") as fo:
         shutil.copyfileobj(fi, fo)
     raw.unlink()
-    gz.with_suffix(".gz.sha256").write_text(f"{sha256_file(gz)}  {gz.name}\n")
+    gz.with_suffix(".gz.sha256").write_text(f"{sha256_file(gz)}  {gz.name}\n", encoding="utf-8")
     return gz
 
 
@@ -53,7 +53,7 @@ def restore(backup_file: Path, db: Path = config.DB_PATH) -> Path:
     backup_file = Path(backup_file)
     sumfile = backup_file.with_suffix(backup_file.suffix + ".sha256")
     if sumfile.exists():
-        want = sumfile.read_text().split()[0]
+        want = sumfile.read_text(encoding="utf-8").split()[0]
         if sha256_file(backup_file) != want:
             raise ValueError(f"checksum mismatch for {backup_file}; the backup is damaged")
     db = Path(db)
@@ -62,7 +62,9 @@ def restore(backup_file: Path, db: Path = config.DB_PATH) -> Path:
     tmp = db.with_suffix(".sqlite.restoring")
     with gzip.open(backup_file, "rb") as fi, tmp.open("wb") as fo:
         shutil.copyfileobj(fi, fo)
-    n = sqlite3.connect(tmp).execute("PRAGMA integrity_check").fetchone()[0]
+    chk = sqlite3.connect(tmp)
+    n = chk.execute("PRAGMA integrity_check").fetchone()[0]
+    chk.close()   # Windows cannot replace a file that is still open
     if n != "ok":
         tmp.unlink()
         raise ValueError(f"integrity check failed on the restored file: {n}")
@@ -74,7 +76,7 @@ def restore(backup_file: Path, db: Path = config.DB_PATH) -> Path:
 def check_licenses(manifest: Path = config.MANIFEST_PATH) -> list[str]:
     """Problems that must be fixed before data is added or redistributed. Empty list = all good."""
     problems = []
-    rows = list(csv.DictReader(manifest.open()))
+    rows = list(csv.DictReader(manifest.open(encoding="utf-8")))
     for r in rows:
         lic = (r.get("license") or "").strip()
         if not lic:
@@ -92,7 +94,7 @@ def check_licenses(manifest: Path = config.MANIFEST_PATH) -> list[str]:
 
 def license_summary(manifest: Path = config.MANIFEST_PATH) -> dict[str, int]:
     out: dict[str, int] = {}
-    for r in csv.DictReader(manifest.open()):
+    for r in csv.DictReader(manifest.open(encoding="utf-8")):
         lic = r["license"] or ""
         key = "no stated licence: flagged academic use only" if "no explicit" in lic.lower() else lic[:70]
         out[key] = out.get(key, 0) + 1
@@ -111,7 +113,7 @@ def add_source(file: Path, source_id: str, source_group: str, document_url: str,
         raise ValueError(f"unknown source_id {source_id}; add it to agri/sources.py first ({', '.join(SOURCES)})")
     if not license.strip():
         raise ValueError("a licence or terms statement is required (use 'No explicit licence. Flagged: academic use only.')")
-    rows = list(csv.DictReader(config.MANIFEST_PATH.open()))
+    rows = list(csv.DictReader(config.MANIFEST_PATH.open(encoding="utf-8")))
     digest = sha256_file(file)
     if any(r["sha256"] == digest for r in rows):
         raise ValueError("this exact file is already in the manifest")
@@ -137,7 +139,7 @@ def add_source(file: Path, source_id: str, source_group: str, document_url: str,
                 "legacy_font_encoding": "False", "size_bytes": file.stat().st_size, "sha256": digest,
                 "collection_date": time.strftime("%Y-%m-%d"), "license": license, "notes": notes})
     fields = list(rows[0].keys()) if rows else MANIFEST_FIELDS
-    with config.MANIFEST_PATH.open("a", newline="") as f:
+    with config.MANIFEST_PATH.open("a", newline="", encoding="utf-8") as f:
         csv.DictWriter(f, fieldnames=fields).writerow({k: row.get(k, "") for k in fields})
     return row
 
@@ -168,7 +170,7 @@ def status(db: Path = config.DB_PATH) -> dict:
             "locations_geocoded": c.execute("SELECT COUNT(*) FROM location WHERE lat IS NOT NULL").fetchone()[0]
             if "lat" in {r[1] for r in c.execute("PRAGMA table_info(location)")} else 0,
             "last_run": c.execute("SELECT MAX(finished_at) FROM extraction_run").fetchone()[0]})
-    out["corpus_files"] = sum(1 for r in csv.DictReader(config.MANIFEST_PATH.open())
+    out["corpus_files"] = sum(1 for r in csv.DictReader(config.MANIFEST_PATH.open(encoding="utf-8"))
                               if (config.CORPUS_DIR / r["relative_path"]).exists())
-    out["manifest_rows"] = sum(1 for _ in csv.DictReader(config.MANIFEST_PATH.open()))
+    out["manifest_rows"] = sum(1 for _ in csv.DictReader(config.MANIFEST_PATH.open(encoding="utf-8")))
     return out

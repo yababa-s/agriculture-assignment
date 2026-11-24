@@ -16,7 +16,7 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install -r requirements.txt
       - run: python scripts/fetch_artifacts.py --only database corpus
-      - name: Source health check (HTTP status of every document_url, polite: 1 request / 2 s)
+      - name: "Source health check (HTTP status of every document_url, polite: 1 request every 2 s)"
         run: python scripts/check_sources.py --out logs/source_health.json
       - run: python -m agri.cli check-licenses
       - run: python scripts/run_pipeline.py --docs D11 D12 D13 --no-llm --db db/scheduled_scratch.sqlite

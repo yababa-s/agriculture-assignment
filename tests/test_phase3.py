@@ -96,7 +96,7 @@ def test_gold_query_set_passes_with_rules():
     from agri.query.agent import QueryAgent
     from scripts.eval_queries import check
     ag = QueryAgent(config.DB_PATH, planner="rules")
-    items = json.loads((ROOT / "data" / "gold" / "queries.json").read_text())["queries"]
+    items = json.loads((ROOT / "data" / "gold" / "queries.json").read_text(encoding="utf-8"))["queries"]
     wrong = []
     for it in items:
         gold = [tuple(r) for r in ag.conn.execute(it["gold_sql"]).fetchall()]
@@ -107,7 +107,7 @@ def test_gold_query_set_passes_with_rules():
 
 
 def test_demo_queries_cover_required_types():
-    demo = json.loads((ROOT / "data" / "gold" / "demo_queries.json").read_text())
+    demo = json.loads((ROOT / "data" / "gold" / "demo_queries.json").read_text(encoding="utf-8"))
     types = [d["type"] for d in demo]
     assert len(demo) == 10 and types.count("spatial") >= 2 and types.count("temporal") >= 2 and "provenance" in types
 
@@ -115,7 +115,7 @@ def test_demo_queries_cover_required_types():
 # ------------------------------------------------------------------ geo + schema
 def test_geo_points_inside_expected_districts():
     import csv
-    rows = list(csv.DictReader((config.GEO_DIR / "locations.csv").open()))
+    rows = list(csv.DictReader((config.GEO_DIR / "locations.csv").open(encoding="utf-8")))
     assert len(rows) >= 50
     assert all(r["district_check"] == "ok" and float(r["km_to_land"]) <= 5 for r in rows)
 
@@ -141,14 +141,20 @@ def test_haversine_and_nearby():
 # ------------------------------------------------------------------ maintenance
 @needs_db
 def test_backup_restore_roundtrip(tmp_path):
+    from contextlib import closing
+
     from agri import ops
     src = tmp_path / "kb.sqlite"
-    sqlite3.connect(config.DB_PATH).backup(sqlite3.connect(src))
+    with closing(sqlite3.connect(config.DB_PATH)) as a, closing(sqlite3.connect(src)) as b:
+        a.backup(b)
     gz = ops.backup(src, tmp_path / "bk")
-    n_before = sqlite3.connect(src).execute("SELECT COUNT(*) FROM observation").fetchone()[0]
-    sqlite3.connect(src).execute("DELETE FROM document_chunk").connection.commit()
+    with closing(sqlite3.connect(src)) as c:   # every handle closed: Windows cannot replace an open file
+        n_before = c.execute("SELECT COUNT(*) FROM observation").fetchone()[0]
+        c.execute("DELETE FROM document_chunk")
+        c.commit()
     ops.restore(gz, src)
-    assert sqlite3.connect(src).execute("SELECT COUNT(*) FROM observation").fetchone()[0] == n_before
+    with closing(sqlite3.connect(src)) as c:
+        assert c.execute("SELECT COUNT(*) FROM observation").fetchone()[0] == n_before
 
 
 def test_manifest_licences_ok():
@@ -157,7 +163,7 @@ def test_manifest_licences_ok():
 
 
 def test_fetch_spec_has_checksums():
-    spec = json.loads((ROOT / "artifacts.json").read_text())
+    spec = json.loads((ROOT / "artifacts.json").read_text(encoding="utf-8"))
     for art in spec["artifacts"].values():
         assert len(art["sha256"]) == 64 and art["file"].endswith(".zip")
 
@@ -175,7 +181,7 @@ def test_pipeline_smoke_rules_only(tmp_path):
     assert n > 2000
     # a corrupt, empty or missing unseen file is reported and skipped; it must not abort the batch
     bad, empty = tmp_path / "broken.pdf", tmp_path / "empty.pdf"
-    bad.write_text("not a pdf")
+    bad.write_text("not a pdf", encoding="utf-8")
     empty.write_bytes(b"")
     r = subprocess.run([sys.executable, str(ROOT / "scripts" / "run_pipeline.py"), "--no-llm", "--db", str(db),
                         "--files", str(bad), str(empty), str(tmp_path / "missing.pdf")],
