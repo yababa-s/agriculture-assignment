@@ -30,11 +30,22 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def _ssl_context():
+    """python.org builds of Python on macOS ship without CA certificates (CERTIFICATE_VERIFY_FAILED);
+    use certifi's bundle, which requirements.txt installs, so the download works without extra setup."""
+    import ssl
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return ssl.create_default_context()
+
+
 def download(url: str, dst: Path) -> None:
     print(f"  downloading {url}")
     req = urllib.request.Request(url, headers={"User-Agent": "agriagent-fetch/1.0"})
     try:
-        with urllib.request.urlopen(req, timeout=120) as r, dst.open("wb") as f:
+        with urllib.request.urlopen(req, timeout=120, context=_ssl_context()) as r, dst.open("wb") as f:
             total = int(r.headers.get("Content-Length") or 0)
             done = 0
             while chunk := r.read(1 << 20):

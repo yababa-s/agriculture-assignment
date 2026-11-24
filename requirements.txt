@@ -20,6 +20,7 @@ rapidfuzz>=3.14           # fuzzy entity resolution
 pandas>=2.2
 pydantic>=2.10
 pyyaml>=6.0               # configs/*.yaml
+certifi                   # CA bundle for downloads (python.org macOS builds have none)
 
 # --- Figures, maps, animations, query app
 matplotlib>=3.9
