@@ -1,0 +1,65 @@
+{
+  "batch_id": "B20261018_012635",
+  "documents": [
+    {
+      "document_id": "U01",
+      "file": "hindi_area_production_2025-26.pdf",
+      "run_id": "cbc3584654bf",
+      "agent": "matrix_table_agent",
+      "routed_by": "model",
+      "status": "loaded",
+      "attempts": 1,
+      "extracted": 144,
+      "loaded": 144,
+      "rejected": 0,
+      "llm_calls": 1,
+      "notes": [],
+      "validation": {
+        "input": 144,
+        "accepted": 144,
+        "rejected": 0,
+        "warnings": 0,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 0,
+          "sum_mismatch": 0
+        },
+        "within_batch_duplicates": 0,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    },
+    {
+      "document_id": "U02",
+      "file": "scan_area_production_2025-26.pdf",
+      "run_id": "41f789d345f9",
+      "agent": "matrix_table_agent",
+      "routed_by": "model",
+      "status": "partial",
+      "attempts": 1,
+      "extracted": 1624,
+      "loaded": 1574,
+      "rejected": 0,
+      "llm_calls": 14,
+      "notes": [],
+      "validation": {
+        "input": 1624,
+        "accepted": 1624,
+        "rejected": 0,
+        "warnings": 161,
+        "cross_checks": {
+          "yield_checked": 0,
+          "yield_mismatch": 0,
+          "sum_checked": 304,
+          "sum_mismatch": 153
+        },
+        "within_batch_duplicates": 50,
+        "error_rate": 0.0,
+        "top_errors": []
+      }
+    }
+  ],
+  "elapsed_s": 31.8,
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v1)"
+}

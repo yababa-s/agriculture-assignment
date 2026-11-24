@@ -1,0 +1,2 @@
+{"i": 0, "t": 0.0, "agent": "router_agent", "kind": "decision", "name": "intake", "by": "rule", "payload": {"document": "D20", "file": "Andaman Nicobar LULC 2015-16 map.jpg", "queue_left": 0}}
+{"i": 1, "t": 0.001, "agent": "router_agent", "kind": "decision", "name": "route", "by": "rule", "payload": {"agent": "skip", "reason": "manifest source group G8_RASTER_MAPS"}}

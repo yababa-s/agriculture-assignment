@@ -1,0 +1,50 @@
+{
+  "project": "34_AN_agriagent",
+  "note": "scores are per-example averages (macro); local eval pools items (micro)",
+  "experiments": [
+    {
+      "experiment": "island-base-02e4d027",
+      "task": "island",
+      "model": "base",
+      "examples": 31,
+      "scores": {
+        "groundedness": 0.43,
+        "item_f1": 0.435
+      },
+      "url": "https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/d2082cd3-516d-4a67-8247-d123f5ab3178/compare?selectedSessions=fe1f5218-5cf3-456e-a9ec-ba72f3923f22"
+    },
+    {
+      "experiment": "columns-base-fe64e37b",
+      "task": "columns",
+      "model": "base",
+      "examples": 11,
+      "scores": {
+        "column_accuracy": 0.05
+      },
+      "url": "https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/3badbec3-789f-4179-9f15-b8f3fb0943e2/compare?selectedSessions=efd0ae31-d5b8-4c36-8ffd-dfe3f7f5b476"
+    },
+    {
+      "experiment": "island-qlora-6c0085ba",
+      "task": "island",
+      "model": "qlora_v1",
+      "examples": 31,
+      "scores": {
+        "groundedness": 0.832,
+        "item_f1": 0.899
+      },
+      "url": "https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/d2082cd3-516d-4a67-8247-d123f5ab3178/compare?selectedSessions=3a794682-21ef-4c37-99fe-f3221accba19"
+    },
+    {
+      "experiment": "columns-qlora-e7703e12",
+      "task": "columns",
+      "model": "qlora_v1",
+      "examples": 11,
+      "scores": {
+        "column_accuracy": 0.662
+      },
+      "url": "https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/datasets/3badbec3-789f-4179-9f15-b8f3fb0943e2/compare?selectedSessions=c59399da-744d-44ca-bcb4-5857826216c2"
+    }
+  ],
+  "trace_project_url": "https://smith.langchain.com/o/b4705dec-ff81-4e43-839e-ba314f5e0268/projects/p/a4a2d107-08d5-4e06-af04-2f547794ef12",
+  "traced_batch": "B20261017_235633 (D07, D10, D13, D15, D16)"
+}

@@ -1,0 +1,618 @@
+{
+  "task": "column_mapping",
+  "documents": [
+    "D02",
+    "D06"
+  ],
+  "review": "Column specs from fully rule-resolved tables; D02 headers checked against the rendered page.",
+  "n_examples": 11,
+  "n_columns": 74,
+  "examples": [
+    {
+      "document_id": "D02",
+      "table": "p1_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: 47-Area and Production 2025-26.pdf (period 2025-26)\nTable title: Area and Production - 2025-26 Area- In Ha. Production- In MT\nColumns to map:\ncol 2: \"Diglipur | Area\"\ncol 3: \"Diglipur | Prod.\"\ncol 4: \"Mayabunder | Area\"\ncol 5: \"Mayabunder | Prod.\"\ncol 6: \"Rangat | Area\"\ncol 7: \"Rangat | Prod.\"\ncol 8: \"N&M Andaman District | Area\"\ncol 9: \"N&M Andaman District | Prod.\"\nFirst rows:\nCereals |  |  |  |  |  |  |  |  |  |  | \n1 | Paddy | 2100.3 | 6941.03 | 484.61 | 1405.7 | 480.525 | 1252.3 | 3065.432 | 9599.034 | 47.9 | 109.95\n2 | Maize | 5.5 | 22 | 0.2 | 0.1 | 0.5 | 3.61 | 6.2 | 25.71 | 8.82 | 10.58\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 2,
+          "location": "ZN_DIGLIPUR",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 3,
+          "location": "ZN_DIGLIPUR",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 4,
+          "location": "ZN_MAYABUNDER",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 5,
+          "location": "ZN_MAYABUNDER",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 6,
+          "location": "ZN_RANGAT",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 7,
+          "location": "ZN_RANGAT",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 8,
+          "location": "AN_NMA",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 9,
+          "location": "AN_NMA",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D02",
+      "table": "p1_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: 47-Area and Production 2025-26.pdf (period 2025-26)\nTable title: Area and Production - 2025-26 Area- In Ha. Production- In MT\nColumns to map:\ncol 10: \"South Andaman | Area\"\ncol 11: \"South Andaman | Prod.\"\ncol 12: \"Little Andaman | Area\"\ncol 13: \"Little Andaman | Prod.\"\ncol 14: \"South Andaman District | Area\"\ncol 15: \"South Andaman District | Prod.\"\ncol 16: \"Car Nicobar | Area\"\ncol 17: \"Car Nicobar | Prod.\"\nFirst rows:\nCereals |  |  |  |  |  |  |  |  |  |  | \n1 | Paddy | 2100.3 | 6941.03 | 484.61 | 1405.7 | 480.525 | 1252.3 | 3065.432 | 9599.034 | 47.9 | 109.95\n2 | Maize | 5.5 | 22 | 0.2 | 0.1 | 0.5 | 3.61 | 6.2 | 25.71 | 8.82 | 10.58\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 10,
+          "location": "ZN_SOUTHANDAMAN",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 11,
+          "location": "ZN_SOUTHANDAMAN",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 12,
+          "location": "ZN_LITTLEANDAMAN",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 13,
+          "location": "ZN_LITTLEANDAMAN",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 14,
+          "location": "AN_SA",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 15,
+          "location": "AN_SA",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 16,
+          "location": "ZN_CARNICOBAR",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 17,
+          "location": "ZN_CARNICOBAR",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D02",
+      "table": "p1_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: 47-Area and Production 2025-26.pdf (period 2025-26)\nTable title: Area and Production - 2025-26 Area- In Ha. Production- In MT\nColumns to map:\ncol 18: \"Nancowrie | Area\"\ncol 19: \"Nancowrie | Prod.\"\ncol 20: \"Campbell Bay | Area\"\ncol 21: \"Campbell Bay | Prod.\"\ncol 22: \"Nicobar District | Area\"\ncol 23: \"Nicobar District | Prod.\"\ncol 24: \"A&N Islands | Area\"\ncol 25: \"A&N Islands | Prod.\"\nFirst rows:\nCereals |  |  |  |  |  |  |  |  |  |  | \n1 | Paddy | 2100.3 | 6941.03 | 484.61 | 1405.7 | 480.525 | 1252.3 | 3065.432 | 9599.034 | 47.9 | 109.95\n2 | Maize | 5.5 | 22 | 0.2 | 0.1 | 0.5 | 3.61 | 6.2 | 25.71 | 8.82 | 10.58\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 18,
+          "location": "ZN_NANCOWRY",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 19,
+          "location": "ZN_NANCOWRY",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 20,
+          "location": "ZN_CAMPBELLBAY",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 21,
+          "location": "ZN_CAMPBELLBAY",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 22,
+          "location": "AN_NIC",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 23,
+          "location": "AN_NIC",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        },
+        {
+          "col": 24,
+          "location": "AN",
+          "metric": "area_cultivated",
+          "period": "2025-26",
+          "unit": "ha"
+        },
+        {
+          "col": 25,
+          "location": "AN",
+          "metric": "production",
+          "period": "2025-26",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p1_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: ewy lkaaf[;dh Basic Statistics 2024-25 Table 3.1 Major Crops in A & N Islands\nColumns to map:\ncol 1: \"Area (Hectares) | 2022-23\"\ncol 2: \"Area (Hectares) | 2023-24\"\ncol 3: \"Area (Hectares) | 2024-25\"\ncol 4: \"Production (MT) | 2022-23\"\ncol 5: \"Production (MT) | 2023-24\"\ncol 6: \"Production (MT) | 2024-25\"\nFirst rows:\nUkkfj;y Coconut (M/nuts) | 17912.55 | 17896.6 | 17902 | 153.09 | 129.768 | 112.1167\nliq kjh Arecanut | 4180 | 4744.47 | 4757.4 | 15870.18 | 15409.68 | 13964.38\n/kku Paddy | 4989.73 | 4557.1 | 4365.2 | 15785.08 | 14361.175 | 13490.2\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 1,
+          "location": "AN",
+          "metric": "area_cultivated",
+          "period": "2022-23",
+          "unit": "ha"
+        },
+        {
+          "col": 2,
+          "location": "AN",
+          "metric": "area_cultivated",
+          "period": "2023-24",
+          "unit": "ha"
+        },
+        {
+          "col": 3,
+          "location": "AN",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "production",
+          "period": "2022-23",
+          "unit": "mt"
+        },
+        {
+          "col": 5,
+          "location": "AN",
+          "metric": "production",
+          "period": "2023-24",
+          "unit": "mt"
+        },
+        {
+          "col": 6,
+          "location": "AN",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p1_t1",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: elkyk Spices 343.47 342.58 312.7461 987.62 1082.70 922.0746 dUn ewy Qly Root Crops 808.1 730.22 726.3 5796.90 4864.74 3994.4 Table 3.2 District-wise Major Produce in A & N Islands 2024-25\nColumns to map:\ncol 1: \"Area (Hectares) | nf{k.k v.Meku South Andaman\"\ncol 2: \"Area (Hectares) | m- vkSj e- v.Meku N & M Andaman\"\ncol 3: \"Area (Hectares) | fudksckj Nicobar\"\ncol 4: \"Area (Hectares) | va- rFkk fu- }hilewg A & N Islands\"\ncol 5: \"Production (MT) | nf{k.k v.Meku South Andaman\"\ncol 6: \"Production (MT) | m- vkSj e- v.Meku N & M Andaman\"\ncol 7: \"Production (MT) | fudksckj Nicobar\"\ncol 8: \"Production (MT) | va- rFkk fu- }hilewg A & N Islands\"\nFirst rows:\nvukt CEREAL |  |  |  |  |  |  |  | \n/kku Paddy | 22.5 | 4339.2 | 3.5 | 4365.2 | 63.75 | 13422.59 | 3.86 | 13490.2\neDdk Maize | 4.399 | 8.53 | 0 | 12.929 | 1.7 | 27.1 | 0 | 28.8\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 1,
+          "location": "AN_SA",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 2,
+          "location": "AN_NMA",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 3,
+          "location": "AN_NIC",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 5,
+          "location": "AN_SA",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 6,
+          "location": "AN_NMA",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 7,
+          "location": "AN_NIC",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 8,
+          "location": "AN",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p2_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: ewy lkaaf[;dh 2024-25\nColumns to map:\ncol 1: \"Area (Hectares) | nf{k.k v.Meku South Andaman\"\ncol 2: \"Area (Hectares) | m- vkSj e- N & M Andaman\"\ncol 3: \"Area (Hectares) | fudksckj Nicobar\"\ncol 4: \"Area (Hectares) | va- rFkk fu- }hilewg A & N Islands\"\ncol 5: \"Production (MT) | nf{k.k v.Meku South Andaman\"\ncol 6: \"Production (MT) | m- vkSj e- N & M Andaman\"\ncol 7: \"Production (MT) | fudksckj Nicobar\"\ncol 8: \"Production (MT) | va- rFkk fu- }hilewg A & N Islands\"\nFirst rows:\nPlantations Crops |  |  |  |  |  |  |  | \nUkkfj;yCoconut (M/Nuts) | 2825 | 1325 | 13752 | 17902 | 18.523 | 6.1937 | 87.4 | 112.12\nliq kjh Arecanut | 1372.2 | 3212 | 196.8 | 4757.4 | 8062.23 | 5836.03 | 66.12 | 13964.38\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 1,
+          "location": "AN_SA",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 2,
+          "location": "AN_NMA",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 3,
+          "location": "AN_NIC",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 5,
+          "location": "AN_SA",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 6,
+          "location": "AN_NMA",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 7,
+          "location": "AN_NIC",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 8,
+          "location": "AN",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p2_t1",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: Other fruits 118.5 346.8 115.9 581.2 146.58 1308.2 115.13 1569.9 dqy Total 863.35 1967 625.1 3456 9300.1 10745 543.2 20589 lCth VEGETABLE 1787.48 3053.99 247.46 5088.93 7936.8 18924.125 448.95 27309.8\nColumns to map:\ncol 2: \"2022-23\"\ncol 3: \"2023-24\"\ncol 4: \"2024-25\"\ncol 5: \"District-wise | nf{k.k v.Meku South Andaman\"\ncol 6: \"District-wise | m- vkSj e- N & M Andaman\"\ncol 7: \"District-wise | fudksckj Nicobar\"\nFirst rows:\nA. Seedlings (Nos.) | Ukkfj;y Coconut | 6991 | 7539 | 8060 | 1659 | 5366 | 1035\n | liq kjh Areca nut | 14360 | 279 | 109 | 109 | 00 | 00\n | lCth Vegetables | 20800 | 2537 | 749 | 690 | 37 | 22\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 2,
+          "location": "AN",
+          "metric": "fertilizer_consumption",
+          "period": "2022-23",
+          "unit": "mt"
+        },
+        {
+          "col": 3,
+          "location": "AN",
+          "metric": "fertilizer_consumption",
+          "period": "2023-24",
+          "unit": "mt"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 5,
+          "location": "AN_SA",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 6,
+          "location": "AN_NMA",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 7,
+          "location": "AN_NIC",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p3_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: ewy lkaaf[;dh 2024-25 Contd. Table 3.3 f\nColumns to map:\ncol 2: \"2022-23\"\ncol 3: \"2023-24\"\ncol 4: \"2024-25\"\ncol 5: \"District-wise | nf{k.k v.Meku South Andaman\"\ncol 6: \"District-wise | m- vkSj e- N & M Andaman\"\ncol 7: \"District-wise | fudksckj Nicobar\"\nFirst rows:\nD. moZjd Fertilizers (MT) | ukbVªkstuh Nitrogenous | 169.93 | 137.046 | 6.88 | 00 | 6.88 | 00\n | QkslQsfVd Phosphatic | 259.65 | 38.60 | 1124.39 | 1100 | 24.39 | 00\n | iksVkf'kd Potassic | 108.94 | 32.19 | 3265.5 | 3250 | 10.91 | 4.55\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 2,
+          "location": "AN",
+          "metric": "fertilizer_consumption",
+          "period": "2022-23",
+          "unit": "mt"
+        },
+        {
+          "col": 3,
+          "location": "AN",
+          "metric": "fertilizer_consumption",
+          "period": "2023-24",
+          "unit": "mt"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 5,
+          "location": "AN_SA",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 6,
+          "location": "AN_NMA",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 7,
+          "location": "AN_NIC",
+          "metric": "fertilizer_consumption",
+          "period": "2024-25",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p3_t1",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: (MT) QikksVslkfQ'ksfdVd P o P t h a o s s s p ic h atic 108.94 32.19 3265.5 3250 10.91 4.55 Organic farming / Vermi compost 452.26 15.84 793.03 780 12.573 0.46 Table 3.4 iq\"i d`f\"k % {ks=Qy vkSj mRikn\nColumns to map:\ncol 1: \"Area (Hectares) | nf{k.k v.Meku South Andaman\"\ncol 2: \"Area (Hectares) | m- vkSj e- v.Meku N & M Andaman\"\ncol 3: \"Area (Hectares) | fudksckj Nicobar\"\ncol 4: \"Area (Hectares) | va- rFkk fu- }hilewg A & N Islands\"\ncol 5: \"Production (MT) | nf{k.k v.Meku South Andaman\"\ncol 6: \"Production (MT) | m- vkSj e- N & M Andaman\"\ncol 7: \"Production (MT) | fu dksckj Nicobar\"\ncol 8: \"Production (MT) | va- rFkk fu- }hilewg A & N Islands\"\nFirst rows:\n2022-23 |  |  |  |  |  |  |  | \nxasnk Marigold | 5.03 | 5.95 | 0.165 | 11.15 | 11.5 | 15.35 | 0.55 | 27.40\nxqyq kc Rose | 3.6 | 2.035 | 0.05 | 5.685 | 2.8 | 4.395 | 0.26 | 7.45\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 1,
+          "location": "AN_SA",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 2,
+          "location": "AN_NMA",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 3,
+          "location": "AN_NIC",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "area_cultivated",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 5,
+          "location": "AN_SA",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 6,
+          "location": "AN_NMA",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 7,
+          "location": "AN_NIC",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        },
+        {
+          "col": 8,
+          "location": "AN",
+          "metric": "production",
+          "period": "2024-25",
+          "unit": "mt"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p5_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: ewy lkaaf[;dh Basic Statistics 2024-25 Table: 3.8 - Crop-wise cost of Cultivation during 2024-25 (Rs in Lakh)\nColumns to map:\ncol 1: \"South Andaman\"\ncol 2: \"N & M Andaman\"\ncol 3: \"Nicobar\"\ncol 4: \"A & N Islands\"\nFirst rows:\nCoconut (Production in m/nuts) | 17.4 | 16.3 | 14.335 | 48.035\nArecanut | 11.3 | 14.35 | 16.71 | 42.36\nPaddy Traditional | 2.34 | 2.733 | 00 | 5.073\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 1,
+          "location": "AN_SA",
+          "metric": "cost_of_cultivation",
+          "period": "2024-25",
+          "unit": "inr_lakh"
+        },
+        {
+          "col": 2,
+          "location": "AN_NMA",
+          "metric": "cost_of_cultivation",
+          "period": "2024-25",
+          "unit": "inr_lakh"
+        },
+        {
+          "col": 3,
+          "location": "AN_NIC",
+          "metric": "cost_of_cultivation",
+          "period": "2024-25",
+          "unit": "inr_lakh"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "cost_of_cultivation",
+          "period": "2024-25",
+          "unit": "inr_lakh"
+        }
+      ]
+    },
+    {
+      "document_id": "D06",
+      "table": "p6_t0",
+      "system": "You interpret column headers of statistical tables from the Andaman & Nicobar Islands. For each column you are given, decide which location, metric and period its numbers refer to. Use ONLY ids from the allowed lists. Reply with a JSON list only, one object per column: {\"col\": <int>, \"location\": <location id or null>, \"metric\": <metric id or null>, \"period\": <period as printed, e.g. \"2023-24\" or \"January 2024\", or null>, \"unit\": <unit id or null>}",
+      "user": "Document: Year 2024-25.pdf (period 2024-25)\nTable title: ewy lkaaf[;dh Basic Statistics 2024-25 Table: 3.10- भ-ूउपयोग Land Utilization (in Hectare) in Andaman & Nicobar Islands\nColumns to map:\ncol 1: \"South Andaman\"\ncol 2: \"N & M Andaman\"\ncol 3: \"Nicobar\"\ncol 4: \"A & N Islands\"\nFirst rows:\nA. Geographical Area | 267200.00 | 373600.00 | 184100.00 | 824900.00\nB. Reporting Area for Land Utilization (C+D+E +F+G+H+I+J) | 249351.23 | 355337.15 | 155086.79 | 759775.17\nC. Forest area | 230780.00 | 332082.00 | 154207.00 | 717069.00\n\nAllowed location ids: IN, AN, AN_NMA, AN_SA, AN_NIC, AN_ANDAMAN, TH_DIGLIPUR, TH_MAYABUNDER, TH_RANGAT, TH_PORTBLAIR, TH_FERRARGUNJ, TH_LITTLEANDAMAN, TH_CARNICOBAR, TH_NANCOWRY, TH_GREATNICOBAR, ZN_DIGLIPUR, ZN_MAYABUNDER, ZN_RANGAT, ZN_SOUTHANDAMAN, ZN_LITTLEANDAMAN, ZN_CARNICOBAR, ZN_NANCOWRY, ZN_CAMPBELLBAY, MKT_AN\nAllowed metric ids: agri_depot_count, agri_farm_count, agri_power_connections, area_cultivated, area_under_cultivation, check_dam_count, cost_of_cultivation, farm_harvest_price, farmers_count, fertilizer_consumption, fish_landed, fisher_population, forest_area, geographical_area, godown_count, holdings_area, holdings_count, households, kcc_count, land_use_area, livestock_count, lulc_area, manure_unit_count, non_organic_farm_count, organic_farm_count, pesticide_distributed, pond_count, population, poultry_count, power_tiller_count, production, pump_set_count, retail_price, scheme_allocation, scheme_expenditure, scheme_outlay, seed_distributed, seedling_distributed, tractor_count, vermi_bed_count, well_count, wholesale_price, yield\nAllowed unit ids: acre, count, ha, inr, inr_crore, inr_lakh, inr_per_100g, inr_per_dozen, inr_per_kg, inr_per_litre, inr_per_pack, inr_per_unit, inr_thousand, kg, kwh, lakh_nuts, million_nuts, mt, mt_per_ha, percent, persons, qtl, sq_km\n",
+      "answer": [
+        {
+          "col": 1,
+          "location": "AN_SA",
+          "metric": "land_use_area",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 2,
+          "location": "AN_NMA",
+          "metric": "land_use_area",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 3,
+          "location": "AN_NIC",
+          "metric": "land_use_area",
+          "period": "2024-25",
+          "unit": "ha"
+        },
+        {
+          "col": 4,
+          "location": "AN",
+          "metric": "land_use_area",
+          "period": "2024-25",
+          "unit": "ha"
+        }
+      ]
+    }
+  ]
+}

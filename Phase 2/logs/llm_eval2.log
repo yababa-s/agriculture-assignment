@@ -1,0 +1,16 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2181.38it/s]
+island {'n_islands': 31, 'n_gold_items': 294, 'n_pred_items': 133, 'json_valid_rate': 0.968, 'catalogue_adherence': 0.737, 'groundedness_rate': 0.346, 'raw': {'precision': 0.549, 'recall': 0.248, 'f1': 0.342}, 'after_groundedness_gate': {'precision': 0.978, 'recall': 0.153, 'f1': 0.265}, 'latency_s_median': 2.47}
+columns {'n_examples': 11, 'n_columns': 74, 'json_valid_rate': 0.909, 'column_accuracy': 0.027, 'location_accuracy': 0.284, 'metric_accuracy': 0.108, 'period_accuracy': 0.689, 'latency_s_median': 3.42}
+routing {'n': 20, 'accuracy': 0.4, 'valid_agent_id_rate': 1.0, 'hybrid_accuracy': 0.95, 'model_accuracy_on_ambiguous': 0.75, 'n_ambiguous': 4}
+-> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/llm_eval_base.json  (157.5s)
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2668.32it/s]
+island {'n_islands': 31, 'n_gold_items': 294, 'n_pred_items': 167, 'json_valid_rate': 0.613, 'catalogue_adherence': 0.958, 'groundedness_rate': 0.856, 'raw': {'precision': 0.885, 'recall': 0.469, 'f1': 0.613}, 'after_groundedness_gate': {'precision': 0.993, 'recall': 0.469, 'f1': 0.637}, 'latency_s_median': 10.43}
+columns {'n_examples': 11, 'n_columns': 74, 'json_valid_rate': 1.0, 'column_accuracy': 0.635, 'location_accuracy': 0.757, 'metric_accuracy': 0.959, 'period_accuracy': 0.892, 'latency_s_median': 5.28}
+routing {'n': 20, 'accuracy': 0.0, 'valid_agent_id_rate': 0.2, 'hybrid_accuracy': 0.95, 'model_accuracy_on_ambiguous': 0.0, 'n_ambiguous': 4}
+-> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/llm_eval_qlora_v1.json  (506.9s)
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2046.45it/s]
+island_perturbed {'n_islands': 31, 'n_gold_items': 294, 'n_pred_items': 151, 'json_valid_rate': 0.935, 'catalogue_adherence': 0.755, 'groundedness_rate': 0.384, 'raw': {'precision': 0.503, 'recall': 0.259, 'f1': 0.342}, 'after_groundedness_gate': {'precision': 0.879, 'recall': 0.173, 'f1': 0.29}, 'latency_s_median': 3.32}
+-> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/llm_eval_base_perturbed.json  (130.3s)
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 1957.01it/s]
+island_perturbed {'n_islands': 31, 'n_gold_items': 294, 'n_pred_items': 134, 'json_valid_rate': 0.516, 'catalogue_adherence': 0.97, 'groundedness_rate': 0.515, 'raw': {'precision': 0.798, 'recall': 0.31, 'f1': 0.446}, 'after_groundedness_gate': {'precision': 0.985, 'recall': 0.221, 'f1': 0.361}, 'latency_s_median': 12.0}
+-> /Users/suyashtripathi/Desktop/AgriAgent_AN/eval/results/llm_eval_qlora_v1_perturbed.json  (451.1s)

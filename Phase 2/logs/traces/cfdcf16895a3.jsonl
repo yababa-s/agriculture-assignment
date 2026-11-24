@@ -1,0 +1,6 @@
+{"i": 0, "t": 0.0, "agent": "router_agent", "kind": "decision", "name": "intake", "by": "rule", "payload": {"document": "U05", "file": "map_india_lulc.png", "queue_left": 1}}
+{"i": 1, "t": 0.001, "agent": "router_agent", "kind": "tool_call", "name": "fingerprint_document", "by": "agent", "payload": {"path": "/Users/suyashtripathi/Desktop/AgriAgent_AN/data/test_unseen/map_india_lulc.png"}}
+{"i": 2, "t": 0.002, "agent": "router_agent", "kind": "tool_result", "name": "fingerprint_document", "by": "tool", "payload": {"ok": true, "result": {"file": "map_india_lulc.png", "ext": ".png", "size_kb": 608, "modality": "image", "pixels": 968760, "width": 1170, "height": 828}}}
+{"i": 3, "t": 0.002, "agent": "router_agent", "kind": "tool_call", "name": "ocr_probe", "by": "agent", "payload": {"src": "/Users/suyashtripathi/Desktop/AgriAgent_AN/data/test_unseen/map_india_lulc.png"}}
+{"i": 4, "t": 11.993, "agent": "router_agent", "kind": "tool_result", "name": "ocr_probe", "by": "tool", "payload": {"ok": true, "result": {"words": 172, "numbers": 13, "sample": "720 960 500037. INDIA NR CENSUS: Land Use and Land Cover Mapping Using mulb temporal and multi sensor dala LAND USE LAND"}}}
+{"i": 5, "t": 11.993, "agent": "router_agent", "kind": "decision", "name": "route", "by": "rule", "payload": {"agent": "skip", "reason": "picture with 172 words: map or figure"}}
