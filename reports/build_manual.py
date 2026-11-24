@@ -85,7 +85,7 @@ def step(doc: Doc, n: int | str, text: str):
 
 def video(doc: Doc, i: int):
     t, ch, sec, _, who = CHAPTERS[i]
-    doc.box(f"**Video chapter {ch}** (starts at {t}) · presented by {who}. The video runs the commands of this section "
+    doc.box(f"**Video chapter {ch}** (starts at about {t}) · presented by {who}. The video runs the commands of this section "
             "in the same order.", VID_FILL, VID_EDGE, size=9.5)
 
 
@@ -164,8 +164,6 @@ class ManualDoc(Doc):
 # ---------------------------------------------------------------------------------------------------- content
 def build(out: Path, template: Path, pages: dict[str, int] | None = None, entries: list | None = None) -> tuple[Path, list]:
     doc = ManualDoc(template, {"[TEAMID]": TEAM["team_id"], "[State]": TEAM["state"]})
-    video_link = TEAM.get("video", "")
-    duration = TEAM.get("video_duration", "[mm:ss]")
 
     # cover ------------------------------------------------------------------------------------------------
     doc.title("AgriAgent: User Manual")
@@ -176,7 +174,7 @@ def build(out: Path, template: Path, pages: dict[str, int] | None = None, entrie
         ["Team ID / State", f"{TEAM['team_id']} / {TEAM['state']}"],
         ["Software version documented", f"git tag {TEAM['tag']} (commit {commit or '…'}) · release phase3-v1 · schema v2"],
         ["Manual version and date", "v1.1, 24 November 2026"],
-        ["Video walkthrough", f"{video_link} · 34_AN_MANUAL_VIDEO_v1.mp4 · duration {duration}"],
+        ["Video walkthrough", "34_AN_MANUAL_VIDEO_v1.mp4 (1080p, 8–12 min), submitted in the submission zip file"],
         ["Repository", TEAM["repo"]],
         ["Support contact", f"{SUYASH}, {TEAM['contact']}"]], [4.6, 11.3])
     doc.h2("Document control and contributions")
@@ -626,11 +624,11 @@ def build(out: Path, template: Path, pages: dict[str, int] | None = None, entrie
 
     # 10 ---------------------------------------------------------------------------------------------------
     doc.h1("10. Video Walkthrough")
-    doc.para(f"File 34_AN_MANUAL_VIDEO_v1.mp4 (1080p, {duration}) · link: {video_link}. The video starts from a fresh clone "
-             "in an empty folder and follows this manual: each chapter below runs the commands of the listed sections in "
-             "the order printed here. Every member presents the chapter they prepared. The chapter list is also in the "
-             "video description.", align="justify")
-    doc.table("Video storyboard and chapter list.", ["Time", "Chapter", "Manual section", "What is shown on screen",
+    doc.para("The video 34_AN_MANUAL_VIDEO_v1.mp4 (1080p, 8–12 minutes) is submitted in the submission zip file. It starts "
+             "from a fresh clone in an empty folder and follows this manual: each chapter below runs the commands of the "
+             "listed sections in the order printed here. Every member presents the chapter they prepared. Start times are "
+             "approximate.", align="justify")
+    doc.table("Video storyboard and chapter list.", ["Starts at (approx.)", "Chapter", "Manual section", "What is shown on screen",
                                                      "Presenter"],
               [[t, ch, sec, what, who] for t, ch, sec, what, who in CHAPTERS], [1.3, 3.6, 1.8, 6.6, 2.6], size=8.5,
               label="10")
