@@ -153,6 +153,13 @@ class RouterAgent(BaseAgent):
         group = ctx.document.get("source_group")
         if group in GROUP_TO_AGENT and not force_llm:
             agent = GROUP_TO_AGENT[group]
+            if ctx.document.get("modality") == "pdf_scanned" and agent not in ("image_table_agent", "skip"):
+                # a scanned source added to the manifest (add-source): the table agents need a text layer first
+                st = self.tool(ctx, "make_searchable_pdf", make_searchable_pdf, src=str(ctx.path))
+                ctx.tracer.decision("ocr_to_searchable_pdf", "rule", {"reason": "manifest lists the file as a scanned PDF",
+                                                                     "engines": st["engines"], "mean_conf": st["mean_conf"]})
+                self.converted_path = st["path"]
+                ctx.path = Path(st["path"])
             ctx.tracer.decision("route", "rule", {"agent": agent, "reason": f"manifest source group {group}"})
             return agent, "rule", f"manifest source group {group}"
         fp = self.tool(ctx, "fingerprint_document", fingerprint, path=str(ctx.path),
