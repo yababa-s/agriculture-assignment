@@ -94,6 +94,6 @@ Known layouts transfer; new compendium layouts do not. Non-agricultural rows are
 ## 5. Errors in the source publications (kept and flagged, not corrected)
 
 * **D10** (Island-wise Statistical Outline 2024-25), p. 9: Shaheed Dweep *Farmers-516*. This is Swaraj Dweep's figure; the 2022-23 and 2023-24 editions print 317.
-* **D11** (price statements 2023): November-2023 onion is 81.88 on p. 23 and 57.50 on p. 24. D12 and D13 print 81.88. `v_conflict` lists the pair. The query agent uses 57.50, the value consistent with October and December 2023, and its answer names both values.
+* **D11** (price statements 2023): November-2023 onion is 81.88 on p. 23 and 57.50 on p. 24. D12 and D13 print 81.88. `v_conflict` lists the pair. The query agent uses 81.88, the value printed on 3 of the 4 pages, and its answer names both values. When two values are printed equally often (the eggs case below), the one consistent with the neighbouring months is used.
 * **D13** (price statements 2025): eggs in September 2025 are 30.00 on p. 9 and 90.00 on p. 10. The months around it are 84–108, so answers use 90 and flag 30.
 * **D06** (Basic Statistics 2024-25), p. 3: fertilizer use in 2024-25 is Nitrogenous 6.88 t and Potassic 3,265.5 t, against 137 t and 32 t a year earlier. This is printed so (checked against the PDF text) and is kept.

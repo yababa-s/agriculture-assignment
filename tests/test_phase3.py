@@ -74,6 +74,9 @@ def test_time_series_one_value_per_period(agent):
     a = agent.ask("Monthly retail price of onion from January 2023 to December 2025")
     periods = [r["period_label"] for r in a.rows]
     assert len(periods) == len(set(periods)) == 36
+    # conflicting printings: the value printed on most pages wins (Nov 2023: 81.88 on 3 pages vs 57.50 on D11 p24)
+    by_month = {r["period_label"]: r["value"] for r in a.rows}
+    assert by_month["November 2023"] == 81.88 and by_month["February 2023"] == 50
 
 
 @needs_db

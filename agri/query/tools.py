@@ -77,19 +77,27 @@ def pick_one(rows: list[dict], key: tuple[str, ...]) -> list[dict]:
     out = []
     for g in groups.values():
         g.sort(key=_rank_key)
-        best = dict(g[0])
+        for x in g:   # how many printings carry (nearly) this value: the value most pages print wins
+            x["support"] = sum(1 for y in g if _same_value(x["value_std"], y["value_std"]))
+        best = dict(max(g, key=lambda x: x["support"]))   # max keeps the first (best-ranked) on ties
         docs = sorted({x["document_id"] for x in g})
         best["n_sources"] = len(docs)
         best["other_documents"] = [d for d in docs if d != best["document_id"]]
         alts, seen = [], {round(best["value_std"], 6)}
-        for x in g[1:]:
+        for x in g:
             v = x["value_std"]
-            if round(v, 6) not in seen and abs(v - best["value_std"]) > CONFLICT_PCT / 100 * max(abs(best["value_std"]), 1e-9):
+            if round(v, 6) not in seen and not _same_value(v, best["value_std"]):
                 seen.add(round(v, 6))
                 alts.append(dict(x))
         best["alternatives"] = alts
+        if alts and best["support"] > max(a["support"] for a in alts):
+            best["chosen_by"] = f"printed on {best['support']} of {len(g)} pages"
         out.append(best)
     return out
+
+
+def _same_value(a: float, b: float) -> bool:
+    return abs(a - b) <= CONFLICT_PCT / 100 * max(abs(b), 1e-9)
 
 
 def _median(xs: list[float]) -> float:
@@ -99,7 +107,8 @@ def _median(xs: list[float]) -> float:
 
 
 def resolve_by_neighbours(rows: list[dict], window: int = 2) -> int:
-    """For a period whose sources disagree, keep the candidate closest to the median of the neighbouring periods
+    """For a period whose sources disagree, keep the value printed on the most pages (pick_one already chose it); only
+    when the top values are printed equally often, keep the one closest to the median of the neighbouring periods
     (a printing slip such as eggs '30.00' between months of 84-96 loses to the reprint '90.00'). Returns the number
     of periods where the choice changed. The rejected values stay in `alternatives` for the answer to mention."""
     changed = 0
@@ -111,7 +120,9 @@ def resolve_by_neighbours(rows: list[dict], window: int = 2) -> int:
             continue
         med = _median(nb)
         cands = [r] + r["alternatives"]
-        best = min(cands, key=lambda x: abs(math.log(max(x["value_std"], 1e-9) / max(med, 1e-9))))
+        top = max(c.get("support", 1) for c in cands)
+        tied = [c for c in cands if c.get("support", 1) == top]
+        best = min(tied, key=lambda x: abs(math.log(max(x["value_std"], 1e-9) / max(med, 1e-9))))
         if best is not r:
             new = dict(best)
             new.update({k: r[k] for k in ("n_sources", "other_documents")})
