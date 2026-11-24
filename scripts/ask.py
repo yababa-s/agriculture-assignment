@@ -72,7 +72,10 @@ def main() -> None:
     if not a.no_llm and a.planner != "rules" and config.LLM_BACKEND != "none":
         from agri.llm.client import LLM
         llm = LLM(adapter_path=a.adapter or config.QUERY_ADAPTER_PATH)
-    agent = QueryAgent(a.db, llm=llm, planner="rules" if llm is None else a.planner, few_shot=False)
+    try:
+        agent = QueryAgent(a.db, llm=llm, planner="rules" if llm is None else a.planner, few_shot=False)
+    except FileNotFoundError as e:   # no database yet: print the fix, not a traceback
+        sys.exit(f"FileNotFoundError: {e}")
     if a.demo:
         demo = json.loads((config.ROOT / "data" / "gold" / "demo_queries.json").read_text(encoding="utf-8"))
         for d in demo:
