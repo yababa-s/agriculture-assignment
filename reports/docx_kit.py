@@ -17,6 +17,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 HEAD_FILL, BORDER, HEAD_INK = "DCE8D2", "B7C4B0", "1F3A1F"
+MONO = "Courier New"
 
 
 class Doc:
@@ -49,7 +50,7 @@ class Doc:
                 r.bold = True
             elif part.startswith("`"):
                 r = p.add_run(part[1:-1])
-                r.font.name = "Consolas"
+                r.font.name = MONO
                 r.font.size = Pt((size or 11) - 1)
             elif part.startswith("*"):
                 r = p.add_run(part[1:-1])
@@ -62,6 +63,8 @@ class Doc:
                 r.font.size = Pt(size or 11)
                 if not part.startswith("**"):
                     r.bold = False
+                if not (part.startswith("*") and not part.startswith("**")):
+                    r.italic = False
             if color:
                 r.font.color.rgb = RGBColor.from_string(color)
         return p
@@ -75,6 +78,8 @@ class Doc:
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         elif align == "justify":
             p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        else:
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
         self._runs(p, text, size, color)
         if italic:
             for r in p.runs:
@@ -160,7 +165,7 @@ class Doc:
             r2.bold = True
             r2.font.size = Pt(9.5)
         t = self.d.add_table(rows=1 + len(rows), cols=len(headers))
-        t.alignment = WD_TABLE_ALIGNMENT.CENTER
+        t.alignment = WD_TABLE_ALIGNMENT.LEFT
         t.autofit = False
         for j, h in enumerate(headers):
             self._cell(t.cell(0, j), str(h), size, header=True)
@@ -227,6 +232,94 @@ class Doc:
                 r.bold = True
             if header:
                 r.font.color.rgb = RGBColor.from_string(HEAD_INK)
+
+    # ------------------------------------------------------------ boxes (one-cell tables: render the same in Word and Pages)
+    def box(self, text: str, fill: str, edge: str, mono: bool = False, size: float = 9.0, bold_first: bool = False,
+            after: int = 8, title: str | None = None):
+        """A shaded one-cell table with a coloured left edge. All lines go into ONE paragraph separated by line
+        breaks, so no viewer adds paragraph spacing between them. `mono` = Courier New, for commands and output."""
+        t = self.d.add_table(rows=1, cols=1)
+        t.alignment = WD_TABLE_ALIGNMENT.LEFT
+        tblPr = t._tbl.tblPr
+        tw = OxmlElement("w:tblW")
+        tw.set(qn("w:w"), str(int(15.9 * 567)))
+        tw.set(qn("w:type"), "dxa")
+        tblPr.append(tw)
+        cell = t.cell(0, 0)
+        cell.width = Cm(15.9)
+        tcPr = cell._tc.get_or_add_tcPr()
+        borders = OxmlElement("w:tcBorders")
+        for side, sz, col in (("top", 2, fill), ("bottom", 2, fill), ("right", 2, fill), ("left", 24, edge)):
+            b = OxmlElement(f"w:{side}")
+            b.set(qn("w:val"), "single")
+            b.set(qn("w:sz"), str(sz))
+            b.set(qn("w:color"), col)
+            borders.append(b)
+        tcPr.append(borders)
+        shd = OxmlElement("w:shd")
+        shd.set(qn("w:val"), "clear")
+        shd.set(qn("w:fill"), fill)
+        tcPr.append(shd)
+        mar = OxmlElement("w:tcMar")
+        for side, w in (("top", 90), ("left", 160), ("bottom", 90), ("right", 120)):
+            m = OxmlElement(f"w:{side}")
+            m.set(qn("w:w"), str(w))
+            m.set(qn("w:type"), "dxa")
+            mar.append(m)
+        tcPr.append(mar)
+        p = cell.paragraphs[0]
+        p.paragraph_format.space_after = Pt(0)
+        p.paragraph_format.space_before = Pt(0)
+        p.paragraph_format.line_spacing = 1.0 if mono else 1.1
+        if title:                                   # a caption inside the box, so the two never split across pages
+            r = p.add_run(title)
+            r.font.name = "Calibri"
+            r.font.size = Pt(8)
+            r.bold = True
+            r.font.color.rgb = RGBColor.from_string("5F6B5F")
+            r.add_break()
+        lines = text.split("\n")
+        for i, line in enumerate(lines):
+            if mono:
+                r = p.add_run(line if line else " ")
+                r.font.name = MONO                      # Courier New: installed on macOS and Windows alike
+                r._r.get_or_add_rPr().get_or_add_rFonts().set(qn("w:hAnsi"), MONO)
+                r.font.size = Pt(size)
+                if bold_first and i == 0:
+                    r.bold = True
+            else:
+                self._runs(p, line, size)
+            if i < len(lines) - 1:
+                p.add_run().add_break()
+        if after:
+            self.spacer(after)
+        return t
+
+    def spacer(self, pt: float):
+        """An empty paragraph exactly `pt` high (also keeps two tables from merging)."""
+        gap = self.d.add_paragraph()
+        gap.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        pf = gap.paragraph_format
+        pf.space_after = Pt(0)
+        pf.space_before = Pt(0)
+        pf.line_spacing = Pt(pt)
+        r = gap.add_run(" ")
+        r.font.size = Pt(1)
+        return gap
+
+    def label(self, text: str, color: str = "5F6B5F"):
+        """Small caption line kept with the box that follows."""
+        p = self.d.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        p.paragraph_format.space_after = Pt(2)
+        p.paragraph_format.space_before = Pt(0)
+        p.paragraph_format.keep_with_next = True
+        r = p.add_run(text)
+        r.font.name = "Calibri"
+        r.font.size = Pt(8.5)
+        r.bold = True
+        r.font.color.rgb = RGBColor.from_string(color)
+        return p
 
     def save(self, path: Path):
         path.parent.mkdir(parents=True, exist_ok=True)

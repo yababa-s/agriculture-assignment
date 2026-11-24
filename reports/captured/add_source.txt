@@ -1,0 +1,2 @@
+added D21 (scan_area_production_2025-26.pdf, pdf_scanned, 3 pages) to data/manifest.csv
+next: agriagent run --docs D21   then add test cases to data/gold/ and run agriagent eval fields

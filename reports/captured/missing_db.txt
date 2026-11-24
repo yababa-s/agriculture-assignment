@@ -1,0 +1,1 @@
+FileNotFoundError: database not found: db/34_AN_knowledgebase_v2.sqlite. Run: python scripts/fetch_artifacts.py --only database

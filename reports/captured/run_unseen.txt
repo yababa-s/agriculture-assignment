@@ -1,0 +1,4 @@
+batch B20261124_231219  1 documents  4.2s  model=mlx-community/Qwen2.5-3B-Instruct-4bit + LoRA(adapters/34_AN_qlora_v2)
+doc  agent                   route  status        try   extr   load   rej  llm
+U01  matrix_table_agent      model  loaded          1    144    144     0    1
+summary -> logs/batch_B20261124_231219.json

@@ -1,0 +1,24 @@
+run 402bc423299d  batch B20261124_231219  document U01 hindi_area_production_2025-26.pdf
+agent matrix_table_agent  model mlx-community/Qwen2.5-3B-Instruct-4bit  adapter adapters/34_AN_qlora_v2  status loaded  attempts 1  extracted 144  loaded 144  rejected 0  llm_calls 1
+source: pdf_digital, languages hi, legacy font False, group G0_UNKNOWN
+
+[  0]    0.00s decision    intake                     by=rule  {"document": "U01", "file": "hindi_area_production_2025-26.pdf", "queue_left": 0}
+[  1]    0.00s tool_call   fingerprint_document       by=agent {"path": "data/test_unseen/hindi_area_production_2025-26.pdf"}
+[  2]    0.13s tool_result fingerprint_document       by=tool  {"ok": true, "result": {"file": "hindi_area_production_2025-26.pdf", "ext": ".pdf", "size_kb": 105, "modality": "pdf", "pages": 1, "chars": 1049, "ruled_tables_first3": 1, "image_cover_p1": 0.0, "broken_hindi_ratio": 0.0…
+[  3]    0.13s tool_call   llm_route                  by=agent {}
+[  4]    4.00s tool_result llm_route                  by=tool  {"ok": true, "result": {"ok": true, "reply": "{\"agent\": \"matrix_table_agent\", \"reason\": \"The document contains ruled tables of crops x locations (area, production) for different regions.\"}", "latency_s": 3.9}}
+[  5]    4.00s decision    route                      by=model {"agent": "matrix_table_agent", "reason": "The document contains ruled tables of crops x locations (area, production) for different regions."}
+[  6]    4.00s tool_call   pdf_extract_tables         by=agent {"path": "data/test_unseen/hindi_area_production_2025-26.pdf"}
+[  7]    4.18s tool_result pdf_extract_tables         by=tool  {"ok": true, "result": [{"ref": "p1_t0", "rows": 12, "cols": 13, "title": "क्षेत्रफल एवं उत्पादन 2025-26 क्षेत्रफल हेक्टेयर में, उत्पादन मीट्रिक टन में", "continued_from": null}]}
+[  8]    4.18s decision    rule_map_columns           by=rule  {"table": "p1_t0", "resolved": 12, "unresolved": [], "sample": {"1": ["ZN_DIGLIPUR", "area_cultivated", "2025-26"], "2": ["ZN_DIGLIPUR", "production", "2025-26"], "3": ["ZN_MAYABUNDER", "area_cultivated", "2025-26"], "4"…
+[  9]    4.18s decision    row_entity                 by=rule  {"table": "p1_t0", "rows_are": "commodity"}
+[ 10]    4.18s output      records                    by=agent {"n": 144, "tables": 1, "columns_mapped_by": {"rule": 12, "model": 0, "unmapped": 0}, "unresolved_rows": 0}
+[ 11]    4.18s decision    validate                   by=rule  {"input": 144, "accepted": 144, "rejected": 0, "warnings": 0, "cross_checks": {"yield_checked": 0, "yield_mismatch": 0, "sum_checked": 0, "sum_mismatch": 0}, "within_batch_duplicates": 0, "error_rate": 0.0, "top_errors":…
+[ 12]    4.19s output      load                       by=agent {"inserted": 144, "duplicates_skipped": 0, "rejected": 0, "facts": 0, "status": "loaded"}
+
+decisions by model: 1   decisions by rule: 4
+
+loaded records (provenance):
+   {'metric_id': 'area_cultivated', 'commodity_id': 'paddy', 'location_id': 'ZN_DIGLIPUR', 'period_label': '2025-26', 'value': 2100.3, 'unit_id': 'ha', 'page': 1, 'table_ref': 'p1_t0', 'row_label': 'धान', 'col_label': 'दिगलीपुर | क्षेत्रफल', 'validation': 'warning'}
+   {'metric_id': 'production', 'commodity_id': 'paddy', 'location_id': 'ZN_DIGLIPUR', 'period_label': '2025-26', 'value': 6941.03, 'unit_id': 'mt', 'page': 1, 'table_ref': 'p1_t0', 'row_label': 'धान', 'col_label': 'दिगलीपुर | उत्पादन', 'validation': 'warning'}
+   {'metric_id': 'area_cultivated', 'commodity_id': 'paddy', 'location_id': 'ZN_MAYABUNDER', 'period_label': '2025-26', 'value': 484.61, 'unit_id': 'ha', 'page': 1, 'table_ref': 'p1_t0', 'row_label': 'धान', 'col_label': 'मायाबंदर | क्षेत्रफल', 'validation': 'warning'}

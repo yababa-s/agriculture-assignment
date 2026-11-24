@@ -1,0 +1,3 @@
+Q: दक्षिण अण्डमान में सुपारी का उत्पादन 2024-25
+[lookup | planner=rules | tool=trace_value | 0.09s | id=bbb38dc6e9]
+Production of Arecanut, South Andaman District, 2024-25 = 8,062 t. It comes from Year 2024-25.pdf (Directorate of Economics & Statistics, A&N Administration), page 2, table p2_t0, row "Arecanut", column "Production (MT) | nf{k.k v.Meku South Andaman", printed as "8062.23"; extracted by bilingual_table_agent in run 9b5a80c11071.

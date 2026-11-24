@@ -1,0 +1,10 @@
+agent                   doc   n_gold  n_ext      P      R     F1  95% CI          prov  errors
+matrix_table_agent      D02       80     80    1.0    1.0    1.0  [1.0, 1.0]       1.0  {}
+bilingual_table_agent   D06       87     87    1.0    1.0    1.0  [1.0, 1.0]       1.0  {}
+price_table_agent       D13       70     70    1.0    1.0    1.0  [1.0, 1.0]       1.0  {}
+island_profile_agent    D10      294    295  0.997    1.0  0.998  [0.995, 1.0]     1.0  {'value': 1}
+narrative_agent         D15       12     12    1.0    1.0    1.0  [1.0, 1.0]       1.0  {}
+image_table_agent       D16      128    126    1.0  0.984  0.992  [0.98, 1.0]      1.0  {'missed': 2}
+lulc_agent              D17       28     28    1.0    1.0    1.0  [1.0, 1.0]       1.0  {}
+macro-average                                  1.0  0.998  0.999                   1.0
+micro: {'precision': 0.999, 'recall': 0.997, 'f1': 0.998}   errors: {'value': 1, 'missed': 2}   -> eval/results/phase3/field_eval_v2.json

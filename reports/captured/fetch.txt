@@ -1,6 +1,11 @@
+release phase3-v1  (https://github.com/yababa-s/agriculture-assignment/releases/download/phase3-v1)
+[ok] database  34_AN_database_v2.zip  sha256 verified  -> db/
+[ok] adapters  34_AN_qlora_adapters_v2.zip  sha256 verified  -> adapters/
+[ok] corpus    34_AN_corpus_v1.zip  sha256 verified  -> data/raw/
 [ok] database  db/34_AN_knowledgebase_v2.sqlite
 [ok] adapters  adapters/34_AN_qlora_v1/adapters.safetensors
 [ok] adapters  adapters/34_AN_qlora_v2/adapters.safetensors
 [ok] corpus    data/raw/Area and Production/42-Zone-Wise Area and Production of Crops During 2023-24.pdf
 [ok] corpus    data/raw/Area and Production/47-Area and Production 2025-26.pdf
 [ok] corpus    data/raw/Basic Statistics/Year 2021-22.pdf
+done

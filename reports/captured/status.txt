@@ -1,7 +1,7 @@
 {
-  "db": "/Users/suyashtripathi/Desktop/AgriAgent_AN/db/34_AN_knowledgebase_v2.sqlite",
+  "db": "db/34_AN_knowledgebase_v2.sqlite",
   "db_exists": true,
-  "corpus_dir": "/Users/suyashtripathi/Desktop/AgriAgent_AN/data/raw",
+  "corpus_dir": "data/raw",
   "llm_backend": "mlx",
   "base_model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
   "schema_version": "v2",
@@ -9,6 +9,6 @@
   "documents_with_data": 16,
   "locations_geocoded": 53,
   "last_run": "2026-11-23T02:09:18",
-  "corpus_files": 20,
+  "corpus_files": 19,
   "manifest_rows": 20
 }

@@ -1,0 +1,5 @@
+release phase3-v1  (https://github.com/yababa-s/agriculture-assignment/releases/download/phase3-v1)
+ERROR: checksum mismatch for 34_AN_database_v2.zip
+  expected 539398ea5dfe8ffd20a9c59dfaf68065cd91c12cf6f8664591d27feca81d89a5
+  got      f125236fc75efb9a964dd8b6d45501f2eae5a59bae8a0411d5552c4e00a664d4
+  Fix: delete .cache/release/34_AN_database_v2.zip and run the command again.

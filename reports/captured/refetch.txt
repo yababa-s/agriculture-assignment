@@ -1,0 +1,6 @@
+release phase3-v1  (https://github.com/yababa-s/agriculture-assignment/releases/download/phase3-v1)
+  downloading https://github.com/yababa-s/agriculture-assignment/releases/download/phase3-v1/34_AN_database_v2.zip
+
+[ok] database  34_AN_database_v2.zip  sha256 verified  -> db/
+[ok] database  db/34_AN_knowledgebase_v2.sqlite
+done

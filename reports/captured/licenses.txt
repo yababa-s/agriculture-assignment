@@ -2,5 +2,6 @@
   1  Copyright MoFPI, all rights reserved. Academic use only; do not redist
   2  Bhuvan terms of use; free for non-commercial/academic use with attribu
   2  NRSC data policy; publications free for non-commercial/academic use wi
+  1  academic use only
 
 all manifest rows have licence, URL, date, checksum and language: OK

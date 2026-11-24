@@ -77,6 +77,7 @@ def test_time_series_one_value_per_period(agent):
     # conflicting printings: the value printed on most pages wins (Nov 2023: 81.88 on 3 pages vs 57.50 on D11 p24)
     by_month = {r["period_label"]: r["value"] for r in a.rows}
     assert by_month["November 2023"] == 81.88 and by_month["February 2023"] == 50
+    _verified_value_beats_unverified()
 
 
 @needs_db
@@ -136,6 +137,18 @@ def test_haversine_and_nearby():
     assert 175 < haversine_km(11.67, 92.74, 13.27, 92.97) < 185          # Port Blair -> Diglipur
     r = nearby(connect_ro(), "TH_PORTBLAIR", 60, "farmers_count")
     assert all(x["distance_km"] <= 60 for x in r.rows)
+
+
+def _verified_value_beats_unverified():
+    """An unseen document (validation='warning', loaded first so it has the lower obs_id) must not replace the
+    checked official table for the same fact."""
+    from agri.query.tools import pick_one
+    base = {"location_id": "ZN_DIGLIPUR", "period_label": "2025-26", "season": None, "dims": "{}",
+            "doc_period": "2025-26", "value_std": 6941.03}
+    rows = [dict(base, obs_id=1, document_id="U01", validation="warning"),
+            dict(base, obs_id=2, document_id="D02", validation="ok")]
+    best = pick_one(rows, ("location_id", "period_label"))[0]
+    assert best["document_id"] == "D02" and best["other_documents"] == ["U01"]
 
 
 # ------------------------------------------------------------------ maintenance

@@ -1,6 +1,5 @@
-
 Q: Which source and page did the 2025-26 coconut production figure for A&N come from?
-[provenance | planner=rules | tool=trace_value | 0.01s | id=6fac2cb6ed]
-Production of Coconut, Andaman & Nicobar Islands, 2025-26 = 118.62 million nuts. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row "Coconut *", column "A&N Islands | Prod.", printed as "118.616"; extracted by matrix_table_agent in run f2f174073993.
+[provenance | planner=rules | tool=trace_value | 0.09s | id=a0c6fbc70d]
+Production of Coconut, Andaman & Nicobar Islands, 2025-26 = 118.62 million nuts. It comes from 47-Area and Production 2025-26.pdf (Department of Agriculture, A&N Administration), page 1, table p1_t0, row "Coconut *", column "A&N Islands | Prod.", printed as "118.616"; extracted by matrix_table_agent in run 5860303f8dcf.
 
-source page: /Users/suyashtripathi/Desktop/AgriAgent_AN/outputs/provenance/obs_1663_D02_p1.png  (cell highlighted: True)
+source page: outputs/provenance/obs_<id>_D02_p1.png  (cell highlighted: True)

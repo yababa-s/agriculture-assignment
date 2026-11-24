@@ -1,0 +1,4 @@
+batch B20261124_231233  1 documents  13.0s  model=none (rules only)
+doc  agent                   route  status        try   extr   load   rej  llm
+D21  matrix_table_agent      rule   partial         1   1197   1197     0    0
+summary -> logs/batch_B20261124_231233.json

@@ -1,9 +1,25 @@
-
 Q: Which agri zone produced the most paddy in 2025-26?
-[spatial | planner=rules | tool=rank_locations | 0.01s | id=e14d59cf2a]
+[spatial | planner=model | tool=rank_locations | 4.15s | id=178bb96729]
 Production of Paddy (Rice) by agri zone, 2025-26 (5 agri zones with data): Diglipur (agri zone) is highest with 6,941 t (71.5% of the total) [D02 p1].
   1. Diglipur (agri zone): 6,941 t [D02 p1]
   2. Mayabunder (agri zone): 1,406 t [D02 p1]
   3. Rangat (agri zone): 1,252 t [D02 p1]
   4. South Andaman (agri zone): 109.95 t [D02 p1]
   5. Campbell Bay (agri zone): 3.28 t [D02 p1]
+
+plan: {"intent": "rank", "metric": "production", "commodity": "paddy", "location": null, "level": "agri_zone", "period": "2025-26", "start": null, "end": null, "top_k": 10, "order": "desc", "radius_km": null, "confident": true}
+tool args: {"metric": "production", "commodity": "paddy", "period": "2025-26", "level": "agri_zone", "top_k": 10, "order": "desc"}
+SQL:
+SELECT o.obs_id, o.metric_id, o.commodity_id, c.name AS commodity, o.location_id, l.name AS location,
+       l.level, l.lat, l.lon, o.period_label, o.period_start, o.season, o.dims, o.value, o.unit_id,
+       o.value_raw, o.document_id, d.file_name, d.period_label AS doc_period, s.name AS publisher,
+       o.page, o.table_ref, o.row_label, o.col_label, o.agent_id, o.run_id, o.validation
+FROM observation o
+JOIN location l ON l.location_id = o.location_id
+JOIN document d ON d.document_id = o.document_id
+JOIN source   s ON s.source_id   = d.source_id
+LEFT JOIN commodity c ON c.commodity_id = o.commodity_id
+WHERE o.value IS NOT NULL AND o.validation != 'error' AND o.metric_id = :metric
+  AND (:commodity IS NULL AND o.commodity_id IS NULL OR o.commodity_id = :commodity)
+  AND json_extract(o.dims, '$.item') IS NULL AND json_extract(o.dims, '$.variety') IS NULL
+AND l.level = :level AND o.period_label = :period

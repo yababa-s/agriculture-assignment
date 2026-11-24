@@ -1,1 +1,1 @@
-would delete 0 trace/query log files older than 90 days
+deleted 0 trace/query log files older than 90 days

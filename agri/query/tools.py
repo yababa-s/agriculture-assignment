@@ -54,8 +54,10 @@ def connect_ro(path: Path | str = config.DB_PATH) -> sqlite3.Connection:
 
 
 def _rank_key(r: dict) -> tuple:
-    """Prefer: no season split, no extra dims, newest publication, then lowest obs_id (stable)."""
-    return (r["season"] is not None, r["dims"] not in ("{}", '{"series": "vegetables_fruits"}', '{"series": "food_items"}'),
+    """Prefer: verified over unverified (an unseen document's records carry validation='warning' until checked),
+    no season split, no extra dims, newest publication, then lowest obs_id (stable)."""
+    return (r.get("validation") == "warning", r["season"] is not None,
+            r["dims"] not in ("{}", '{"series": "vegetables_fruits"}', '{"series": "food_items"}'),
             -(_year(r["doc_period"]) or 0), r["obs_id"])
 
 

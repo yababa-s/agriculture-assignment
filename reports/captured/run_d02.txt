@@ -1,4 +1,6 @@
-batch B20261123_024107  1 documents  0.7s  model=none (rules only)
+replace: removed 2352 existing records of D02
+
+batch B20261124_231224  1 documents  1.0s  model=none (rules only)
 doc  agent                   route  status        try   extr   load   rej  llm
 D02  matrix_table_agent      rule   loaded          1   2352   2352     0    0
-summary -> /Users/suyashtripathi/Desktop/AgriAgent_AN/logs/batch_B20261123_024107.json
+summary -> logs/batch_B20261124_231224.json
