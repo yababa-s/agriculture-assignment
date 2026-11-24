@@ -153,6 +153,7 @@ Degraded inputs remain hard: scans and photos reach recall 0.10–0.52. Fresh fi
 | Evaluation | `scripts/eval_*.py`, `experiments/`, `eval/results/` |
 | Documentation | `docs/` (schema, evaluation, geo, demo queries, scripts), `reports/` (document builders + outputs) |
 | Tests and CI | `tests/`, `.github/workflows/` |
+| Phase 1 deliverables | `Phase 1/` (source inventory and the files collected in Phase 1; Phase 2 is at tag `phase2-v1`) |
 
 ## 11. Maintenance
 
