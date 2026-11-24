@@ -12,7 +12,9 @@ tables); it is ordered so multi-character sequences are replaced first.
 """
 from __future__ import annotations
 
+import gzip
 import re
+from pathlib import Path
 
 _PAIRS: list[tuple[str, str]] = [
     ("ñ", "॰"), ("Q+Z", "QZ+"), ("sas", "sa"), ("aa", "a"), (")Z", "र्द्ध"), ("ZZ", "Z"),
@@ -141,7 +143,9 @@ def _kruti_signal(tok: str) -> bool:
     return len(letters) <= 3 and not _in_vocab(letters.lower(), _vocabulary())
 
 
-_DICT_PATH = "/usr/share/dict/words"
+# English word list (Webster's Second International, 1934, public domain; the BSD/macOS /usr/share/dict/words),
+# bundled so the bilingual splitter behaves the same on every OS. Linux and Windows have no such system file.
+_DICT_PATH = Path(__file__).resolve().parents[2] / "data" / "words_en.txt.gz"
 # Domain words missing from general dictionaries (crop names, units, abbreviations).
 _DOMAIN_WORDS = {
     "paddy", "arecanut", "cashewnut", "seasam", "seasamum", "arhar", "chillies", "chilli", "turmeric", "nutmeg",
@@ -161,12 +165,9 @@ def _vocabulary() -> set[str]:
     global _vocab
     if _vocab is None:
         _vocab = set(_DOMAIN_WORDS)
-        try:
-            with open(_DICT_PATH) as f:
-                # Keep words of length >= 3 only: short dictionary entries ("Qy", "dk") collide with Kruti tokens.
-                _vocab |= {w.strip().lower() for w in f if len(w.strip()) >= 3}
-        except OSError:
-            pass
+        # Keep words of length >= 3 only: short dictionary entries ("Qy", "dk") collide with Kruti tokens.
+        with gzip.open(_DICT_PATH, "rt", encoding="utf-8") as f:
+            _vocab |= {w.strip().lower() for w in f if len(w.strip()) >= 3}
     return _vocab
 
 
