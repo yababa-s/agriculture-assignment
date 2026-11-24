@@ -53,7 +53,7 @@ def _is_item(line: str) -> bool:
 def main() -> None:
     src = config.ROOT / "docs" / "interim_report.md"
     out = config.ROOT / "docs" / f"{config.TEAM_ID}_{config.STATE}_interim_report_v1.pdf"
-    html = markdown.markdown(_normalise(src.read_text()), extensions=["tables", "fenced_code"])
+    html = markdown.markdown(_normalise(src.read_text(encoding="utf-8")), extensions=["tables", "fenced_code"])
     # MuPDF repeats <thead> rows across page breaks and paints them over later content; use plain rows
     for tag in ("<thead>", "</thead>", "<tbody>", "</tbody>"):
         html = html.replace(tag, "")

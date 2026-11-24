@@ -53,7 +53,7 @@ class Tracer:
 
     def save(self) -> str:
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.path, "w") as f:
+        with open(self.path, "w", encoding="utf-8") as f:
             for s in self.steps:
                 f.write(json.dumps(s, ensure_ascii=False, default=str) + "\n")
         return str(self.path)

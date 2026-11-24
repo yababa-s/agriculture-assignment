@@ -22,7 +22,7 @@ from reports.deck_kit import CORAL, INK, LINE, MEMBER, MUTED, PADDY, PALM, SEA, 
 
 FIG, ANIM = config.FIGURES_DIR, config.FIGURES_DIR / "anim"
 GEN = FIG / "slides"
-TEAM = json.loads((ROOT / "reports" / "team.json").read_text())
+TEAM = json.loads((ROOT / "reports" / "team.json").read_text(encoding="utf-8"))
 
 
 def poster_frame(mp4: Path) -> Path:
@@ -69,7 +69,7 @@ def build(out: Path) -> Path:
     isl = lambda e: e["island_extraction"]["after_groundedness_gate"]["f1"]  # noqa: E731
     col = lambda e: e["column_mapping"]["column_accuracy"]  # noqa: E731
     qa = D.qa
-    demo = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_dev_hybrid_rules_v2.json").read_text())
+    demo = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_dev_hybrid_rules_v2.json").read_text(encoding="utf-8"))
     demo_rows = [r for r in demo["results"] if r["demo"]]
     demo_ok = sum(r["correct"] for r in demo_rows)
     n0, n1, n2 = [x["name"] for x in TEAM["members"]]
@@ -386,7 +386,7 @@ def build(out: Path) -> Path:
         if k < 3:
             s.arrow(8.575, yy + 0.58, 8.575, yy + 0.9, MUTED, 1.5)
         yy += 0.95
-    rt = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_robust_test_hybrid_v3.json").read_text())["overall"]
+    rt = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_robust_test_hybrid_v3.json").read_text(encoding="utf-8"))["overall"]
     s.text(8.3, 5.45, 4.43, 1.4, [f"**Off-topic or unanswerable?** Refused, not guessed: {f2(rt['answer_accuracy'])} on an untouched "
                                   "robustness set (n = 15). Dev bars for rules are optimistic (built on dev)."],
            size=13, color=MUTED)
@@ -554,7 +554,7 @@ def write_notes(prs) -> None:
               "15–16 Abhineet 2:30 (demo 2:00) · 17–22 Shikhar 2:30.", ""]
     for i, t in enumerate(titles, 1):
         lines += [f"## Slide {i}: {t.splitlines()[0][:90]}", "", by_slide.get(i, "(no note)"), ""]
-    (ROOT / "docs" / "speaker_notes.md").write_text("\n".join(lines))
+    (ROOT / "docs" / "speaker_notes.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> None:

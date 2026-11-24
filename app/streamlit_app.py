@@ -45,7 +45,7 @@ def geojson(name: str) -> dict:
     from shapely.geometry import mapping, shape
     from shapely.geometry.polygon import orient
     from shapely.ops import unary_union
-    fc = json.loads((config.GEO_DIR / name).read_text())
+    fc = json.loads((config.GEO_DIR / name).read_text(encoding="utf-8"))
     for f in fc["features"]:
         g = shape(f["geometry"])
         parts = [orient(p, sign=-1.0) for p in getattr(g, "geoms", [g])]
@@ -78,7 +78,7 @@ tab_ask, tab_map, tab_explore, tab_eval = st.tabs(["Ask", "Map", "Explore", "Eva
 
 # ------------------------------------------------------------------ Ask
 with tab_ask:
-    demo = json.loads((ROOT / "data" / "gold" / "demo_queries.json").read_text())
+    demo = json.loads((ROOT / "data" / "gold" / "demo_queries.json").read_text(encoding="utf-8"))
     pick = st.selectbox("Demo questions", ["(type your own)"] + [f"{d['id']} · {d['type']} · {d['question']}" for d in demo])
     default = "" if pick.startswith("(") else pick.split(" · ", 2)[2]
     q = st.text_input("Question (English or Hindi)", default, placeholder="Which agri zone produced the most paddy in 2025-26?")
@@ -169,7 +169,7 @@ with tab_eval:
     res = config.RESULTS_DIR / "phase3"
     f = res / f"field_eval_{config.DB_VERSION}.json"
     if f.exists():
-        e = json.loads(f.read_text())
+        e = json.loads(f.read_text(encoding="utf-8"))
         st.subheader("Field-level extraction (held-out pages, hand-transcribed gold)")
         t = pd.DataFrame(e["per_agent"])[["agent", "document_id", "n_gold", "n_extracted", "precision", "recall", "f1",
                                           "provenance_accuracy"]]
@@ -177,7 +177,7 @@ with tab_eval:
         st.write(f"Macro-average F1 **{e['macro']['f1']}** over {e['n_gold_total']} gold facts.")
     rows = []
     for p in sorted(res.glob("query_eval_*.json")):
-        e = json.loads(p.read_text())
+        e = json.loads(p.read_text(encoding="utf-8"))
         rows.append({"set": e.get("set"), "configuration": e["label"], "n": e["overall"]["n"],
                      "answer accuracy": e["overall"]["answer_accuracy"], "intent accuracy": e["overall"]["intent_accuracy"],
                      "valid plans": e["overall"]["valid_plan_rate"], "median latency (s)": e["overall"]["median_latency_s"]})

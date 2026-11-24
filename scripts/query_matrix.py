@@ -161,7 +161,7 @@ def main() -> None:
     label = a.label or a.planner
     path = config.RESULTS_DIR / "phase3" / f"query_matrix_{label}.json"
     path.write_text(json.dumps({"n": len(results), "n_pass": n_ok, "issues": dict(kinds), "items": results},
-                               indent=1, ensure_ascii=False, default=str))
+                               indent=1, ensure_ascii=False, default=str), encoding="utf-8")
     print("->", path)
 
 

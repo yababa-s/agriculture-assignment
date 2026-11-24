@@ -51,7 +51,7 @@ def main() -> None:
         from agri.llm.client import LLM
         llm = LLM(adapter_path=a.adapter)
     agent = QueryAgent(planner=a.planner, llm=llm, few_shot=False)
-    items = json.loads((config.ROOT / "data/gold/queries_battery.json").read_text())["queries"]
+    items = json.loads((config.ROOT / "data/gold/queries_battery.json").read_text(encoding="utf-8"))["queries"]
     out, fails = [], Counter()
     for it in items:
         ans = agent.ask(it["q"])
@@ -64,7 +64,7 @@ def main() -> None:
     n_ok = sum(o["ok"] for o in out)
     print(f"\n{n_ok}/{len(out)} pass ({100 * n_ok / len(out):.1f}%)  failure kinds: {dict(fails)}")
     path = config.RESULTS_DIR / "phase3" / f"query_battery_{a.label}.json"
-    path.write_text(json.dumps({"n": len(out), "n_pass": n_ok, "items": out}, indent=1, ensure_ascii=False, default=str))
+    path.write_text(json.dumps({"n": len(out), "n_pass": n_ok, "items": out}, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
     print("->", path)
 
 

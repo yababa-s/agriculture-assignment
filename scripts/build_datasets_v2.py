@@ -30,7 +30,7 @@ from agri.query.agent import PLANNER_SYSTEM  # noqa: E402
 
 RND = random.Random(407)
 OUT = config.ROOT / "data" / "training_v2"
-SPLITS = json.loads(config.SPLITS_PATH.read_text())
+SPLITS = json.loads(config.SPLITS_PATH.read_text(encoding="utf-8"))
 TRAIN_DOCS = SPLITS["train"]["island"] + SPLITS["train"]["tables"]
 
 CROPS = ["paddy", "arecanut", "coconut", "banana", "ginger", "black pepper", "maize", "mango", "papaya", "cashewnut",
@@ -154,7 +154,7 @@ def chat(system: str, user: str, answer) -> dict:
 
 def main() -> None:
     held = [x["question"] for f in ("queries.json", "queries_test.json")
-            for x in json.loads((config.GOLD_DIR / f).read_text())["queries"]]
+            for x in json.loads((config.GOLD_DIR / f).read_text(encoding="utf-8"))["queries"]]
     seen, q_examples, dropped = set(), [], []
     while len(q_examples) < 200:
         t, p = gen_one()
@@ -167,14 +167,14 @@ def main() -> None:
             continue
         q_examples.append(chat(PLANNER_SYSTEM, f"Q: {t}\nA:", p))
 
-    fps = json.loads((config.RESULTS_DIR / "fingerprints.json").read_text())
-    routing_gold = {g["document_id"]: g["expected_agent"] for g in json.loads((config.GOLD_DIR / "routing.json").read_text())}
+    fps = json.loads((config.RESULTS_DIR / "fingerprints.json").read_text(encoding="utf-8"))
+    routing_gold = {g["document_id"]: g["expected_agent"] for g in json.loads((config.GOLD_DIR / "routing.json").read_text(encoding="utf-8"))}
     r_examples = [chat(ROUTER_SYSTEM, router_prompt(fps[d]), {"agent": routing_gold[d], "reason": "matches the layout"})
                   for d in TRAIN_DOCS]
 
     v1 = [json.loads(x) for f in ("train.jsonl", "valid.jsonl")
-          for x in (config.ROOT / "data" / "training" / f).read_text().splitlines()]
-    v1_train = [json.loads(x) for x in (config.ROOT / "data" / "training" / "train.jsonl").read_text().splitlines()]
+          for x in (config.ROOT / "data" / "training" / f).read_text(encoding="utf-8").splitlines()]
+    v1_train = [json.loads(x) for x in (config.ROOT / "data" / "training" / "train.jsonl").read_text(encoding="utf-8").splitlines()]
     v1_valid = v1[len(v1_train):]
     RND.shuffle(q_examples)
     q_valid, q_train = q_examples[:20], q_examples[20:]
@@ -183,8 +183,8 @@ def main() -> None:
     valid = v1_valid + q_valid
     RND.shuffle(train)
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "train.jsonl").write_text("\n".join(json.dumps(e, ensure_ascii=False) for e in train) + "\n")
-    (OUT / "valid.jsonl").write_text("\n".join(json.dumps(e, ensure_ascii=False) for e in valid) + "\n")
+    (OUT / "train.jsonl").write_text("\n".join(json.dumps(e, ensure_ascii=False) for e in train) + "\n", encoding="utf-8")
+    (OUT / "valid.jsonl").write_text("\n".join(json.dumps(e, ensure_ascii=False) for e in valid) + "\n", encoding="utf-8")
     max_ratio = max(max(fuzz.ratio(json.loads(json.dumps(e))["messages"][1]["content"][3:-3].lower(), h.lower()) for h in held)
                     for e in q_examples)
     report = {"n_train": len(train), "n_valid": len(valid),
@@ -193,7 +193,7 @@ def main() -> None:
               "query_questions_dropped_as_too_similar": len(dropped), "dropped_examples": dropped[:10],
               "max_similarity_kept_vs_heldout": max_ratio, "routing_train_documents": TRAIN_DOCS,
               "routing_eval_documents": [d for d in routing_gold if d not in TRAIN_DOCS]}
-    (OUT / "contamination_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
+    (OUT / "contamination_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps({k: v for k, v in report.items() if k != "dropped_examples"}, ensure_ascii=False, indent=1))
 
 

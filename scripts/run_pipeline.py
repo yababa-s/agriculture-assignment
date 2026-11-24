@@ -64,7 +64,7 @@ def main() -> None:
     conn.commit()
     out["model"] = llm.label if not a.no_llm else "none (rules only)"
     path = config.ROOT / "logs" / f"batch_{out['batch_id']}.json"
-    path.write_text(json.dumps(out, indent=2, default=str))
+    path.write_text(json.dumps(out, indent=2, default=str), encoding="utf-8")
     print(f"\nbatch {out['batch_id']}  {len(docs)} documents  {out['elapsed_s']}s  model={out['model']}")
     print(f"{'doc':<5}{'agent':<24}{'route':<7}{'status':<13}{'try':>4}{'extr':>7}{'load':>7}{'rej':>6}{'llm':>5}")
     for d in out["documents"]:

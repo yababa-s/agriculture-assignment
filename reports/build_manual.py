@@ -20,7 +20,7 @@ from docx.oxml.ns import qn  # noqa: E402
 from agri import config  # noqa: E402
 from reports.docx_kit import Doc  # noqa: E402
 
-TEAM = json.loads((ROOT / "reports" / "team.json").read_text())
+TEAM = json.loads((ROOT / "reports" / "team.json").read_text(encoding="utf-8"))
 CAP = ROOT / "reports" / "captured"
 TEMPLATE = Path.home() / "Desktop" / "Phase 3 requirements" / "TEAMID_STATE_MANUAL_template.docx"
 
@@ -29,7 +29,7 @@ def cap(name: str, n: int | None = None) -> str:
     p = CAP / f"{name}.txt"
     if not p.exists():
         return "(run the command to see the output)"
-    t = p.read_text().replace(str(ROOT) + "/", "").strip("\n")
+    t = p.read_text(encoding="utf-8").replace(str(ROOT) + "/", "").strip("\n")
     lines = t.splitlines()
     return "\n".join(lines[:n] + (["…"] if n and len(lines) > n else [])) if n else t
 

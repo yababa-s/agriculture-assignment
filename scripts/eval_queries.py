@@ -110,7 +110,7 @@ def main() -> None:
     agent = QueryAgent(a.db, llm=llm, planner=a.planner, few_shot=not a.zero_shot)
     gold_conn = agent.conn
     gold_file = SETS[a.set]
-    items = json.loads((config.ROOT / "data" / "gold" / gold_file).read_text())["queries"]
+    items = json.loads((config.ROOT / "data" / "gold" / gold_file).read_text(encoding="utf-8"))["queries"]
     if a.only_demo:
         items = [x for x in items if x["demo"]]
     results = []
@@ -146,7 +146,7 @@ def main() -> None:
                "elapsed_s": round(time.time() - t0, 1), "results": results}
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / f"query_eval_{a.set}_{a.label}.json"
-    path.write_text(json.dumps(summary, ensure_ascii=False, indent=1, default=str))
+    path.write_text(json.dumps(summary, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
     o = summary["overall"]
     print(f"\n{a.label}: answer {o['answer_accuracy']} (n={o['n']}), macro {summary['macro_answer_accuracy']}, "
           f"intent {o['intent_accuracy']}, tool {o['tool_selection_accuracy']}, valid plans {o['valid_plan_rate']}, "

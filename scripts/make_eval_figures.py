@@ -30,7 +30,7 @@ SHORT = {"matrix_table_agent": "Matrix tables", "bilingual_table_agent": "Biling
 
 
 def load(p: Path):
-    return json.loads(p.read_text()) if p.exists() else None
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
 
 def save(fig, name, note):

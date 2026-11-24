@@ -41,7 +41,7 @@ def init_db(path: Path | str = DB_PATH, fresh: bool = False) -> sqlite3.Connecti
     if fresh and path.exists():
         path.unlink()
     conn = connect(path)
-    conn.executescript(SCHEMA_PATH.read_text())
+    conn.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
     seed_reference(conn)
     load_manifest(conn)
     from agri.db.migrate import apply_geo, ensure_meta, migrate_v2
@@ -110,7 +110,7 @@ def add_alias(conn, etype: str, eid: str, alias: str, origin: str = "llm") -> No
 def load_manifest(conn: sqlite3.Connection, manifest: Path = MANIFEST_PATH) -> None:
     if not manifest.exists():
         return
-    with open(manifest) as f:
+    with open(manifest, encoding="utf-8") as f:
         for r in csv.DictReader(f):
             upsert_document(conn, r)
 

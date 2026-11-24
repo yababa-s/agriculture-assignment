@@ -211,7 +211,7 @@ def make_searchable_pdf(src: str | Path, force_hindi: bool = False) -> dict:
     out = CACHE_DIR / f"{digest}{'_hi' if force_hindi else ''}.pdf"
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     font = pymupdf.Font(fontfile=UNICODE_FONT)
-    doc = pymupdf.open()
+    doc = pymupdf.open(encoding="utf-8")
     stats = {"pages": 0, "words": 0, "mean_conf": 0.0, "engines": []}
     confs = []
     for img, (pw, ph) in _page_images(src):

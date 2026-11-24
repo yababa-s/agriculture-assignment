@@ -29,7 +29,7 @@ C = config.CORPUS_DIR
 
 def scan(src: Path, dst: Path, pages: list[int] | None = None, dpi: int = 200) -> None:
     s = pymupdf.open(src)
-    o = pymupdf.open()
+    o = pymupdf.open(encoding="utf-8")
     for i in (pages or range(1, len(s) + 1)):
         p = s[i - 1]
         np_ = o.new_page(width=p.rect.width, height=p.rect.height)
@@ -89,7 +89,7 @@ def hindi_table_clean(dst: Path) -> None:
         r = conn.execute("SELECT value_raw FROM observation WHERE document_id='D02' AND commodity_id=? AND location_id=? "
                          "AND metric_id=? AND period_label='2025-26'", (cid, loc, metric)).fetchone()
         return r[0] if r and r[0] else "-"
-    doc = pymupdf.open()
+    doc = pymupdf.open(encoding="utf-8")
     page = doc.new_page(width=842, height=595)
     font = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
     page.insert_font(fontname="uni", fontfile=font)

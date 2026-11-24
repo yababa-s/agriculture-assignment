@@ -70,8 +70,8 @@ def main() -> None:
     from langsmith import Client
     client = Client()
     proj = config.LANGSMITH_PROJECT
-    isl = json.loads((config.GOLD_DIR / "island_profiles_D10.json").read_text())["blocks"]
-    cols = json.loads((config.GOLD_DIR / "column_mapping_eval.json").read_text())["examples"]
+    isl = json.loads((config.GOLD_DIR / "island_profiles_D10.json").read_text(encoding="utf-8"))["blocks"]
+    cols = json.loads((config.GOLD_DIR / "column_mapping_eval.json").read_text(encoding="utf-8"))["examples"]
 
     def dataset(name, inputs, outputs):
         if client.has_dataset(dataset_name=name):

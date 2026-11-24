@@ -94,7 +94,7 @@ def main() -> None:
     conn = connect(config.DB_PATH)
     config.GOLD_DIR.mkdir(parents=True, exist_ok=True)
     config.SPLITS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    config.SPLITS_PATH.write_text(json.dumps(SPLITS, indent=2))
+    config.SPLITS_PATH.write_text(json.dumps(SPLITS, indent=2), encoding="utf-8")
 
     # ---- gold (held-out)
     gold_isl = island_items(conn, "D10")
@@ -104,16 +104,16 @@ def main() -> None:
                    "text of every island (2026-10-16). Ambiguous facts that span two text columns (e.g. Smith Island "
                    "'Manure ... Selling Unit-1', Shaheed Dweep 'Inland-32' fish) are deliberately excluded."),
         "n_islands": len(gold_isl), "n_items": sum(len(b["items"]) for b in gold_isl), "blocks": gold_isl},
-        indent=2, ensure_ascii=False))
+        indent=2, ensure_ascii=False), encoding="utf-8")
     gold_tab = [e for d in SPLITS["eval"]["tables"] for e in table_examples(conn, d)]
     (config.GOLD_DIR / "column_mapping_eval.json").write_text(json.dumps({
         "task": "column_mapping", "documents": SPLITS["eval"]["tables"],
         "review": "Column specs from fully rule-resolved tables; D02 headers checked against the rendered page.",
         "n_examples": len(gold_tab), "n_columns": sum(len(e["answer"]) for e in gold_tab), "examples": gold_tab},
-        indent=2, ensure_ascii=False))
+        indent=2, ensure_ascii=False), encoding="utf-8")
     routing = [{"document_id": r["document_id"], "file": r["file_name"], "expected_agent": GROUP_TO_AGENT[r["source_group"]]}
                for r in conn.execute("SELECT document_id, file_name, source_group FROM document WHERE document_id LIKE 'D%' ORDER BY 1")]
-    (config.GOLD_DIR / "routing.json").write_text(json.dumps(routing, indent=2))
+    (config.GOLD_DIR / "routing.json").write_text(json.dumps(routing, indent=2), encoding="utf-8")
 
     # ---- training set (train documents only)
     examples = []
@@ -127,14 +127,14 @@ def main() -> None:
     n_valid = max(4, len(examples) // 10)
     tdir = config.ROOT / "data" / "training"
     tdir.mkdir(parents=True, exist_ok=True)
-    with open(tdir / "train.jsonl", "w") as f:
+    with open(tdir / "train.jsonl", "w", encoding="utf-8") as f:
         for e in examples[n_valid:]:
             f.write(json.dumps(e, ensure_ascii=False) + "\n")
-    with open(tdir / "valid.jsonl", "w") as f:
+    with open(tdir / "valid.jsonl", "w", encoding="utf-8") as f:
         for e in examples[:n_valid]:
             f.write(json.dumps(e, ensure_ascii=False) + "\n")
     # contamination guard: no eval-document text may appear in training prompts
-    train_text = (tdir / "train.jsonl").read_text() + (tdir / "valid.jsonl").read_text()
+    train_text = (tdir / "train.jsonl").read_text(encoding="utf-8") + (tdir / "valid.jsonl").read_text(encoding="utf-8")
     leaks = [b["island"] for b in gold_isl if b["input"][:120] in train_text and len(b["items"]) > 4]
     print(f"gold islands: {len(gold_isl)} blocks / {sum(len(b['items']) for b in gold_isl)} items")
     print(f"gold column mapping: {len(gold_tab)} examples / {sum(len(e['answer']) for e in gold_tab)} columns")

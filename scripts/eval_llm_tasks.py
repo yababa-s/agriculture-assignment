@@ -56,7 +56,7 @@ def perturb(text: str) -> str:
 
 def eval_island(llm: LLM | None, limit: int | None, perturbed: bool = False) -> dict:
     """llm=None scores the deterministic teacher extractor instead of a model."""
-    gold = json.loads((config.GOLD_DIR / "island_profiles_D10.json").read_text())["blocks"]
+    gold = json.loads((config.GOLD_DIR / "island_profiles_D10.json").read_text(encoding="utf-8"))["blocks"]
     if limit:
         gold = gold[:limit]
     if perturbed:
@@ -119,7 +119,7 @@ def eval_island(llm: LLM | None, limit: int | None, perturbed: bool = False) -> 
 
 
 def eval_columns(llm: LLM, limit: int | None) -> dict:
-    gold = json.loads((config.GOLD_DIR / "column_mapping_eval.json").read_text())["examples"]
+    gold = json.loads((config.GOLD_DIR / "column_mapping_eval.json").read_text(encoding="utf-8"))["examples"]
     if limit:
         gold = gold[:limit]
     n = full = loc = met = per = 0
@@ -150,12 +150,12 @@ def eval_columns(llm: LLM, limit: int | None) -> dict:
 
 
 def eval_routing(llm: LLM) -> dict:
-    gold = json.loads((config.GOLD_DIR / "routing.json").read_text())
+    gold = json.loads((config.GOLD_DIR / "routing.json").read_text(encoding="utf-8"))
     import sqlite3
     conn = sqlite3.connect(config.DB_PATH)
     paths = {r[0]: str(config.CORPUS_DIR / r[1]) for r in conn.execute("SELECT document_id, relative_path FROM document")}
     cache = config.RESULTS_DIR / "fingerprints.json"
-    fps = json.loads(cache.read_text()) if cache.exists() else {}
+    fps = json.loads(cache.read_text(encoding="utf-8")) if cache.exists() else {}
     correct, rows = 0, []
     for g in gold:
         fp = fps.get(g["document_id"]) or fingerprint(paths[g["document_id"]])
@@ -169,7 +169,7 @@ def eval_routing(llm: LLM) -> dict:
         rows.append({"doc": g["document_id"], "expected": g["expected_agent"], "predicted": agent,
                      "valid_id": agent in AGENT_GUIDE, "ok": ok, "heuristic_confident": confident,
                      "hybrid": hybrid, "hybrid_ok": hybrid == g["expected_agent"]})
-    cache.write_text(json.dumps(fps, indent=1, default=str))
+    cache.write_text(json.dumps(fps, indent=1, default=str), encoding="utf-8")
     amb = [r for r in rows if not r["heuristic_confident"]]
     return {"n": len(gold), "accuracy": round(correct / len(gold), 3),
             "valid_agent_id_rate": round(sum(r["valid_id"] for r in rows) / len(rows), 3),
@@ -180,7 +180,7 @@ def eval_routing(llm: LLM) -> dict:
 
 def _heldout(rows: list[dict]) -> dict:
     """Routing accuracy on the 14 files whose fingerprints were never used to train any adapter."""
-    sp = json.loads(config.SPLITS_PATH.read_text())
+    sp = json.loads(config.SPLITS_PATH.read_text(encoding="utf-8"))
     train = set(sp["train"]["island"]) | set(sp["train"]["tables"])
     h = [r for r in rows if r["doc"] not in train]
     return {"n_eval": len(h), "accuracy_heldout": round(sum(r["ok"] for r in h) / max(1, len(h)), 3),
@@ -194,7 +194,7 @@ class FewShotLLM:
     def __init__(self, llm: LLM, k: int):
         self.llm, self.k = llm, k
         self.examples: dict[str, list[tuple[str, str]]] = defaultdict(list)
-        rows = [json.loads(x)["messages"] for x in (config.ROOT / "data" / "training" / "train.jsonl").read_text().splitlines()]
+        rows = [json.loads(x)["messages"] for x in (config.ROOT / "data" / "training" / "train.jsonl").read_text(encoding="utf-8").splitlines()]
         for m in sorted(rows, key=lambda m: len(m[1]["content"]) + len(m[2]["content"])):
             key = m[0]["content"][:60]
             if len(self.examples[key]) < k:
@@ -243,9 +243,9 @@ def main() -> None:
     out["llm_calls"] = llm.calls if llm else 0
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     path = config.RESULTS_DIR / f"llm_eval_{a.label}.json"
-    merged = json.loads(path.read_text()) if path.exists() else {}
+    merged = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     merged.update(out)   # partial reruns replace only the tasks they ran
-    path.write_text(json.dumps(merged, indent=2))
+    path.write_text(json.dumps(merged, indent=2), encoding="utf-8")
     print(f"-> {path}  ({out['elapsed_s']}s)")
 
 

@@ -74,7 +74,7 @@ def main() -> None:
         llm = LLM(adapter_path=a.adapter or config.QUERY_ADAPTER_PATH)
     agent = QueryAgent(a.db, llm=llm, planner="rules" if llm is None else a.planner, few_shot=False)
     if a.demo:
-        demo = json.loads((config.ROOT / "data" / "gold" / "demo_queries.json").read_text())
+        demo = json.loads((config.ROOT / "data" / "gold" / "demo_queries.json").read_text(encoding="utf-8"))
         for d in demo:
             show(agent, d["question"], a)
         return

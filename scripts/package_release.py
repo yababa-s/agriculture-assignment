@@ -58,20 +58,20 @@ def main() -> None:
                         "check": sorted({f"adapters/{a.split('/')[0]}/adapters.safetensors" for _, a in files}),
                         "contents": "LoRA adapter weights only (v1 and v2), MLX format plus converted PEFT format"}
     keep, excluded = [], []
-    for r in csv.DictReader(config.MANIFEST_PATH.open()):
+    for r in csv.DictReader(config.MANIFEST_PATH.open(encoding="utf-8")):
         p = config.CORPUS_DIR / r["relative_path"]
         if "do not redistribute" in r["license"].lower():
             excluded.append(f"{r['doc_id']}  {r['file_name']}\n    download: {r['document_url']}\n    reason: {r['license']}")
         elif p.exists():
             keep.append((p, r["relative_path"]))
     zp = zipdir(REL / f"{T}_corpus_v1.zip", keep)
-    (REL / "CORPUS_EXCLUDED.txt").write_text("Not redistributed (licence); download from the source:\n\n" + "\n".join(excluded) + "\n")
+    (REL / "CORPUS_EXCLUDED.txt").write_text("Not redistributed (licence); download from the source:\n\n" + "\n".join(excluded) + "\n", encoding="utf-8")
     arts["corpus"] = {"file": zp.name, "sha256": sha(zp), "unzip_to": "data/raw",
                       "check": [f"data/raw/{a}" for _, a in keep[:3]],
                       "contents": f"{len(keep)} of 20 corpus files (see release/CORPUS_EXCLUDED.txt), paths as in data/manifest.csv",
                       "excluded": [e.split()[0] for e in excluded]}
     spec = {"release": TAG, "release_url": URL, "artifacts": arts}
-    (config.ROOT / "artifacts.json").write_text(json.dumps(spec, indent=1))
+    (config.ROOT / "artifacts.json").write_text(json.dumps(spec, indent=1), encoding="utf-8")
     for k, v in arts.items():
         print(f"{k:<9} {v['file']:<36} {(REL / v['file']).stat().st_size / 1e6:6.1f} MB  {v['sha256'][:16]}…")
     print("-> artifacts.json; upload release/*.zip to the GitHub release", TAG)

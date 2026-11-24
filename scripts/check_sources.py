@@ -58,7 +58,7 @@ def main() -> None:
     ap.add_argument("--out", default=str(config.LOG_DIR / "source_health.json"))
     ap.add_argument("--delay", type=float, default=2.0)
     a = ap.parse_args()
-    urls = sorted({r["document_url"] for r in csv.DictReader(config.MANIFEST_PATH.open()) if r["document_url"]})
+    urls = sorted({r["document_url"] for r in csv.DictReader(config.MANIFEST_PATH.open(encoding="utf-8")) if r["document_url"]})
     robots, out = {}, []
     for u in urls:
         if not allowed(u, robots):
@@ -69,7 +69,7 @@ def main() -> None:
         print(f"{str(status):<22} {u}")
         time.sleep(a.delay)
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
-    Path(a.out).write_text(json.dumps({"checked_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "results": out}, indent=1))
+    Path(a.out).write_text(json.dumps({"checked_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "results": out}, indent=1), encoding="utf-8")
     print(f"-> {a.out}")
 
 

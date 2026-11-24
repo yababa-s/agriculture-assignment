@@ -92,7 +92,7 @@ def verify(spec: dict) -> bool:
 
 
 def main() -> None:
-    spec = json.loads(SPEC.read_text())
+    spec = json.loads(SPEC.read_text(encoding="utf-8"))
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--only", nargs="*", choices=list(spec["artifacts"]), help="fetch only these artifacts")
     ap.add_argument("--from-dir", type=Path, help="directory holding the release zips (no download)")

@@ -864,7 +864,7 @@ class QueryAgent:
                "planner": ans.planner, "model": getattr(self.llm, "label", None) if self.llm else None,
                "raw_model_output": raw[:500], "plan": ans.plan, "tool": ans.tool, "n_rows": len(ans.rows),
                "citations": ans.citations[:5], "latency_s": ans.latency_s, "error": ans.error}
-        with (self.log_dir / f"{time.strftime('%Y%m%d')}.jsonl").open("a") as f:
+        with (self.log_dir / f"{time.strftime('%Y%m%d')}.jsonl").open("a", encoding="utf-8") as f:
             f.write(json.dumps(rec, ensure_ascii=False, default=str) + "\n")
 
 

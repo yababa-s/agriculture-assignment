@@ -71,7 +71,7 @@ def main() -> None:
                "routed_ok": run["agent"] == expected_agent, "status": run["status"], "loaded": run["loaded"],
                "llm_calls": run["llm_calls"]}
         steps = [json.loads(x) for x in (config.ROOT / conn.execute(
-            "SELECT trace_path FROM extraction_run WHERE run_id=?", (run["run_id"],)).fetchone()[0]).read_text().splitlines()]
+            "SELECT trace_path FROM extraction_run WHERE run_id=?", (run["run_id"],)).fetchone()[0]).read_text(encoding="utf-8").splitlines()]
         ocr = next((s["payload"] for s in steps if s["name"] == "ocr_to_searchable_pdf"), None)
         if ocr:
             res["ocr"] = ocr
@@ -85,7 +85,7 @@ def main() -> None:
         results.append(res)
         print({k: v for k, v in res.items() if k != "ocr"})
     report = {"batch": out["batch_id"], "elapsed_s": elapsed, "model": llm.label, "cases": results}
-    (config.RESULTS_DIR / "robustness_unseen.json").write_text(json.dumps(report, indent=2, ensure_ascii=False))
+    (config.RESULTS_DIR / "robustness_unseen.json").write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     conn.close()
     tmp_db.unlink()
     print(f"-> {config.RESULTS_DIR / 'robustness_unseen.json'}  ({elapsed}s)")

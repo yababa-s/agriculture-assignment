@@ -63,7 +63,7 @@ def main() -> None:
             "notes": notes,
         })
     MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(MANIFEST_PATH, "w", newline="") as f:
+    with open(MANIFEST_PATH, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)

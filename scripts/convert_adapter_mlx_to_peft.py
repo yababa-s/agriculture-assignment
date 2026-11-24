@@ -22,7 +22,7 @@ from agri import config  # noqa: E402
 
 
 def convert(adapter_dir: Path, base_model: str) -> Path:
-    cfg = json.loads((adapter_dir / "adapter_config.json").read_text())
+    cfg = json.loads((adapter_dir / "adapter_config.json").read_text(encoding="utf-8"))
     lp = cfg["lora_parameters"]
     rank, scale = int(lp["rank"]), float(lp["scale"])
     weights = load_file(str(adapter_dir / "adapters.safetensors"))
@@ -42,7 +42,7 @@ def convert(adapter_dir: Path, base_model: str) -> Path:
     dst = adapter_dir / "peft"
     dst.mkdir(exist_ok=True)
     save_file(out, str(dst / "adapter_model.safetensors"))
-    (dst / "adapter_config.json").write_text(json.dumps(peft_cfg, indent=2))
+    (dst / "adapter_config.json").write_text(json.dumps(peft_cfg, indent=2), encoding="utf-8")
     return dst
 
 

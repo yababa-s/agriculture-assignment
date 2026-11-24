@@ -164,7 +164,7 @@ def main() -> None:
                                    HAVING k > 1 AND vmax - vmin > 0.01 * ABS(vmax)""")
 
     path = config.RESULTS_DIR / "phase3" / "db_audit.json"
-    path.write_text(json.dumps(out, indent=1, default=str, ensure_ascii=False))
+    path.write_text(json.dumps(out, indent=1, default=str, ensure_ascii=False), encoding="utf-8")
     print("A units: metric/item with several units:", len(mixed), "| series whose unit changes:", len(series_change))
     print("B jumps ≥10x:", len(jumps))
     print("C negative:", len(neg), "| % > 100:", len(pct), "| part larger than island:", len(over),

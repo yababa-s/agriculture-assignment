@@ -124,7 +124,7 @@ def page_text(conn, doc: str, page: int) -> str:
 
 
 def island_region(conn) -> tuple[dict, list[dict], list[dict]]:
-    g = json.loads((config.ROOT / "data" / "gold" / "island_profiles_D10.json").read_text())
+    g = json.loads((config.ROOT / "data" / "gold" / "island_profiles_D10.json").read_text(encoding="utf-8"))
     gold = [{"metric": it["metric"], "commodity": None, "location": blk["island"], "period": None, "value": it["value"],
              "page": blk["page"]} for blk in g["blocks"] for it in blk["items"] if it["value"] is not None]
     recs = [dict(r) for r in conn.execute(
@@ -146,7 +146,7 @@ def main() -> None:
     a = ap.parse_args()
     conn = sqlite3.connect(a.db)
     conn.row_factory = sqlite3.Row
-    spec = json.loads((config.ROOT / "data" / "gold" / "field_gold.json").read_text())
+    spec = json.loads((config.ROOT / "data" / "gold" / "field_gold.json").read_text(encoding="utf-8"))
     cases = [(reg, reg["facts"], region_records(conn, reg)) for reg in spec["regions"]]
     cases.insert(3, island_region(conn))
     per_agent, examples = [], {}
@@ -185,7 +185,7 @@ def main() -> None:
            "n_gold_total": sum(x["n_gold"] for x in per_agent), "errors_total": dict(err_total), "examples": examples}
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / f"field_eval_{a.label}.json"
-    path.write_text(json.dumps(out, ensure_ascii=False, indent=1, default=str))
+    path.write_text(json.dumps(out, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
     print(f"{'agent':<24}{'doc':<5}{'n_gold':>7}{'n_ext':>7}{'P':>7}{'R':>7}{'F1':>7}  {'95% CI':<14}{'prov':>6}  errors")
     for x in per_agent:
         print(f"{x['agent']:<24}{x['document_id']:<5}{x['n_gold']:>7}{x['n_extracted']:>7}{x['precision']:>7}{x['recall']:>7}"

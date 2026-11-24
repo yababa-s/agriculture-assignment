@@ -52,7 +52,7 @@ def q(sql: str, *p) -> list[sqlite3.Row]:
 
 
 def load_geo(name: str) -> list[tuple[dict, object]]:
-    fc = json.loads((GEO / name).read_text())
+    fc = json.loads((GEO / name).read_text(encoding="utf-8"))
     return [(f["properties"], shape(f["geometry"])) for f in fc["features"]]
 
 

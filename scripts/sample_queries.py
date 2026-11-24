@@ -101,7 +101,7 @@ def main() -> None:
         parts.append(f"## {qid} ({kind}): {question}\n\n```sql\n{sql}\n```\n\nExpected result ({n} rows):\n\n{table}\n")
         print(f"{qid}: {n} rows")
     out = config.ROOT / "docs" / "sample_queries.md"
-    out.write_text("\n".join(parts))
+    out.write_text("\n".join(parts), encoding="utf-8")
     print(f"-> {out}")
 
 

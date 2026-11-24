@@ -20,12 +20,12 @@ from agri import config  # noqa: E402
 from reports.docx_kit import Doc  # noqa: E402
 
 R, P3, FIG = config.RESULTS_DIR, config.RESULTS_DIR / "phase3", config.FIGURES_DIR
-TEAM = json.loads((ROOT / "reports" / "team.json").read_text())
+TEAM = json.loads((ROOT / "reports" / "team.json").read_text(encoding="utf-8"))
 TEMPLATE = Path.home() / "Desktop" / "Phase 3 requirements" / "TEAMID_STATE_REPORT_template.docx"
 
 
 def J(p: Path):
-    return json.loads(p.read_text()) if p.exists() else None
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
 
 def f3(x) -> str:
@@ -61,7 +61,7 @@ class Data:
         self.tools = {t: J(R / f"tool_comparison_{t}.json") for t in ("pdfplumber", "pymupdf", "docling", "ours")}
         self.n_obs = self.db.execute("SELECT COUNT(*) FROM observation").fetchone()[0]
         self.n_docs_data = self.db.execute("SELECT COUNT(DISTINCT document_id) FROM observation").fetchone()[0]
-        self.manifest = list(csv.DictReader(config.MANIFEST_PATH.open()))
+        self.manifest = list(csv.DictReader(config.MANIFEST_PATH.open(encoding="utf-8")))
         self.pages = sum(int(r["pages"] or 0) for r in self.manifest)
 
     def qa(self, s, label, key="answer_accuracy"):
@@ -462,7 +462,7 @@ def build(out: Path, template: Path) -> Path:
         row("Routing (model only), v1", 20, base["routing"]["accuracy"], v1["routing"]["accuracy"], "v1 forgot the task (valid-id rate 0.2)"),
     ]
     if v2 and "routing" in v2:
-        sp = json.loads(config.SPLITS_PATH.read_text())
+        sp = json.loads(config.SPLITS_PATH.read_text(encoding="utf-8"))
         train = set(sp["train"]["island"]) | set(sp["train"]["tables"])
         bh = [x for x in base["routing"]["rows"] if x["doc"] not in train]
         r5.append(row("Routing (model only, 14 non-train files), v2", len(bh), sum(x["ok"] for x in bh) / len(bh),
@@ -757,7 +757,7 @@ def build(out: Path, template: Path) -> Path:
     doc.page_break()
     doc.h1("Appendix A. Database Schema (DDL) and Data Dictionary")
     doc.para("Full DDL: `agri/db/schema.sql`; full dictionary: `docs/schema.md`. Core fact table and the v2 changes:", after=4)
-    ddl = (ROOT / "agri" / "db" / "schema.sql").read_text()
+    ddl = (ROOT / "agri" / "db" / "schema.sql").read_text(encoding="utf-8")
     s, e = ddl.find("CREATE TABLE IF NOT EXISTS observation"), ddl.find("CREATE INDEX IF NOT EXISTS ix_obs_lookup")
     doc.code(ddl[s:e].strip(), size=7.2)
     doc.table("Data dictionary (main fields).", ["Field", "Type", "Unit / values", "Nullable", "Meaning"], [

@@ -28,7 +28,7 @@ _WS = re.compile(r"\s+")
 
 def trace_steps(run) -> list[dict]:
     p = config.ROOT / (run["trace_path"] or "")
-    return [json.loads(x) for x in p.read_text().splitlines()] if p.is_file() else []
+    return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines()] if p.is_file() else []
 
 
 def main() -> None:

@@ -29,7 +29,7 @@ def apply_geo(conn: sqlite3.Connection) -> int:
     if not path.exists():
         return 0
     n = 0
-    for r in csv.DictReader(path.open()):
+    for r in csv.DictReader(path.open(encoding="utf-8")):
         cur = conn.execute("UPDATE location SET lat=?, lon=?, geo_source=? WHERE location_id=?",
                            (float(r["lat"]), float(r["lon"]), f"{r['point_type']}: {r['note'] or 'team gazetteer'}".strip(),
                             r["location_id"]))

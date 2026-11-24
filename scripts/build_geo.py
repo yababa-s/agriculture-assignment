@@ -81,13 +81,13 @@ def main() -> None:
     # districts
     feats = [{"type": "Feature", "properties": {"location_id": lid},
               "geometry": mapping(g.simplify(a.tolerance, preserve_topology=True))} for lid, g in districts.items()]
-    (GEO / "an_districts.geojson").write_text(json.dumps(fc(feats)))
+    (GEO / "an_districts.geojson").write_text(json.dumps(fc(feats)), encoding="utf-8")
 
     # India outline (for the inset map)
-    india = json.loads((SRC / "india-soi.geojson").read_text())
+    india = json.loads((SRC / "india-soi.geojson").read_text(encoding="utf-8"))
     geom = shape(india["features"][0]["geometry"]).simplify(0.05, preserve_topology=True)
     (GEO / "india_outline.geojson").write_text(json.dumps(fc([{"type": "Feature", "properties": {"name": "India"},
-                                                                "geometry": mapping(geom)}])))
+                                                                "geometry": mapping(geom)}])), encoding="utf-8")
 
     # points: check each against the district polygons
     conn = sqlite3.connect(config.DB_PATH)
@@ -100,7 +100,7 @@ def main() -> None:
 
     parts = [(lid, p) for lid, g in districts.items() for p in getattr(g, "geoms", [g])]
     rows, island_pts = [], {}
-    for r in csv.DictReader((GEO / "gazetteer.csv").open()):
+    for r in csv.DictReader((GEO / "gazetteer.csv").open(encoding="utf-8")):
         lid = r["location_id"]
         if not r["lat"]:
             g = districts[lid]
@@ -119,7 +119,7 @@ def main() -> None:
                      "district_check": "ok" if ok else "mismatch", "km_to_land": snap_km, "note": r["note"]})
         if r["point_type"] == "island":
             island_pts[lid] = pt
-    with (GEO / "locations.csv").open("w", newline="") as f:
+    with (GEO / "locations.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
@@ -133,7 +133,7 @@ def main() -> None:
     feats = [{"type": "Feature", "properties": {"location_id": lid, "n_parts": len(ps)},
               "geometry": mapping(MultiPolygon(ps).simplify(a.tolerance, preserve_topology=True))}
              for lid, ps in sorted(owned.items())]
-    (GEO / "an_islands.geojson").write_text(json.dumps(fc(feats)))
+    (GEO / "an_islands.geojson").write_text(json.dumps(fc(feats)), encoding="utf-8")
     print(f"districts 3, islands with polygons {len(owned)}/{len(island_pts)}, points {len(rows)} "
           f"(all district checks {'ok' if all(r['district_check'] == 'ok' for r in rows) else 'NOT ok'})")
 

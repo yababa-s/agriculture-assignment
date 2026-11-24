@@ -57,7 +57,7 @@ SKIPPED = {
 
 def load_trace(path: str) -> list[dict]:
     p = config.ROOT / path
-    return [json.loads(x) for x in p.read_text().splitlines()] if p.exists() else []
+    return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines()] if p.exists() else []
 
 
 def to_messages(steps: list[dict]) -> list[dict]:
@@ -120,7 +120,7 @@ def grounded(conn, batch_id: str) -> dict:
 
 
 def value_checks(conn) -> dict:
-    checks = json.loads((config.GOLD_DIR / "value_checks.json").read_text())["checks"]
+    checks = json.loads((config.GOLD_DIR / "value_checks.json").read_text(encoding="utf-8"))["checks"]
     ok, rows = 0, []
     for c in checks:
         sql = ("SELECT value, unit_id, dims FROM observation WHERE document_id=? AND metric_id=? AND location_id=? "
@@ -148,7 +148,7 @@ def main() -> None:
         "SELECT r.*, d.relative_path, d.source_group, d.file_name FROM extraction_run r JOIN document d USING(document_id) "
         "WHERE r.batch_id <= ? AND r.started_at = (SELECT MAX(started_at) FROM extraction_run x "
         "WHERE x.document_id = r.document_id AND x.batch_id <= ?) AND r.document_id LIKE 'D%' ORDER BY document_id", (batch, batch))]
-    routing_gold = {g["document_id"]: g["expected_agent"] for g in json.loads((config.GOLD_DIR / "routing.json").read_text())}
+    routing_gold = {g["document_id"]: g["expected_agent"] for g in json.loads((config.GOLD_DIR / "routing.json").read_text(encoding="utf-8"))}
     superset = create_trajectory_match_evaluator(trajectory_match_mode="superset")
 
     per_doc, per_agent = [], defaultdict(lambda: defaultdict(float))
@@ -216,7 +216,7 @@ def main() -> None:
            "groundedness_by_agent": g, "value_checks": vc, "evaluators_skipped": SKIPPED}
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     path = config.RESULTS_DIR / f"agent_eval_{batch}.json"
-    path.write_text(json.dumps(out, indent=2, default=str))
+    path.write_text(json.dumps(out, indent=2, default=str), encoding="utf-8")
     print(json.dumps(workflow, indent=2))
     print(f"{'agent':<24}{'docs':>5}{'compl':>7}{'traj':>6}{'adher':>8}{'loaded':>8}{'llm':>6}{'rej_out':>8}")
     for a_, pa in sorted(per_agent.items()):

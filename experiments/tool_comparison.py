@@ -159,7 +159,7 @@ def main() -> None:
                 sc = score_hindi(r["texts"], spec["hindi"])
             res[case] = {"tables_found": len(r["tables"]), **sc, "seconds": round(time.time() - t0, 1)}
             print(f"{tool:<10} {case:<20} tables={len(r['tables']):<3} score={sc['correct']}/{sc['of']}")
-        (out_dir / f"tool_comparison_{tool}.json").write_text(json.dumps(res, indent=2, ensure_ascii=False))
+        (out_dir / f"tool_comparison_{tool}.json").write_text(json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 if __name__ == "__main__":

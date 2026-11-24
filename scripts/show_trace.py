@@ -41,7 +41,7 @@ def main() -> None:
           f"  attempts {run['attempts']}  extracted {run['n_extracted']}  loaded {run['n_loaded']}  rejected {run['n_rejected']}"
           f"  llm_calls {run['n_llm_calls']}")
     print(f"source: {doc['modality']}, languages {doc['languages']}, legacy font {bool(doc['legacy_font'])}, group {doc['source_group']}\n")
-    steps = [json.loads(x) for x in (config.ROOT / run["trace_path"]).read_text().splitlines()]
+    steps = [json.loads(x) for x in (config.ROOT / run["trace_path"]).read_text(encoding="utf-8").splitlines()]
     counts = {"model": 0, "rule": 0}
     for s in steps:
         if s["kind"] == "decision":

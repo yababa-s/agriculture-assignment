@@ -28,7 +28,7 @@ from reports.build_report import Data, f2, f3  # noqa: E402
 from reports.pptx_kit import by_name, fit_picture, remove, set_lines  # noqa: E402
 from scripts import make_figures as MF  # noqa: E402
 
-TEAM = json.loads((ROOT / "reports" / "team.json").read_text())
+TEAM = json.loads((ROOT / "reports" / "team.json").read_text(encoding="utf-8"))
 TEMPLATE = Path.home() / "Desktop" / "Phase 3 requirements" / "TEAMID_STATE_POSTER_template_landscape.pptx"
 G = config.FIGURES_DIR / "poster"
 FS = 22  # base figure font size in points at print scale
@@ -225,7 +225,7 @@ def build(out: Path, template: Path) -> Path:
     names = [x["name"] for x in TEAM["members"]]
     base, v1 = D.llm["base"], D.llm["qlora_v1"]
     isl = lambda e: e["island_extraction"]["after_groundedness_gate"]["f1"]  # noqa: E731
-    demo = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_dev_hybrid_rules_v2.json").read_text())
+    demo = json.loads((config.RESULTS_DIR / "phase3" / "query_eval_dev_hybrid_rules_v2.json").read_text(encoding="utf-8"))
     demo_ok = sum(r["correct"] for r in demo["results"] if r["demo"])
 
     set_lines(by_name(s, "Title"), ["From PDFs to cited answers: A&N agriculture knowledge base"])
