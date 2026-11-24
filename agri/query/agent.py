@@ -1002,7 +1002,8 @@ def compose(p: Plan, res: T.ToolResult, R: Resolver) -> tuple[str, list[dict]]:
             return (f"{s['n_within_radius']} {p.level}s within {p.radius_km:g} km of {s['reference']}: "
                     + ", ".join(f"{R.loc_name.get(r['location_id'])} ({r['distance_km']} km)" for r in rows)), []
         lines = [f"{s['n_within_radius']} {p.level}s within {p.radius_km:g} km of {s['reference']}; {what} "
-                 f"({rows[0]['period_label']}):"]
+                 f"({rows[0]['period_label']})"
+                 + (f", reported for {len(rows)} of them" if len(rows) < s["n_within_radius"] else "") + ":"]
         lines += [f"  {r['location']} ({r['distance_km']} km): {_fmt(r['value'])} {unit} {_cite_txt(r)}" for r in rows]
         return "\n".join(lines), [_cite(r) for r in rows]
     return json.dumps(rows[:20], default=str), []
