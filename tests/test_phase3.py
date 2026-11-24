@@ -170,3 +170,13 @@ def test_pipeline_smoke_rules_only(tmp_path):
     assert r.returncode == 0, r.stderr[-2000:]
     n = sqlite3.connect(db).execute("SELECT COUNT(*) FROM observation WHERE document_id='D02'").fetchone()[0]
     assert n > 2000
+    # a corrupt, empty or missing unseen file is reported and skipped; it must not abort the batch
+    bad, empty = tmp_path / "broken.pdf", tmp_path / "empty.pdf"
+    bad.write_text("not a pdf")
+    empty.write_bytes(b"")
+    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "run_pipeline.py"), "--no-llm", "--db", str(db),
+                        "--files", str(bad), str(empty), str(tmp_path / "missing.pdf")],
+                       capture_output=True, text=True, cwd=ROOT, timeout=300)
+    assert r.returncode == 0, r.stderr[-2000:]
+    assert r.stdout.count("cannot be read as a document") == 3
+

@@ -40,8 +40,11 @@ def main() -> None:
         init_db(a.db)  # idempotent: ensures schema + reference data
     llm = LLM(backend="none" if a.no_llm else None, adapter_path=a.adapter)
     docs = []
-    if a.files:
-        docs += [register_unseen(conn, f) for f in a.files]
+    for f in a.files or []:
+        try:
+            docs.append(register_unseen(conn, f))
+        except Exception as e:  # noqa: BLE001 - one unreadable file must not stop the batch
+            print(f"skip {f}: cannot be read as a document ({type(e).__name__}: {e})")
     if a.docs or not a.files:
         docs += corpus_documents(conn, a.docs)
     if a.replace:
