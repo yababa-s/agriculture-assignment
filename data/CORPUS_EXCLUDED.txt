@@ -1,0 +1,8 @@
+Not redistributed (licence); download from the source and check the SHA-256 (shasum -a 256 FILE, or certutil -hashfile FILE SHA256 on Windows):
+
+D14  food processing for sustainable growth.pdf
+    download: https://www.mofpi.gov.in/sites/default/files/KnowledgeCentre/State%20Profile/Andaman_Nicobar.pdf
+    archived copy (use if the link above is broken): https://web.archive.org/web/20260420142612/https://www.mofpi.gov.in/sites/default/files/KnowledgeCentre/State%20Profile/Andaman_Nicobar.pdf
+    save as: data/raw/Miscellaneous/food processing for sustainable growth.pdf
+    sha256: a16d1da24f932c8460a8c42f26e704f10546f4d657b8fee8bc65c1b9da940f61
+    reason: Copyright MoFPI, all rights reserved. Academic use only; do not redistribute the file.

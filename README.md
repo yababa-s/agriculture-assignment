@@ -72,7 +72,7 @@ Large files are not in git. `scripts/fetch_artifacts.py` downloads them and chec
 |---|---|---|
 | `34_AN_database_v2.zip` | knowledge base, schema v2 (3.9 MB zipped) | `db/` |
 | `34_AN_qlora_adapters_v2.zip` | LoRA adapter weights v1 + v2 (MLX and PEFT formats), **no base model** | `adapters/` |
-| `34_AN_corpus_v1.zip` | 19 of 20 corpus files (D14 not redistributable: see `release/CORPUS_EXCLUDED.txt`) | `data/raw/` |
+| `34_AN_corpus_v1.zip` | 19 of 20 corpus files (D14 not redistributable: see `data/CORPUS_EXCLUDED.txt`) | `data/raw/` |
 
 Offline: put the zips in `release/` and run `python scripts/fetch_artifacts.py --from-dir release/`.
 The base model `mlx-community/Qwen2.5-3B-Instruct-4bit` (or `Qwen/Qwen2.5-3B-Instruct` for `hf`) downloads from Hugging Face on first use.

@@ -233,7 +233,7 @@ def corpus_documents(conn, ids: list[str] | None = None) -> list[dict]:
         if Path(r["abs_path"]).exists():
             present.append(r)
         else:  # e.g. D14 is not redistributed (licence): download it from its document_url to process it
-            print(f"skip {r['document_id']}: file not found at {r['abs_path']} (see release/CORPUS_EXCLUDED.txt)")
+            print(f"skip {r['document_id']}: file not found at {r['abs_path']} (see data/CORPUS_EXCLUDED.txt)")
     return present
 
 

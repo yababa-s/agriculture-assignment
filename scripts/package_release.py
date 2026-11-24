@@ -3,7 +3,7 @@
   python scripts/package_release.py            -> release/*.zip + artifacts.json
 
 Corpus licensing: files whose manifest licence forbids redistribution (e.g. D14, MoFPI: "do not
-redistribute") are left out of the corpus zip and listed in release/CORPUS_EXCLUDED.txt with their URL.
+redistribute") are left out of the corpus zip and listed in data/CORPUS_EXCLUDED.txt (tracked in git) with their URL, an archived copy and the SHA-256.
 Upload the zips to the GitHub release named in artifacts.json (gh release create phase3-v1 release/*.zip).
 """
 from __future__ import annotations
@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from agri import config  # noqa: E402
+from agri.sources import ARCHIVE_URLS  # noqa: E402
 
 REL = config.ROOT / "release"
 TAG = "phase3-v1"
@@ -61,14 +62,19 @@ def main() -> None:
     for r in csv.DictReader(config.MANIFEST_PATH.open(encoding="utf-8")):
         p = config.CORPUS_DIR / r["relative_path"]
         if "do not redistribute" in r["license"].lower():
-            excluded.append(f"{r['doc_id']}  {r['file_name']}\n    download: {r['document_url']}\n    reason: {r['license']}")
+            arch = ARCHIVE_URLS.get(r["doc_id"])
+            excluded.append(f"{r['doc_id']}  {r['file_name']}\n    download: {r['document_url']}\n"
+                            + (f"    archived copy (use if the link above is broken): {arch}\n" if arch else "")
+                            + f"    save as: data/raw/{r['relative_path']}\n    sha256: {r['sha256']}\n    reason: {r['license']}")
         elif p.exists():
             keep.append((p, r["relative_path"]))
     zp = zipdir(REL / f"{T}_corpus_v1.zip", keep)
-    (REL / "CORPUS_EXCLUDED.txt").write_text("Not redistributed (licence); download from the source:\n\n" + "\n".join(excluded) + "\n", encoding="utf-8")
+    (config.ROOT / "data" / "CORPUS_EXCLUDED.txt").write_text(
+        "Not redistributed (licence); download from the source and check the SHA-256 "
+        "(shasum -a 256 FILE, or certutil -hashfile FILE SHA256 on Windows):\n\n" + "\n".join(excluded) + "\n", encoding="utf-8")
     arts["corpus"] = {"file": zp.name, "sha256": sha(zp), "unzip_to": "data/raw",
                       "check": [f"data/raw/{a}" for _, a in keep[:3]],
-                      "contents": f"{len(keep)} of 20 corpus files (see release/CORPUS_EXCLUDED.txt), paths as in data/manifest.csv",
+                      "contents": f"{len(keep)} of 20 corpus files (see data/CORPUS_EXCLUDED.txt), paths as in data/manifest.csv",
                       "excluded": [e.split()[0] for e in excluded]}
     spec = {"release": TAG, "release_url": URL, "artifacts": arts}
     (config.ROOT / "artifacts.json").write_text(json.dumps(spec, indent=1), encoding="utf-8")

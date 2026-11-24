@@ -30,7 +30,7 @@
     "data/raw/Area and Production/47-Area and Production 2025-26.pdf",
     "data/raw/Basic Statistics/Year 2021-22.pdf"
    ],
-   "contents": "19 of 20 corpus files (see release/CORPUS_EXCLUDED.txt), paths as in data/manifest.csv",
+   "contents": "19 of 20 corpus files (see data/CORPUS_EXCLUDED.txt), paths as in data/manifest.csv",
    "excluded": [
     "D14"
    ]

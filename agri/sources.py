@@ -58,6 +58,13 @@ URL_DES_ECOSTAT = "http://andssw1.and.nic.in/ecostat/index.php"
 URL_BHUVAN_LULC = ("https://bhuvan.nrsc.gov.in/ngmaps/thematic?theme1=LULC250K_2425&tlp=raster"
                    "&state=ANDAMAN+AND+NICOBAR&district=ALL#6.28/10.242/93.243")
 URL_MOFPI_PROFILE = "https://www.mofpi.gov.in/sites/default/files/KnowledgeCentre/State%20Profile/Andaman_Nicobar.pdf"
+# Government portals move or delete files often. A document is never dropped because its link died: the original
+# URL stays as provenance, and an Internet Archive copy whose SHA-256 matches the manifest is recorded here.
+ARCHIVE_URLS = {
+    # original returned HTTP 404 on 2026-11-24; snapshot of 2026-04-20 is byte-identical (722,887 bytes, sha256 a16d1da2…)
+    "D14": "https://web.archive.org/web/20260420142612/https://www.mofpi.gov.in/sites/default/files/KnowledgeCentre/"
+           "State%20Profile/Andaman_Nicobar.pdf",
+}
 DOCUMENT_URLS = {
     **{f"D{i:02d}": URL_DES_ECOSTAT for i in range(1, 14)},   # area & production, basic stats, island-wise, prices
     "D14": URL_MOFPI_PROFILE,

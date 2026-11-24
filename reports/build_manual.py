@@ -310,7 +310,8 @@ def build(out: Path, template: Path, pages: dict[str, int] | None = None, entrie
     run(doc, f"{PY} scripts/fetch_artifacts.py", cap("fetch"),
         "**Offline:** download the three zips from the release page in a browser into a folder `release/` and add "
         "`--from-dir release/`. **D14** (MoFPI) is not redistributed; download it from the URL in "
-        "`release/CORPUS_EXCLUDED.txt` into `data/raw/Miscellaneous/`.")
+        "`data/CORPUS_EXCLUDED.txt` (an archived copy is listed there too) into `data/raw/Miscellaneous/` and check its "
+        "SHA-256.")
 
     doc.h2("4.4 Verify the installation")
     step(doc, 1, "Run the test suite (agents, validation, query tools, maintenance commands).")
@@ -498,7 +499,13 @@ def build(out: Path, template: Path, pages: dict[str, int] | None = None, entrie
          "local issuer certificate>", "python.org Python on macOS has no CA bundle (EasyOCR model download)",
          "run '/Applications/Python 3.13/Install Certificates.command'; fetch_artifacts already uses certifi"],
         ["skip D14: file not found at data/raw/Miscellaneous/food processing for sustainable growth.pdf",
-         "D14 is not redistributed (licence)", "download it from the URL in release/CORPUS_EXCLUDED.txt"],
+         "D14 is not redistributed (licence)", "download it from the URL in data/CORPUS_EXCLUDED.txt"],
+        ["D14 download link returns HTTP 404 (checked 24 Nov 2026)", "the ministry moved or removed the file; "
+         "government links break often", "use the archived copy in data/CORPUS_EXCLUDED.txt; its SHA-256 matches the "
+         "manifest. The document and its data are kept"],
+        ["ssl: certificate not trusted by this Python (site may be up; open it in a browser)", "check_sources.py "
+         "could not verify the portal's certificate chain", "open the URL in a browser; if it is gone, use the archived "
+         "copy the script prints"],
         ["skip /tmp/broken.pdf: cannot be read as a document (FileDataError: Failed to open file '/private/tmp/broken.pdf' "
          "as type pdf.)", "a damaged or non-PDF file passed with --files", "re-download the file; the other files in the "
          "batch are still processed"],
@@ -547,7 +554,10 @@ def build(out: Path, template: Path, pages: dict[str, int] | None = None, entrie
             ("Why is a value marked ⚠ unverified?", "It comes from a document processed with --files (an unseen layout). "
              "Check it against the page; a checked document always wins over it."),
             ("Why is D14 missing from the corpus download?", "Its terms forbid redistribution. Download it from the URL in "
-             "release/CORPUS_EXCLUDED.txt."),
+             "data/CORPUS_EXCLUDED.txt, or from the archived copy listed there if the ministry link is broken."),
+            ("A source link no longer works. Do we drop the document?", "No. Government portals move files often. The "
+             "original URL stays as provenance and the data stay in the knowledge base; scripts/check_sources.py reports "
+             "the nearest Internet Archive copy, which is accepted only if its SHA-256 matches the manifest."),
             ("Can I add data from another state?", "Yes: add locations to agri/db/seed.py and sources to agri/sources.py, "
              "then follow 6.1. The schema is state-agnostic."),
         ],

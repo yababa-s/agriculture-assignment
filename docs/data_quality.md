@@ -151,3 +151,21 @@ The first run passed 64 of 96. The 32 failures fell into six general causes:
 Each cause was fixed in general, and the battery now passes 97/97. The battery was used while fixing, so it is a
 dev set. The held-out query test set was not used for these fixes. Its answer accuracy went from 0.80 to 0.87
 because X11 (Car Nicobar Island farmers) is now resolved to the island.
+
+## 6. Source link health (24 November 2026)
+
+`python scripts/check_sources.py` was run against the 3 distinct download URLs in `data/manifest.csv`
+(robots.txt respected, one request every 2 s, nothing downloaded):
+
+| Source | Documents | Result | Action |
+|---|---|---|---|
+| DES ecostat portal (`andssw1.and.nic.in`) | D01–D13, D15, D16 | 200 | none |
+| Bhuvan LULC (NRSC) | D17–D20 | 200 | the first run reported `URLError`: the script did not use the certifi CA bundle, so every https portal failed on python.org Python for macOS. Fixed in `check_sources.py`. |
+| MoFPI state profile | D14 | HTTP 404 (the file was moved or removed) | kept. Internet Archive snapshot of 20 April 2026 downloaded and verified: 722,887 bytes, SHA-256 `a16d1da2…0f61`, identical to the manifest. Recorded in `agri/sources.py` (`ARCHIVE_URLS`) and `data/CORPUS_EXCLUDED.txt`. |
+
+**Policy:** a document is never dropped because its link died. Government portals move or delete files often, and
+dropping D14 would lose its 39 food-processing facts (2024-25). The original URL stays in the manifest as provenance; a
+replacement copy is accepted only when its SHA-256 matches the manifest. `check_sources.py` now prints the reason
+for a failure (HTTP code, or an untrusted certificate) and looks up the nearest Internet Archive snapshot of any
+broken link. `release/CORPUS_EXCLUDED.txt` was git-ignored, so a fresh clone never had the download instructions; the
+file is now `data/CORPUS_EXCLUDED.txt` and is tracked.
